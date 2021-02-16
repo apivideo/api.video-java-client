@@ -22,10 +22,10 @@ Delete a caption in a specific language by providing the video ID for the video 
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.CaptionsApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.CaptionsApi;
 import java.util.*;
 
 public class Example {
@@ -90,10 +90,10 @@ Retrieve a list of available captions for the videoId you provide.
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.CaptionsApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.CaptionsApi;
 import java.util.*;
 
 public class Example {
@@ -164,10 +164,10 @@ Display a caption for a video in a specific language. If the language is availab
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.CaptionsApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.CaptionsApi;
 import java.util.*;
 
 public class Example {
@@ -233,10 +233,10 @@ To have the captions on automatically, use this PATCH to set default: true.
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.CaptionsApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.CaptionsApi;
 import java.util.*;
 
 public class Example {
@@ -307,10 +307,10 @@ Upload a VTT file to add captions to your video.  Read our [captioning tutorial]
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.CaptionsApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.CaptionsApi;
 import java.util.*;
 
 public class Example {

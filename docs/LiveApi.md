@@ -22,10 +22,10 @@ Delete a live stream
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.LiveApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.LiveApi;
 import java.util.*;
 
 public class Example {
@@ -87,10 +87,10 @@ Send the unique identifier for a live stream to delete it from the system.
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.LiveApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.LiveApi;
 import java.util.*;
 
 public class Example {
@@ -154,10 +154,10 @@ With no parameters added to the url, this will return all livestreams. Query by 
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.LiveApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.LiveApi;
 import java.util.*;
 
 public class Example {
@@ -237,10 +237,10 @@ Supply a LivestreamId, and you'll get all the details for streaming into, and wa
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.LiveApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.LiveApi;
 import java.util.*;
 
 public class Example {
@@ -303,10 +303,10 @@ Use this endpoint to update the player, or to turn recording on/off (saving a co
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.LiveApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.LiveApi;
 import java.util.*;
 
 public class Example {
@@ -378,10 +378,10 @@ A live stream will give you the 'connection point' to RTMP your video stream to 
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.LiveApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.LiveApi;
 import java.util.*;
 
 public class Example {
@@ -450,10 +450,10 @@ Upload an image to use as a backdrop for your livestream.
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.LiveApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.LiveApi;
 import java.util.*;
 
 public class Example {

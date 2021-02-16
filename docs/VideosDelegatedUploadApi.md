@@ -22,10 +22,10 @@ Delete an existing upload token. This is especially useful for tokens you may ha
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.VideosDelegatedUploadApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.VideosDelegatedUploadApi;
 import java.util.*;
 
 public class Example {
@@ -88,10 +88,10 @@ A delegated token is used to allow secure uploads without exposing your API key.
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.VideosDelegatedUploadApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.VideosDelegatedUploadApi;
 import java.util.*;
 
 public class Example {
@@ -165,10 +165,10 @@ You can retrieve details about a specific upload token if you have the unique id
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.VideosDelegatedUploadApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.VideosDelegatedUploadApi;
 import java.util.*;
 
 public class Example {
@@ -232,10 +232,10 @@ When given a token, anyone can upload a file to the URI `https://ws.api.video/up
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.VideosDelegatedUploadApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.VideosDelegatedUploadApi;
 import java.util.*;
 
 public class Example {
@@ -311,10 +311,10 @@ Use this endpoint to generate an upload token. You can use this token to authent
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.VideosDelegatedUploadApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.VideosDelegatedUploadApi;
 import java.util.*;
 
 public class Example {

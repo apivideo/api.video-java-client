@@ -18,10 +18,10 @@ List live stream player sessions
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.RawStatisticsApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.RawStatisticsApi;
 import java.util.*;
 
 public class Example {
@@ -95,10 +95,10 @@ Useful to track and measure video's engagement.
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.RawStatisticsApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.RawStatisticsApi;
 import java.util.*;
 
 public class Example {
@@ -169,10 +169,10 @@ Retrieve all available user sessions for a specific video.
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.RawStatisticsApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.RawStatisticsApi;
 import java.util.*;
 
 public class Example {

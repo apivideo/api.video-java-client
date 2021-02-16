@@ -18,10 +18,10 @@ Deprecated. Authenticate and get a token, then you can use the bearer token here
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.AccountApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.AccountApi;
 import java.util.*;
 
 public class Example {

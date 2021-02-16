@@ -24,10 +24,10 @@ Delete a player if you no longer need it. You can delete any player that you hav
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.PlayersApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.PlayersApi;
 import java.util.*;
 
 public class Example {
@@ -88,10 +88,10 @@ Delete logo
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.PlayersApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.PlayersApi;
 import java.util.*;
 
 public class Example {
@@ -155,10 +155,10 @@ Retrieve a list of all the players you created, as well as details about each on
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.PlayersApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.PlayersApi;
 import java.util.*;
 
 public class Example {
@@ -233,10 +233,10 @@ Use a player ID to retrieve details about the player and display it for viewers.
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.PlayersApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.PlayersApi;
 import java.util.*;
 
 public class Example {
@@ -300,10 +300,10 @@ Use a player ID to update specific details for a player. NOTE: It may take up to
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.PlayersApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.PlayersApi;
 import java.util.*;
 
 public class Example {
@@ -370,10 +370,10 @@ Create a player for your video, and customise it.
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.PlayersApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.PlayersApi;
 import java.util.*;
 
 public class Example {
@@ -437,10 +437,10 @@ The uploaded image maximum size should be 200x100 and its weight should be 200KB
 ### Example
 ```java
 // Import classes:
-import api.video.client.ApiVideoClient;
-import api.video.client.ApiException;
-import api.video.client.models.*;
-import api.video.client.api.PlayersApi;
+import video.api.client.ApiVideoClient;
+import video.api.client.ApiException;
+import video.api.client.models.*;
+import video.api.client.api.PlayersApi;
 import java.util.*;
 
 public class Example {
