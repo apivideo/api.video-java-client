@@ -1,6 +1,6 @@
 
 
-# VideoSourceLiveStreamLinks
+# VideoSourceLiveStreamLink
 
 ## Properties
 

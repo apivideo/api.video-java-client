@@ -62,7 +62,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.api.video+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

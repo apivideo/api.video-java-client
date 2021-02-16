@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **String** |  |  [optional]
-**value** | **String** |  |  [optional]
+**key** | **String** | The constant that defines the data set. |  [optional]
+**value** | **String** | A variable which belongs to the data set. |  [optional]
 
 
 ## Implemented Interfaces

@@ -176,6 +176,7 @@ paths:
         style: form
       - description: 'Allowed: asc, desc. asc is ascending and sorts from A to Z.
           desc is descending and sorts from Z to A.'
+        example: asc
         explode: true
         in: query
         name: sortOrder
@@ -207,7 +208,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -309,7 +310,7 @@ paths:
           description: Success
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -339,7 +340,7 @@ paths:
       x-client-action: list
       x-group-parameters: true
       x-client-paginated: true
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     post:
       description: "To create a video, you create its metadata first, before adding\
         \ the video file (exception - when using an existing HTTP source).\n\nVideos\
@@ -367,7 +368,7 @@ paths:
       responses:
         "201":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -403,13 +404,13 @@ paths:
           description: Created
         "202":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/video'
           description: Accepted
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -440,7 +441,7 @@ paths:
       - Videos
       x-client-action: create
       x-contentType: application/json
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /videos/{videoId}/source:
     post:
       description: |-
@@ -483,7 +484,7 @@ paths:
       responses:
         "201":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -519,7 +520,7 @@ paths:
           description: Created
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -545,7 +546,7 @@ paths:
           description: Bad Request
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -564,7 +565,7 @@ paths:
       x-client-action: upload
       x-client-chunk-upload: true
       x-contentType: multipart/form-data
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /videos/{videoId}/thumbnail:
     patch:
       description: Pick a thumbnail from the given time code. If you'd like to upload
@@ -590,7 +591,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -626,7 +627,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -644,7 +645,7 @@ paths:
       - Videos
       x-client-action: pickThumbnail
       x-contentType: application/json
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     post:
       description: In creating a thumbnail, you may either upload an image, or you
         can pick a time in the video to be used as thumbnail. This endpoint is for
@@ -669,7 +670,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -706,7 +707,7 @@ paths:
           description: Success
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -719,7 +720,7 @@ paths:
           description: Bad Request
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -737,7 +738,7 @@ paths:
       - Videos
       x-client-action: uploadThumbnail
       x-contentType: multipart/form-data
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /videos/{videoId}:
     delete:
       description: If you do not need a video any longer, you can send a request to
@@ -758,7 +759,7 @@ paths:
           description: No Content
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -775,7 +776,7 @@ paths:
       tags:
       - Videos
       x-client-action: delete
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     get:
       description: This call provides the same JSON information provided on video
         creation. For private videos, it will generate a unique token url. Use this
@@ -794,7 +795,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -831,7 +832,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -848,7 +849,7 @@ paths:
       tags:
       - Videos
       x-client-action: get
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     patch:
       description: 'Use this endpoint to update the parameters associated with your
         video. The video you are updating is determined by the video ID you provide
@@ -974,7 +975,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1019,7 +1020,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1036,7 +1037,7 @@ paths:
       tags:
       - Videos
       x-client-action: getVideoStatus
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /upload-tokens:
     get:
       description: A delegated token is used to allow secure uploads without exposing
@@ -1095,7 +1096,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1132,7 +1133,7 @@ paths:
       x-group-parameters: true
       x-client-paginated: true
       x-client-action: listTokens
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     post:
       description: Use this endpoint to generate an upload token. You can use this
         token to authenticate video uploads while keeping your API key safe.
@@ -1145,7 +1146,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1158,7 +1159,7 @@ paths:
           description: Success
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/bad-request'
           description: Bad Request
@@ -1169,7 +1170,7 @@ paths:
       - Videos - Delegated upload
       x-client-action: createToken
       x-contentType: application/json
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /upload-tokens/{uploadToken}:
     delete:
       description: Delete an existing upload token. This is especially useful for
@@ -1191,7 +1192,7 @@ paths:
           description: No Content
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/not-found'
           description: Not Found
@@ -1201,7 +1202,7 @@ paths:
       tags:
       - Videos - Delegated upload
       x-client-action: deleteToken
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     get:
       description: You can retrieve details about a specific upload token if you have
         the unique identifier for the upload token. Add it in the path of the endpoint.
@@ -1221,7 +1222,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1234,7 +1235,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/not-found'
           description: Not Found
@@ -1244,7 +1245,7 @@ paths:
       tags:
       - Videos - Delegated upload
       x-client-action: getToken
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /upload:
     post:
       description: "When given a token, anyone can upload a file to the URI `https://ws.api.video/upload?token=<tokenId>`.\n\
@@ -1301,7 +1302,7 @@ paths:
       responses:
         "201":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1335,7 +1336,7 @@ paths:
           description: Created
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/bad-request'
           description: Bad Request
@@ -1346,7 +1347,7 @@ paths:
       x-client-action: upload
       x-client-chunk-upload: true
       x-contentType: multipart/form-data
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /live-streams:
     get:
       description: With no parameters added to the url, this will return all livestreams.
@@ -1423,7 +1424,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1482,7 +1483,7 @@ paths:
       x-client-action: list
       x-group-parameters: true
       x-client-paginated: true
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     post:
       description: "A live stream will give you the 'connection point' to RTMP your\
         \ video stream to api.video. It will also give you the details for viewers\
@@ -1500,7 +1501,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1524,7 +1525,7 @@ paths:
           description: Success
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/bad-request'
           description: Bad Request
@@ -1535,7 +1536,7 @@ paths:
       - Live
       x-client-action: create
       x-contentType: application/json
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /live-streams/{liveStreamId}:
     delete:
       operationId: DELETE_live-streams-liveStreamId
@@ -1576,7 +1577,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1604,7 +1605,7 @@ paths:
       tags:
       - Live
       x-client-action: get
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     patch:
       description: 'Use this endpoint to update the player, or to turn recording on/off
         (saving a copy of the livestream). NOTE: If the livestream is actively streaming,
@@ -1631,7 +1632,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1655,7 +1656,7 @@ paths:
           description: Success
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/bad-request'
           description: Bad Request
@@ -1666,7 +1667,7 @@ paths:
       - Live
       x-client-action: update
       x-contentType: application/json
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /live-streams/{liveStreamId}/thumbnail:
     delete:
       description: Send the unique identifier for a live stream to delete it from
@@ -1685,13 +1686,13 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/live-stream'
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1708,7 +1709,7 @@ paths:
       tags:
       - Live
       x-client-action: deleteThumbnail
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     post:
       description: Upload an image to use as a backdrop for your livestream.
       operationId: POST_live-streams-liveStreamId-thumbnail
@@ -1730,13 +1731,13 @@ paths:
       responses:
         "201":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/live-stream'
           description: Created
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1749,7 +1750,7 @@ paths:
           description: Bad Request
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1767,7 +1768,7 @@ paths:
       - Live
       x-client-action: uploadThumbnail
       x-contentType: multipart/form-data
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /videos/{videoId}/captions/{language}:
     delete:
       description: Delete a caption in a specific language by providing the video
@@ -1800,7 +1801,7 @@ paths:
           description: No Content
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/not-found'
           description: Not Found
@@ -1810,7 +1811,7 @@ paths:
       tags:
       - Captions
       x-client-action: delete
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     get:
       description: Display a caption for a video in a specific language. If the language
         is available, the caption is returned. Otherwise, you will get a response
@@ -1839,7 +1840,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1852,7 +1853,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/not-found'
           description: Not Found
@@ -1862,7 +1863,7 @@ paths:
       tags:
       - Captions
       x-client-action: get
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     patch:
       description: 'To have the captions on automatically, use this PATCH to set default:
         true.'
@@ -1896,7 +1897,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1909,7 +1910,7 @@ paths:
           description: Success
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1924,7 +1925,7 @@ paths:
           description: Bad Request
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1942,7 +1943,7 @@ paths:
       - Captions
       x-client-action: update
       x-contentType: application/json
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     post:
       description: |-
         Upload a VTT file to add captions to your video.
@@ -1976,7 +1977,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -1989,13 +1990,13 @@ paths:
           description: Success
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/bad-request'
           description: Bad Request
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/not-found'
           description: Not Found
@@ -2006,7 +2007,7 @@ paths:
       - Captions
       x-client-action: upload
       x-contentType: multipart/form-data
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /videos/{videoId}/captions:
     get:
       description: Retrieve a list of available captions for the videoId you provide.
@@ -2046,7 +2047,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2077,7 +2078,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/not-found'
           description: Not Found
@@ -2089,7 +2090,7 @@ paths:
       x-client-action: list
       x-group-parameters: true
       x-client-paginated: true
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /videos/{videoId}/chapters/{language}:
     delete:
       operationId: DELETE_videos-videoId-chapters-language
@@ -2119,7 +2120,7 @@ paths:
           description: No Content
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/not-found'
           description: Not Found
@@ -2129,7 +2130,7 @@ paths:
       tags:
       - Chapters
       x-client-action: delete
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     get:
       operationId: GET_videos-videoId-chapters-language
       parameters:
@@ -2156,7 +2157,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2168,7 +2169,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/not-found'
           description: Not Found
@@ -2178,7 +2179,7 @@ paths:
       tags:
       - Chapters
       x-client-action: get
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     post:
       description: Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos)
         for more details.
@@ -2212,7 +2213,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2224,13 +2225,13 @@ paths:
           description: Success
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/bad-request'
           description: Bad Request
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/not-found'
           description: Not Found
@@ -2241,7 +2242,7 @@ paths:
       - Chapters
       x-client-action: upload
       x-contentType: multipart/form-data
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /videos/{videoId}/chapters:
     get:
       description: Retrieve a list of all chapters for a specified video.
@@ -2281,7 +2282,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2310,7 +2311,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/not-found'
           description: Not Found
@@ -2322,7 +2323,7 @@ paths:
       x-client-action: list
       x-group-parameters: true
       x-client-paginated: true
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /players:
     get:
       description: Retrieve a list of all the players you created, as well as details
@@ -2380,7 +2381,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2449,7 +2450,7 @@ paths:
           description: Success
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2479,7 +2480,7 @@ paths:
       x-client-action: list
       x-group-parameters: true
       x-client-paginated: true
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     post:
       description: Create a player for your video, and customise it.
       operationId: POST_players
@@ -2492,7 +2493,7 @@ paths:
       responses:
         "201":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2528,7 +2529,7 @@ paths:
       - Players
       x-client-action: create
       x-contentType: application/json
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /players/{playerId}:
     delete:
       description: Delete a player if you no longer need it. You can delete any player
@@ -2549,7 +2550,7 @@ paths:
           description: No Content
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2566,7 +2567,7 @@ paths:
       tags:
       - Players
       x-client-action: delete
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     get:
       description: Use a player ID to retrieve details about the player and display
         it for viewers.
@@ -2584,7 +2585,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2615,7 +2616,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2632,7 +2633,7 @@ paths:
       tags:
       - Players
       x-client-action: get
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     patch:
       description: 'Use a player ID to update specific details for a player. NOTE:
         It may take up to 10 min before the new player configuration is available
@@ -2657,7 +2658,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2688,7 +2689,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2706,7 +2707,7 @@ paths:
       - Players
       x-client-action: update
       x-contentType: application/json
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /players/{playerId}/logo:
     delete:
       operationId: DELETE_players-playerId-logo
@@ -2723,13 +2724,13 @@ paths:
       responses:
         "204":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 type: object
           description: No Content
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2746,7 +2747,7 @@ paths:
       tags:
       - Players
       x-client-action: deleteLogo
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     post:
       description: "The uploaded image maximum size should be 200x100 and its weight\
         \ should be 200KB. \nIt will be scaled down to 30px height and converted to\
@@ -2770,13 +2771,13 @@ paths:
       responses:
         "201":
           content:
-            application/vnd.api.video+json:
+            application/json:
               schema:
                 $ref: '#/components/schemas/player'
           description: Created
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2790,7 +2791,7 @@ paths:
           description: Bad Request
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2808,7 +2809,7 @@ paths:
       - Players
       x-client-action: uploadLogo
       x-contentType: multipart/form-data
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /analytics/videos/{videoId}:
     get:
       description: Retrieve all available user sessions for a specific video.
@@ -2872,7 +2873,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2919,7 +2920,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -2938,7 +2939,7 @@ paths:
       x-client-action: listSessions
       x-group-parameters: true
       x-client-paginated: true
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /analytics/live-streams/{liveStreamId}:
     get:
       operationId: GET_analytics-live-streams-liveStreamId
@@ -2990,7 +2991,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3037,7 +3038,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3056,7 +3057,7 @@ paths:
       x-client-action: getLiveStreamAnalytics
       x-group-parameters: true
       x-client-paginated: true
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /analytics/sessions/{sessionId}/events:
     get:
       description: Useful to track and measure video's engagement.
@@ -3096,7 +3097,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3201,7 +3202,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3220,7 +3221,7 @@ paths:
       x-client-action: listPlayerSessionEvents
       x-group-parameters: true
       x-client-paginated: true
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /webhooks:
     get:
       description: Requests to this endpoint return a list of your webhooks (with
@@ -3261,7 +3262,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3300,7 +3301,7 @@ paths:
       x-group-parameters: true
       x-client-paginated: true
       x-client-action: list
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     post:
       description: Webhooks can push notifications to your server, rather than polling
         api.video for changes
@@ -3313,7 +3314,7 @@ paths:
       responses:
         "201":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3327,7 +3328,7 @@ paths:
           description: Created
         "400":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3355,7 +3356,7 @@ paths:
       - Webhooks
       x-client-action: create
       x-contentType: application/json
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /webhooks/{webhookId}:
     delete:
       description: This endpoint will delete the indicated webhook.
@@ -3374,7 +3375,7 @@ paths:
           description: No Content
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3391,7 +3392,7 @@ paths:
       tags:
       - Webhooks
       x-client-action: delete
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
     get:
       description: This call provides the same JSON information provided on Webjhook
         creation.
@@ -3408,7 +3409,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3426,7 +3427,7 @@ paths:
       tags:
       - Webhooks
       x-client-action: get
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
   /account:
     get:
       deprecated: true
@@ -3436,7 +3437,7 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3456,7 +3457,7 @@ paths:
           description: Success
         "404":
           content:
-            application/vnd.api.video+json:
+            application/json:
               examples:
                 response:
                   value:
@@ -3473,7 +3474,7 @@ paths:
       tags:
       - Account
       x-client-action: get
-      x-accepts: application/vnd.api.video+json
+      x-accepts: application/json
 components:
   parameters:
     currentPage:
@@ -3500,14 +3501,13 @@ components:
         type: integer
       style: form
   schemas:
-    metadata:
+    link:
       properties:
-        key:
+        rel:
           type: string
-        value:
+        uri:
           type: string
-      title: metadata
-      x-client-all-args-constructor: true
+      type: object
     access-token:
       example:
         access_token: est
@@ -3534,13 +3534,6 @@ components:
             lasts for one hour.
           type: integer
       title: AccessToken
-      type: object
-    link:
-      properties:
-        rel:
-          type: string
-        uri:
-          type: string
       type: object
     pagination:
       example:
@@ -3681,9 +3674,9 @@ components:
             $ref: '#/components/schemas/metadata'
           type: array
         source:
-          $ref: '#/components/schemas/video_source'
+          $ref: '#/components/schemas/videoSource'
         assets:
-          $ref: '#/components/schemas/video_assets'
+          $ref: '#/components/schemas/videoAssets'
         playerId:
           description: |
             The id of the player that will be applied on the video.
@@ -3798,8 +3791,14 @@ components:
           default: false
           description: 'enable/disable looping. Default: false'
           type: boolean
+      title: PlayerInput
       type: object
     subtitle:
+      example:
+        default: false
+        src: src
+        srclang: srclang
+        uri: uri
       properties:
         uri:
           type: string
@@ -3857,6 +3856,20 @@ components:
       title: Video Session
       type: object
     live-stream:
+      example:
+        streamKey: cc1b4df0-d1c5-4064-a8f9-9f0368385135
+        assets:
+          thumbnail: https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
+          iframe: <iframe src=\"https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5\"
+            width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>
+          hls: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8
+          player: https://embed.api.video/live/li400mYKSgQ6xs7taUeSaEKr
+        public: true
+        liveStreamId: li400mYKSgQ6xs7taUeSaEKr
+        record: true
+        name: My Live Stream
+        playerId: pl45d5vFFGrfdsdsd156dGhh
+        broadcasting: true
       properties:
         liveStreamId:
           description: The unique identifier for the live stream. Live stream IDs
@@ -3885,7 +3898,7 @@ components:
         assets:
           $ref: '#/components/schemas/live_stream_assets'
         playerId:
-          description: The unique identifier for the player, these start with "pl."
+          description: The unique identifier for the player.
           example: pl45d5vFFGrfdsdsd156dGhh
           type: string
         broadcasting:
@@ -3897,6 +3910,30 @@ components:
       title: LiveStream
       type: object
     live-stream-session:
+      example:
+        referrer:
+          searchTerm: video stream
+          medium: organic
+          source: https://google.com
+          url: https://api.video
+        os:
+          name: Microsoft Windows
+          shortname: W10
+          version: Windows 10
+        session:
+          loadedAt: 2019-06-24T11:45:01.109Z
+          endedAt: 2019-06-24T12:45:01.109Z
+          sessionId: sessionId
+        client:
+          name: Firefox
+          version: "67.0"
+        location:
+          country: France
+          city: Paris
+        device:
+          vendor: Dell
+          model: unknown
+          type: desktop
       properties:
         session:
           $ref: '#/components/schemas/live_stream_session_session'
@@ -3913,6 +3950,12 @@ components:
       title: Live Stream Session
       type: object
     player-session-event:
+      example:
+        emittedAt: 2019-06-24T11:45:01.109Z
+        at: 0
+        from: 6
+        to: 1
+        type: play
       properties:
         type:
           description: 'Possible values are: ready, play, pause, resume, seek.backward,
@@ -3933,6 +3976,11 @@ components:
       title: Player Session Event
       type: object
     webhook:
+      example:
+        createdAt: 2019-06-24T11:45:01.109Z
+        webhookId: webhook_XXXXXXXXXXXXXXX
+        events: '["video.encoding.quality.completed"]'
+        url: http://clientnotificationserver.com/notif?myquery=query
       properties:
         webhookId:
           description: Unique identifier of the webhook
@@ -3953,7 +4001,7 @@ components:
           description: URL of the webhook
           example: http://clientnotificationserver.com/notif?myquery=query
           type: string
-      title: Player Session Event
+      title: Webhook
       type: object
     videostatus:
       example:
@@ -4047,6 +4095,10 @@ components:
       title: bytes_range
       type: object
     chapter:
+      example:
+        src: https://cdn.api.video/vod/vi3N6cDinStg3oBbN79GklWS/chapters/fr.vtt
+        language: language
+        uri: uri
       properties:
         uri:
           type: string
@@ -4060,6 +4112,11 @@ components:
       title: Chapter
       type: object
     upload-token:
+      example:
+        createdAt: 2019-12-16T08:25:51Z
+        ttl: 171976544
+        expiresAt: 2019-12-16T09:25:51Z
+        token: to1tcmSFHeYY5KzyhOqVKMKb
       properties:
         token:
           description: The unique identifier for the token you will use to authenticate
@@ -4108,6 +4165,63 @@ components:
       title: refreshToken
       type: object
     videos-list-response:
+      example:
+        pagination:
+          itemsTotal: 123
+          pagesTotal: 7
+          pageSize: 20
+          currentPage: 3
+          currentPageItems: 20
+          links:
+            first:
+              rel: first
+              uri: /videos/search?currentPage=1&pageSize=20
+            previous:
+              rel: previous
+              uri: /videos/search?currentPage=2&pageSize=20
+            next:
+              rel: next
+              uri: /videos/search?currentPage=4&pageSize=20
+            last:
+              rel: last
+              uri: /videos/search?currentPage=6&pageSize=20
+        data:
+        - videoId: vi4k0jvEUuaTdRAEjQ4Jfrgz
+          title: Maths video
+          description: An amazing video explaining the string theory
+          tags:
+          - maths
+          - string theory
+          - video
+          metadata:
+          - key: Author
+            value: John Doe
+          - key: Format
+            value: Tutorial
+          scheduledAt: 4251-03-03T12:52:03.085Z
+          publishedAt: 4665-07-14T23:36:18.598Z
+          actions:
+          - video_delete
+          - video_download
+          - video_update
+        - videoId: vi4k0jvEUuaTdRAEjQ4Jfrgz
+          title: Maths video
+          description: An amazing video explaining the string theory
+          tags:
+          - maths
+          - string theory
+          - video
+          metadata:
+          - key: Author
+            value: John Doe
+          - key: Format
+            value: Tutorial
+          scheduledAt: 4251-03-03T12:52:03.085Z
+          publishedAt: 4665-07-14T23:36:18.598Z
+          actions:
+          - video_delete
+          - video_download
+          - video_update
       properties:
         data:
           items:
@@ -4120,6 +4234,19 @@ components:
       - pagination
       title: Videos
       type: object
+    metadata:
+      properties:
+        key:
+          description: The constant that defines the data set.
+          example: Color
+          type: string
+        value:
+          description: A variable which belongs to the data set.
+          example: Green
+          type: string
+      title: metadata
+      type: object
+      x-client-all-args-constructor: true
     video-create-payload:
       example:
         title: Maths video
@@ -4209,15 +4336,6 @@ components:
       required:
       - file
       type: object
-    video-thumbnail-upload-payload:
-      properties:
-        file:
-          description: The image to be added as a thumbnail.
-          format: binary
-          type: string
-      required:
-      - file
-      type: object
     video-thumbnail-pick-payload:
       example:
         timecode: 00:00:00.000
@@ -4233,6 +4351,15 @@ components:
       required:
       - timecode
       title: pickThumbnailPayload
+      type: object
+    video-thumbnail-upload-payload:
+      properties:
+        file:
+          description: The image to be added as a thumbnail.
+          format: binary
+          type: string
+      required:
+      - file
       type: object
     video-update-payload:
       example:
@@ -4296,6 +4423,35 @@ components:
       title: videoUpdatePayload
       type: object
     token-list-response:
+      example:
+        pagination:
+          itemsTotal: 123
+          pagesTotal: 7
+          pageSize: 20
+          currentPage: 3
+          currentPageItems: 20
+          links:
+            first:
+              rel: first
+              uri: /videos/search?currentPage=1&pageSize=20
+            previous:
+              rel: previous
+              uri: /videos/search?currentPage=2&pageSize=20
+            next:
+              rel: next
+              uri: /videos/search?currentPage=4&pageSize=20
+            last:
+              rel: last
+              uri: /videos/search?currentPage=6&pageSize=20
+        data:
+        - createdAt: 2019-12-16T08:25:51Z
+          ttl: 171976544
+          expiresAt: 2019-12-16T09:25:51Z
+          token: to1tcmSFHeYY5KzyhOqVKMKb
+        - createdAt: 2019-12-16T08:25:51Z
+          ttl: 171976544
+          expiresAt: 2019-12-16T09:25:51Z
+          token: to1tcmSFHeYY5KzyhOqVKMKb
       properties:
         data:
           items:
@@ -4340,6 +4496,53 @@ components:
       - file
       type: object
     live-stream-list-response:
+      example:
+        pagination:
+          itemsTotal: 123
+          pagesTotal: 7
+          pageSize: 20
+          currentPage: 3
+          currentPageItems: 20
+          links:
+            first:
+              rel: first
+              uri: /videos/search?currentPage=1&pageSize=20
+            previous:
+              rel: previous
+              uri: /videos/search?currentPage=2&pageSize=20
+            next:
+              rel: next
+              uri: /videos/search?currentPage=4&pageSize=20
+            last:
+              rel: last
+              uri: /videos/search?currentPage=6&pageSize=20
+        data:
+        - streamKey: cc1b4df0-d1c5-4064-a8f9-9f0368385135
+          assets:
+            thumbnail: https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
+            iframe: <iframe src=\"https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5\"
+              width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>
+            hls: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8
+            player: https://embed.api.video/live/li400mYKSgQ6xs7taUeSaEKr
+          public: true
+          liveStreamId: li400mYKSgQ6xs7taUeSaEKr
+          record: true
+          name: My Live Stream
+          playerId: pl45d5vFFGrfdsdsd156dGhh
+          broadcasting: true
+        - streamKey: cc1b4df0-d1c5-4064-a8f9-9f0368385135
+          assets:
+            thumbnail: https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
+            iframe: <iframe src=\"https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5\"
+              width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>
+            hls: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8
+            player: https://embed.api.video/live/li400mYKSgQ6xs7taUeSaEKr
+          public: true
+          liveStreamId: li400mYKSgQ6xs7taUeSaEKr
+          record: true
+          name: My Live Stream
+          playerId: pl45d5vFFGrfdsdsd156dGhh
+          broadcasting: true
       properties:
         data:
           items:
@@ -4375,8 +4578,7 @@ components:
             for each view.
           type: boolean
         playerId:
-          description: The unique identifier for the player. Player IDs begin with
-            "pl."
+          description: The unique identifier for the player.
           example: pl4f4ferf5erfr5zed4fsdd
           type: string
       required:
@@ -4406,19 +4608,19 @@ components:
           type: string
       title: LiveStreamUpdatePayload
       type: object
-    live-stream-thumbnail-upload-payload:
+    captions-upload-payload:
       properties:
         file:
-          description: The image to be added as a thumbnail.
+          description: The video text track (VTT) you want to upload.
           format: binary
           type: string
       required:
       - file
       type: object
-    captions-upload-payload:
+    live-stream-thumbnail-upload-payload:
       properties:
         file:
-          description: The video text track (VTT) you want to upload.
+          description: The image to be added as a thumbnail.
           format: binary
           type: string
       required:
@@ -4431,6 +4633,35 @@ components:
       title: UpdateCaptionPayload
       type: object
     captions-list-response:
+      example:
+        pagination:
+          itemsTotal: 123
+          pagesTotal: 7
+          pageSize: 20
+          currentPage: 3
+          currentPageItems: 20
+          links:
+            first:
+              rel: first
+              uri: /videos/search?currentPage=1&pageSize=20
+            previous:
+              rel: previous
+              uri: /videos/search?currentPage=2&pageSize=20
+            next:
+              rel: next
+              uri: /videos/search?currentPage=4&pageSize=20
+            last:
+              rel: last
+              uri: /videos/search?currentPage=6&pageSize=20
+        data:
+        - default: false
+          src: src
+          srclang: srclang
+          uri: uri
+        - default: false
+          src: src
+          srclang: srclang
+          uri: uri
       properties:
         data:
           items:
@@ -4448,8 +4679,36 @@ components:
           type: string
       required:
       - file
+      title: UpdateChapterPayload
       type: object
     chapters-list-response:
+      example:
+        pagination:
+          itemsTotal: 123
+          pagesTotal: 7
+          pageSize: 20
+          currentPage: 3
+          currentPageItems: 20
+          links:
+            first:
+              rel: first
+              uri: /videos/search?currentPage=1&pageSize=20
+            previous:
+              rel: previous
+              uri: /videos/search?currentPage=2&pageSize=20
+            next:
+              rel: next
+              uri: /videos/search?currentPage=4&pageSize=20
+            last:
+              rel: last
+              uri: /videos/search?currentPage=6&pageSize=20
+        data:
+        - src: https://cdn.api.video/vod/vi3N6cDinStg3oBbN79GklWS/chapters/fr.vtt
+          language: language
+          uri: uri
+        - src: https://cdn.api.video/vod/vi3N6cDinStg3oBbN79GklWS/chapters/fr.vtt
+          language: language
+          uri: uri
       properties:
         data:
           items:
@@ -4460,6 +4719,29 @@ components:
       title: VideoChapters
       type: object
     players-list-response:
+      example:
+        pagination:
+          itemsTotal: 123
+          pagesTotal: 7
+          pageSize: 20
+          currentPage: 3
+          currentPageItems: 20
+          links:
+            first:
+              rel: first
+              uri: /videos/search?currentPage=1&pageSize=20
+            previous:
+              rel: previous
+              uri: /videos/search?currentPage=2&pageSize=20
+            next:
+              rel: next
+              uri: /videos/search?currentPage=4&pageSize=20
+            last:
+              rel: last
+              uri: /videos/search?currentPage=6&pageSize=20
+        data:
+        - null
+        - null
       properties:
         data:
           items:
@@ -4485,6 +4767,75 @@ components:
       - link
       type: object
     raw-statistics-list-sessions-response:
+      example:
+        pagination:
+          itemsTotal: 123
+          pagesTotal: 7
+          pageSize: 20
+          currentPage: 3
+          currentPageItems: 20
+          links:
+            first:
+              rel: first
+              uri: /videos/search?currentPage=1&pageSize=20
+            previous:
+              rel: previous
+              uri: /videos/search?currentPage=2&pageSize=20
+            next:
+              rel: next
+              uri: /videos/search?currentPage=4&pageSize=20
+            last:
+              rel: last
+              uri: /videos/search?currentPage=6&pageSize=20
+        data:
+        - session:
+            sessionId: psEmFwGQUAXR2lFHj5nDOpy
+            loadedAt: 2019-06-24T11:45:01.109+00
+            endedAt: 2019-06-24T11:49:19.243+00
+          location:
+            country: France
+            city: Paris
+          referrer:
+            url: https://api.video
+            medium: organic
+            source: https://google.com
+            searchTerm: video encoding hosting and delivery
+          device:
+            type: desktop
+            vendor: Dell
+            model: unknown
+          os:
+            name: Microsoft Windows
+            shortname: W10
+            version: Windows10
+          client:
+            type: browser
+            name: Firefox
+            version: "67.0"
+        - session:
+            sessionId: psEmFwGQUAXR2lFHj5nDOpy
+            loadedAt: 2019-06-24T11:45:01.109+00
+            endedAt: 2019-06-24T11:49:19.243+00
+          location:
+            country: France
+            city: Paris
+          referrer:
+            url: https://api.video
+            medium: organic
+            source: https://google.com
+            searchTerm: video encoding hosting and delivery
+          device:
+            type: desktop
+            vendor: Dell
+            model: unknown
+          os:
+            name: Microsoft Windows
+            shortname: W10
+            version: Windows10
+          client:
+            type: browser
+            name: Firefox
+            version: "67.0"
       properties:
         data:
           items:
@@ -4495,6 +4846,73 @@ components:
       title: VideoSessions
       type: object
     raw-statistics-list-live-stream-analytics-response:
+      example:
+        pagination:
+          itemsTotal: 123
+          pagesTotal: 7
+          pageSize: 20
+          currentPage: 3
+          currentPageItems: 20
+          links:
+            first:
+              rel: first
+              uri: /videos/search?currentPage=1&pageSize=20
+            previous:
+              rel: previous
+              uri: /videos/search?currentPage=2&pageSize=20
+            next:
+              rel: next
+              uri: /videos/search?currentPage=4&pageSize=20
+            last:
+              rel: last
+              uri: /videos/search?currentPage=6&pageSize=20
+        data:
+        - referrer:
+            searchTerm: video stream
+            medium: organic
+            source: https://google.com
+            url: https://api.video
+          os:
+            name: Microsoft Windows
+            shortname: W10
+            version: Windows 10
+          session:
+            loadedAt: 2019-06-24T11:45:01.109Z
+            endedAt: 2019-06-24T12:45:01.109Z
+            sessionId: sessionId
+          client:
+            name: Firefox
+            version: "67.0"
+          location:
+            country: France
+            city: Paris
+          device:
+            vendor: Dell
+            model: unknown
+            type: desktop
+        - referrer:
+            searchTerm: video stream
+            medium: organic
+            source: https://google.com
+            url: https://api.video
+          os:
+            name: Microsoft Windows
+            shortname: W10
+            version: Windows 10
+          session:
+            loadedAt: 2019-06-24T11:45:01.109Z
+            endedAt: 2019-06-24T12:45:01.109Z
+            sessionId: sessionId
+          client:
+            name: Firefox
+            version: "67.0"
+          location:
+            country: France
+            city: Paris
+          device:
+            vendor: Dell
+            model: unknown
+            type: desktop
       properties:
         data:
           items:
@@ -4505,6 +4923,37 @@ components:
       title: LiveStreamSessions
       type: object
     raw-statistics-list-player-session-events-response:
+      example:
+        pagination:
+          itemsTotal: 123
+          pagesTotal: 7
+          pageSize: 20
+          currentPage: 3
+          currentPageItems: 20
+          links:
+            first:
+              rel: first
+              uri: /videos/search?currentPage=1&pageSize=20
+            previous:
+              rel: previous
+              uri: /videos/search?currentPage=2&pageSize=20
+            next:
+              rel: next
+              uri: /videos/search?currentPage=4&pageSize=20
+            last:
+              rel: last
+              uri: /videos/search?currentPage=6&pageSize=20
+        data:
+        - emittedAt: 2019-06-24T11:45:01.109Z
+          at: 0
+          from: 6
+          to: 1
+          type: play
+        - emittedAt: 2019-06-24T11:45:01.109Z
+          at: 0
+          from: 6
+          to: 1
+          type: play
       properties:
         data:
           items:
@@ -4515,6 +4964,35 @@ components:
       title: PlayerSessionEvents
       type: object
     webhooks-list-response:
+      example:
+        pagination:
+          itemsTotal: 123
+          pagesTotal: 7
+          pageSize: 20
+          currentPage: 3
+          currentPageItems: 20
+          links:
+            first:
+              rel: first
+              uri: /videos/search?currentPage=1&pageSize=20
+            previous:
+              rel: previous
+              uri: /videos/search?currentPage=2&pageSize=20
+            next:
+              rel: next
+              uri: /videos/search?currentPage=4&pageSize=20
+            last:
+              rel: last
+              uri: /videos/search?currentPage=6&pageSize=20
+        data:
+        - createdAt: 2019-06-24T11:45:01.109Z
+          webhookId: webhook_XXXXXXXXXXXXXXX
+          events: '["video.encoding.quality.completed"]'
+          url: http://clientnotificationserver.com/notif?myquery=query
+        - createdAt: 2019-06-24T11:45:01.109Z
+          webhookId: webhook_XXXXXXXXXXXXXXX
+          events: '["video.encoding.quality.completed"]'
+          url: http://clientnotificationserver.com/notif?myquery=query
       properties:
         data:
           items:
@@ -4548,30 +5026,6 @@ components:
       - events
       - url
       type: object
-    account:
-      properties:
-        quota:
-          $ref: '#/components/schemas/account_quota'
-        features:
-          description: 'Deprecated. What features are enabled for your account. Choices
-            include: app.dynamic_metadata - the ability to dynamically tag videos
-            to better segment and understand your audiences, app.event_log - the ability
-            to create and retrieve a log detailing how your videos were interacted
-            with, player.white_label - the ability to customise your player, stats.player_events
-            - the ability to see statistics about how your player is being used, transcode.mp4_support
-            - the ability to reformat content into mp4 using the H264 codec.'
-          example: '["app.dynamic_metadata, app.event_log"]'
-          items:
-            type: string
-          type: array
-        environment:
-          description: Deprecated. Whether you are using your production or sandbox
-            API key will impact what environment is displayed here, as well as stats
-            and features information. If you use your sandbox key, the environment
-            is "sandbox." If you use your production key, the environment is "production."
-          type: string
-      title: Account
-      type: object
     pagination_link:
       properties:
         rel:
@@ -4582,14 +5036,14 @@ components:
           type: string
       title: PaginationLink
       type: object
-    video_source_liveStream_links:
+    video_source_live_stream_link:
       properties:
         rel:
           type: string
         uri:
           type: string
       type: object
-    video_source_liveStream:
+    video_source_live_stream:
       description: This appears if the video is from a Live Record.
       properties:
         liveStreamId:
@@ -4598,10 +5052,10 @@ components:
           type: string
         links:
           items:
-            $ref: '#/components/schemas/video_source_liveStream_links'
+            $ref: '#/components/schemas/video_source_live_stream_link'
           type: array
       type: object
-    video_source:
+    videoSource:
       description: Source information about the video.
       properties:
         uri:
@@ -4611,9 +5065,9 @@ components:
         type:
           type: string
         liveStream:
-          $ref: '#/components/schemas/video_source_liveStream'
+          $ref: '#/components/schemas/video_source_live_stream'
       type: object
-    video_assets:
+    videoAssets:
       description: Collection of details about the video object that you can use to
         work with the video object.
       properties:
@@ -4644,53 +5098,6 @@ components:
           example: https://cdn.api.video/vod/vi4k0jvEUuaTdRAEjQ4Jfrgz/token/8fd70443-d9f0-45d2-b01c-12c8cfc707c9/mp4/720/source.mp4
           format: uri
           type: string
-      type: object
-    player_allOf_assets:
-      properties:
-        logo:
-          description: The name of the file containing the logo you want to use.
-          example: mylogo.jpg
-          type: string
-        link:
-          description: The path to the file containing your logo.
-          example: path/to/my/logo/mylogo.jpg
-          type: string
-      type: object
-    player_allOf:
-      properties:
-        playerId:
-          example: pl45KFKdlddgk654dspkze
-          type: string
-        createdAt:
-          description: When the player was created, presented in ISO-8601 format.
-          example: 2020-01-31T10:17:47Z
-          format: date-time
-          type: string
-        updatedAt:
-          description: When the player was last updated, presented in ISO-8601 format.
-          example: 2020-01-31T10:18:47Z
-          format: date-time
-          type: string
-        shapeMargin:
-          description: Deprecated
-          type: integer
-        shapeRadius:
-          description: Deprecated
-          type: integer
-        shapeAspect:
-          description: Deprecated
-          type: string
-        shapeBackgroundTop:
-          description: Deprecated
-          type: string
-        shapeBackgroundBottom:
-          description: Deprecated
-          type: string
-        linkActive:
-          description: Deprecated
-          type: string
-        assets:
-          $ref: '#/components/schemas/player_allOf_assets'
       type: object
     video_session_session:
       properties:
@@ -4762,6 +5169,10 @@ components:
       type: object
     video_session_os:
       description: The operating system the viewer is on.
+      example:
+        name: Microsoft Windows
+        shortname: W10
+        version: Windows 10
       properties:
         name:
           description: The name of the operating system.
@@ -4790,6 +5201,12 @@ components:
           type: string
       type: object
     live_stream_assets:
+      example:
+        thumbnail: https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
+        iframe: <iframe src=\"https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5\"
+          width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>
+        hls: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8
+        player: https://embed.api.video/live/li400mYKSgQ6xs7taUeSaEKr
       properties:
         hls:
           description: The http live streaming (HLS) link for your live video stream.
@@ -4813,6 +5230,10 @@ components:
           type: string
       type: object
     live_stream_session_session:
+      example:
+        loadedAt: 2019-06-24T11:45:01.109Z
+        endedAt: 2019-06-24T12:45:01.109Z
+        sessionId: sessionId
       properties:
         sessionId:
           description: A unique identifier for your session. You can use this to track
@@ -4833,6 +5254,9 @@ components:
       type: object
     live_stream_session_location:
       description: The location of the viewer of the live stream.
+      example:
+        country: France
+        city: Paris
       properties:
         country:
           description: The country of the viewer of the live stream.
@@ -4844,6 +5268,11 @@ components:
           type: string
       type: object
     live_stream_session_referrer:
+      example:
+        searchTerm: video stream
+        medium: organic
+        source: https://google.com
+        url: https://api.video
       properties:
         url:
           description: The website the viewer of the live stream was referred to in
@@ -4868,6 +5297,10 @@ components:
       type: object
     live_stream_session_device:
       description: What type of device the user is on when in the live stream session.
+      example:
+        vendor: Dell
+        model: unknown
+        type: desktop
       properties:
         type:
           description: What the type is like desktop, laptop, mobile.
@@ -4885,6 +5318,9 @@ components:
       type: object
     live_stream_session_client:
       description: What kind of browser the viewer is using for the live stream session.
+      example:
+        name: Firefox
+        version: "67.0"
       properties:
         name:
           description: The name of the browser used to view the live stream session.
@@ -4971,8 +5407,91 @@ components:
         metadata:
           $ref: '#/components/schemas/videostatus_encoding_metadata'
       type: object
+    account:
+      deprecated: true
+      example:
+        features: '["app.dynamic_metadata, app.event_log"]'
+        environment: environment
+        quota:
+          quotaRemaining: 6.027456183070403
+          quotaUsed: 0.8008281904610115
+          quotaTotal: 1.4658129805029452
+      properties:
+        quota:
+          $ref: '#/components/schemas/account_quota'
+        features:
+          description: 'Deprecated. What features are enabled for your account. Choices
+            include: app.dynamic_metadata - the ability to dynamically tag videos
+            to better segment and understand your audiences, app.event_log - the ability
+            to create and retrieve a log detailing how your videos were interacted
+            with, player.white_label - the ability to customise your player, stats.player_events
+            - the ability to see statistics about how your player is being used, transcode.mp4_support
+            - the ability to reformat content into mp4 using the H264 codec.'
+          example: '["app.dynamic_metadata, app.event_log"]'
+          items:
+            type: string
+          type: array
+        environment:
+          description: Deprecated. Whether you are using your production or sandbox
+            API key will impact what environment is displayed here, as well as stats
+            and features information. If you use your sandbox key, the environment
+            is "sandbox." If you use your production key, the environment is "production."
+          type: string
+      title: Account
+      type: object
+    player_allOf_assets:
+      properties:
+        logo:
+          description: The name of the file containing the logo you want to use.
+          example: mylogo.jpg
+          type: string
+        link:
+          description: The path to the file containing your logo.
+          example: path/to/my/logo/mylogo.jpg
+          type: string
+      type: object
+    player_allOf:
+      properties:
+        playerId:
+          example: pl45KFKdlddgk654dspkze
+          type: string
+        createdAt:
+          description: When the player was created, presented in ISO-8601 format.
+          example: 2020-01-31T10:17:47Z
+          format: date-time
+          type: string
+        updatedAt:
+          description: When the player was last updated, presented in ISO-8601 format.
+          example: 2020-01-31T10:18:47Z
+          format: date-time
+          type: string
+        shapeMargin:
+          description: Deprecated
+          type: integer
+        shapeRadius:
+          description: Deprecated
+          type: integer
+        shapeAspect:
+          description: Deprecated
+          type: string
+        shapeBackgroundTop:
+          description: Deprecated
+          type: string
+        shapeBackgroundBottom:
+          description: Deprecated
+          type: string
+        linkActive:
+          description: Deprecated
+          type: string
+        assets:
+          $ref: '#/components/schemas/player_allOf_assets'
+      type: object
     account_quota:
       description: Deprecated
+      example:
+        quotaRemaining: 6.027456183070403
+        quotaUsed: 0.8008281904610115
+        quotaTotal: 1.4658129805029452
       properties:
         quotaUsed:
           description: Deprecated

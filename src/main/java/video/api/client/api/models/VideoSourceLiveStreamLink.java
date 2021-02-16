@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * VideoSourceLiveStreamLinks
+ * VideoSourceLiveStreamLink
  */
 
-public class VideoSourceLiveStreamLinks implements Serializable {
+public class VideoSourceLiveStreamLink implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_REL = "rel";
@@ -38,7 +38,7 @@ public class VideoSourceLiveStreamLinks implements Serializable {
     @SerializedName(SERIALIZED_NAME_URI)
     private String uri;
 
-    public VideoSourceLiveStreamLinks rel(String rel) {
+    public VideoSourceLiveStreamLink rel(String rel) {
         this.rel = rel;
         return this;
     }
@@ -59,7 +59,7 @@ public class VideoSourceLiveStreamLinks implements Serializable {
         this.rel = rel;
     }
 
-    public VideoSourceLiveStreamLinks uri(String uri) {
+    public VideoSourceLiveStreamLink uri(String uri) {
         this.uri = uri;
         return this;
     }
@@ -88,9 +88,9 @@ public class VideoSourceLiveStreamLinks implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        VideoSourceLiveStreamLinks videoSourceLiveStreamLinks = (VideoSourceLiveStreamLinks) o;
-        return Objects.equals(this.rel, videoSourceLiveStreamLinks.rel)
-                && Objects.equals(this.uri, videoSourceLiveStreamLinks.uri);
+        VideoSourceLiveStreamLink videoSourceLiveStreamLink = (VideoSourceLiveStreamLink) o;
+        return Objects.equals(this.rel, videoSourceLiveStreamLink.rel)
+                && Objects.equals(this.uri, videoSourceLiveStreamLink.uri);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class VideoSourceLiveStreamLinks implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class VideoSourceLiveStreamLinks {\n");
+        sb.append("class VideoSourceLiveStreamLink {\n");
         sb.append("    rel: ").append(toIndentedString(rel)).append("\n");
         sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
         sb.append("}");

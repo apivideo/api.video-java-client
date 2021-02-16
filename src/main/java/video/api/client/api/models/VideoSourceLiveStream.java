@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import video.api.client.api.models.VideoSourceLiveStreamLinks;
+import video.api.client.api.models.VideoSourceLiveStreamLink;
 import java.io.Serializable;
 
 /**
@@ -40,7 +40,7 @@ public class VideoSourceLiveStream implements Serializable {
 
     public static final String SERIALIZED_NAME_LINKS = "links";
     @SerializedName(SERIALIZED_NAME_LINKS)
-    private List<VideoSourceLiveStreamLinks> links = null;
+    private List<VideoSourceLiveStreamLink> links = null;
 
     public VideoSourceLiveStream liveStreamId(String liveStreamId) {
         this.liveStreamId = liveStreamId;
@@ -63,12 +63,12 @@ public class VideoSourceLiveStream implements Serializable {
         this.liveStreamId = liveStreamId;
     }
 
-    public VideoSourceLiveStream links(List<VideoSourceLiveStreamLinks> links) {
+    public VideoSourceLiveStream links(List<VideoSourceLiveStreamLink> links) {
         this.links = links;
         return this;
     }
 
-    public VideoSourceLiveStream addLinksItem(VideoSourceLiveStreamLinks linksItem) {
+    public VideoSourceLiveStream addLinksItem(VideoSourceLiveStreamLink linksItem) {
         if (this.links == null) {
             this.links = new ArrayList<>();
         }
@@ -84,11 +84,11 @@ public class VideoSourceLiveStream implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "")
 
-    public List<VideoSourceLiveStreamLinks> getLinks() {
+    public List<VideoSourceLiveStreamLink> getLinks() {
         return links;
     }
 
-    public void setLinks(List<VideoSourceLiveStreamLinks> links) {
+    public void setLinks(List<VideoSourceLiveStreamLink> links) {
         this.links = links;
     }
 

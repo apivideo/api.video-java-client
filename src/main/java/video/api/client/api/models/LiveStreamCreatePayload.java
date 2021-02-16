@@ -116,12 +116,12 @@ public class LiveStreamCreatePayload implements Serializable {
     }
 
     /**
-     * The unique identifier for the player. Player IDs begin with \&quot;pl.\&quot;
+     * The unique identifier for the player.
      * 
      * @return playerId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "pl4f4ferf5erfr5zed4fsdd", value = "The unique identifier for the player. Player IDs begin with \"pl.\"")
+    @ApiModelProperty(example = "pl4f4ferf5erfr5zed4fsdd", value = "The unique identifier for the player.")
 
     public String getPlayerId() {
         return playerId;

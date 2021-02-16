@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.api.video+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.api.video+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/vnd.api.video+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.api.video+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -396,7 +396,7 @@ public class Example {
     liveStreamCreatePayload.setName("My Live Stream Video"); // Add a name for your live stream here.
     liveStreamCreatePayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
     liveStreamCreatePayload.setPublic(); // BETA FEATURE Please limit all public &#x3D; false (&quot;private&quot;) livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-    liveStreamCreatePayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player. Player IDs begin with &quot;pl.&quot;
+    liveStreamCreatePayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
 
 
     try {
@@ -431,7 +431,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/vnd.api.video+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/vnd.api.video+json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

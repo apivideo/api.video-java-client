@@ -323,7 +323,7 @@ Method | HTTP request | Description
  - [VideoSessionSession](docs/VideoSessionSession.md)
  - [VideoSource](docs/VideoSource.md)
  - [VideoSourceLiveStream](docs/VideoSourceLiveStream.md)
- - [VideoSourceLiveStreamLinks](docs/VideoSourceLiveStreamLinks.md)
+ - [VideoSourceLiveStreamLink](docs/VideoSourceLiveStreamLink.md)
  - [VideoThumbnailPickPayload](docs/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](docs/VideoUpdatePayload.md)
  - [VideosListResponse](docs/VideosListResponse.md)

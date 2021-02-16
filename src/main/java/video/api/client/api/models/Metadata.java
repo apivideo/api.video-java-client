@@ -49,12 +49,12 @@ public class Metadata implements Serializable {
     }
 
     /**
-     * Get key
+     * The constant that defines the data set.
      * 
      * @return key
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(example = "Color", value = "The constant that defines the data set.")
 
     public String getKey() {
         return key;
@@ -70,12 +70,12 @@ public class Metadata implements Serializable {
     }
 
     /**
-     * Get value
+     * A variable which belongs to the data set.
      * 
      * @return value
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(example = "Green", value = "A variable which belongs to the data set.")
 
     public String getValue() {
         return value;
