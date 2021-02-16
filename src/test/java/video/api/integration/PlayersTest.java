@@ -1,10 +1,10 @@
 package video.api.integration;
 
-import video.api.client.ApiException;
-import video.api.client.ApiVideoClient;
-import video.api.client.models.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
 
 import java.io.File;
 

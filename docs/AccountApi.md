@@ -19,9 +19,9 @@ Deprecated. Authenticate and get a token, then you can use the bearer token here
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.AccountApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.AccountApi;
 import java.util.*;
 
 public class Example {

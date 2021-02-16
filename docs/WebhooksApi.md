@@ -22,9 +22,9 @@ This endpoint will delete the indicated webhook.
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.WebhooksApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.WebhooksApi;
 import java.util.*;
 
 public class Example {
@@ -88,9 +88,9 @@ This call provides the same JSON information provided on Webjhook creation.
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.WebhooksApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.WebhooksApi;
 import java.util.*;
 
 public class Example {
@@ -154,9 +154,9 @@ Requests to this endpoint return a list of your webhooks (with all their details
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.WebhooksApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.WebhooksApi;
 import java.util.*;
 
 public class Example {
@@ -228,9 +228,9 @@ Webhooks can push notifications to your server, rather than polling api.video fo
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.WebhooksApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.WebhooksApi;
 import java.util.*;
 
 public class Example {

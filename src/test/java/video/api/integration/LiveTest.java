@@ -1,13 +1,13 @@
 package video.api.integration;
 
-import video.api.client.ApiException;
-import video.api.client.ApiVideoClient;
-import video.api.client.models.LiveStream;
-import video.api.client.models.LiveStreamCreatePayload;
-import video.api.client.models.LiveStreamUpdatePayload;
-import video.api.client.models.Page;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.LiveStream;
+import video.api.client.api.models.LiveStreamCreatePayload;
+import video.api.client.api.models.LiveStreamUpdatePayload;
+import video.api.client.api.models.Page;
 
 import java.io.File;
 

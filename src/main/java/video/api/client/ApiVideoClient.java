@@ -1,6 +1,7 @@
 package video.api.client;
 
 import video.api.client.api.*;
+import video.api.client.api.clients.*;
 import okhttp3.OkHttpClient;
 
 public class ApiVideoClient {

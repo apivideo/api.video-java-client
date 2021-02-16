@@ -54,8 +54,8 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
 
 public class Example {
   public static void main(String[] args) {

@@ -1,13 +1,13 @@
 package video.api.integration;
 
-import video.api.client.ApiException;
-import video.api.client.ApiVideoClient;
-import video.api.client.models.Page;
-import video.api.client.models.TokenCreatePayload;
-import video.api.client.models.UploadToken;
-import video.api.client.models.Video;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.Page;
+import video.api.client.api.models.TokenCreatePayload;
+import video.api.client.api.models.UploadToken;
+import video.api.client.api.models.Video;
 
 import java.io.File;
 import java.util.HashSet;

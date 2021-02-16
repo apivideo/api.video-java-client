@@ -20,9 +20,9 @@ Delete a chapter
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.ChaptersApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.ChaptersApi;
 import java.util.*;
 
 public class Example {
@@ -88,9 +88,9 @@ Retrieve a list of all chapters for a specified video.
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.ChaptersApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.ChaptersApi;
 import java.util.*;
 
 public class Example {
@@ -160,9 +160,9 @@ Show a chapter
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.ChaptersApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.ChaptersApi;
 import java.util.*;
 
 public class Example {
@@ -229,9 +229,9 @@ Chapters help break the video into sections. Read our [tutorial](https://api.vid
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.ChaptersApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.ChaptersApi;
 import java.util.*;
 
 public class Example {

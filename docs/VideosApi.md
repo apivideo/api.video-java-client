@@ -27,9 +27,9 @@ If you do not need a video any longer, you can send a request to delete it. All 
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.VideosApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
 import java.util.*;
 
 public class Example {
@@ -93,9 +93,9 @@ This call provides the same JSON information provided on video creation. For pri
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.VideosApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
 import java.util.*;
 
 public class Example {
@@ -160,9 +160,9 @@ This API provides upload status &amp; encoding status to determine when the vide
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.VideosApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
 import java.util.*;
 
 public class Example {
@@ -227,9 +227,9 @@ Requests to this endpoint return a list of your videos (with all their details).
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.VideosApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
 import java.util.*;
 
 public class Example {
@@ -320,9 +320,9 @@ Use this endpoint to update the parameters associated with your video. The video
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.VideosApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
 import java.util.*;
 
 public class Example {
@@ -399,9 +399,9 @@ Pick a thumbnail from the given time code. If you'd like to upload an image for 
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.VideosApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
 import java.util.*;
 
 public class Example {
@@ -476,9 +476,9 @@ To create a video, you create its metadata first, before adding the video file (
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.VideosApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
 import java.util.*;
 
 public class Example {
@@ -555,9 +555,9 @@ To upload a video to the videoId you created. Replace {videoId} with the id you'
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.VideosApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
 import java.util.*;
 
 public class Example {
@@ -635,9 +635,9 @@ In creating a thumbnail, you may either upload an image, or you can pick a time 
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.VideosApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
 import java.util.*;
 
 public class Example {

@@ -20,9 +20,9 @@ To get started, submit your API key in the body of your request. api.video retur
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.AuthenticationApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.AuthenticationApi;
 import java.util.*;
 
 public class Example {
@@ -89,9 +89,9 @@ Use the refresh endpoint with the refresh token you received when you first auth
 ```java
 // Import classes:
 import video.api.client.ApiVideoClient;
-import video.api.client.ApiException;
-import video.api.client.models.*;
-import video.api.client.api.AuthenticationApi;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.AuthenticationApi;
 import java.util.*;
 
 public class Example {

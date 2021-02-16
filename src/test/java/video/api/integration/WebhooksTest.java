@@ -1,13 +1,13 @@
 package video.api.integration;
 
-import video.api.client.ApiException;
-import video.api.client.ApiVideoClient;
-import video.api.client.models.Metadata;
-import video.api.client.models.Page;
-import video.api.client.models.Webhook;
-import video.api.client.models.WebhooksCreatePayload;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.Metadata;
+import video.api.client.api.models.Page;
+import video.api.client.api.models.Webhook;
+import video.api.client.api.models.WebhooksCreatePayload;
 
 import java.util.Collections;
 
