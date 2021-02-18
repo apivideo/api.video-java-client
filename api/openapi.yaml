@@ -5508,8 +5508,8 @@ components:
       scheme: bearer
       type: http
 x-client-base-paths:
-  production: https://ws.api.video/
-  sandbox: https://sandbox.api.video/
+  production: https://ws.api.video
+  sandbox: https://sandbox.api.video
 x-explorer-enabled: true
 x-proxy-enabled: true
 x-samples-enabled: true

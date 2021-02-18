@@ -18,7 +18,7 @@ public class ApiVideoClient {
     private final WebhooksApi webhooks;
 
     public enum Environment {
-        PRODUCTION("https://ws.api.video/"), SANDBOX("https://sandbox.api.video/");
+        PRODUCTION("https://ws.api.video"), SANDBOX("https://sandbox.api.video");
 
         private final String basePath;
 
