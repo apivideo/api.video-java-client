@@ -39,6 +39,10 @@ public class VideoSessionClient implements Serializable {
     @SerializedName(SERIALIZED_NAME_VERSION)
     private String version;
 
+    public static final String SERIALIZED_NAME_TYPE = "type";
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private String type;
+
     public VideoSessionClient name(String name) {
         this.name = name;
         return this;
@@ -81,6 +85,27 @@ public class VideoSessionClient implements Serializable {
         this.version = version;
     }
 
+    public VideoSessionClient type(String type) {
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * The type of client used to view the video session.
+     * 
+     * @return type
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "browser", value = "The type of client used to view the video session.")
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -91,12 +116,13 @@ public class VideoSessionClient implements Serializable {
         }
         VideoSessionClient videoSessionClient = (VideoSessionClient) o;
         return Objects.equals(this.name, videoSessionClient.name)
-                && Objects.equals(this.version, videoSessionClient.version);
+                && Objects.equals(this.version, videoSessionClient.version)
+                && Objects.equals(this.type, videoSessionClient.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, version);
+        return Objects.hash(name, version, type);
     }
 
     @Override
@@ -105,6 +131,7 @@ public class VideoSessionClient implements Serializable {
         sb.append("class VideoSessionClient {\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    version: ").append(toIndentedString(version)).append("\n");
+        sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("}");
         return sb.toString();
     }

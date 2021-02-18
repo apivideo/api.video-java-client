@@ -3926,6 +3926,7 @@ components:
           sessionId: sessionId
         client:
           name: Firefox
+          type: browser
           version: "67.0"
         location:
           country: France
@@ -4882,6 +4883,7 @@ components:
             sessionId: sessionId
           client:
             name: Firefox
+            type: browser
             version: "67.0"
           location:
             country: France
@@ -4905,6 +4907,7 @@ components:
             sessionId: sessionId
           client:
             name: Firefox
+            type: browser
             version: "67.0"
           location:
             country: France
@@ -5199,6 +5202,10 @@ components:
           description: The version of the browser used to view the video session.
           example: "67.0"
           type: string
+        type:
+          description: The type of client used to view the video session.
+          example: browser
+          type: string
       type: object
     live_stream_assets:
       example:
@@ -5320,6 +5327,7 @@ components:
       description: What kind of browser the viewer is using for the live stream session.
       example:
         name: Firefox
+        type: browser
         version: "67.0"
       properties:
         name:
@@ -5329,6 +5337,10 @@ components:
         version:
           description: The version of the browser used to view the live stream session.
           example: "67.0"
+          type: string
+        type:
+          description: The type of client used to view the live stream session.
+          example: browser
           type: string
       type: object
     videostatus_ingest:

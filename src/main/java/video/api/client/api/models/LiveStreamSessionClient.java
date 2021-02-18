@@ -39,6 +39,10 @@ public class LiveStreamSessionClient implements Serializable {
     @SerializedName(SERIALIZED_NAME_VERSION)
     private String version;
 
+    public static final String SERIALIZED_NAME_TYPE = "type";
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private String type;
+
     public LiveStreamSessionClient name(String name) {
         this.name = name;
         return this;
@@ -81,6 +85,27 @@ public class LiveStreamSessionClient implements Serializable {
         this.version = version;
     }
 
+    public LiveStreamSessionClient type(String type) {
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * The type of client used to view the live stream session.
+     * 
+     * @return type
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "browser", value = "The type of client used to view the live stream session.")
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -91,12 +116,13 @@ public class LiveStreamSessionClient implements Serializable {
         }
         LiveStreamSessionClient liveStreamSessionClient = (LiveStreamSessionClient) o;
         return Objects.equals(this.name, liveStreamSessionClient.name)
-                && Objects.equals(this.version, liveStreamSessionClient.version);
+                && Objects.equals(this.version, liveStreamSessionClient.version)
+                && Objects.equals(this.type, liveStreamSessionClient.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, version);
+        return Objects.hash(name, version, type);
     }
 
     @Override
@@ -105,6 +131,7 @@ public class LiveStreamSessionClient implements Serializable {
         sb.append("class LiveStreamSessionClient {\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    version: ").append(toIndentedString(version)).append("\n");
+        sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("}");
         return sb.toString();
     }

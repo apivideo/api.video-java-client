@@ -1,3 +1,14 @@
+/*
+ * api.video Java API client
+ * api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
+ *
+ * The version of the OpenAPI document: 1
+ * Contact: ecosystem-team@api.video
+ *
+ * NOTE: This class is auto generated.
+ * Do not edit the class manually.
+ */
+
 package video.api.client.api.clients;
 
 import org.junit.jupiter.api.DisplayName;
@@ -30,6 +41,9 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void requiredParametersTest() {
             answerOnAnyRequest(201, "{}");
 
+            assertThatThrownBy(() -> api.getLiveStreamAnalytics(null).execute()).isInstanceOf(ApiException.class)
+                    .hasMessage("Missing the required parameter 'liveStreamId' when calling getLiveStreamAnalytics");
+
             assertThatNoException().isThrownBy(() -> api.getLiveStreamAnalytics("vi4k0jvEUuaTdRAEjQ4Jfrgz").execute());
         }
 
@@ -38,22 +52,23 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void responseWithStatus200Test() throws ApiException {
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            Page<LiveStreamSession> res = api.getLiveStreamAnalytics("vi4k0jvEUuaTdRAEjQ4Jfrgz").execute();
+            Page<LiveStreamSession> page = api.getLiveStreamAnalytics("vi4k0jvEUuaTdRAEjQ4Jfrgz").execute();
 
-            /*
-             * sample response: { "data" : [ { "session" : { "sessionId" : "ps4zRWVOv2If2vzKJLMr3jQo", "loadedAt" :
-             * "2018-09-11T13:04:37.89+00", "endedAt" : "2018-09-11 14:47:22.186+00" }, "location" : { "country" :
-             * "France", "city" : "Paris" }, "referrer" : { "url" : "unknown", "medium" : "unknown", "source" :
-             * "unknown", "searchTerm" : "unknown" }, "device" : { "type" : "desktop", "vendor" : "unknown", "model" :
-             * "unknown" }, "os" : { "name" : "unknown", "shortname" : "unknown", "version" : "unknown" }, "client" : {
-             * "type" : "browser", "name" : "Firefox", "version" : "61.0" } } ], "pagination" : { "currentPage" : 1,
-             * "currentPageItems" : 1, "pageSize" : 25, "pagesTotal" : 1, "itemsTotal" : 1, "links" : [ { "rel" :
-             * "self", "uri" : "/analytics/sessions/ps4zRWVOv2If2vzKJLMr3jQo?currentPage&#x3D;1&amp;pageSize&#x3D;25" },
-             * { "rel" : "first", "uri" :
-             * "/analytics/sessions/ps4zRWVOv2If2vzKJLMr3jQo?currentPage&#x3D;1&amp;pageSize&#x3D;25" }, { "rel" :
-             * "last", "uri" : "/analytics/sessions/ps4zRWVOv2If2vzKJLMr3jQo?currentPage&#x3D;1&amp;pageSize&#x3D;25" }
-             * ] } }
-             */
+            assertThat(page.getCurrentPage()).isEqualTo(1);
+            assertThat(page.getPageSize()).isEqualTo(25);
+            assertThat(page.getPagesTotal()).isEqualTo(1);
+            assertThat(page.getCurrentPageItems()).isEqualTo(1);
+
+            assertThat(page.getItems()).containsExactlyInAnyOrder(new LiveStreamSession()
+                    .session(new LiveStreamSessionSession().sessionId("ps4zRWVOv2If2vzKJLMr3jQo")
+                            .loadedAt(OffsetDateTime.parse("2018-09-11T13:04:37.89Z"))
+                            .endedAt(OffsetDateTime.parse("2018-09-11T14:47:22.186Z")))
+                    .location(new LiveStreamSessionLocation().country("France").city("Paris"))
+                    .referrer(new LiveStreamSessionReferrer().url("unknown").medium("unknown").source("unknown")
+                            .searchTerm("unknown"))
+                    .device(new LiveStreamSessionDevice().type("desktop").vendor("unknown").model("unknown"))
+                    .os(new VideoSessionOs().name("unknown").shortname("unknown").version("unknown"))
+                    .client(new LiveStreamSessionClient().type("browser").name("Firefox").version("61.0")));
         }
 
         @Test
@@ -78,8 +93,10 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void requiredParametersTest() {
             answerOnAnyRequest(201, "{}");
 
+            assertThatThrownBy(() -> api.listPlayerSessionEvents(null).execute()).isInstanceOf(ApiException.class)
+                    .hasMessage("Missing the required parameter 'sessionId' when calling listPlayerSessionEvents");
+
             assertThatNoException().isThrownBy(() -> api.listPlayerSessionEvents("psEmFwGQUAXR2lFHj5nDOpy").execute());
-            // String sessionId, Integer currentPage, Integer pageSize
         }
 
         @Test
@@ -87,40 +104,65 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void responseWithStatus200Test() throws ApiException {
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            Page<PlayerSessionEvent> res = api.listPlayerSessionEvents("psEmFwGQUAXR2lFHj5nDOpy").execute();
+            Page<PlayerSessionEvent> page = api.listPlayerSessionEvents("psEmFwGQUAXR2lFHj5nDOpy").execute();
 
-            /*
-             * sample response: { "data" : [ { "type" : "ready", "emittedAt" : "2020-09-15T09:47:42+00:00", "at" : 0 },
-             * { "type" : "play", "emittedAt" : "2020-09-15T21:35:57+00:00", "at" : 0 }, { "type" : "pause", "emittedAt"
-             * : "2020-09-15T21:36:05+00:00", "at" : 7 }, { "type" : "resume", "emittedAt" :
-             * "2020-09-15T21:36:19+00:00", "at" : 21 }, { "type" : "seek.forward", "emittedAt" :
-             * "2020-09-15T21:36:19+00:00", "from" : 7, "to" : 21 }, { "type" : "end", "emittedAt" :
-             * "2020-09-15T21:36:28+00:00", "at" : 30 }, { "type" : "play", "emittedAt" : "2020-09-15T21:36:29+00:00",
-             * "at" : 0 }, { "type" : "seek.backward", "emittedAt" : "2020-09-15T21:36:29+00:00", "from" : 30, "to" : 0
-             * }, { "type" : "pause", "emittedAt" : "2020-09-15T21:36:29+00:00", "at" : 21 }, { "type" : "resume",
-             * "emittedAt" : "2020-09-15T21:36:30+00:00", "at" : 21 }, { "type" : "seek.forward", "emittedAt" :
-             * "2020-09-15T21:36:30+00:00", "from" : 0, "to" : 21 }, { "type" : "pause", "emittedAt" :
-             * "2020-09-15T21:36:33+00:00", "at" : 20 }, { "type" : "resume", "emittedAt" : "2020-09-15T21:36:33+00:00",
-             * "at" : 20 }, { "type" : "seek.backward", "emittedAt" : "2020-09-15T21:36:33+00:00", "from" : 24, "to" :
-             * 20 }, { "type" : "pause", "emittedAt" : "2020-09-15T21:36:39+00:00", "at" : 17 }, { "type" : "resume",
-             * "emittedAt" : "2020-09-15T21:36:39+00:00", "at" : 17 }, { "type" : "seek.forward", "emittedAt" :
-             * "2020-09-15T21:36:39+00:00", "from" : 17, "to" : 17 }, { "type" : "pause", "emittedAt" :
-             * "2020-09-15T21:36:41+00:00", "at" : 19 }, { "type" : "ready", "emittedAt" : "2020-09-17T09:20:47+00:00",
-             * "at" : 0 }, { "type" : "ready", "emittedAt" : "2020-09-17T09:41:01+00:00", "at" : 0 }, { "type" :
-             * "ready", "emittedAt" : "2020-09-17T09:41:08+00:00", "at" : 0 }, { "type" : "play", "emittedAt" :
-             * "2020-09-17T09:41:10+00:00", "at" : 0 }, { "type" : "pause", "emittedAt" : "2020-09-17T09:41:12+00:00",
-             * "at" : 1 }, { "type" : "resume", "emittedAt" : "2020-09-17T09:41:13+00:00", "at" : 1 }, { "type" :
-             * "pause", "emittedAt" : "2020-09-17T09:41:15+00:00", "at" : 3 } ], "pagination" : { "currentPage" : 1,
-             * "currentPageItems" : 25, "pageSize" : 25, "pagesTotal" : 2, "itemsTotal" : 30, "links" : [ { "rel" :
-             * "self", "uri" :
-             * "/analytics/sessions/ps5ltuhfsTOeh6bP03Tq5OWc/events?currentPage&#x3D;1&amp;pageSize&#x3D;25" }, { "rel"
-             * : "first", "uri" :
-             * "/analytics/sessions/ps5ltuhfsTOeh6bP03Tq5OWc/events?currentPage&#x3D;1&amp;pageSize&#x3D;25" }, { "rel"
-             * : "next", "uri" :
-             * "/analytics/sessions/ps5ltuhfsTOeh6bP03Tq5OWc/events?currentPage&#x3D;2&amp;pageSize&#x3D;25" }, { "rel"
-             * : "last", "uri" :
-             * "/analytics/sessions/ps5ltuhfsTOeh6bP03Tq5OWc/events?currentPage&#x3D;2&amp;pageSize&#x3D;25" } ] } }
-             */
+            assertThat(page.getCurrentPage()).isEqualTo(1);
+            assertThat(page.getCurrentPageItems()).isEqualTo(25);
+            assertThat(page.getPageSize()).isEqualTo(25);
+            assertThat(page.getPagesTotal()).isEqualTo(2);
+            assertThat(page.getItemsTotal()).isEqualTo(30);
+
+            assertThat(page.getItems()).containsExactlyInAnyOrder(
+                    new PlayerSessionEvent().type("ready").emittedAt(OffsetDateTime.parse("2020-09-15T09:47:42+00:00"))
+                            .at(0),
+                    new PlayerSessionEvent().type("play").emittedAt(OffsetDateTime.parse("2020-09-15T21:35:57+00:00"))
+                            .at(0),
+                    new PlayerSessionEvent().type("pause").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:05+00:00"))
+                            .at(7),
+                    new PlayerSessionEvent().type("resume").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:19+00:00"))
+                            .at(21),
+                    new PlayerSessionEvent().type("seek.forward")
+                            .emittedAt(OffsetDateTime.parse("2020-09-15T21:36:19+00:00")).from(7).to(21),
+                    new PlayerSessionEvent().type("end").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:28+00:00"))
+                            .at(30),
+                    new PlayerSessionEvent().type("play").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:29+00:00"))
+                            .at(0),
+                    new PlayerSessionEvent().type("seek.backward")
+                            .emittedAt(OffsetDateTime.parse("2020-09-15T21:36:29+00:00")).from(30).to(0),
+                    new PlayerSessionEvent().type("pause").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:29+00:00"))
+                            .at(21),
+                    new PlayerSessionEvent().type("resume").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:30+00:00"))
+                            .at(21),
+                    new PlayerSessionEvent().type("seek.forward")
+                            .emittedAt(OffsetDateTime.parse("2020-09-15T21:36:30+00:00")).from(0).to(21),
+                    new PlayerSessionEvent().type("pause").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:33+00:00"))
+                            .at(20),
+                    new PlayerSessionEvent().type("resume").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:33+00:00"))
+                            .at(20),
+                    new PlayerSessionEvent().type("seek.backward")
+                            .emittedAt(OffsetDateTime.parse("2020-09-15T21:36:33+00:00")).from(24).to(20),
+                    new PlayerSessionEvent().type("pause").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:39+00:00"))
+                            .at(17),
+                    new PlayerSessionEvent().type("resume").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:39+00:00"))
+                            .at(17),
+                    new PlayerSessionEvent().type("seek.forward")
+                            .emittedAt(OffsetDateTime.parse("2020-09-15T21:36:39+00:00")).from(17).to(17),
+                    new PlayerSessionEvent().type("pause").emittedAt(OffsetDateTime.parse("2020-09-15T21:36:41+00:00"))
+                            .at(19),
+                    new PlayerSessionEvent().type("ready").emittedAt(OffsetDateTime.parse("2020-09-17T09:20:47+00:00"))
+                            .at(0),
+                    new PlayerSessionEvent().type("ready").emittedAt(OffsetDateTime.parse("2020-09-17T09:41:01+00:00"))
+                            .at(0),
+                    new PlayerSessionEvent().type("ready").emittedAt(OffsetDateTime.parse("2020-09-17T09:41:08+00:00"))
+                            .at(0),
+                    new PlayerSessionEvent().type("play").emittedAt(OffsetDateTime.parse("2020-09-17T09:41:10+00:00"))
+                            .at(0),
+                    new PlayerSessionEvent().type("pause").emittedAt(OffsetDateTime.parse("2020-09-17T09:41:12+00:00"))
+                            .at(1),
+                    new PlayerSessionEvent().type("resume").emittedAt(OffsetDateTime.parse("2020-09-17T09:41:13+00:00"))
+                            .at(1),
+                    new PlayerSessionEvent().type("pause").emittedAt(OffsetDateTime.parse("2020-09-17T09:41:15+00:00"))
+                            .at(3));
         }
 
         @Test
@@ -132,11 +174,6 @@ public class RawStatisticsApiTest extends AbstractApiTest {
                     .isInstanceOf(ApiException.class)
                     .satisfies(e -> assertThat(((ApiException) e).getCode()).isEqualTo(404))
                     .hasMessage("The requested resource was not found.");
-
-            /*
-             * sample response: { "type" : "https://docs.api.video/docs/resourcenot_found", "title" :
-             * "The requested resource was not found.", "name" : "videoId", "status" : 404 }
-             */
         }
     }
 
@@ -161,16 +198,14 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void responseWithStatus200Test() throws ApiException {
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            Page<VideoSession> res = api.listSessions("vi4k0jvEUuaTdRAEjQ4Prklg").execute();
+            Page<VideoSession> page = api.listSessions("vi4k0jvEUuaTdRAEjQ4Prklg").execute();
 
-            assertThat(res.getCurrentPage()).isEqualTo(1);
-            assertThat(res.getPageSize()).isEqualTo(25);
-            assertThat(res.getPagesTotal()).isEqualTo(1);
-            assertThat(res.getCurrentPageItems()).isEqualTo(1);
+            assertThat(page.getCurrentPage()).isEqualTo(1);
+            assertThat(page.getPageSize()).isEqualTo(25);
+            assertThat(page.getPagesTotal()).isEqualTo(1);
+            assertThat(page.getCurrentPageItems()).isEqualTo(1);
 
-            assertThat(res.getItems()).hasSize(1);
-
-            assertThat(res.getItems()).containsExactlyInAnyOrder(new VideoSession()
+            assertThat(page.getItems()).containsExactlyInAnyOrder(new VideoSession()
                     .session(new VideoSessionSession().sessionId("psEmFwGQUAXR2lFHj5nDOpy")
                             .loadedAt(OffsetDateTime.parse("2019-06-24T11:45:01.109Z"))
                             .endedAt(OffsetDateTime.parse("2019-06-24T11:49:19.243Z")))
@@ -179,7 +214,7 @@ public class RawStatisticsApiTest extends AbstractApiTest {
                             .source("https://google.com").searchTerm("video encoding hosting and delivery"))
                     .device(new VideoSessionDevice().type("desktop").vendor("Dell").model("unknown"))
                     .os(new VideoSessionOs().name("Microsoft Windows").shortname("W10").version("Windows10"))
-                    .client(new VideoSessionClient().name("Firefox").version("67.0")));
+                    .client(new VideoSessionClient().type("browser").name("Firefox").version("67.0")));
         }
 
         @Test
@@ -191,11 +226,6 @@ public class RawStatisticsApiTest extends AbstractApiTest {
                     .isInstanceOf(ApiException.class)
                     .satisfies(e -> assertThat(((ApiException) e).getCode()).isEqualTo(404))
                     .hasMessage("The requested resource was not found.");
-
-            /*
-             * sample response: { "type" : "https://docs.api.video/docs/resourcenot_found", "title" :
-             * "The requested resource was not found.", "name" : "videoId", "status" : 404 }
-             */
         }
     }
 
