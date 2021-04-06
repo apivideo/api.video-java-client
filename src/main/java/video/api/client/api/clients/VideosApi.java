@@ -338,7 +338,7 @@ public class VideosApi {
     }
 
     /**
-     * Build call for getVideoStatus
+     * Build call for getStatus
      * 
      * @param videoId
      *            The unique identifier for the video you want the status for. (required)
@@ -369,7 +369,7 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
-    private okhttp3.Call getVideoStatusCall(String videoId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getStatusCall(String videoId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -401,15 +401,14 @@ public class VideosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getVideoStatusValidateBeforeCall(String videoId, final ApiCallback _callback)
-            throws ApiException {
+    private okhttp3.Call getStatusValidateBeforeCall(String videoId, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'videoId' is set
         if (videoId == null) {
-            throw new ApiException("Missing the required parameter 'videoId' when calling getVideoStatus");
+            throw new ApiException("Missing the required parameter 'videoId' when calling getStatus");
         }
 
-        okhttp3.Call localVarCall = getVideoStatusCall(videoId, _callback);
+        okhttp3.Call localVarCall = getStatusCall(videoId, _callback);
         return localVarCall;
     }
 
@@ -444,8 +443,8 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
-    public Videostatus getVideoStatus(String videoId) throws ApiException {
-        ApiResponse<Videostatus> localVarResp = getVideoStatusWithHttpInfo(videoId);
+    public Videostatus getStatus(String videoId) throws ApiException {
+        ApiResponse<Videostatus> localVarResp = getStatusWithHttpInfo(videoId);
         return localVarResp.getData();
     }
 
@@ -480,8 +479,8 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Videostatus> getVideoStatusWithHttpInfo(String videoId) throws ApiException {
-        okhttp3.Call localVarCall = getVideoStatusValidateBeforeCall(videoId, null);
+    public ApiResponse<Videostatus> getStatusWithHttpInfo(String videoId) throws ApiException {
+        okhttp3.Call localVarCall = getStatusValidateBeforeCall(videoId, null);
         Type localVarReturnType = new TypeToken<Videostatus>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1263,6 +1262,440 @@ public class VideosApi {
         Type localVarReturnType = new TypeToken<Video>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Build call for uploadWithUploadToken
+     * 
+     * @param token
+     *            The unique identifier for the token you want to use to upload a video. (required)
+     * @param file
+     *            The path to the video you want to upload. (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call uploadWithUploadTokenCall(String token, File file, final ApiCallback _callback)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/upload";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (file != null) {
+            localVarFormParams.put("file", file);
+        }
+
+        if (token != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
+        }
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = { "multipart/form-data" };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
+    }
+
+    private okhttp3.Call uploadWithUploadTokenChunkCall(String token, File file, String videoId, long chunkStart,
+            long chunkEnd, long totalBytes, Integer chunksCount, Integer chunkNum,
+            UploadProgressListener progressListener, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/upload";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (file != null) {
+            localVarFormParams.put("file", new UploadChunkRequestBody(file, chunksCount, chunkNum, totalBytes,
+                    chunkStart, chunkEnd + 1, progressListener));
+        }
+
+        if (token != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
+        }
+
+        localVarHeaderParams.put("Content-Range", "bytes " + chunkStart + "-" + chunkEnd + "/" + totalBytes);
+
+        if (videoId != null) {
+            localVarFormParams.put("videoId", videoId);
+        }
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = { "multipart/form-data" };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] {};
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call uploadWithUploadTokenValidateBeforeCall(String token, File file, final ApiCallback _callback)
+            throws ApiException {
+
+        // verify the required parameter 'token' is set
+        if (token == null) {
+            throw new ApiException("Missing the required parameter 'token' when calling uploadWithUploadToken");
+        }
+
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling uploadWithUploadToken");
+        }
+
+        okhttp3.Call localVarCall = uploadWithUploadTokenCall(token, file, _callback);
+        return localVarCall;
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call uploadWithUploadTokenChunkValidateBeforeCall(String token, File file, String videoId,
+            long chunkStart, long chunkEnd, long totalBytes, Integer chunksCount, Integer chunkNum,
+            UploadProgressListener progressListener, final ApiCallback _callback) throws ApiException {
+
+        // verify the required parameter 'token' is set
+        if (token == null) {
+            throw new ApiException("Missing the required parameter 'token' when calling uploadWithUploadToken(Async)");
+        }
+
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling uploadWithUploadToken(Async)");
+        }
+
+        okhttp3.Call localVarCall = uploadWithUploadTokenChunkCall(token, file, videoId, chunkStart, chunkEnd,
+                totalBytes, chunksCount, chunkNum, progressListener, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Upload with an upload token When given a token, anyone can upload a file to the URI
+     * &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;. Example with cURL: &#x60;&#x60;&#x60;curl $
+     * curl --request POST --url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39; --header &#39;content-type:
+     * multipart/form-data&#39; -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60; Or in an HTML form, with a little JavaScript
+     * to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!--form for user interaction--&gt; &lt;form
+     * name&#x3D;\&quot;videoUploadForm\&quot; &gt; &lt;label for&#x3D;video&gt;Video:&lt;/label&gt; &lt;input
+     * type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt; &lt;input value&#x3D;\&quot;Submit\&quot;
+     * type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!--JS takes the form data uses
+     * FormData to turn the response into JSON. then uses POST to upload the video file. Update the token parameter in
+     * the url to your upload token. --&gt; &lt;script&gt; var form &#x3D;
+     * document.forms.namedItem(\&quot;videoUploadForm\&quot;); form.addEventListener(&#39;submit&#39;, function(ev) {
+     * ev.preventDefault(); var oOutput &#x3D; document.querySelector(\&quot;div\&quot;), oData &#x3D; new
+     * FormData(form); var oReq &#x3D; new XMLHttpRequest(); oReq.open(\&quot;POST\&quot;,
+     * \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true); oReq.send(oData); oReq.onload &#x3D;
+     * function(oEvent) { if (oReq.status &#x3D;&#x3D;201) { oOutput.innerHTML &#x3D; \&quot;Your video is
+     * uploaded!&lt;br/&gt;\&quot; + oReq.response; } else { oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status
+     * + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;; } }; }, false); &lt;/script&gt;
+     * &#x60;&#x60;&#x60; ### Dealing with large files We have created a &lt;a
+     * href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt;
+     * to walk through the steps required.
+     * 
+     * @param token
+     *            The unique identifier for the token you want to use to upload a video. (required)
+     * @param file
+     *            The path to the video you want to upload. (required)
+     * 
+     * @return Video
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public Video uploadWithUploadToken(String token, File file) throws ApiException {
+        ApiResponse<Video> localVarResp = uploadWithUploadTokenWithHttpInfo(token, file);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Upload with an upload token When given a token, anyone can upload a file to the URI
+     * &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;. Example with cURL: &#x60;&#x60;&#x60;curl $
+     * curl --request POST --url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39; --header &#39;content-type:
+     * multipart/form-data&#39; -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60; Or in an HTML form, with a little JavaScript
+     * to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!--form for user interaction--&gt; &lt;form
+     * name&#x3D;\&quot;videoUploadForm\&quot; &gt; &lt;label for&#x3D;video&gt;Video:&lt;/label&gt; &lt;input
+     * type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt; &lt;input value&#x3D;\&quot;Submit\&quot;
+     * type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!--JS takes the form data uses
+     * FormData to turn the response into JSON. then uses POST to upload the video file. Update the token parameter in
+     * the url to your upload token. --&gt; &lt;script&gt; var form &#x3D;
+     * document.forms.namedItem(\&quot;videoUploadForm\&quot;); form.addEventListener(&#39;submit&#39;, function(ev) {
+     * ev.preventDefault(); var oOutput &#x3D; document.querySelector(\&quot;div\&quot;), oData &#x3D; new
+     * FormData(form); var oReq &#x3D; new XMLHttpRequest(); oReq.open(\&quot;POST\&quot;,
+     * \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true); oReq.send(oData); oReq.onload &#x3D;
+     * function(oEvent) { if (oReq.status &#x3D;&#x3D;201) { oOutput.innerHTML &#x3D; \&quot;Your video is
+     * uploaded!&lt;br/&gt;\&quot; + oReq.response; } else { oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status
+     * + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;; } }; }, false); &lt;/script&gt;
+     * &#x60;&#x60;&#x60; ### Dealing with large files We have created a &lt;a
+     * href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt;
+     * to walk through the steps required.
+     * 
+     * @param token
+     *            The unique identifier for the token you want to use to upload a video. (required)
+     * @param file
+     *            The path to the video you want to upload. (required)
+     * @param uploadProgressListener
+     *            An upload progress listener
+     * 
+     * @return Video
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public Video uploadWithUploadToken(String token, File file, UploadProgressListener uploadProgressListener)
+            throws ApiException {
+        ApiResponse<Video> localVarResp = uploadWithUploadTokenWithHttpInfo(token, file, uploadProgressListener);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Upload with an upload token When given a token, anyone can upload a file to the URI
+     * &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;. Example with cURL: &#x60;&#x60;&#x60;curl $
+     * curl --request POST --url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39; --header &#39;content-type:
+     * multipart/form-data&#39; -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60; Or in an HTML form, with a little JavaScript
+     * to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!--form for user interaction--&gt; &lt;form
+     * name&#x3D;\&quot;videoUploadForm\&quot; &gt; &lt;label for&#x3D;video&gt;Video:&lt;/label&gt; &lt;input
+     * type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt; &lt;input value&#x3D;\&quot;Submit\&quot;
+     * type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!--JS takes the form data uses
+     * FormData to turn the response into JSON. then uses POST to upload the video file. Update the token parameter in
+     * the url to your upload token. --&gt; &lt;script&gt; var form &#x3D;
+     * document.forms.namedItem(\&quot;videoUploadForm\&quot;); form.addEventListener(&#39;submit&#39;, function(ev) {
+     * ev.preventDefault(); var oOutput &#x3D; document.querySelector(\&quot;div\&quot;), oData &#x3D; new
+     * FormData(form); var oReq &#x3D; new XMLHttpRequest(); oReq.open(\&quot;POST\&quot;,
+     * \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true); oReq.send(oData); oReq.onload &#x3D;
+     * function(oEvent) { if (oReq.status &#x3D;&#x3D;201) { oOutput.innerHTML &#x3D; \&quot;Your video is
+     * uploaded!&lt;br/&gt;\&quot; + oReq.response; } else { oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status
+     * + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;; } }; }, false); &lt;/script&gt;
+     * &#x60;&#x60;&#x60; ### Dealing with large files We have created a &lt;a
+     * href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt;
+     * to walk through the steps required.
+     * 
+     * @param token
+     *            The unique identifier for the token you want to use to upload a video. (required)
+     * @param file
+     *            The path to the video you want to upload. (required)
+     * 
+     * @return ApiResponse&lt;Video&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Video> uploadWithUploadTokenWithHttpInfo(String token, File file) throws ApiException {
+        return uploadWithUploadTokenWithHttpInfo(token, file, null);
+    }
+
+    /**
+     * Upload with an upload token When given a token, anyone can upload a file to the URI
+     * &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;. Example with cURL: &#x60;&#x60;&#x60;curl $
+     * curl --request POST --url &#39;https://ws.api.video/upload?token&#x3D;toXXX&#39; --header &#39;content-type:
+     * multipart/form-data&#39; -F file&#x3D;@video.mp4 &#x60;&#x60;&#x60; Or in an HTML form, with a little JavaScript
+     * to convert the form into JSON: &#x60;&#x60;&#x60;html &lt;!--form for user interaction--&gt; &lt;form
+     * name&#x3D;\&quot;videoUploadForm\&quot; &gt; &lt;label for&#x3D;video&gt;Video:&lt;/label&gt; &lt;input
+     * type&#x3D;file name&#x3D;source/&gt;&lt;br/&gt; &lt;input value&#x3D;\&quot;Submit\&quot;
+     * type&#x3D;\&quot;submit\&quot;&gt; &lt;/form&gt; &lt;div&gt;&lt;/div&gt; &lt;!--JS takes the form data uses
+     * FormData to turn the response into JSON. then uses POST to upload the video file. Update the token parameter in
+     * the url to your upload token. --&gt; &lt;script&gt; var form &#x3D;
+     * document.forms.namedItem(\&quot;videoUploadForm\&quot;); form.addEventListener(&#39;submit&#39;, function(ev) {
+     * ev.preventDefault(); var oOutput &#x3D; document.querySelector(\&quot;div\&quot;), oData &#x3D; new
+     * FormData(form); var oReq &#x3D; new XMLHttpRequest(); oReq.open(\&quot;POST\&quot;,
+     * \&quot;https://ws.api.video/upload?token&#x3D;toXXX\&quot;, true); oReq.send(oData); oReq.onload &#x3D;
+     * function(oEvent) { if (oReq.status &#x3D;&#x3D;201) { oOutput.innerHTML &#x3D; \&quot;Your video is
+     * uploaded!&lt;br/&gt;\&quot; + oReq.response; } else { oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status
+     * + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;; } }; }, false); &lt;/script&gt;
+     * &#x60;&#x60;&#x60; ### Dealing with large files We have created a &lt;a
+     * href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt;
+     * to walk through the steps required.
+     * 
+     * @param token
+     *            The unique identifier for the token you want to use to upload a video. (required)
+     * @param file
+     *            The path to the video you want to upload. (required)
+     * @param uploadProgressListener
+     *            An upload progress listener
+     * 
+     * @return ApiResponse&lt;Video&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Video> uploadWithUploadTokenWithHttpInfo(String token, File file,
+            UploadProgressListener uploadProgressListener) throws ApiException {
+        String videoId = null;
+
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling upload");
+        }
+        long totalBytes = file.length();
+        long chunkSize = getApiClient().getUploadChunkSize();
+        if (totalBytes > chunkSize) {
+            int chunkNum = 0;
+            ApiResponse<Video> lastRes = null;
+            for (long i = 0; i < totalBytes; i += chunkSize) {
+                okhttp3.Call localVarCall = uploadWithUploadTokenChunkValidateBeforeCall(token, file, videoId, i,
+                        Math.min(i + chunkSize, totalBytes) - 1, totalBytes,
+                        (int) Math.ceil((float) totalBytes / chunkSize), chunkNum + 1, uploadProgressListener, null);
+                Type localVarReturnType = new TypeToken<Video>() {
+                }.getType();
+                lastRes = localVarApiClient.execute(localVarCall, localVarReturnType);
+                if (videoId == null) {
+                    videoId = lastRes.getData().getVideoId();
+                }
+                chunkNum++;
+            }
+            return lastRes;
+        } else {
+            ApiCallback apiCallback = new ApiCallback() {
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map responseHeaders) {
+                }
+
+                @Override
+                public void onSuccess(Object result, int statusCode, Map responseHeaders) {
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    if (uploadProgressListener != null) {
+                        uploadProgressListener.onProgress(bytesWritten - (contentLength - totalBytes), totalBytes, 1,
+                                1);
+                    }
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                }
+            };
+
+            okhttp3.Call localVarCall = uploadWithUploadTokenValidateBeforeCall(token, file, apiCallback);
+            Type localVarReturnType = new TypeToken<Video>() {
+            }.getType();
+            return localVarApiClient.execute(localVarCall, localVarReturnType);
+        }
+
     }
 
     /**

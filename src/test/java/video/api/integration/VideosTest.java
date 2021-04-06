@@ -22,7 +22,6 @@ public class VideosTest {
 
     public VideosTest() {
         this.apiClient = new ApiVideoClient(System.getenv().get("INTEGRATION_TESTS_API_TOKEN"));
-        apiClient.getHttpClient().setBasePath("https://ws-staging.api.video");
     }
 
     @Nested
@@ -70,7 +69,7 @@ public class VideosTest {
 
         @AfterAll
         public void deleteVideo() throws ApiException {
-            // apiClient.videos().delete(testVideo.getVideoId());
+            apiClient.videos().delete(testVideo.getVideoId());
         }
     }
 
@@ -234,7 +233,7 @@ public class VideosTest {
 
         @Test
         public void getVideoStatus() throws ApiException {
-            Videostatus videoStatus = apiClient.videos().getVideoStatus(testVideo.getVideoId());
+            Videostatus videoStatus = apiClient.videos().getStatus(testVideo.getVideoId());
 
             assertThat(videoStatus.getIngest()).isNull();
             assertThat(videoStatus.getEncoding()).isNotNull();

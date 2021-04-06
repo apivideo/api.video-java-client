@@ -19,11 +19,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 /**
  * API tests for PlayersApi
  */
-@DisplayName("PlayersApi")
+@DisplayName("PlayerThemeApi")
 @Disabled
-public class PlayersApiTest extends AbstractApiTest {
+public class PlayerThemesApiTest extends AbstractApiTest {
 
-    private final PlayersApi api = apiClientMock.players();
+    private final PlayerThemesApi api = apiClientMock.playerThemes();
 
     @Nested
     @DisplayName("delete")

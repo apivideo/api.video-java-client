@@ -32,19 +32,19 @@ public class RawStatisticsApiTest extends AbstractApiTest {
     private final RawStatisticsApi api = apiClientMock.rawStatistics();
 
     @Nested
-    @DisplayName("getLiveStreamAnalytics")
-    class getLiveStreamAnalytics {
-        private static final String PAYLOADS_PATH = "/payloads/rawStatistics/getLiveStreamAnalytics/";
+    @DisplayName("listLiveStreamSessions")
+    class listLiveStreamSessions {
+        private static final String PAYLOADS_PATH = "/payloads/rawstatistics/listLiveStreamSessions/";
 
         @Test
         @DisplayName("required parameters")
         public void requiredParametersTest() {
             answerOnAnyRequest(201, "{}");
 
-            assertThatThrownBy(() -> api.getLiveStreamAnalytics(null).execute()).isInstanceOf(ApiException.class)
-                    .hasMessage("Missing the required parameter 'liveStreamId' when calling getLiveStreamAnalytics");
+            assertThatThrownBy(() -> api.listLiveStreamSessions(null).execute()).isInstanceOf(ApiException.class)
+                    .hasMessage("Missing the required parameter 'liveStreamId' when calling listLiveStreamSessions");
 
-            assertThatNoException().isThrownBy(() -> api.getLiveStreamAnalytics("vi4k0jvEUuaTdRAEjQ4Jfrgz").execute());
+            assertThatNoException().isThrownBy(() -> api.listLiveStreamSessions("vi4k0jvEUuaTdRAEjQ4Jfrgz").execute());
         }
 
         @Test
@@ -52,7 +52,7 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void responseWithStatus200Test() throws ApiException {
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            Page<LiveStreamSession> page = api.getLiveStreamAnalytics("vi4k0jvEUuaTdRAEjQ4Jfrgz").execute();
+            Page<LiveStreamSession> page = api.listLiveStreamSessions("vi4k0jvEUuaTdRAEjQ4Jfrgz").execute();
 
             assertThat(page.getCurrentPage()).isEqualTo(1);
             assertThat(page.getPageSize()).isEqualTo(25);
@@ -76,7 +76,7 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void responseWithStatus404Test() throws ApiException {
             answerOnAnyRequest(404, readResourceFile(PAYLOADS_PATH + "responses/404.json"));
 
-            assertThatThrownBy(() -> api.getLiveStreamAnalytics("vi4k0jvEUuaTdRAEjQ4Jfrgz").execute())
+            assertThatThrownBy(() -> api.listLiveStreamSessions("vi4k0jvEUuaTdRAEjQ4Jfrgz").execute())
                     .isInstanceOf(ApiException.class)
                     .satisfies(e -> assertThat(((ApiException) e).getCode()).isEqualTo(404))
                     .hasMessage("The requested resource was not found.");
@@ -84,19 +84,19 @@ public class RawStatisticsApiTest extends AbstractApiTest {
     }
 
     @Nested
-    @DisplayName("listPlayerSessionEvents")
-    class listPlayerSessionEvents {
-        private static final String PAYLOADS_PATH = "/payloads/rawStatistics/listPlayerSessionEvents/";
+    @DisplayName("listSessionEvents")
+    class listSessionEvents {
+        private static final String PAYLOADS_PATH = "/payloads/rawstatistics/listSessionEvents/";
 
         @Test
         @DisplayName("required parameters")
         public void requiredParametersTest() {
             answerOnAnyRequest(201, "{}");
 
-            assertThatThrownBy(() -> api.listPlayerSessionEvents(null).execute()).isInstanceOf(ApiException.class)
-                    .hasMessage("Missing the required parameter 'sessionId' when calling listPlayerSessionEvents");
+            assertThatThrownBy(() -> api.listSessionEvents(null).execute()).isInstanceOf(ApiException.class)
+                    .hasMessage("Missing the required parameter 'sessionId' when calling listSessionEvents");
 
-            assertThatNoException().isThrownBy(() -> api.listPlayerSessionEvents("psEmFwGQUAXR2lFHj5nDOpy").execute());
+            assertThatNoException().isThrownBy(() -> api.listSessionEvents("psEmFwGQUAXR2lFHj5nDOpy").execute());
         }
 
         @Test
@@ -104,7 +104,7 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void responseWithStatus200Test() throws ApiException {
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            Page<PlayerSessionEvent> page = api.listPlayerSessionEvents("psEmFwGQUAXR2lFHj5nDOpy").execute();
+            Page<PlayerSessionEvent> page = api.listSessionEvents("psEmFwGQUAXR2lFHj5nDOpy").execute();
 
             assertThat(page.getCurrentPage()).isEqualTo(1);
             assertThat(page.getCurrentPageItems()).isEqualTo(25);
@@ -170,7 +170,7 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void responseWithStatus404Test() throws ApiException {
             answerOnAnyRequest(404, readResourceFile(PAYLOADS_PATH + "responses/404.json"));
 
-            assertThatThrownBy(() -> api.listPlayerSessionEvents("psEmFwGQUAXR2lFHj5nDOpy").execute())
+            assertThatThrownBy(() -> api.listSessionEvents("psEmFwGQUAXR2lFHj5nDOpy").execute())
                     .isInstanceOf(ApiException.class)
                     .satisfies(e -> assertThat(((ApiException) e).getCode()).isEqualTo(404))
                     .hasMessage("The requested resource was not found.");
@@ -178,19 +178,19 @@ public class RawStatisticsApiTest extends AbstractApiTest {
     }
 
     @Nested
-    @DisplayName("listSessions")
-    class listSessions {
-        private static final String PAYLOADS_PATH = "/payloads/rawStatistics/listSessions/";
+    @DisplayName("listVideoSessions")
+    class listVideoSessions {
+        private static final String PAYLOADS_PATH = "/payloads/rawStatistics/listVideoSessions/";
 
         @Test
         @DisplayName("required parameters")
         public void requiredParametersTest() {
             answerOnAnyRequest(201, "{}");
 
-            assertThatThrownBy(() -> api.listSessions(null).execute()).isInstanceOf(ApiException.class)
-                    .hasMessage("Missing the required parameter 'videoId' when calling listSessions");
+            assertThatThrownBy(() -> api.listVideoSessions(null).execute()).isInstanceOf(ApiException.class)
+                    .hasMessage("Missing the required parameter 'videoId' when calling listVideoSessions");
 
-            assertThatNoException().isThrownBy(() -> api.listSessions("vi4k0jvEUuaTdRAEjQ4Prklg").execute());
+            assertThatNoException().isThrownBy(() -> api.listVideoSessions("vi4k0jvEUuaTdRAEjQ4Prklg").execute());
         }
 
         @Test
@@ -198,7 +198,7 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void responseWithStatus200Test() throws ApiException {
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            Page<VideoSession> page = api.listSessions("vi4k0jvEUuaTdRAEjQ4Prklg").execute();
+            Page<VideoSession> page = api.listVideoSessions("vi4k0jvEUuaTdRAEjQ4Prklg").execute();
 
             assertThat(page.getCurrentPage()).isEqualTo(1);
             assertThat(page.getPageSize()).isEqualTo(25);
@@ -222,7 +222,7 @@ public class RawStatisticsApiTest extends AbstractApiTest {
         public void responseWithStatus404Test() throws ApiException {
             answerOnAnyRequest(404, readResourceFile(PAYLOADS_PATH + "responses/404.json"));
 
-            assertThatThrownBy(() -> api.listSessions("vi4k0jvEUuaTdRAEjQ4Prklg").execute())
+            assertThatThrownBy(() -> api.listVideoSessions("vi4k0jvEUuaTdRAEjQ4Prklg").execute())
                     .isInstanceOf(ApiException.class)
                     .satisfies(e -> assertThat(((ApiException) e).getCode()).isEqualTo(404))
                     .hasMessage("The requested resource was not found.");

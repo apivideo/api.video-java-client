@@ -1036,7 +1036,7 @@ paths:
       summary: Show video status
       tags:
       - Videos
-      x-client-action: getVideoStatus
+      x-client-action: getStatus
       x-accepts: application/json
   /upload-tokens:
     get:
@@ -1129,10 +1129,10 @@ paths:
       - bearerAuth: []
       summary: List all active upload tokens.
       tags:
-      - Videos - Delegated upload
+      - Upload Tokens
       x-group-parameters: true
       x-client-paginated: true
-      x-client-action: listTokens
+      x-client-action: list
       x-accepts: application/json
     post:
       description: Use this endpoint to generate an upload token. You can use this
@@ -1167,7 +1167,7 @@ paths:
       - bearerAuth: []
       summary: Generate an upload token
       tags:
-      - Videos - Delegated upload
+      - Upload Tokens
       x-client-action: createToken
       x-contentType: application/json
       x-accepts: application/json
@@ -1200,7 +1200,7 @@ paths:
       - bearerAuth: []
       summary: Delete an upload token
       tags:
-      - Videos - Delegated upload
+      - Upload Tokens
       x-client-action: deleteToken
       x-accepts: application/json
     get:
@@ -1243,7 +1243,7 @@ paths:
       - bearerAuth: []
       summary: Show upload token
       tags:
-      - Videos - Delegated upload
+      - Upload Tokens
       x-client-action: getToken
       x-accepts: application/json
   /upload:
@@ -1343,8 +1343,8 @@ paths:
       security: []
       summary: Upload with an upload token
       tags:
-      - Videos - Delegated upload
-      x-client-action: upload
+      - Videos
+      x-client-action: uploadWithUploadToken
       x-client-chunk-upload: true
       x-contentType: multipart/form-data
       x-accepts: application/json
@@ -1479,7 +1479,7 @@ paths:
       - bearerAuth: []
       summary: List all live streams
       tags:
-      - Live
+      - Live Streams
       x-client-action: list
       x-group-parameters: true
       x-client-paginated: true
@@ -1533,7 +1533,7 @@ paths:
       - bearerAuth: []
       summary: Create live stream
       tags:
-      - Live
+      - Live Streams
       x-client-action: create
       x-contentType: application/json
       x-accepts: application/json
@@ -1557,7 +1557,7 @@ paths:
       - bearerAuth: []
       summary: Delete a live stream
       tags:
-      - Live
+      - Live Streams
       x-client-action: delete
       x-accepts: application/json
     get:
@@ -1603,7 +1603,7 @@ paths:
       - bearerAuth: []
       summary: Show live stream
       tags:
-      - Live
+      - Live Streams
       x-client-action: get
       x-accepts: application/json
     patch:
@@ -1664,7 +1664,7 @@ paths:
       - bearerAuth: []
       summary: Update a live stream
       tags:
-      - Live
+      - Live Streams
       x-client-action: update
       x-contentType: application/json
       x-accepts: application/json
@@ -1707,7 +1707,7 @@ paths:
       - bearerAuth: []
       summary: Delete a thumbnail
       tags:
-      - Live
+      - Live Streams
       x-client-action: deleteThumbnail
       x-accepts: application/json
     post:
@@ -1765,7 +1765,7 @@ paths:
       - bearerAuth: []
       summary: Upload a thumbnail
       tags:
-      - Live
+      - Live Streams
       x-client-action: uploadThumbnail
       x-contentType: multipart/form-data
       x-accepts: application/json
@@ -2476,7 +2476,7 @@ paths:
       - bearerAuth: []
       summary: List all players
       tags:
-      - Players
+      - Player Themes
       x-client-action: list
       x-group-parameters: true
       x-client-paginated: true
@@ -2526,7 +2526,7 @@ paths:
       - bearerAuth: []
       summary: Create a player
       tags:
-      - Players
+      - Player Themes
       x-client-action: create
       x-contentType: application/json
       x-accepts: application/json
@@ -2565,7 +2565,7 @@ paths:
       - bearerAuth: []
       summary: Delete a player
       tags:
-      - Players
+      - Player Themes
       x-client-action: delete
       x-accepts: application/json
     get:
@@ -2631,7 +2631,7 @@ paths:
       - bearerAuth: []
       summary: Show a player
       tags:
-      - Players
+      - Player Themes
       x-client-action: get
       x-accepts: application/json
     patch:
@@ -2704,7 +2704,7 @@ paths:
       - bearerAuth: []
       summary: Update a player
       tags:
-      - Players
+      - Player Themes
       x-client-action: update
       x-contentType: application/json
       x-accepts: application/json
@@ -2745,7 +2745,7 @@ paths:
       - bearerAuth: []
       summary: Delete logo
       tags:
-      - Players
+      - Player Themes
       x-client-action: deleteLogo
       x-accepts: application/json
     post:
@@ -2806,7 +2806,7 @@ paths:
       - bearerAuth: []
       summary: Upload a logo
       tags:
-      - Players
+      - Player Themes
       x-client-action: uploadLogo
       x-contentType: multipart/form-data
       x-accepts: application/json
@@ -2936,7 +2936,7 @@ paths:
       summary: List video player sessions
       tags:
       - Raw statistics
-      x-client-action: listSessions
+      x-client-action: listVideoSessions
       x-group-parameters: true
       x-client-paginated: true
       x-accepts: application/json
@@ -3054,7 +3054,7 @@ paths:
       summary: List live stream player sessions
       tags:
       - Raw statistics
-      x-client-action: getLiveStreamAnalytics
+      x-client-action: listLiveStreamSessions
       x-group-parameters: true
       x-client-paginated: true
       x-accepts: application/json
@@ -3218,7 +3218,7 @@ paths:
       summary: List player session events
       tags:
       - Raw statistics
-      x-client-action: listPlayerSessionEvents
+      x-client-action: listSessionEvents
       x-group-parameters: true
       x-client-paginated: true
       x-accepts: application/json
@@ -3426,53 +3426,6 @@ paths:
       summary: Show Webhook details
       tags:
       - Webhooks
-      x-client-action: get
-      x-accepts: application/json
-  /account:
-    get:
-      deprecated: true
-      description: Deprecated. Authenticate and get a token, then you can use the
-        bearer token here to retrieve details about your account.
-      operationId: GET_account
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                response:
-                  value:
-                    quota:
-                      quotaUsed: 6
-                      quotaRemaining: 54
-                      quotaTotal: 60
-                    environment: production
-                    features:
-                    - app.dynamic_metadata
-                    - app.event_log
-                    - player.white_label
-                    - stats.player_events
-                    - transcode.mp4_support
-              schema:
-                $ref: '#/components/schemas/account'
-          description: Success
-        "404":
-          content:
-            application/json:
-              examples:
-                response:
-                  value:
-                    type: https://docs.api.video/docs/resourcenot_found
-                    title: The requested resource was not found.
-                    name: ""
-                    status: 404
-              schema:
-                $ref: '#/components/schemas/not-found'
-          description: Not Found
-      security:
-      - bearerAuth: []
-      summary: Show account
-      tags:
-      - Account
       x-client-action: get
       x-accepts: application/json
 components:
@@ -5421,13 +5374,6 @@ components:
       type: object
     account:
       deprecated: true
-      example:
-        features: '["app.dynamic_metadata, app.event_log"]'
-        environment: environment
-        quota:
-          quotaRemaining: 6.027456183070403
-          quotaUsed: 0.8008281904610115
-          quotaTotal: 1.4658129805029452
       properties:
         quota:
           $ref: '#/components/schemas/account_quota'
@@ -5500,10 +5446,6 @@ components:
       type: object
     account_quota:
       description: Deprecated
-      example:
-        quotaRemaining: 6.027456183070403
-        quotaUsed: 0.8008281904610115
-        quotaTotal: 1.4658129805029452
       properties:
         quotaUsed:
           description: Deprecated

@@ -4,14 +4,14 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLiveStreamAnalytics**](RawStatisticsApi.md#getLiveStreamAnalytics) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
-[**listPlayerSessionEvents**](RawStatisticsApi.md#listPlayerSessionEvents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
-[**listSessions**](RawStatisticsApi.md#listSessions) | **GET** /analytics/videos/{videoId} | List video player sessions
+[**listLiveStreamSessions**](RawStatisticsApi.md#listLiveStreamSessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
+[**listSessionEvents**](RawStatisticsApi.md#listSessionEvents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
+[**listVideoSessions**](RawStatisticsApi.md#listVideoSessions) | **GET** /analytics/videos/{videoId} | List video player sessions
 
 
-<a name="getLiveStreamAnalytics"></a>
-# **getLiveStreamAnalytics**
-> RawStatisticsListLiveStreamAnalyticsResponse getLiveStreamAnalytics(liveStreamId).period(period).currentPage(currentPage).pageSize(pageSize).execute();
+<a name="listLiveStreamSessions"></a>
+# **listLiveStreamSessions**
+> RawStatisticsListLiveStreamAnalyticsResponse listLiveStreamSessions(liveStreamId).period(period).currentPage(currentPage).pageSize(pageSize).execute();
 
 List live stream player sessions
 
@@ -38,14 +38,14 @@ public class Example {
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 
     try {
-      Page<LiveStreamSession> result = apiInstance.getLiveStreamAnalytics(liveStreamId)
+      Page<LiveStreamSession> result = apiInstance.listLiveStreamSessions(liveStreamId)
             .period(period)
             .currentPage(currentPage)
             .pageSize(pageSize)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RawStatisticsApi#getLiveStreamAnalytics");
+      System.err.println("Exception when calling RawStatisticsApi#listLiveStreamSessions");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
 **200** | Success |  -  |
 **404** | Not Found |  -  |
 
-<a name="listPlayerSessionEvents"></a>
-# **listPlayerSessionEvents**
-> RawStatisticsListPlayerSessionEventsResponse listPlayerSessionEvents(sessionId).currentPage(currentPage).pageSize(pageSize).execute();
+<a name="listSessionEvents"></a>
+# **listSessionEvents**
+> RawStatisticsListPlayerSessionEventsResponse listSessionEvents(sessionId).currentPage(currentPage).pageSize(pageSize).execute();
 
 List player session events
 
@@ -114,13 +114,13 @@ public class Example {
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 
     try {
-      Page<PlayerSessionEvent> result = apiInstance.listPlayerSessionEvents(sessionId)
+      Page<PlayerSessionEvent> result = apiInstance.listSessionEvents(sessionId)
             .currentPage(currentPage)
             .pageSize(pageSize)
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RawStatisticsApi#listPlayerSessionEvents");
+      System.err.println("Exception when calling RawStatisticsApi#listSessionEvents");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -158,9 +158,9 @@ Name | Type | Description  | Notes
 **200** | Success |  -  |
 **404** | Not Found |  -  |
 
-<a name="listSessions"></a>
-# **listSessions**
-> RawStatisticsListSessionsResponse listSessions(videoId).period(period).metadata(metadata).currentPage(currentPage).pageSize(pageSize).execute();
+<a name="listVideoSessions"></a>
+# **listVideoSessions**
+> RawStatisticsListSessionsResponse listVideoSessions(videoId).period(period).metadata(metadata).currentPage(currentPage).pageSize(pageSize).execute();
 
 List video player sessions
 
@@ -190,7 +190,7 @@ public class Example {
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 
     try {
-      Page<VideoSession> result = apiInstance.listSessions(videoId)
+      Page<VideoSession> result = apiInstance.listVideoSessions(videoId)
             .period(period)
             .metadata(metadata)
             .currentPage(currentPage)
@@ -198,7 +198,7 @@ public class Example {
             .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling RawStatisticsApi#listSessions");
+      System.err.println("Exception when calling RawStatisticsApi#listVideoSessions");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());

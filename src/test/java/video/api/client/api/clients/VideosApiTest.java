@@ -111,19 +111,69 @@ public class VideosApiTest extends AbstractApiTest {
     }
 
     @Nested
-    @DisplayName("getVideoStatus")
-    class getVideoStatus {
-        private static final String PAYLOADS_PATH = "/payloads/videos/getVideoStatus/";
+    @DisplayName("uploadWithUploadToken")
+    class uploadWithUploadToken {
+        private static final String PAYLOADS_PATH = "/payloads/videos/uploadWithUploadToken/";
 
         @Test
         @DisplayName("required parameters")
         public void requiredParametersTest() {
             answerOnAnyRequest(201, "{}");
 
-            assertThatThrownBy(() -> api.getVideoStatus(null)).isInstanceOf(ApiException.class)
-                    .hasMessage("Missing the required parameter 'videoId' when calling getVideoStatus");
+            assertThatThrownBy(() -> api.uploadWithUploadToken(null, new File(""))).isInstanceOf(ApiException.class)
+                    .hasMessage("Missing the required parameter 'token' when calling uploadWithUploadToken");
 
-            assertThatNoException().isThrownBy(() -> api.getVideoStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz"));
+            assertThatThrownBy(() -> api.uploadWithUploadToken("to1tcmSFHeYY5KzyhOqVKMKb", null))
+                    .isInstanceOf(ApiException.class)
+                    .hasMessage("Missing the required parameter 'file' when calling upload");
+
+            assertThatNoException()
+                    .isThrownBy(() -> api.uploadWithUploadToken("to1tcmSFHeYY5KzyhOqVKMKb", new File("")));
+        }
+
+        @Test
+        @DisplayName("201 response")
+        public void responseWithStatus201Test() throws ApiException {
+            answerOnAnyRequest(201, readResourceFile(PAYLOADS_PATH + "responses/201.json"));
+
+            Video res = api.uploadWithUploadToken("to1tcmSFHeYY5KzyhOqVKMKb", new File(""));
+
+            assertThat(res.getVideoId()).isEqualTo("vi4k0jvEUuaTdRAEjQ4Jfrgz");
+            assertThat(res.getPlayerId()).isEqualTo("pl45KFKdlddgk654dspkze");
+            assertThat(res.getTitle()).isEqualTo("Maths video");
+            assertThat(res.getDescription()).isEqualTo("An amazing video explaining the string theory");
+            assertThat(res.getPublic()).isEqualTo(false);
+            assertThat(res.getPanoramic()).isEqualTo(false);
+            assertThat(res.getTags()).containsExactlyInAnyOrder("maths", "string theory", "video");
+            assertThat(res.getMetadata()).containsExactlyInAnyOrder(new Metadata("Author", "John Doe"),
+                    new Metadata("Format", "Tutorial"));
+            assertThat(res.getPublishedAt()).isEqualTo("4665-07-14T23:36:18.598Z");
+            assertThat(res.getSource()).isEqualTo(new VideoSource().uri("/videos/vi4k0jvEUuaTdRAEjQ4Jfrgz/source"));
+            assertThat(res.getAssets()).isEqualTo(new VideoAssets().iframe(
+                    "<iframe src=\"//embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>")
+                    .player(URI.create(
+                            "https://embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae"))
+                    .hls(URI.create(
+                            "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/hls/manifest.m3u8"))
+                    .thumbnail(URI.create(
+                            "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/thumbnail.jpg")));
+        }
+    }
+
+    @Nested
+    @DisplayName("getStatus")
+    class getStatus {
+        private static final String PAYLOADS_PATH = "/payloads/videos/getStatus/";
+
+        @Test
+        @DisplayName("required parameters")
+        public void requiredParametersTest() {
+            answerOnAnyRequest(201, "{}");
+
+            assertThatThrownBy(() -> api.getStatus(null)).isInstanceOf(ApiException.class)
+                    .hasMessage("Missing the required parameter 'videoId' when calling getStatus");
+
+            assertThatNoException().isThrownBy(() -> api.getStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz"));
         }
 
         @Test
@@ -131,7 +181,7 @@ public class VideosApiTest extends AbstractApiTest {
         public void responseWithStatus200Test() throws ApiException {
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            Videostatus res = api.getVideoStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz");
+            Videostatus res = api.getStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz");
 
             assertThat(res.getIngest().getStatus()).isEqualTo(VideostatusIngest.StatusEnum.UPLOADED);
             assertThat(res.getIngest().getFilesize()).isEqualTo(273579401);
@@ -163,7 +213,7 @@ public class VideosApiTest extends AbstractApiTest {
         public void responseWithStatus404Test() throws ApiException {
             answerOnAnyRequest(404, readResourceFile(PAYLOADS_PATH + "responses/404.json"));
 
-            assertThatThrownBy(() -> api.getVideoStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz")).isInstanceOf(ApiException.class)
+            assertThatThrownBy(() -> api.getStatus("vi4k0jvEUuaTdRAEjQ4Jfrgz")).isInstanceOf(ApiException.class)
                     .satisfies(e -> assertThat(((ApiException) e).getCode()).isEqualTo(404))
                     .hasMessage("The requested resource was not found.");
         }
@@ -425,15 +475,6 @@ public class VideosApiTest extends AbstractApiTest {
                             "https://embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae"))
                     .thumbnail(URI.create(
                             "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/thumbnail.jpg")));
-        }
-
-        @Test
-        @DisplayName("202 response")
-        public void responseWithStatus202Test() throws ApiException {
-            answerOnAnyRequest(202, readResourceFile(PAYLOADS_PATH + "responses/202.json"));
-
-            assertThatNoException().isThrownBy(() -> api.create(new VideoCreatePayload().title("title")));
-
         }
 
         @Test

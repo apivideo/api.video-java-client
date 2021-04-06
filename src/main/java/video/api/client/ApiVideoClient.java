@@ -7,14 +7,13 @@ import okhttp3.OkHttpClient;
 public class ApiVideoClient {
     private final ApiClient apiClient;
 
-    private final AccountApi account;
     private final CaptionsApi captions;
     private final ChaptersApi chapters;
-    private final LiveApi live;
-    private final PlayersApi players;
+    private final LiveStreamsApi liveStreams;
+    private final PlayerThemesApi playerThemes;
     private final RawStatisticsApi rawStatistics;
+    private final UploadTokensApi uploadTokens;
     private final VideosApi videos;
-    private final VideosDelegatedUploadApi videosDelegatedUpload;
     private final WebhooksApi webhooks;
 
     public enum Environment {
@@ -91,24 +90,14 @@ public class ApiVideoClient {
     private ApiVideoClient(ApiClient apiClient) {
         this.apiClient = apiClient;
 
-        this.account = new AccountApi(this.apiClient);
         this.captions = new CaptionsApi(this.apiClient);
         this.chapters = new ChaptersApi(this.apiClient);
-        this.live = new LiveApi(this.apiClient);
-        this.players = new PlayersApi(this.apiClient);
+        this.liveStreams = new LiveStreamsApi(this.apiClient);
+        this.playerThemes = new PlayerThemesApi(this.apiClient);
         this.rawStatistics = new RawStatisticsApi(this.apiClient);
+        this.uploadTokens = new UploadTokensApi(this.apiClient);
         this.videos = new VideosApi(this.apiClient);
-        this.videosDelegatedUpload = new VideosDelegatedUploadApi(this.apiClient);
         this.webhooks = new WebhooksApi(this.apiClient);
-    }
-
-    /**
-     * Get an AccountApi instance
-     * 
-     * @return AccountApi
-     */
-    public AccountApi account() {
-        return this.account;
     }
 
     /**
@@ -130,21 +119,21 @@ public class ApiVideoClient {
     }
 
     /**
-     * Get an LiveApi instance
+     * Get an LiveStreamsApi instance
      * 
-     * @return LiveApi
+     * @return LiveStreamsApi
      */
-    public LiveApi live() {
-        return this.live;
+    public LiveStreamsApi liveStreams() {
+        return this.liveStreams;
     }
 
     /**
-     * Get an PlayersApi instance
+     * Get an PlayerThemesApi instance
      * 
-     * @return PlayersApi
+     * @return PlayerThemesApi
      */
-    public PlayersApi players() {
-        return this.players;
+    public PlayerThemesApi playerThemes() {
+        return this.playerThemes;
     }
 
     /**
@@ -157,21 +146,21 @@ public class ApiVideoClient {
     }
 
     /**
+     * Get an UploadTokensApi instance
+     * 
+     * @return UploadTokensApi
+     */
+    public UploadTokensApi uploadTokens() {
+        return this.uploadTokens;
+    }
+
+    /**
      * Get an VideosApi instance
      * 
      * @return VideosApi
      */
     public VideosApi videos() {
         return this.videos;
-    }
-
-    /**
-     * Get an VideosDelegatedUploadApi instance
-     * 
-     * @return VideosDelegatedUploadApi
-     */
-    public VideosDelegatedUploadApi videosDelegatedUpload() {
-        return this.videosDelegatedUpload;
     }
 
     /**

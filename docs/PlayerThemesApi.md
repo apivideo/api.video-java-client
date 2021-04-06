@@ -1,23 +1,25 @@
-# LiveApi
+# PlayerThemesApi
 
 All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](LiveApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
-[**deleteThumbnail**](LiveApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
-[**list**](LiveApi.md#list) | **GET** /live-streams | List all live streams
-[**get**](LiveApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
-[**update**](LiveApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
-[**create**](LiveApi.md#create) | **POST** /live-streams | Create live stream
-[**uploadThumbnail**](LiveApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
+[**delete**](PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
+[**deleteLogo**](PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
+[**list**](PlayerThemesApi.md#list) | **GET** /players | List all players
+[**get**](PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
+[**update**](PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
+[**create**](PlayerThemesApi.md#create) | **POST** /players | Create a player
+[**uploadLogo**](PlayerThemesApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
 
 
 <a name="delete"></a>
 # **delete**
-> delete(liveStreamId)
+> delete(playerId)
 
-Delete a live stream
+Delete a player
+
+Delete a player if you no longer need it. You can delete any player that you have the player ID for.
 
 ### Example
 ```java
@@ -25,7 +27,7 @@ Delete a live stream
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveApi;
+import video.api.client.api.clients.PlayerThemesApi;
 import java.util.*;
 
 public class Example {
@@ -34,14 +36,14 @@ public class Example {
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
-    LiveApi apiInstance = client.live();
+    PlayerThemesApi apiInstance = client.playerThemes();
     
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to remove.
+    String playerId = "pl45d5vFFGrfdsdsd156dGhh"; // The unique identifier for the player you want to delete.
 
     try {
-      apiInstance.delete(liveStreamId);
+      apiInstance.delete(playerId);
     } catch (ApiException e) {
-      System.err.println("Exception when calling LiveApi#delete");
+      System.err.println("Exception when calling PlayerThemesApi#delete");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -55,7 +57,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamId** | **String**| The unique ID for the live stream that you want to remove. |
+ **playerId** | **String**| The unique identifier for the player you want to delete. |
 
 ### Return type
 
@@ -69,20 +71,19 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | No Content |  -  |
+**404** | Not Found |  -  |
 
-<a name="deleteThumbnail"></a>
-# **deleteThumbnail**
-> LiveStream deleteThumbnail(liveStreamId)
+<a name="deleteLogo"></a>
+# **deleteLogo**
+> Object deleteLogo(playerId)
 
-Delete a thumbnail
-
-Send the unique identifier for a live stream to delete it from the system.
+Delete logo
 
 ### Example
 ```java
@@ -90,7 +91,7 @@ Send the unique identifier for a live stream to delete it from the system.
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveApi;
+import video.api.client.api.clients.PlayerThemesApi;
 import java.util.*;
 
 public class Example {
@@ -99,15 +100,15 @@ public class Example {
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
-    LiveApi apiInstance = client.live();
+    PlayerThemesApi apiInstance = client.playerThemes();
     
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique identifier for the live stream you want to delete. 
+    String playerId = "pl14Db6oMJRH6SRVoOwORacK"; // The unique identifier for the player.
 
     try {
-      LiveStream result = apiInstance.deleteThumbnail(liveStreamId);
+      Object result = apiInstance.deleteLogo(playerId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling LiveApi#deleteThumbnail");
+      System.err.println("Exception when calling PlayerThemesApi#deleteLogo");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -121,12 +122,157 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamId** | **String**| The unique identifier for the live stream you want to delete.  |
+ **playerId** | **String**| The unique identifier for the player. |
 
 ### Return type
 
 
-[**LiveStream**](LiveStream.md)
+**Object**
+
+### Authorization
+
+[API token](../README.md#api-token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+
+<a name="list"></a>
+# **list**
+> PlayersListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
+
+List all players
+
+Retrieve a list of all the players you created, as well as details about each one.
+
+### Example
+```java
+// Import classes:
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.PlayerThemesApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+
+    PlayerThemesApi apiInstance = client.playerThemes();
+    
+    String sortBy = "createdAt"; // createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
+    String sortOrder = "asc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
+    Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
+    Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
+
+    try {
+      Page<Player> result = apiInstance.list()
+            .sortBy(sortBy)
+            .sortOrder(sortOrder)
+            .currentPage(currentPage)
+            .pageSize(pageSize)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PlayerThemesApi#list");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sortBy** | **String**| createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. | [optional] [enum: createdAt, updatedAt]
+ **sortOrder** | **String**| Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. | [optional] [enum: asc, desc]
+ **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
+ **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
+
+### Return type
+
+[**Page**](pagination.md)<[**Player**](Player.md)>
+
+
+### Authorization
+
+[API token](../README.md#api-token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+
+<a name="get"></a>
+# **get**
+> Player get(playerId)
+
+Show a player
+
+Use a player ID to retrieve details about the player and display it for viewers.
+
+### Example
+```java
+// Import classes:
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.PlayerThemesApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+
+    PlayerThemesApi apiInstance = client.playerThemes();
+    
+    String playerId = "pl45d5vFFGrfdsdsd156dGhh"; // The unique identifier for the player you want to retrieve. 
+
+    try {
+      Player result = apiInstance.get(playerId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PlayerThemesApi#get");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **playerId** | **String**| The unique identifier for the player you want to retrieve.  |
+
+### Return type
+
+
+[**Player**](Player.md)
 
 ### Authorization
 
@@ -143,162 +289,13 @@ Name | Type | Description  | Notes
 **200** | Success |  -  |
 **404** | Not Found |  -  |
 
-<a name="list"></a>
-# **list**
-> LiveStreamListResponse list().streamKey(streamKey).name(name).sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
-
-List all live streams
-
-With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
-
-### Example
-```java
-// Import classes:
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
-
-    LiveApi apiInstance = client.live();
-    
-    String streamKey = "30087931-229e-42cf-b5f9-e91bcc1f7332"; // The unique stream key that allows you to stream videos.
-    String name = "My Video"; // You can filter live streams by their name or a part of their name.
-    String sortBy = "createdAt"; // Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format.
-    String sortOrder = "desc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
-    Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
-    Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
-
-    try {
-      Page<LiveStream> result = apiInstance.list()
-            .streamKey(streamKey)
-            .name(name)
-            .sortBy(sortBy)
-            .sortOrder(sortOrder)
-            .currentPage(currentPage)
-            .pageSize(pageSize)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling LiveApi#list");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **streamKey** | **String**| The unique stream key that allows you to stream videos. | [optional]
- **name** | **String**| You can filter live streams by their name or a part of their name. | [optional]
- **sortBy** | **String**| Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. | [optional]
- **sortOrder** | **String**| Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. | [optional] [enum: asc, desc]
- **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
- **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
-
-### Return type
-
-[**Page**](pagination.md)<[**LiveStream**](LiveStream.md)>
-
-
-### Authorization
-
-[API token](../README.md#api-token)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
-
-<a name="get"></a>
-# **get**
-> LiveStream get(liveStreamId)
-
-Show live stream
-
-Supply a LivestreamId, and you'll get all the details for streaming into, and watching the livestream.
-
-### Example
-```java
-// Import classes:
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
-
-    LiveApi apiInstance = client.live();
-    
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream you want to watch.
-
-    try {
-      LiveStream result = apiInstance.get(liveStreamId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling LiveApi#get");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **liveStreamId** | **String**| The unique ID for the live stream you want to watch. |
-
-### Return type
-
-
-[**LiveStream**](LiveStream.md)
-
-### Authorization
-
-[API token](../README.md#api-token)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
-
 <a name="update"></a>
 # **update**
-> LiveStream update(liveStreamId, liveStreamUpdatePayload)
+> Player update(playerId, playerUpdatePayload)
 
-Update a live stream
+Update a player
 
-Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only affect the NEXT stream.    The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.
+Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player configuration is available from our CDN.
 
 ### Example
 ```java
@@ -306,7 +303,7 @@ Use this endpoint to update the player, or to turn recording on/off (saving a co
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveApi;
+import video.api.client.api.clients.PlayerThemesApi;
 import java.util.*;
 
 public class Example {
@@ -315,22 +312,17 @@ public class Example {
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
-    LiveApi apiInstance = client.live();
+    PlayerThemesApi apiInstance = client.playerThemes();
     
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
-    LiveStreamUpdatePayload liveStreamUpdatePayload = new LiveStreamUpdatePayload(); // 
-    liveStreamUpdatePayload.setName("My Live Stream Video"); // The name you want to use for your live stream.
-    liveStreamUpdatePayload.setPublic(); // BETA FEATURE Please limit all public &#x3D; false (&quot;private&quot;) livestreams to 3,000 users.
-Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-    liveStreamUpdatePayload.setRecord(true); // Use this to indicate whether you want the recording on or off. On is true, off is false.
-    liveStreamUpdatePayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique ID for the player associated with a live stream that you want to update.
+    String playerId = "pl45d5vFFGrfdsdsd156dGhh"; // The unique identifier for the player.
+    PlayerUpdatePayload playerUpdatePayload = new PlayerUpdatePayload(); // 
 
 
     try {
-      LiveStream result = apiInstance.update(liveStreamId, liveStreamUpdatePayload);
+      Player result = apiInstance.update(playerId, playerUpdatePayload);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling LiveApi#update");
+      System.err.println("Exception when calling PlayerThemesApi#update");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -344,13 +336,13 @@ Whether your video can be viewed by everyone, or requires authentication to see 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamId** | **String**| The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. |
- **liveStreamUpdatePayload** | [**LiveStreamUpdatePayload**](LiveStreamUpdatePayload.md)|  | [optional]
+ **playerId** | **String**| The unique identifier for the player. |
+ **playerUpdatePayload** | [**PlayerUpdatePayload**](PlayerUpdatePayload.md)|  |
 
 ### Return type
 
 
-[**LiveStream**](LiveStream.md)
+[**Player**](Player.md)
 
 ### Authorization
 
@@ -365,15 +357,15 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
-**400** | Bad Request |  -  |
+**404** | Not Found |  -  |
 
 <a name="create"></a>
 # **create**
-> LiveStream create(liveStreamCreatePayload)
+> Player create(playerCreationPayload)
 
-Create live stream
+Create a player
 
-A live stream will give you the 'connection point' to RTMP your video stream to api.video. It will also give you the details for viewers to watch the same livestream.  The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey}
+Create a player for your video, and customise it.
 
 ### Example
 ```java
@@ -381,7 +373,7 @@ A live stream will give you the 'connection point' to RTMP your video stream to 
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveApi;
+import video.api.client.api.clients.PlayerThemesApi;
 import java.util.*;
 
 public class Example {
@@ -390,20 +382,16 @@ public class Example {
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
-    LiveApi apiInstance = client.live();
+    PlayerThemesApi apiInstance = client.playerThemes();
     
-    LiveStreamCreatePayload liveStreamCreatePayload = new LiveStreamCreatePayload(); // 
-    liveStreamCreatePayload.setName("My Live Stream Video"); // Add a name for your live stream here.
-    liveStreamCreatePayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
-    liveStreamCreatePayload.setPublic(); // BETA FEATURE Please limit all public &#x3D; false (&quot;private&quot;) livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-    liveStreamCreatePayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
+    PlayerCreationPayload playerCreationPayload = new PlayerCreationPayload(); // 
 
 
     try {
-      LiveStream result = apiInstance.create(liveStreamCreatePayload);
+      Player result = apiInstance.create(playerCreationPayload);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling LiveApi#create");
+      System.err.println("Exception when calling PlayerThemesApi#create");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -417,12 +405,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamCreatePayload** | [**LiveStreamCreatePayload**](LiveStreamCreatePayload.md)|  | [optional]
+ **playerCreationPayload** | [**PlayerCreationPayload**](PlayerCreationPayload.md)|  |
 
 ### Return type
 
 
-[**LiveStream**](LiveStream.md)
+[**Player**](Player.md)
 
 ### Authorization
 
@@ -436,16 +424,15 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Bad Request |  -  |
+**201** | Created |  -  |
 
-<a name="uploadThumbnail"></a>
-# **uploadThumbnail**
-> LiveStream uploadThumbnail(liveStreamId, file)
+<a name="uploadLogo"></a>
+# **uploadLogo**
+> Player uploadLogo(playerId, file, link)
 
-Upload a thumbnail
+Upload a logo
 
-Upload an image to use as a backdrop for your livestream.
+The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
 
 ### Example
 ```java
@@ -453,7 +440,7 @@ Upload an image to use as a backdrop for your livestream.
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveApi;
+import video.api.client.api.clients.PlayerThemesApi;
 import java.util.*;
 
 public class Example {
@@ -462,16 +449,17 @@ public class Example {
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
-    LiveApi apiInstance = client.live();
+    PlayerThemesApi apiInstance = client.playerThemes();
     
-    String liveStreamId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique ID for the live stream you want to upload.
-    File file = new File("/path/to/file"); // The image to be added as a thumbnail.
+    String playerId = "pl14Db6oMJRH6SRVoOwORacK"; // The unique identifier for the player.
+    File file = new File("/path/to/file"); // The name of the file you want to use for your logo.
+    String link = "link_example"; // The path to the file you want to upload and use as a logo.
 
     try {
-      LiveStream result = apiInstance.uploadThumbnail(liveStreamId, file);
+      Player result = apiInstance.uploadLogo(playerId, file, link);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling LiveApi#uploadThumbnail");
+      System.err.println("Exception when calling PlayerThemesApi#uploadLogo");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -485,13 +473,14 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamId** | **String**| The unique ID for the live stream you want to upload. |
- **file** | **File**| The image to be added as a thumbnail. |
+ **playerId** | **String**| The unique identifier for the player. |
+ **file** | **File**| The name of the file you want to use for your logo. |
+ **link** | **String**| The path to the file you want to upload and use as a logo. |
 
 ### Return type
 
 
-[**LiveStream**](LiveStream.md)
+[**Player**](Player.md)
 
 ### Authorization
 

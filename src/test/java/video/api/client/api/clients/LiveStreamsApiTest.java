@@ -16,15 +16,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 /**
  * API tests for LiveApi
  */
-@DisplayName("LiveApi")
-public class LiveApiTest extends AbstractApiTest {
+@DisplayName("LiveStreamsApi")
+public class LiveStreamsApiTest extends AbstractApiTest {
 
-    private final LiveApi api = apiClientMock.live();
+    private final LiveStreamsApi api = apiClientMock.liveStreams();
 
     @Nested
     @DisplayName("delete")
     class delete {
-        private static final String PAYLOADS_PATH = "/payloads/live/delete/";
+        private static final String PAYLOADS_PATH = "/payloads/livestreams/delete/";
 
         @Test
         @DisplayName("required parameters")
@@ -49,7 +49,7 @@ public class LiveApiTest extends AbstractApiTest {
     @Nested
     @DisplayName("deleteThumbnail")
     class deleteThumbnail {
-        private static final String PAYLOADS_PATH = "/payloads/live/deleteThumbnail/";
+        private static final String PAYLOADS_PATH = "/payloads/livestreams/deleteThumbnail/";
 
         @Test
         @DisplayName("required parameters")
@@ -84,7 +84,7 @@ public class LiveApiTest extends AbstractApiTest {
     @Nested
     @DisplayName("list")
     class list {
-        private static final String PAYLOADS_PATH = "/payloads/live/list/";
+        private static final String PAYLOADS_PATH = "/payloads/livestreams/list/";
 
         @Test
         @DisplayName("required parameters")
@@ -133,7 +133,7 @@ public class LiveApiTest extends AbstractApiTest {
     @Nested
     @DisplayName("get")
     class get {
-        private static final String PAYLOADS_PATH = "/payloads/live/get/";
+        private static final String PAYLOADS_PATH = "/payloads/livestreams/get/";
 
         @Test
         @DisplayName("required parameters")
@@ -169,7 +169,7 @@ public class LiveApiTest extends AbstractApiTest {
     @Nested
     @DisplayName("update")
     class update {
-        private static final String PAYLOADS_PATH = "/payloads/live/update/";
+        private static final String PAYLOADS_PATH = "/payloads/livestreams/update/";
 
         @Test
         @DisplayName("required parameters")
@@ -219,7 +219,7 @@ public class LiveApiTest extends AbstractApiTest {
     @Nested
     @DisplayName("create")
     class create {
-        private static final String PAYLOADS_PATH = "/payloads/live/create/";
+        private static final String PAYLOADS_PATH = "/payloads/livestreams/create/";
 
         @Test
         @DisplayName("required parameters")
@@ -268,7 +268,7 @@ public class LiveApiTest extends AbstractApiTest {
     @Nested
     @DisplayName("uploadThumbnail")
     class uploadThumbnail {
-        private static final String PAYLOADS_PATH = "/payloads/live/uploadThumbnail/";
+        private static final String PAYLOADS_PATH = "/payloads/livestreams/uploadThumbnail/";
 
         @Test
         @DisplayName("required parameters")

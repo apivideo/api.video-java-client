@@ -18,14 +18,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * API tests for VideosDelegatedUploadApi
  */
 @DisplayName("VideosDelegatedUploadApi")
-public class VideosDelegatedUploadApiTest extends AbstractApiTest {
+public class UploadTokensApiTest extends AbstractApiTest {
 
-    private final VideosDelegatedUploadApi api = apiClientMock.videosDelegatedUpload();
+    private final UploadTokensApi api = apiClientMock.uploadTokens();
 
     @Nested
     @DisplayName("deleteToken")
     class deleteToken {
-        private static final String PAYLOADS_PATH = "/payloads/videosDelegatedUpload/deleteToken/";
+        private static final String PAYLOADS_PATH = "/payloads/uploadtokens/deleteToken/";
 
         @Test
         @DisplayName("required parameters")
@@ -58,16 +58,16 @@ public class VideosDelegatedUploadApiTest extends AbstractApiTest {
     }
 
     @Nested
-    @DisplayName("listTokens")
-    class listTokens {
-        private static final String PAYLOADS_PATH = "/payloads/videosDelegatedUpload/listTokens/";
+    @DisplayName("list")
+    class list {
+        private static final String PAYLOADS_PATH = "/payloads/uploadtokens/list/";
 
         @Test
         @DisplayName("required parameters")
         public void requiredParametersTest() {
             answerOnAnyRequest(201, "{}");
 
-            assertThatNoException().isThrownBy(() -> api.listTokens().execute());
+            assertThatNoException().isThrownBy(() -> api.list().execute());
         }
 
         @Test
@@ -75,7 +75,7 @@ public class VideosDelegatedUploadApiTest extends AbstractApiTest {
         public void responseWithStatus200Test() throws ApiException {
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            Page<UploadToken> res = api.listTokens().execute();
+            Page<UploadToken> res = api.list().execute();
 
             assertThat(res.getCurrentPage()).isEqualTo(1);
             assertThat(res.getPageSize()).isEqualTo(25);
@@ -98,7 +98,7 @@ public class VideosDelegatedUploadApiTest extends AbstractApiTest {
     @Nested
     @DisplayName("getToken")
     class getToken {
-        private static final String PAYLOADS_PATH = "/payloads/videosDelegatedUpload/getToken/";
+        private static final String PAYLOADS_PATH = "/payloads/uploadtokens/getToken/";
 
         @Test
         @DisplayName("required parameters")
@@ -133,67 +133,9 @@ public class VideosDelegatedUploadApiTest extends AbstractApiTest {
     }
 
     @Nested
-    @DisplayName("upload")
-    class upload {
-        private static final String PAYLOADS_PATH = "/payloads/videosDelegatedUpload/upload/";
-
-        @Test
-        @DisplayName("required parameters")
-        public void requiredParametersTest() {
-            answerOnAnyRequest(201, "{}");
-
-            assertThatThrownBy(() -> api.upload(null, new File(""))).isInstanceOf(ApiException.class)
-                    .hasMessage("Missing the required parameter 'token' when calling upload");
-
-            assertThatThrownBy(() -> api.upload("to1tcmSFHeYY5KzyhOqVKMKb", null)).isInstanceOf(ApiException.class)
-                    .hasMessage("Missing the required parameter 'file' when calling upload");
-
-            assertThatNoException().isThrownBy(() -> api.upload("to1tcmSFHeYY5KzyhOqVKMKb", new File("")));
-        }
-
-        @Test
-        @DisplayName("201 response")
-        public void responseWithStatus201Test() throws ApiException {
-            answerOnAnyRequest(201, readResourceFile(PAYLOADS_PATH + "responses/201.json"));
-
-            Video res = api.upload("to1tcmSFHeYY5KzyhOqVKMKb", new File(""));
-
-            assertThat(res.getVideoId()).isEqualTo("vi4k0jvEUuaTdRAEjQ4Jfrgz");
-            assertThat(res.getPlayerId()).isEqualTo("pl45KFKdlddgk654dspkze");
-            assertThat(res.getTitle()).isEqualTo("Maths video");
-            assertThat(res.getDescription()).isEqualTo("An amazing video explaining the string theory");
-            assertThat(res.getPublic()).isEqualTo(false);
-            assertThat(res.getPanoramic()).isEqualTo(false);
-            assertThat(res.getTags()).containsExactlyInAnyOrder("maths", "string theory", "video");
-            assertThat(res.getMetadata()).containsExactlyInAnyOrder(new Metadata("Author", "John Doe"),
-                    new Metadata("Format", "Tutorial"));
-            assertThat(res.getPublishedAt()).isEqualTo("4665-07-14T23:36:18.598Z");
-            assertThat(res.getSource()).isEqualTo(new VideoSource().uri("/videos/vi4k0jvEUuaTdRAEjQ4Jfrgz/source"));
-            assertThat(res.getAssets()).isEqualTo(new VideoAssets().iframe(
-                    "<iframe src=\"//embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>")
-                    .player(URI.create(
-                            "https://embed.api.video/vi4k0jvEUuaTdRAEjQ4Jfrgz?token=831a9bd9-9f50-464c-a369-8e9d914371ae"))
-                    .hls(URI.create(
-                            "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/hls/manifest.m3u8"))
-                    .thumbnail(URI.create(
-                            "https://cdn.api.video/stream/831a9bd9-9f50-464c-a369-8e9d914371ae/thumbnail.jpg")));
-        }
-
-        @Test
-        @DisplayName("400 response")
-        public void responseWithStatus400Test() throws ApiException {
-            answerOnAnyRequest(400, readResourceFile(PAYLOADS_PATH + "responses/400.json"));
-
-            assertThatThrownBy(() -> api.upload("to1tcmSFHeYY5KzyhOqVKMKb", new File("")))
-                    .isInstanceOf(ApiException.class)
-                    .satisfies(e -> assertThat(((ApiException) e).getCode()).isEqualTo(400)).hasMessage("");
-        }
-    }
-
-    @Nested
     @DisplayName("createToken")
     class createToken {
-        private static final String PAYLOADS_PATH = "/payloads/videosDelegatedUpload/createToken/";
+        private static final String PAYLOADS_PATH = "/payloads/uploadtokens/createToken/";
 
         @Test
         @DisplayName("required parameters")

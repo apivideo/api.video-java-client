@@ -42,7 +42,7 @@ public class RawStatisticsApi {
         this.localVarApiClient = apiClient;
     }
 
-    private okhttp3.Call getLiveStreamAnalyticsCall(String liveStreamId, String period, Integer currentPage,
+    private okhttp3.Call listLiveStreamSessionsCall(String liveStreamId, String period, Integer currentPage,
             Integer pageSize, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
@@ -87,34 +87,34 @@ public class RawStatisticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLiveStreamAnalyticsValidateBeforeCall(String liveStreamId, String period,
+    private okhttp3.Call listLiveStreamSessionsValidateBeforeCall(String liveStreamId, String period,
             Integer currentPage, Integer pageSize, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'liveStreamId' is set
         if (liveStreamId == null) {
-            throw new ApiException("Missing the required parameter 'liveStreamId' when calling getLiveStreamAnalytics");
+            throw new ApiException("Missing the required parameter 'liveStreamId' when calling listLiveStreamSessions");
         }
 
-        okhttp3.Call localVarCall = getLiveStreamAnalyticsCall(liveStreamId, period, currentPage, pageSize, _callback);
+        okhttp3.Call localVarCall = listLiveStreamSessionsCall(liveStreamId, period, currentPage, pageSize, _callback);
         return localVarCall;
     }
 
-    private ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> getLiveStreamAnalyticsWithHttpInfo(
+    private ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> listLiveStreamSessionsWithHttpInfo(
             String liveStreamId, String period, Integer currentPage, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getLiveStreamAnalyticsValidateBeforeCall(liveStreamId, period, currentPage,
+        okhttp3.Call localVarCall = listLiveStreamSessionsValidateBeforeCall(liveStreamId, period, currentPage,
                 pageSize, null);
         Type localVarReturnType = new TypeToken<RawStatisticsListLiveStreamAnalyticsResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    public class APIgetLiveStreamAnalyticsRequest {
+    public class APIlistLiveStreamSessionsRequest {
         private final String liveStreamId;
         private String period;
         private Integer currentPage;
         private Integer pageSize;
 
-        private APIgetLiveStreamAnalyticsRequest(String liveStreamId) {
+        private APIlistLiveStreamSessionsRequest(String liveStreamId) {
             this.liveStreamId = liveStreamId;
         }
 
@@ -127,9 +127,9 @@ public class RawStatisticsApi {
          *            \&quot;2018\&quot; For a range period: - Date range: \&quot;2018-01-01/2018-01-15\&quot;
          *            (optional)
          * 
-         * @return APIgetLiveStreamAnalyticsRequest
+         * @return APIlistLiveStreamSessionsRequest
          */
-        public APIgetLiveStreamAnalyticsRequest period(String period) {
+        public APIlistLiveStreamSessionsRequest period(String period) {
             this.period = period;
             return this;
         }
@@ -140,9 +140,9 @@ public class RawStatisticsApi {
          * @param currentPage
          *            Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
          * 
-         * @return APIgetLiveStreamAnalyticsRequest
+         * @return APIlistLiveStreamSessionsRequest
          */
-        public APIgetLiveStreamAnalyticsRequest currentPage(Integer currentPage) {
+        public APIlistLiveStreamSessionsRequest currentPage(Integer currentPage) {
             this.currentPage = currentPage;
             return this;
         }
@@ -153,15 +153,15 @@ public class RawStatisticsApi {
          * @param pageSize
          *            Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
          * 
-         * @return APIgetLiveStreamAnalyticsRequest
+         * @return APIlistLiveStreamSessionsRequest
          */
-        public APIgetLiveStreamAnalyticsRequest pageSize(Integer pageSize) {
+        public APIlistLiveStreamSessionsRequest pageSize(Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
 
         /**
-         * Build call for getLiveStreamAnalytics
+         * Build call for listLiveStreamSessions
          * 
          * @param _callback
          *            ApiCallback API callback
@@ -191,11 +191,11 @@ public class RawStatisticsApi {
          *                        </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getLiveStreamAnalyticsCall(liveStreamId, period, currentPage, pageSize, _callback);
+            return listLiveStreamSessionsCall(liveStreamId, period, currentPage, pageSize, _callback);
         }
 
         /**
-         * Execute getLiveStreamAnalytics request
+         * Execute listLiveStreamSessions request
          * 
          * @return RawStatisticsListLiveStreamAnalyticsResponse
          * 
@@ -222,7 +222,7 @@ public class RawStatisticsApi {
          *                        </table>
          */
         public Page<LiveStreamSession> execute() throws ApiException {
-            ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> localVarResp = getLiveStreamAnalyticsWithHttpInfo(
+            ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> localVarResp = listLiveStreamSessionsWithHttpInfo(
                     liveStreamId, period, currentPage, pageSize);
             return new Page<>(localVarResp.getData().getData(), localVarResp.getData().getPagination(), () -> {
                 try {
@@ -233,8 +233,8 @@ public class RawStatisticsApi {
             }); //
         }
 
-        private APIgetLiveStreamAnalyticsRequest copy() {
-            APIgetLiveStreamAnalyticsRequest copy = new APIgetLiveStreamAnalyticsRequest(liveStreamId);
+        private APIlistLiveStreamSessionsRequest copy() {
+            APIlistLiveStreamSessionsRequest copy = new APIlistLiveStreamSessionsRequest(liveStreamId);
             copy.period(period);
             copy.currentPage(currentPage);
             copy.pageSize(pageSize);
@@ -242,7 +242,7 @@ public class RawStatisticsApi {
         }
 
         /**
-         * Execute getLiveStreamAnalytics request with HTTP info returned
+         * Execute listLiveStreamSessions request with HTTP info returned
          * 
          * @return ApiResponse&lt;RawStatisticsListLiveStreamAnalyticsResponse&gt;
          * 
@@ -269,11 +269,11 @@ public class RawStatisticsApi {
          *                        </table>
          */
         public ApiResponse<RawStatisticsListLiveStreamAnalyticsResponse> executeWithHttpInfo() throws ApiException {
-            return getLiveStreamAnalyticsWithHttpInfo(liveStreamId, period, currentPage, pageSize);
+            return listLiveStreamSessionsWithHttpInfo(liveStreamId, period, currentPage, pageSize);
         }
 
         /**
-         * Execute getLiveStreamAnalytics request (asynchronously)
+         * Execute listLiveStreamSessions request (asynchronously)
          * 
          * @param _callback
          *            The callback to be executed when the API call finishes
@@ -304,7 +304,7 @@ public class RawStatisticsApi {
          * 
          *                        public okhttp3.Call executeAsync(final
          *                        ApiCallback<RawStatisticsListLiveStreamAnalyticsResponse> _callback) throws
-         *                        ApiException { return getLiveStreamAnalyticsAsync(liveStreamId, period, currentPage,
+         *                        ApiException { return listLiveStreamSessionsAsync(liveStreamId, period, currentPage,
          *                        pageSize, _callback); }
          */
     }
@@ -315,7 +315,7 @@ public class RawStatisticsApi {
      * @param liveStreamId
      *            The unique identifier for the live stream you want to retrieve analytics for. (required)
      * 
-     * @return APIgetLiveStreamAnalyticsRequest
+     * @return APIlistLiveStreamSessionsRequest
      * 
      * @http.response.details
      *                        <table summary="Response Details" border="1">
@@ -336,11 +336,11 @@ public class RawStatisticsApi {
      *                        </tr>
      *                        </table>
      */
-    public APIgetLiveStreamAnalyticsRequest getLiveStreamAnalytics(String liveStreamId) {
-        return new APIgetLiveStreamAnalyticsRequest(liveStreamId);
+    public APIlistLiveStreamSessionsRequest listLiveStreamSessions(String liveStreamId) {
+        return new APIlistLiveStreamSessionsRequest(liveStreamId);
     }
 
-    private okhttp3.Call listPlayerSessionEventsCall(String sessionId, Integer currentPage, Integer pageSize,
+    private okhttp3.Call listSessionEventsCall(String sessionId, Integer currentPage, Integer pageSize,
             final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
@@ -381,32 +381,32 @@ public class RawStatisticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listPlayerSessionEventsValidateBeforeCall(String sessionId, Integer currentPage,
-            Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listSessionEventsValidateBeforeCall(String sessionId, Integer currentPage, Integer pageSize,
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'sessionId' is set
         if (sessionId == null) {
-            throw new ApiException("Missing the required parameter 'sessionId' when calling listPlayerSessionEvents");
+            throw new ApiException("Missing the required parameter 'sessionId' when calling listSessionEvents");
         }
 
-        okhttp3.Call localVarCall = listPlayerSessionEventsCall(sessionId, currentPage, pageSize, _callback);
+        okhttp3.Call localVarCall = listSessionEventsCall(sessionId, currentPage, pageSize, _callback);
         return localVarCall;
     }
 
-    private ApiResponse<RawStatisticsListPlayerSessionEventsResponse> listPlayerSessionEventsWithHttpInfo(
-            String sessionId, Integer currentPage, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = listPlayerSessionEventsValidateBeforeCall(sessionId, currentPage, pageSize, null);
+    private ApiResponse<RawStatisticsListPlayerSessionEventsResponse> listSessionEventsWithHttpInfo(String sessionId,
+            Integer currentPage, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = listSessionEventsValidateBeforeCall(sessionId, currentPage, pageSize, null);
         Type localVarReturnType = new TypeToken<RawStatisticsListPlayerSessionEventsResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    public class APIlistPlayerSessionEventsRequest {
+    public class APIlistSessionEventsRequest {
         private final String sessionId;
         private Integer currentPage;
         private Integer pageSize;
 
-        private APIlistPlayerSessionEventsRequest(String sessionId) {
+        private APIlistSessionEventsRequest(String sessionId) {
             this.sessionId = sessionId;
         }
 
@@ -416,9 +416,9 @@ public class RawStatisticsApi {
          * @param currentPage
          *            Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
          * 
-         * @return APIlistPlayerSessionEventsRequest
+         * @return APIlistSessionEventsRequest
          */
-        public APIlistPlayerSessionEventsRequest currentPage(Integer currentPage) {
+        public APIlistSessionEventsRequest currentPage(Integer currentPage) {
             this.currentPage = currentPage;
             return this;
         }
@@ -429,15 +429,15 @@ public class RawStatisticsApi {
          * @param pageSize
          *            Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
          * 
-         * @return APIlistPlayerSessionEventsRequest
+         * @return APIlistSessionEventsRequest
          */
-        public APIlistPlayerSessionEventsRequest pageSize(Integer pageSize) {
+        public APIlistSessionEventsRequest pageSize(Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
 
         /**
-         * Build call for listPlayerSessionEvents
+         * Build call for listSessionEvents
          * 
          * @param _callback
          *            ApiCallback API callback
@@ -467,11 +467,11 @@ public class RawStatisticsApi {
          *                        </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listPlayerSessionEventsCall(sessionId, currentPage, pageSize, _callback);
+            return listSessionEventsCall(sessionId, currentPage, pageSize, _callback);
         }
 
         /**
-         * Execute listPlayerSessionEvents request
+         * Execute listSessionEvents request
          * 
          * @return RawStatisticsListPlayerSessionEventsResponse
          * 
@@ -498,7 +498,7 @@ public class RawStatisticsApi {
          *                        </table>
          */
         public Page<PlayerSessionEvent> execute() throws ApiException {
-            ApiResponse<RawStatisticsListPlayerSessionEventsResponse> localVarResp = listPlayerSessionEventsWithHttpInfo(
+            ApiResponse<RawStatisticsListPlayerSessionEventsResponse> localVarResp = listSessionEventsWithHttpInfo(
                     sessionId, currentPage, pageSize);
             return new Page<>(localVarResp.getData().getData(), localVarResp.getData().getPagination(), () -> {
                 try {
@@ -509,15 +509,15 @@ public class RawStatisticsApi {
             }); //
         }
 
-        private APIlistPlayerSessionEventsRequest copy() {
-            APIlistPlayerSessionEventsRequest copy = new APIlistPlayerSessionEventsRequest(sessionId);
+        private APIlistSessionEventsRequest copy() {
+            APIlistSessionEventsRequest copy = new APIlistSessionEventsRequest(sessionId);
             copy.currentPage(currentPage);
             copy.pageSize(pageSize);
             return copy;
         }
 
         /**
-         * Execute listPlayerSessionEvents request with HTTP info returned
+         * Execute listSessionEvents request with HTTP info returned
          * 
          * @return ApiResponse&lt;RawStatisticsListPlayerSessionEventsResponse&gt;
          * 
@@ -544,11 +544,11 @@ public class RawStatisticsApi {
          *                        </table>
          */
         public ApiResponse<RawStatisticsListPlayerSessionEventsResponse> executeWithHttpInfo() throws ApiException {
-            return listPlayerSessionEventsWithHttpInfo(sessionId, currentPage, pageSize);
+            return listSessionEventsWithHttpInfo(sessionId, currentPage, pageSize);
         }
 
         /**
-         * Execute listPlayerSessionEvents request (asynchronously)
+         * Execute listSessionEvents request (asynchronously)
          * 
          * @param _callback
          *            The callback to be executed when the API call finishes
@@ -579,7 +579,7 @@ public class RawStatisticsApi {
          * 
          *                        public okhttp3.Call executeAsync(final
          *                        ApiCallback<RawStatisticsListPlayerSessionEventsResponse> _callback) throws
-         *                        ApiException { return listPlayerSessionEventsAsync(sessionId, currentPage, pageSize,
+         *                        ApiException { return listSessionEventsAsync(sessionId, currentPage, pageSize,
          *                        _callback); }
          */
     }
@@ -590,7 +590,7 @@ public class RawStatisticsApi {
      * @param sessionId
      *            A unique identifier you can use to reference and track a session with. (required)
      * 
-     * @return APIlistPlayerSessionEventsRequest
+     * @return APIlistSessionEventsRequest
      * 
      * @http.response.details
      *                        <table summary="Response Details" border="1">
@@ -611,12 +611,12 @@ public class RawStatisticsApi {
      *                        </tr>
      *                        </table>
      */
-    public APIlistPlayerSessionEventsRequest listPlayerSessionEvents(String sessionId) {
-        return new APIlistPlayerSessionEventsRequest(sessionId);
+    public APIlistSessionEventsRequest listSessionEvents(String sessionId) {
+        return new APIlistSessionEventsRequest(sessionId);
     }
 
-    private okhttp3.Call listSessionsCall(String videoId, String period, List<String> metadata, Integer currentPage,
-            Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listVideoSessionsCall(String videoId, String period, List<String> metadata,
+            Integer currentPage, Integer pageSize, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -664,35 +664,35 @@ public class RawStatisticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSessionsValidateBeforeCall(String videoId, String period, List<String> metadata,
+    private okhttp3.Call listVideoSessionsValidateBeforeCall(String videoId, String period, List<String> metadata,
             Integer currentPage, Integer pageSize, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'videoId' is set
         if (videoId == null) {
-            throw new ApiException("Missing the required parameter 'videoId' when calling listSessions");
+            throw new ApiException("Missing the required parameter 'videoId' when calling listVideoSessions");
         }
 
-        okhttp3.Call localVarCall = listSessionsCall(videoId, period, metadata, currentPage, pageSize, _callback);
+        okhttp3.Call localVarCall = listVideoSessionsCall(videoId, period, metadata, currentPage, pageSize, _callback);
         return localVarCall;
     }
 
-    private ApiResponse<RawStatisticsListSessionsResponse> listSessionsWithHttpInfo(String videoId, String period,
+    private ApiResponse<RawStatisticsListSessionsResponse> listVideoSessionsWithHttpInfo(String videoId, String period,
             List<String> metadata, Integer currentPage, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = listSessionsValidateBeforeCall(videoId, period, metadata, currentPage, pageSize,
-                null);
+        okhttp3.Call localVarCall = listVideoSessionsValidateBeforeCall(videoId, period, metadata, currentPage,
+                pageSize, null);
         Type localVarReturnType = new TypeToken<RawStatisticsListSessionsResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    public class APIlistSessionsRequest {
+    public class APIlistVideoSessionsRequest {
         private final String videoId;
         private String period;
         private List<String> metadata;
         private Integer currentPage;
         private Integer pageSize;
 
-        private APIlistSessionsRequest(String videoId) {
+        private APIlistVideoSessionsRequest(String videoId) {
             this.videoId = videoId;
         }
 
@@ -704,9 +704,9 @@ public class RawStatisticsApi {
          *            For a month: 2018-01 - For a year: 2018 For a range period: - Date range: 2018-01-01/2018-01-15
          *            (optional)
          * 
-         * @return APIlistSessionsRequest
+         * @return APIlistVideoSessionsRequest
          */
-        public APIlistSessionsRequest period(String period) {
+        public APIlistVideoSessionsRequest period(String period) {
             this.period = period;
             return this;
         }
@@ -718,9 +718,9 @@ public class RawStatisticsApi {
          *            Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios
          *            with. (optional)
          * 
-         * @return APIlistSessionsRequest
+         * @return APIlistVideoSessionsRequest
          */
-        public APIlistSessionsRequest metadata(List<String> metadata) {
+        public APIlistVideoSessionsRequest metadata(List<String> metadata) {
             this.metadata = metadata;
             return this;
         }
@@ -731,9 +731,9 @@ public class RawStatisticsApi {
          * @param currentPage
          *            Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
          * 
-         * @return APIlistSessionsRequest
+         * @return APIlistVideoSessionsRequest
          */
-        public APIlistSessionsRequest currentPage(Integer currentPage) {
+        public APIlistVideoSessionsRequest currentPage(Integer currentPage) {
             this.currentPage = currentPage;
             return this;
         }
@@ -744,15 +744,15 @@ public class RawStatisticsApi {
          * @param pageSize
          *            Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
          * 
-         * @return APIlistSessionsRequest
+         * @return APIlistVideoSessionsRequest
          */
-        public APIlistSessionsRequest pageSize(Integer pageSize) {
+        public APIlistVideoSessionsRequest pageSize(Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
 
         /**
-         * Build call for listSessions
+         * Build call for listVideoSessions
          * 
          * @param _callback
          *            ApiCallback API callback
@@ -782,11 +782,11 @@ public class RawStatisticsApi {
          *                        </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listSessionsCall(videoId, period, metadata, currentPage, pageSize, _callback);
+            return listVideoSessionsCall(videoId, period, metadata, currentPage, pageSize, _callback);
         }
 
         /**
-         * Execute listSessions request
+         * Execute listVideoSessions request
          * 
          * @return RawStatisticsListSessionsResponse
          * 
@@ -813,7 +813,7 @@ public class RawStatisticsApi {
          *                        </table>
          */
         public Page<VideoSession> execute() throws ApiException {
-            ApiResponse<RawStatisticsListSessionsResponse> localVarResp = listSessionsWithHttpInfo(videoId, period,
+            ApiResponse<RawStatisticsListSessionsResponse> localVarResp = listVideoSessionsWithHttpInfo(videoId, period,
                     metadata, currentPage, pageSize);
             return new Page<>(localVarResp.getData().getData(), localVarResp.getData().getPagination(), () -> {
                 try {
@@ -824,8 +824,8 @@ public class RawStatisticsApi {
             }); //
         }
 
-        private APIlistSessionsRequest copy() {
-            APIlistSessionsRequest copy = new APIlistSessionsRequest(videoId);
+        private APIlistVideoSessionsRequest copy() {
+            APIlistVideoSessionsRequest copy = new APIlistVideoSessionsRequest(videoId);
             copy.period(period);
             copy.metadata(metadata);
             copy.currentPage(currentPage);
@@ -834,7 +834,7 @@ public class RawStatisticsApi {
         }
 
         /**
-         * Execute listSessions request with HTTP info returned
+         * Execute listVideoSessions request with HTTP info returned
          * 
          * @return ApiResponse&lt;RawStatisticsListSessionsResponse&gt;
          * 
@@ -861,11 +861,11 @@ public class RawStatisticsApi {
          *                        </table>
          */
         public ApiResponse<RawStatisticsListSessionsResponse> executeWithHttpInfo() throws ApiException {
-            return listSessionsWithHttpInfo(videoId, period, metadata, currentPage, pageSize);
+            return listVideoSessionsWithHttpInfo(videoId, period, metadata, currentPage, pageSize);
         }
 
         /**
-         * Execute listSessions request (asynchronously)
+         * Execute listVideoSessions request (asynchronously)
          * 
          * @param _callback
          *            The callback to be executed when the API call finishes
@@ -895,8 +895,8 @@ public class RawStatisticsApi {
          *                        </table>
          * 
          *                        public okhttp3.Call executeAsync(final ApiCallback<RawStatisticsListSessionsResponse>
-         *                        _callback) throws ApiException { return listSessionsAsync(videoId, period, metadata,
-         *                        currentPage, pageSize, _callback); }
+         *                        _callback) throws ApiException { return listVideoSessionsAsync(videoId, period,
+         *                        metadata, currentPage, pageSize, _callback); }
          */
     }
 
@@ -906,7 +906,7 @@ public class RawStatisticsApi {
      * @param videoId
      *            The unique identifier for the video you want to retrieve session information for. (required)
      * 
-     * @return APIlistSessionsRequest
+     * @return APIlistVideoSessionsRequest
      * 
      * @http.response.details
      *                        <table summary="Response Details" border="1">
@@ -927,7 +927,7 @@ public class RawStatisticsApi {
      *                        </tr>
      *                        </table>
      */
-    public APIlistSessionsRequest listSessions(String videoId) {
-        return new APIlistSessionsRequest(videoId);
+    public APIlistVideoSessionsRequest listVideoSessions(String videoId) {
+        return new APIlistVideoSessionsRequest(videoId);
     }
 }

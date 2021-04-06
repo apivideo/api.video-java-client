@@ -6,10 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
 [**get**](VideosApi.md#get) | **GET** /videos/{videoId} | Show a video
-[**getVideoStatus**](VideosApi.md#getVideoStatus) | **GET** /videos/{videoId}/status | Show video status
+[**getStatus**](VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Show video status
 [**list**](VideosApi.md#list) | **GET** /videos | List all videos
 [**update**](VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
 [**pickThumbnail**](VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
+[**uploadWithUploadToken**](VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an upload token
 [**create**](VideosApi.md#create) | **POST** /videos | Create a video
 [**upload**](VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
 [**uploadThumbnail**](VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
@@ -148,9 +149,9 @@ Name | Type | Description  | Notes
 **200** | Success |  -  |
 **404** | Not Found |  -  |
 
-<a name="getVideoStatus"></a>
-# **getVideoStatus**
-> Videostatus getVideoStatus(videoId)
+<a name="getStatus"></a>
+# **getStatus**
+> Videostatus getStatus(videoId)
 
 Show video status
 
@@ -176,10 +177,10 @@ public class Example {
     String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the video you want the status for.
 
     try {
-      Videostatus result = apiInstance.getVideoStatus(videoId);
+      Videostatus result = apiInstance.getStatus(videoId);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling VideosApi#getVideoStatus");
+      System.err.println("Exception when calling VideosApi#getStatus");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -463,6 +464,85 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Success |  -  |
 **404** | Not Found |  -  |
+
+<a name="uploadWithUploadToken"></a>
+# **uploadWithUploadToken**
+> Video uploadWithUploadToken(token, file)
+
+Upload with an upload token
+
+When given a token, anyone can upload a file to the URI `https://ws.api.video/upload?token=<tokenId>`.  Example with cURL:  ```curl $ curl  --request POST --url 'https://ws.api.video/upload?token=toXXX'  --header 'content-type: multipart/form-data'  -F file=@video.mp4 ```  Or in an HTML form, with a little JavaScript to convert the form into JSON: ```html <!--form for user interaction--> <form name=\"videoUploadForm\" >   <label for=video>Video:</label>   <input type=file name=source/><br/>   <input value=\"Submit\" type=\"submit\"> </form> <div></div> <!--JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     --> <script>    var form = document.forms.namedItem(\"videoUploadForm\");     form.addEventListener('submit', function(ev) {   ev.preventDefault();      var oOutput = document.querySelector(\"div\"),          oData = new FormData(form);      var oReq = new XMLHttpRequest();         oReq.open(\"POST\", \"https://ws.api.video/upload?token=toXXX\", true);      oReq.send(oData);   oReq.onload = function(oEvent) {        if (oReq.status ==201) {          oOutput.innerHTML = \"Your video is uploaded!<br/>\"  + oReq.response;        } else {          oOutput.innerHTML = \"Error \" + oReq.status + \" occurred when trying to upload your file.<br />\";        }      };    }, false);  </script> ```   ### Dealing with large files  We have created a <a href='https://api.video/blog/tutorials/uploading-large-files-with-javascript'>tutorial</a> to walk through the steps required.
+
+### Example
+```java
+// Import classes:
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient();
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient(ApiVideoClient.BasePaths.SANDBOX);
+
+    VideosApi apiInstance = client.videos();
+    
+    String token = "to1tcmSFHeYY5KzyhOqVKMKb"; // The unique identifier for the token you want to use to upload a video.
+    File file = new File("/path/to/file"); // The path to the video you want to upload.
+
+    try {
+      Video result = apiInstance.uploadWithUploadToken(token, file);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VideosApi#uploadWithUploadToken");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **String**| The unique identifier for the token you want to use to upload a video. |
+ **file** | **File**| The path to the video you want to upload. |
+
+
+### Upload chunks
+
+Large files are broken into chunks for upload. You can control the size of the chunks using the `setUploadChunkSize()` of method of `ApiVideoClient` before uploading:
+
+```java
+apiVideoClient.setUploadChunkSize(50*1024*1024); // use 50MB chunks
+apiVideoClient.videos().uploadWithUploadToken(token, file);
+```
+
+### Return type
+
+
+[**Video**](Video.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
 
 <a name="create"></a>
 # **create**

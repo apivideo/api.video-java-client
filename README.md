@@ -85,22 +85,6 @@ public class Example {
 All URIs are relative to *https://ws.api.video*
 
 
-### AccountApi
-
-
-#### Retrieve an instance of AccountApi:
-```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
-AccountApi account = client.account()
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**(deprecated)** [**get**](docs/AccountApi.md#get) | **GET** /account | Show account
-
-
 ### CaptionsApi
 
 
@@ -140,48 +124,48 @@ Method | HTTP request | Description
 [**upload**](docs/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
 
 
-### LiveApi
+### LiveStreamsApi
 
 
-#### Retrieve an instance of LiveApi:
+#### Retrieve an instance of LiveStreamsApi:
 ```java
 ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
-LiveApi live = client.live()
+LiveStreamsApi liveStreams = client.liveStreams()
 ```
 
 #### Endpoints
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](docs/LiveApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
-[**deleteThumbnail**](docs/LiveApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
-[**list**](docs/LiveApi.md#list) | **GET** /live-streams | List all live streams
-[**get**](docs/LiveApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
-[**update**](docs/LiveApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
-[**create**](docs/LiveApi.md#create) | **POST** /live-streams | Create live stream
-[**uploadThumbnail**](docs/LiveApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
+[**delete**](docs/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
+[**deleteThumbnail**](docs/LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
+[**list**](docs/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
+[**get**](docs/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Show live stream
+[**update**](docs/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
+[**create**](docs/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
+[**uploadThumbnail**](docs/LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
 
 
-### PlayersApi
+### PlayerThemesApi
 
 
-#### Retrieve an instance of PlayersApi:
+#### Retrieve an instance of PlayerThemesApi:
 ```java
 ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
-PlayersApi players = client.players()
+PlayerThemesApi playerThemes = client.playerThemes()
 ```
 
 #### Endpoints
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](docs/PlayersApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
-[**deleteLogo**](docs/PlayersApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](docs/PlayersApi.md#list) | **GET** /players | List all players
-[**get**](docs/PlayersApi.md#get) | **GET** /players/{playerId} | Show a player
-[**update**](docs/PlayersApi.md#update) | **PATCH** /players/{playerId} | Update a player
-[**create**](docs/PlayersApi.md#create) | **POST** /players | Create a player
-[**uploadLogo**](docs/PlayersApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
+[**delete**](docs/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
+[**deleteLogo**](docs/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
+[**list**](docs/PlayerThemesApi.md#list) | **GET** /players | List all players
+[**get**](docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
+[**update**](docs/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
+[**create**](docs/PlayerThemesApi.md#create) | **POST** /players | Create a player
+[**uploadLogo**](docs/PlayerThemesApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
 
 
 ### RawStatisticsApi
@@ -197,9 +181,28 @@ RawStatisticsApi rawStatistics = client.rawStatistics()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLiveStreamAnalytics**](docs/RawStatisticsApi.md#getLiveStreamAnalytics) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
-[**listPlayerSessionEvents**](docs/RawStatisticsApi.md#listPlayerSessionEvents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
-[**listSessions**](docs/RawStatisticsApi.md#listSessions) | **GET** /analytics/videos/{videoId} | List video player sessions
+[**listLiveStreamSessions**](docs/RawStatisticsApi.md#listLiveStreamSessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
+[**listSessionEvents**](docs/RawStatisticsApi.md#listSessionEvents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
+[**listVideoSessions**](docs/RawStatisticsApi.md#listVideoSessions) | **GET** /analytics/videos/{videoId} | List video player sessions
+
+
+### UploadTokensApi
+
+
+#### Retrieve an instance of UploadTokensApi:
+```java
+ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+UploadTokensApi uploadTokens = client.uploadTokens()
+```
+
+#### Endpoints
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**deleteToken**](docs/UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
+[**list**](docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
+[**getToken**](docs/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Show upload token
+[**createToken**](docs/UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
 
 
 ### VideosApi
@@ -217,33 +220,14 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video
 [**get**](docs/VideosApi.md#get) | **GET** /videos/{videoId} | Show a video
-[**getVideoStatus**](docs/VideosApi.md#getVideoStatus) | **GET** /videos/{videoId}/status | Show video status
+[**getStatus**](docs/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Show video status
 [**list**](docs/VideosApi.md#list) | **GET** /videos | List all videos
 [**update**](docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video
 [**pickThumbnail**](docs/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Pick a thumbnail
+[**uploadWithUploadToken**](docs/VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an upload token
 [**create**](docs/VideosApi.md#create) | **POST** /videos | Create a video
 [**upload**](docs/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
 [**uploadThumbnail**](docs/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
-
-
-### VideosDelegatedUploadApi
-
-
-#### Retrieve an instance of VideosDelegatedUploadApi:
-```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
-VideosDelegatedUploadApi videosDelegatedUpload = client.videosDelegatedUpload()
-```
-
-#### Endpoints
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteToken**](docs/VideosDelegatedUploadApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
-[**listTokens**](docs/VideosDelegatedUploadApi.md#listTokens) | **GET** /upload-tokens | List all active upload tokens.
-[**getToken**](docs/VideosDelegatedUploadApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Show upload token
-[**upload**](docs/VideosDelegatedUploadApi.md#upload) | **POST** /upload | Upload with an upload token
-[**createToken**](docs/VideosDelegatedUploadApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
 
 
 ### WebhooksApi
