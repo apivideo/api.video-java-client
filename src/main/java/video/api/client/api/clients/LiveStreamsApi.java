@@ -782,7 +782,7 @@ public class LiveStreamsApi {
      *            The unique ID for the live stream that you want to update information for such as player details, or
      *            whether you want the recording on or off. (required)
      * @param liveStreamUpdatePayload
-     *            (optional)
+     *            (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -844,15 +844,12 @@ public class LiveStreamsApi {
     private okhttp3.Call updateValidateBeforeCall(String liveStreamId, LiveStreamUpdatePayload liveStreamUpdatePayload,
             final ApiCallback _callback) throws ApiException {
 
-        if (liveStreamUpdatePayload == null) {
-            throw new ApiException("Missing the required parameter 'liveStreamUpdatePayload' when calling update");
-        }
-
         // verify the required parameter 'liveStreamId' is set
         if (liveStreamId == null) {
             throw new ApiException("Missing the required parameter 'liveStreamId' when calling update");
         }
 
+        // verify the required parameter 'liveStreamUpdatePayload' is set
         if (liveStreamUpdatePayload == null) {
             throw new ApiException("Missing the required parameter 'liveStreamUpdatePayload' when calling update");
         }
@@ -871,7 +868,7 @@ public class LiveStreamsApi {
      *            The unique ID for the live stream that you want to update information for such as player details, or
      *            whether you want the recording on or off. (required)
      * @param liveStreamUpdatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return LiveStream
      * 
@@ -912,7 +909,7 @@ public class LiveStreamsApi {
      *            The unique ID for the live stream that you want to update information for such as player details, or
      *            whether you want the recording on or off. (required)
      * @param liveStreamUpdatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return ApiResponse&lt;LiveStream&gt;
      * 
@@ -950,7 +947,7 @@ public class LiveStreamsApi {
      * Build call for create
      * 
      * @param liveStreamCreatePayload
-     *            (optional)
+     *            (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -1011,6 +1008,7 @@ public class LiveStreamsApi {
     private okhttp3.Call createValidateBeforeCall(LiveStreamCreatePayload liveStreamCreatePayload,
             final ApiCallback _callback) throws ApiException {
 
+        // verify the required parameter 'liveStreamCreatePayload' is set
         if (liveStreamCreatePayload == null) {
             throw new ApiException("Missing the required parameter 'liveStreamCreatePayload' when calling create");
         }
@@ -1032,7 +1030,7 @@ public class LiveStreamsApi {
      * rtmp://broadcast.api.video/s/{streamKey}
      * 
      * @param liveStreamCreatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return LiveStream
      * 
@@ -1072,7 +1070,7 @@ public class LiveStreamsApi {
      * rtmp://broadcast.api.video/s/{streamKey}
      * 
      * @param liveStreamCreatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return ApiResponse&lt;LiveStream&gt;
      * 

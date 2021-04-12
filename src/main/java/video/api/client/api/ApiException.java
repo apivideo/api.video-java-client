@@ -53,18 +53,23 @@ public class ApiException extends Exception {
         Map<String, Object> parsedResponse = new Gson().fromJson(responseBody, typeOfHashMap);
 
         if (parsedResponse != null) {
-            if (StringUtils.isBlank(message)) {
-                try {
-
-                    if (parsedResponse.get("title") != null) {
-                        bodyMessage = (String) parsedResponse.get("title");
-                    } else {
-                        bodyMessage = (String) parsedResponse.get("events");
-                    }
-
-                } catch (JsonSyntaxException ignored) {
-
+            String details = null;
+            try {
+                if (parsedResponse.get("title") != null) {
+                    details = (String) parsedResponse.get("title");
+                } else if (parsedResponse.get("events") != null) {
+                    details = (String) parsedResponse.get("events");
                 }
+            } catch (JsonSyntaxException ignored) {
+
+            }
+
+            if (StringUtils.isNotBlank(message) && details != null) {
+                bodyMessage = message + ": " + details;
+            } else if (details != null) {
+                bodyMessage = details;
+            } else {
+                bodyMessage = message;
             }
 
             if (parsedResponse.containsKey("problems")) {

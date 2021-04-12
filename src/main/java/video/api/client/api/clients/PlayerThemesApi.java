@@ -851,17 +851,9 @@ public class PlayerThemesApi {
     private okhttp3.Call updateValidateBeforeCall(String playerId, PlayerUpdatePayload playerUpdatePayload,
             final ApiCallback _callback) throws ApiException {
 
-        if (playerUpdatePayload == null) {
-            throw new ApiException("Missing the required parameter 'playerUpdatePayload' when calling update");
-        }
-
         // verify the required parameter 'playerId' is set
         if (playerId == null) {
             throw new ApiException("Missing the required parameter 'playerId' when calling update");
-        }
-
-        if (playerUpdatePayload == null) {
-            throw new ApiException("Missing the required parameter 'playerUpdatePayload' when calling update");
         }
 
         // verify the required parameter 'playerUpdatePayload' is set
@@ -1011,10 +1003,6 @@ public class PlayerThemesApi {
     @SuppressWarnings("rawtypes")
     private okhttp3.Call createValidateBeforeCall(PlayerCreationPayload playerCreationPayload,
             final ApiCallback _callback) throws ApiException {
-
-        if (playerCreationPayload == null) {
-            throw new ApiException("Missing the required parameter 'playerCreationPayload' when calling create");
-        }
 
         // verify the required parameter 'playerCreationPayload' is set
         if (playerCreationPayload == null) {

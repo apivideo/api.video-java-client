@@ -46,7 +46,7 @@ public class AuthenticationApi {
      * Build call for authenticate
      * 
      * @param authenticatePayload
-     *            (optional)
+     *            (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -107,6 +107,7 @@ public class AuthenticationApi {
     private okhttp3.Call authenticateValidateBeforeCall(AuthenticatePayload authenticatePayload,
             final ApiCallback _callback) throws ApiException {
 
+        // verify the required parameter 'authenticatePayload' is set
         if (authenticatePayload == null) {
             throw new ApiException("Missing the required parameter 'authenticatePayload' when calling authenticate");
         }
@@ -126,7 +127,7 @@ public class AuthenticationApi {
      * [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication.
      * 
      * @param authenticatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return AccessToken
      * 
@@ -163,7 +164,7 @@ public class AuthenticationApi {
      * [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication.
      * 
      * @param authenticatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return ApiResponse&lt;AccessToken&gt;
      * 
@@ -201,7 +202,7 @@ public class AuthenticationApi {
      * Build call for refresh
      * 
      * @param refreshTokenPayload
-     *            (optional)
+     *            (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -262,6 +263,7 @@ public class AuthenticationApi {
     private okhttp3.Call refreshValidateBeforeCall(RefreshTokenPayload refreshTokenPayload, final ApiCallback _callback)
             throws ApiException {
 
+        // verify the required parameter 'refreshTokenPayload' is set
         if (refreshTokenPayload == null) {
             throw new ApiException("Missing the required parameter 'refreshTokenPayload' when calling refresh");
         }
@@ -281,7 +283,7 @@ public class AuthenticationApi {
      * token that is valid for one hour (3600 seconds) and a new refresh token.
      * 
      * @param refreshTokenPayload
-     *            (optional)
+     *            (required)
      * 
      * @return AccessToken
      * 
@@ -318,7 +320,7 @@ public class AuthenticationApi {
      * token that is valid for one hour (3600 seconds) and a new refresh token.
      * 
      * @param refreshTokenPayload
-     *            (optional)
+     *            (required)
      * 
      * @return ApiResponse&lt;AccessToken&gt;
      * 

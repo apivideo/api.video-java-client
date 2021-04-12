@@ -624,7 +624,7 @@ public class UploadTokensApi {
      * Build call for createToken
      * 
      * @param tokenCreatePayload
-     *            (optional)
+     *            (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -685,6 +685,7 @@ public class UploadTokensApi {
     private okhttp3.Call createTokenValidateBeforeCall(TokenCreatePayload tokenCreatePayload,
             final ApiCallback _callback) throws ApiException {
 
+        // verify the required parameter 'tokenCreatePayload' is set
         if (tokenCreatePayload == null) {
             throw new ApiException("Missing the required parameter 'tokenCreatePayload' when calling createToken");
         }
@@ -698,7 +699,7 @@ public class UploadTokensApi {
      * video uploads while keeping your API key safe.
      * 
      * @param tokenCreatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return UploadToken
      * 
@@ -734,7 +735,7 @@ public class UploadTokensApi {
      * video uploads while keeping your API key safe.
      * 
      * @param tokenCreatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return ApiResponse&lt;UploadToken&gt;
      * 

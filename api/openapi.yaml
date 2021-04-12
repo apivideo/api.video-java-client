@@ -20,6 +20,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/authenticate-payload'
+        required: true
       responses:
         "200":
           content:
@@ -66,6 +67,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/refresh-token-payload'
+        required: true
       responses:
         "200":
           content:
@@ -365,6 +367,7 @@ paths:
             schema:
               $ref: '#/components/schemas/video-create-payload'
         description: video to create
+        required: true
       responses:
         "201":
           content:
@@ -481,6 +484,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/video-upload-payload'
+        required: true
       responses:
         "201":
           content:
@@ -588,6 +592,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/video-thumbnail-pick-payload'
+        required: true
       responses:
         "200":
           content:
@@ -667,6 +672,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/video-thumbnail-upload-payload'
+        required: true
       responses:
         "200":
           content:
@@ -873,6 +879,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/video-update-payload'
+        required: true
       responses:
         "200":
           content:
@@ -1143,6 +1150,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/token-create-payload'
+        required: true
       responses:
         "200":
           content:
@@ -1299,6 +1307,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/token-upload-payload'
+        required: true
       responses:
         "201":
           content:
@@ -1498,6 +1507,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/live-stream-create-payload'
+        required: true
       responses:
         "200":
           content:
@@ -1629,6 +1639,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/live-stream-update-payload'
+        required: true
       responses:
         "200":
           content:
@@ -1728,6 +1739,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/live-stream-thumbnail-upload-payload'
+        required: true
       responses:
         "201":
           content:
@@ -1894,6 +1906,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/captions-update-payload'
+        required: true
       responses:
         "200":
           content:
@@ -1974,6 +1987,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/captions-upload-payload'
+        required: true
       responses:
         "200":
           content:
@@ -2210,6 +2224,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/chapters-update-payload'
+        required: true
       responses:
         "200":
           content:
@@ -2768,6 +2783,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/players-upload-logo-payload'
+        required: true
       responses:
         "201":
           content:
@@ -3303,14 +3319,21 @@ paths:
       x-client-action: list
       x-accepts: application/json
     post:
-      description: Webhooks can push notifications to your server, rather than polling
-        api.video for changes
+      description: 'Webhooks can push notifications to your server, rather than polling
+        api.video for changes. We currently offer one event, the ```video.encoding.quality.completed```
+        event.  When a new video is uploaded into your account, it will be encoded
+        into several different HLS sizes/bitrates.  When each version is encoded,
+        your webhook will get a notification.  It will look like ```{ \"type\": \"video.encoding.quality.completed\",
+        \"emittedAt\": \"2021-01-29T16:46:25.217+01:00\", \"videoId\": \"viXXXXXXXX\",
+        \"encoding\": \"hls\", \"quality\": \"720p\"} ```. This request says that
+        the 720p HLS encoding was completed.'
       operationId: POST-webhooks
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/webhooks-create-payload'
+        required: true
       responses:
         "201":
           content:
@@ -3590,6 +3613,11 @@ components:
         videoId:
           description: The unique identifier of the video object.
           example: vi4k0jvEUuaTdRAEjQ4Prklg
+          type: string
+        createdAt:
+          description: When an webhook was created, presented in ISO-8601 format.
+          example: 2019-06-24T11:45:01.109Z
+          format: date-time
           type: string
         title:
           description: |
@@ -4985,7 +5013,6 @@ components:
     pagination_link:
       properties:
         rel:
-          pattern: ^self$
           type: string
         uri:
           format: uri

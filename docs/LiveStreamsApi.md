@@ -345,7 +345,7 @@ Whether your video can be viewed by everyone, or requires authentication to see 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **liveStreamId** | **String**| The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. |
- **liveStreamUpdatePayload** | [**LiveStreamUpdatePayload**](LiveStreamUpdatePayload.md)|  | [optional]
+ **liveStreamUpdatePayload** | [**LiveStreamUpdatePayload**](LiveStreamUpdatePayload.md)|  |
 
 ### Return type
 
@@ -417,7 +417,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamCreatePayload** | [**LiveStreamCreatePayload**](LiveStreamCreatePayload.md)|  | [optional]
+ **liveStreamCreatePayload** | [**LiveStreamCreatePayload**](LiveStreamCreatePayload.md)|  |
 
 ### Return type
 

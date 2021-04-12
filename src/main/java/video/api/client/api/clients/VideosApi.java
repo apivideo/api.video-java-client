@@ -905,7 +905,7 @@ public class VideosApi {
      * @param videoId
      *            The video ID for the video you want to delete. (required)
      * @param videoUpdatePayload
-     *            (optional)
+     *            (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -972,15 +972,12 @@ public class VideosApi {
     private okhttp3.Call updateValidateBeforeCall(String videoId, VideoUpdatePayload videoUpdatePayload,
             final ApiCallback _callback) throws ApiException {
 
-        if (videoUpdatePayload == null) {
-            throw new ApiException("Missing the required parameter 'videoUpdatePayload' when calling update");
-        }
-
         // verify the required parameter 'videoId' is set
         if (videoId == null) {
             throw new ApiException("Missing the required parameter 'videoId' when calling update");
         }
 
+        // verify the required parameter 'videoUpdatePayload' is set
         if (videoUpdatePayload == null) {
             throw new ApiException("Missing the required parameter 'videoUpdatePayload' when calling update");
         }
@@ -998,7 +995,7 @@ public class VideosApi {
      * @param videoId
      *            The video ID for the video you want to delete. (required)
      * @param videoUpdatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return Video
      * 
@@ -1043,7 +1040,7 @@ public class VideosApi {
      * @param videoId
      *            The video ID for the video you want to delete. (required)
      * @param videoUpdatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return ApiResponse&lt;Video&gt;
      * 
@@ -1089,7 +1086,7 @@ public class VideosApi {
      *            Unique identifier of the video you want to add a thumbnail to, where you use a section of your video
      *            as the thumbnail. (required)
      * @param videoThumbnailPickPayload
-     *            (optional)
+     *            (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -1151,6 +1148,12 @@ public class VideosApi {
     private okhttp3.Call pickThumbnailValidateBeforeCall(String videoId,
             VideoThumbnailPickPayload videoThumbnailPickPayload, final ApiCallback _callback) throws ApiException {
 
+        // verify the required parameter 'videoId' is set
+        if (videoId == null) {
+            throw new ApiException("Missing the required parameter 'videoId' when calling pickThumbnail");
+        }
+
+        // verify the required parameter 'videoThumbnailPickPayload' is set
         if (videoThumbnailPickPayload == null) {
             throw new ApiException(
                     "Missing the required parameter 'videoThumbnailPickPayload' when calling pickThumbnail");
@@ -1159,16 +1162,6 @@ public class VideosApi {
         if (videoThumbnailPickPayload.getTimecode() == null) {
             throw new ApiException(
                     "Missing the required parameter 'videoThumbnailPickPayload.timecode' when calling pickThumbnail");
-        }
-
-        // verify the required parameter 'videoId' is set
-        if (videoId == null) {
-            throw new ApiException("Missing the required parameter 'videoId' when calling pickThumbnail");
-        }
-
-        if (videoThumbnailPickPayload == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'videoThumbnailPickPayload' when calling pickThumbnail");
         }
 
         if (videoThumbnailPickPayload.getTimecode() == null) {
@@ -1189,7 +1182,7 @@ public class VideosApi {
      *            Unique identifier of the video you want to add a thumbnail to, where you use a section of your video
      *            as the thumbnail. (required)
      * @param videoThumbnailPickPayload
-     *            (optional)
+     *            (required)
      * 
      * @return Video
      * 
@@ -1230,7 +1223,7 @@ public class VideosApi {
      *            Unique identifier of the video you want to add a thumbnail to, where you use a section of your video
      *            as the thumbnail. (required)
      * @param videoThumbnailPickPayload
-     *            (optional)
+     *            (required)
      * 
      * @return ApiResponse&lt;Video&gt;
      * 
@@ -1702,7 +1695,7 @@ public class VideosApi {
      * Build call for create
      * 
      * @param videoCreatePayload
-     *            video to create (optional)
+     *            video to create (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -1768,6 +1761,7 @@ public class VideosApi {
     private okhttp3.Call createValidateBeforeCall(VideoCreatePayload videoCreatePayload, final ApiCallback _callback)
             throws ApiException {
 
+        // verify the required parameter 'videoCreatePayload' is set
         if (videoCreatePayload == null) {
             throw new ApiException("Missing the required parameter 'videoCreatePayload' when calling create");
         }
@@ -1797,7 +1791,7 @@ public class VideosApi {
      * videos](https://api.video/blog/tutorials/tutorial-private-videos)
      * 
      * @param videoCreatePayload
-     *            video to create (optional)
+     *            video to create (required)
      * 
      * @return Video
      * 
@@ -1850,7 +1844,7 @@ public class VideosApi {
      * videos](https://api.video/blog/tutorials/tutorial-private-videos)
      * 
      * @param videoCreatePayload
-     *            video to create (optional)
+     *            video to create (required)
      * 
      * @return ApiResponse&lt;Video&gt;
      * 

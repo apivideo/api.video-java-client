@@ -7,6 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **videoId** | **String** | The unique identifier of the video object. |  [optional]
+**createdAt** | **OffsetDateTime** | When an webhook was created, presented in ISO-8601 format. |  [optional]
 **title** | **String** | The title of the video content.  |  [optional]
 **description** | **String** | A description for the video content.  |  [optional]
 **publishedAt** | **String** | The date and time the API created the video. Date and time are provided using ISO-8601 UTC format. |  [optional]

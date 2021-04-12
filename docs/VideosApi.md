@@ -365,7 +365,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **String**| The video ID for the video you want to delete. |
- **videoUpdatePayload** | [**VideoUpdatePayload**](VideoUpdatePayload.md)|  | [optional]
+ **videoUpdatePayload** | [**VideoUpdatePayload**](VideoUpdatePayload.md)|  |
 
 ### Return type
 
@@ -443,7 +443,7 @@ If selection is out of range, &quot;00:00:00.00&quot; will be chosen.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **String**| Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail. |
- **videoThumbnailPickPayload** | [**VideoThumbnailPickPayload**](VideoThumbnailPickPayload.md)|  | [optional]
+ **videoThumbnailPickPayload** | [**VideoThumbnailPickPayload**](VideoThumbnailPickPayload.md)|  |
 
 ### Return type
 
@@ -600,7 +600,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoCreatePayload** | [**VideoCreatePayload**](VideoCreatePayload.md)| video to create | [optional]
+ **videoCreatePayload** | [**VideoCreatePayload**](VideoCreatePayload.md)| video to create |
 
 ### Return type
 

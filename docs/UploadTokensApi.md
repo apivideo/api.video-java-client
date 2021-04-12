@@ -267,7 +267,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenCreatePayload** | [**TokenCreatePayload**](TokenCreatePayload.md)|  | [optional]
+ **tokenCreatePayload** | [**TokenCreatePayload**](TokenCreatePayload.md)|  |
 
 ### Return type
 

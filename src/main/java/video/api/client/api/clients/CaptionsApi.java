@@ -648,7 +648,7 @@ public class CaptionsApi {
      *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
      *            representation. (required)
      * @param captionsUpdatePayload
-     *            (optional)
+     *            (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -716,17 +716,9 @@ public class CaptionsApi {
     private okhttp3.Call updateValidateBeforeCall(String videoId, String language,
             CaptionsUpdatePayload captionsUpdatePayload, final ApiCallback _callback) throws ApiException {
 
-        if (captionsUpdatePayload == null) {
-            throw new ApiException("Missing the required parameter 'captionsUpdatePayload' when calling update");
-        }
-
         // verify the required parameter 'videoId' is set
         if (videoId == null) {
             throw new ApiException("Missing the required parameter 'videoId' when calling update");
-        }
-
-        if (captionsUpdatePayload == null) {
-            throw new ApiException("Missing the required parameter 'captionsUpdatePayload' when calling update");
         }
 
         // verify the required parameter 'language' is set
@@ -734,6 +726,7 @@ public class CaptionsApi {
             throw new ApiException("Missing the required parameter 'language' when calling update");
         }
 
+        // verify the required parameter 'captionsUpdatePayload' is set
         if (captionsUpdatePayload == null) {
             throw new ApiException("Missing the required parameter 'captionsUpdatePayload' when calling update");
         }
@@ -751,7 +744,7 @@ public class CaptionsApi {
      *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
      *            representation. (required)
      * @param captionsUpdatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return Subtitle
      * 
@@ -797,7 +790,7 @@ public class CaptionsApi {
      *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
      *            representation. (required)
      * @param captionsUpdatePayload
-     *            (optional)
+     *            (required)
      * 
      * @return ApiResponse&lt;Subtitle&gt;
      * 

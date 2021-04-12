@@ -40,6 +40,10 @@ public class Video implements Serializable {
     @SerializedName(SERIALIZED_NAME_VIDEO_ID)
     private String videoId;
 
+    public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+    @SerializedName(SERIALIZED_NAME_CREATED_AT)
+    private OffsetDateTime createdAt;
+
     public static final String SERIALIZED_NAME_TITLE = "title";
     @SerializedName(SERIALIZED_NAME_TITLE)
     private String title;
@@ -107,6 +111,27 @@ public class Video implements Serializable {
 
     public void setVideoId(String videoId) {
         this.videoId = videoId;
+    }
+
+    public Video createdAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    /**
+     * When an webhook was created, presented in ISO-8601 format.
+     * 
+     * @return createdAt
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "2019-06-24T11:45:01.109Z", value = "When an webhook was created, presented in ISO-8601 format.")
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Video title(String title) {
@@ -388,8 +413,8 @@ public class Video implements Serializable {
             return false;
         }
         Video video = (Video) o;
-        return Objects.equals(this.videoId, video.videoId) && Objects.equals(this.title, video.title)
-                && Objects.equals(this.description, video.description)
+        return Objects.equals(this.videoId, video.videoId) && Objects.equals(this.createdAt, video.createdAt)
+                && Objects.equals(this.title, video.title) && Objects.equals(this.description, video.description)
                 && Objects.equals(this.publishedAt, video.publishedAt)
                 && Objects.equals(this.updatedAt, video.updatedAt) && Objects.equals(this.tags, video.tags)
                 && Objects.equals(this.metadata, video.metadata) && Objects.equals(this.source, video.source)
@@ -400,8 +425,8 @@ public class Video implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(videoId, title, description, publishedAt, updatedAt, tags, metadata, source, assets,
-                playerId, _public, panoramic, mp4Support);
+        return Objects.hash(videoId, createdAt, title, description, publishedAt, updatedAt, tags, metadata, source,
+                assets, playerId, _public, panoramic, mp4Support);
     }
 
     @Override
@@ -409,6 +434,7 @@ public class Video implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class Video {\n");
         sb.append("    videoId: ").append(toIndentedString(videoId)).append("\n");
+        sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
         sb.append("    title: ").append(toIndentedString(title)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    publishedAt: ").append(toIndentedString(publishedAt)).append("\n");
