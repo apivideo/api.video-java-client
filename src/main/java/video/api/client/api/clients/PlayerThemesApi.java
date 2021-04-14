@@ -268,8 +268,6 @@ public class PlayerThemesApi {
      * @param playerId
      *            The unique identifier for the player. (required)
      * 
-     * @return Object
-     * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
      * 
@@ -292,9 +290,8 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    public Object deleteLogo(String playerId) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteLogoWithHttpInfo(playerId);
-        return localVarResp.getData();
+    public void deleteLogo(String playerId) throws ApiException {
+        deleteLogoWithHttpInfo(playerId);
     }
 
     /**
@@ -303,7 +300,7 @@ public class PlayerThemesApi {
      * @param playerId
      *            The unique identifier for the player. (required)
      * 
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -327,11 +324,9 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Object> deleteLogoWithHttpInfo(String playerId) throws ApiException {
+    public ApiResponse<Void> deleteLogoWithHttpInfo(String playerId) throws ApiException {
         okhttp3.Call localVarCall = deleteLogoValidateBeforeCall(playerId, null);
-        Type localVarReturnType = new TypeToken<Object>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     private okhttp3.Call listCall(String sortBy, String sortOrder, Integer currentPage, Integer pageSize,

@@ -243,7 +243,7 @@ public class Example {
     
     String title = "My Video.mp4"; // The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
     List<String> tags = Arrays.asList(); // A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
-    List<String> metadata = Arrays.asList(); // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
+    Map<String, String> metadata = new HashMap(); // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
     String description = "New Zealand"; // If you described a video with a term or sentence, you can add it here to return videos containing this string.
     String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here.
     String sortBy = "publishedAt"; // Allowed: publishedAt, title. You can search by the time videos were published at, or by title.
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **String**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional]
  **tags** | [**List&lt;String&gt;**](String.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
- **metadata** | [**List&lt;String&gt;**](String.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
+ **metadata** | [**Map&lt;String, String&gt;**](String.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
  **description** | **String**| If you described a video with a term or sentence, you can add it here to return videos containing this string. | [optional]
  **liveStreamId** | **String**| If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. | [optional]
  **sortBy** | **String**| Allowed: publishedAt, title. You can search by the time videos were published at, or by title. | [optional]

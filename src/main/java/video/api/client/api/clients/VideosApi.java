@@ -486,7 +486,7 @@ public class VideosApi {
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listCall(String title, List<String> tags, List<String> metadata, String description,
+    private okhttp3.Call listCall(String title, List<String> tags, Map<String, String> metadata, String description,
             String liveStreamId, String sortBy, String sortOrder, Integer currentPage, Integer pageSize,
             final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
@@ -509,7 +509,7 @@ public class VideosApi {
         }
 
         if (metadata != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metadata", metadata));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("metadata", metadata));
         }
 
         if (description != null) {
@@ -555,7 +555,7 @@ public class VideosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listValidateBeforeCall(String title, List<String> tags, List<String> metadata,
+    private okhttp3.Call listValidateBeforeCall(String title, List<String> tags, Map<String, String> metadata,
             String description, String liveStreamId, String sortBy, String sortOrder, Integer currentPage,
             Integer pageSize, final ApiCallback _callback) throws ApiException {
 
@@ -564,9 +564,9 @@ public class VideosApi {
         return localVarCall;
     }
 
-    private ApiResponse<VideosListResponse> listWithHttpInfo(String title, List<String> tags, List<String> metadata,
-            String description, String liveStreamId, String sortBy, String sortOrder, Integer currentPage,
-            Integer pageSize) throws ApiException {
+    private ApiResponse<VideosListResponse> listWithHttpInfo(String title, List<String> tags,
+            Map<String, String> metadata, String description, String liveStreamId, String sortBy, String sortOrder,
+            Integer currentPage, Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = listValidateBeforeCall(title, tags, metadata, description, liveStreamId, sortBy,
                 sortOrder, currentPage, pageSize, null);
         Type localVarReturnType = new TypeToken<VideosListResponse>() {
@@ -577,7 +577,7 @@ public class VideosApi {
     public class APIlistRequest {
         private String title;
         private List<String> tags;
-        private List<String> metadata;
+        private Map<String, String> metadata;
         private String description;
         private String liveStreamId;
         private String sortBy;
@@ -626,7 +626,7 @@ public class VideosApi {
          * 
          * @return APIlistRequest
          */
-        public APIlistRequest metadata(List<String> metadata) {
+        public APIlistRequest metadata(Map<String, String> metadata) {
             this.metadata = metadata;
             return this;
         }

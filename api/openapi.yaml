@@ -136,16 +136,17 @@ paths:
         style: form
       - description: Videos can be tagged with metadata tags in key:value pairs. You
           can search for videos with specific key value pairs using this parameter.
-        example: '[{"key":"Author", "value":"John Doe"}, {"key":"Format", "value":"Tutorial"}]'
+        example: metadata[Author]=John Doe&metadata[Format]=Tutorial
         explode: true
         in: query
         name: metadata
         required: false
         schema:
-          items:
+          additionalProperties:
             type: string
-          type: array
-        style: form
+          type: object
+        style: deepObject
+        x-key-value-serialized-param: true
       - description: If you described a video with a term or sentence, you can add
           it here to return videos containing this string.
         example: New Zealand
@@ -2738,10 +2739,6 @@ paths:
         style: simple
       responses:
         "204":
-          content:
-            application/json:
-              schema:
-                type: object
           description: No Content
         "404":
           content:

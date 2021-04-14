@@ -81,7 +81,7 @@ null (empty response body)
 
 <a name="deleteLogo"></a>
 # **deleteLogo**
-> Object deleteLogo(playerId)
+> deleteLogo(playerId)
 
 Delete logo
 
@@ -105,8 +105,7 @@ public class Example {
     String playerId = "pl14Db6oMJRH6SRVoOwORacK"; // The unique identifier for the player.
 
     try {
-      Object result = apiInstance.deleteLogo(playerId);
-      System.out.println(result);
+      apiInstance.deleteLogo(playerId);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlayerThemesApi#deleteLogo");
       System.err.println("Status code: " + e.getCode());
@@ -127,7 +126,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 
-**Object**
+null (empty response body)
 
 ### Authorization
 

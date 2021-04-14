@@ -110,7 +110,7 @@ public class ApiClient {
     private void init() {
         verifyingSsl = true;
         json = new JSON();
-        setUserAgent("api.video SDK (java; v:1.8.1; )");
+        setUserAgent("api.video client (java; v:1.0.1; )");
     }
 
     /**
@@ -423,6 +423,15 @@ public class ApiClient {
 
         // preconditions
         if (name == null || name.isEmpty() || value == null || value instanceof Collection) {
+            return params;
+        }
+
+        if (value instanceof HashMap) {
+            HashMap map = (HashMap) value;
+            map.forEach((k, v) -> {
+                if (k != null)
+                    params.add(new Pair(name + "[" + k + "]", v == null ? null : v.toString()));
+            });
             return params;
         }
 
