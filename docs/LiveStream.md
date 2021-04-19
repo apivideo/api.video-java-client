@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **assets** | [**LiveStreamAssets**](LiveStreamAssets.md) |  |  [optional]
 **playerId** | **String** | The unique identifier for the player. |  [optional]
 **broadcasting** | **Boolean** | Whether or not you are broadcasting the live video you recorded for others to see. True means you are broadcasting to viewers, false means you are not. |  [optional]
+**createdAt** | **OffsetDateTime** | When the player was created, presented in ISO-8601 format. |  [optional]
+**updatedAt** | **OffsetDateTime** | When the player was last updated, presented in ISO-8601 format. |  [optional]
 
 
 ## Implemented Interfaces

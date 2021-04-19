@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import video.api.client.api.models.LiveStreamAssets;
 import java.io.Serializable;
 
@@ -62,6 +63,14 @@ public class LiveStream implements Serializable {
     public static final String SERIALIZED_NAME_BROADCASTING = "broadcasting";
     @SerializedName(SERIALIZED_NAME_BROADCASTING)
     private Boolean broadcasting;
+
+    public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+    @SerializedName(SERIALIZED_NAME_CREATED_AT)
+    private OffsetDateTime createdAt;
+
+    public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+    @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+    private OffsetDateTime updatedAt;
 
     public LiveStream liveStreamId(String liveStreamId) {
         this.liveStreamId = liveStreamId;
@@ -234,6 +243,48 @@ public class LiveStream implements Serializable {
         this.broadcasting = broadcasting;
     }
 
+    public LiveStream createdAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    /**
+     * When the player was created, presented in ISO-8601 format.
+     * 
+     * @return createdAt
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "2020-01-31T10:17:47Z", value = "When the player was created, presented in ISO-8601 format.")
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LiveStream updatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+
+    /**
+     * When the player was last updated, presented in ISO-8601 format.
+     * 
+     * @return updatedAt
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "2020-01-31T10:18:47Z", value = "When the player was last updated, presented in ISO-8601 format.")
+
+    public OffsetDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -247,12 +298,15 @@ public class LiveStream implements Serializable {
                 && Objects.equals(this.streamKey, liveStream.streamKey)
                 && Objects.equals(this.record, liveStream.record) && Objects.equals(this._public, liveStream._public)
                 && Objects.equals(this.assets, liveStream.assets) && Objects.equals(this.playerId, liveStream.playerId)
-                && Objects.equals(this.broadcasting, liveStream.broadcasting);
+                && Objects.equals(this.broadcasting, liveStream.broadcasting)
+                && Objects.equals(this.createdAt, liveStream.createdAt)
+                && Objects.equals(this.updatedAt, liveStream.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(liveStreamId, name, streamKey, record, _public, assets, playerId, broadcasting);
+        return Objects.hash(liveStreamId, name, streamKey, record, _public, assets, playerId, broadcasting, createdAt,
+                updatedAt);
     }
 
     @Override
@@ -267,6 +321,8 @@ public class LiveStream implements Serializable {
         sb.append("    assets: ").append(toIndentedString(assets)).append("\n");
         sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
         sb.append("    broadcasting: ").append(toIndentedString(broadcasting)).append("\n");
+        sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+        sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
         sb.append("}");
         return sb.toString();
     }
