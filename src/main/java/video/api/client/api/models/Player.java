@@ -22,9 +22,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
-import video.api.client.api.models.PlayerAllOf;
-import video.api.client.api.models.PlayerAllOfAssets;
-import video.api.client.api.models.Playerinput;
+import video.api.client.api.models.PlayerAssets;
 import java.io.Serializable;
 
 /**
@@ -72,23 +70,23 @@ public class Player implements Serializable {
 
     public static final String SERIALIZED_NAME_ENABLE_API = "enableApi";
     @SerializedName(SERIALIZED_NAME_ENABLE_API)
-    private Boolean enableApi = true;
+    private Boolean enableApi;
 
     public static final String SERIALIZED_NAME_ENABLE_CONTROLS = "enableControls";
     @SerializedName(SERIALIZED_NAME_ENABLE_CONTROLS)
-    private Boolean enableControls = true;
+    private Boolean enableControls;
 
     public static final String SERIALIZED_NAME_FORCE_AUTOPLAY = "forceAutoplay";
     @SerializedName(SERIALIZED_NAME_FORCE_AUTOPLAY)
-    private Boolean forceAutoplay = false;
+    private Boolean forceAutoplay;
 
     public static final String SERIALIZED_NAME_HIDE_TITLE = "hideTitle";
     @SerializedName(SERIALIZED_NAME_HIDE_TITLE)
-    private Boolean hideTitle = false;
+    private Boolean hideTitle;
 
     public static final String SERIALIZED_NAME_FORCE_LOOP = "forceLoop";
     @SerializedName(SERIALIZED_NAME_FORCE_LOOP)
-    private Boolean forceLoop = false;
+    private Boolean forceLoop;
 
     public static final String SERIALIZED_NAME_PLAYER_ID = "playerId";
     @SerializedName(SERIALIZED_NAME_PLAYER_ID)
@@ -128,7 +126,7 @@ public class Player implements Serializable {
 
     public static final String SERIALIZED_NAME_ASSETS = "assets";
     @SerializedName(SERIALIZED_NAME_ASSETS)
-    private PlayerAllOfAssets assets;
+    private PlayerAssets assets;
 
     public Player text(String text) {
         this.text = text;
@@ -613,7 +611,7 @@ public class Player implements Serializable {
         this.linkActive = linkActive;
     }
 
-    public Player assets(PlayerAllOfAssets assets) {
+    public Player assets(PlayerAssets assets) {
         this.assets = assets;
         return this;
     }
@@ -626,11 +624,11 @@ public class Player implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "")
 
-    public PlayerAllOfAssets getAssets() {
+    public PlayerAssets getAssets() {
         return assets;
     }
 
-    public void setAssets(PlayerAllOfAssets assets) {
+    public void setAssets(PlayerAssets assets) {
         this.assets = assets;
     }
 

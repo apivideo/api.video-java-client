@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **shapeBackgroundTop** | **String** | Deprecated |  [optional]
 **shapeBackgroundBottom** | **String** | Deprecated |  [optional]
 **linkActive** | **String** | Deprecated |  [optional]
-**assets** | [**PlayerAllOfAssets**](PlayerAllOfAssets.md) |  |  [optional]
+**assets** | [**PlayerAssets**](PlayerAssets.md) |  |  [optional]
 
 
 ## Implemented Interfaces

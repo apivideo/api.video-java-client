@@ -315,6 +315,20 @@ public class Example {
     
     String playerId = "pl45d5vFFGrfdsdsd156dGhh"; // The unique identifier for the player.
     PlayerUpdatePayload playerUpdatePayload = new PlayerUpdatePayload(); // 
+    playerUpdatePayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
+    playerUpdatePayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
+    playerUpdatePayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
+    playerUpdatePayload.setTrackPlayed(""null""); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
+    playerUpdatePayload.setTrackUnplayed(""null""); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
+    playerUpdatePayload.setTrackBackground(""null""); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
+    playerUpdatePayload.setBackgroundTop(""null""); // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
+    playerUpdatePayload.setBackgroundBottom(""null""); // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
+    playerUpdatePayload.setBackgroundText(""null""); // RGBA color for title text. Default: rgba(255, 255, 255, 1)
+    playerUpdatePayload.setEnableApi(); // enable/disable player SDK access. Default: true
+    playerUpdatePayload.setEnableControls(); // enable/disable player controls. Default: true
+    playerUpdatePayload.setForceAutoplay(); // enable/disable player autoplay. Default: false
+    playerUpdatePayload.setHideTitle(); // enable/disable title. Default: false
+    playerUpdatePayload.setForceLoop(); // enable/disable looping. Default: false
 
 
     try {
@@ -384,6 +398,20 @@ public class Example {
     PlayerThemesApi apiInstance = client.playerThemes();
     
     PlayerCreationPayload playerCreationPayload = new PlayerCreationPayload(); // 
+    playerCreationPayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
+    playerCreationPayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
+    playerCreationPayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
+    playerCreationPayload.setTrackPlayed(""null""); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
+    playerCreationPayload.setTrackUnplayed(""null""); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
+    playerCreationPayload.setTrackBackground(""null""); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
+    playerCreationPayload.setBackgroundTop(""null""); // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
+    playerCreationPayload.setBackgroundBottom(""null""); // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
+    playerCreationPayload.setBackgroundText(""null""); // RGBA color for title text. Default: rgba(255, 255, 255, 1)
+    playerCreationPayload.setEnableApi(); // enable/disable player SDK access. Default: true
+    playerCreationPayload.setEnableControls(); // enable/disable player controls. Default: true
+    playerCreationPayload.setForceAutoplay(); // enable/disable player autoplay. Default: false
+    playerCreationPayload.setHideTitle(); // enable/disable title. Default: false
+    playerCreationPayload.setForceLoop(); // enable/disable looping. Default: false
 
 
     try {

@@ -1,3 +1,5 @@
+![](https://github.com/apivideo/API_OAS_file/blob/master/apivideo_banner.png)
+
 # api.video java API client
 
 api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
@@ -21,7 +23,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>video.api</groupId>
   <artifactId>java-api-client</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -31,7 +33,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "video.api:java-api-client:1.0.1"
+compile "video.api:java-api-client:1.0.2"
 ```
 
 ### Others
@@ -44,7 +46,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/java-api-client-1.0.1.jar`
+* `target/java-api-client-1.0.2.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -280,12 +282,10 @@ Method | HTTP request | Description
  - [Pagination](docs/Pagination.md)
  - [PaginationLink](docs/PaginationLink.md)
  - [Player](docs/Player.md)
- - [PlayerAllOf](docs/PlayerAllOf.md)
- - [PlayerAllOfAssets](docs/PlayerAllOfAssets.md)
+ - [PlayerAssets](docs/PlayerAssets.md)
  - [PlayerCreationPayload](docs/PlayerCreationPayload.md)
  - [PlayerSessionEvent](docs/PlayerSessionEvent.md)
  - [PlayerUpdatePayload](docs/PlayerUpdatePayload.md)
- - [Playerinput](docs/Playerinput.md)
  - [PlayersListResponse](docs/PlayersListResponse.md)
  - [Quality](docs/Quality.md)
  - [RawStatisticsListLiveStreamAnalyticsResponse](docs/RawStatisticsListLiveStreamAnalyticsResponse.md)
@@ -341,8 +341,3 @@ ApiVideoClient apiVideoClient = new ApiVideoClient();
 ## Recommendation
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
-
-## Author
-
-
-

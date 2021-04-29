@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import video.api.client.api.models.Playerinput;
 import java.io.Serializable;
 
 /**
@@ -69,23 +68,23 @@ public class PlayerUpdatePayload implements Serializable {
 
     public static final String SERIALIZED_NAME_ENABLE_API = "enableApi";
     @SerializedName(SERIALIZED_NAME_ENABLE_API)
-    private Boolean enableApi = true;
+    private Boolean enableApi;
 
     public static final String SERIALIZED_NAME_ENABLE_CONTROLS = "enableControls";
     @SerializedName(SERIALIZED_NAME_ENABLE_CONTROLS)
-    private Boolean enableControls = true;
+    private Boolean enableControls;
 
     public static final String SERIALIZED_NAME_FORCE_AUTOPLAY = "forceAutoplay";
     @SerializedName(SERIALIZED_NAME_FORCE_AUTOPLAY)
-    private Boolean forceAutoplay = false;
+    private Boolean forceAutoplay;
 
     public static final String SERIALIZED_NAME_HIDE_TITLE = "hideTitle";
     @SerializedName(SERIALIZED_NAME_HIDE_TITLE)
-    private Boolean hideTitle = false;
+    private Boolean hideTitle;
 
     public static final String SERIALIZED_NAME_FORCE_LOOP = "forceLoop";
     @SerializedName(SERIALIZED_NAME_FORCE_LOOP)
-    private Boolean forceLoop = false;
+    private Boolean forceLoop;
 
     public PlayerUpdatePayload text(String text) {
         this.text = text;
