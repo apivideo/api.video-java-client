@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * LiveStreamCreatePayload
+ * LiveStreamCreationPayload
  */
 
-public class LiveStreamCreatePayload implements Serializable {
+public class LiveStreamCreationPayload implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_NAME = "name";
@@ -46,7 +46,7 @@ public class LiveStreamCreatePayload implements Serializable {
     @SerializedName(SERIALIZED_NAME_PLAYER_ID)
     private String playerId;
 
-    public LiveStreamCreatePayload name(String name) {
+    public LiveStreamCreationPayload name(String name) {
         this.name = name;
         return this;
     }
@@ -66,7 +66,7 @@ public class LiveStreamCreatePayload implements Serializable {
         this.name = name;
     }
 
-    public LiveStreamCreatePayload record(Boolean record) {
+    public LiveStreamCreationPayload record(Boolean record) {
         this.record = record;
         return this;
     }
@@ -87,7 +87,7 @@ public class LiveStreamCreatePayload implements Serializable {
         this.record = record;
     }
 
-    public LiveStreamCreatePayload _public(Boolean _public) {
+    public LiveStreamCreationPayload _public(Boolean _public) {
         this._public = _public;
         return this;
     }
@@ -110,7 +110,7 @@ public class LiveStreamCreatePayload implements Serializable {
         this._public = _public;
     }
 
-    public LiveStreamCreatePayload playerId(String playerId) {
+    public LiveStreamCreationPayload playerId(String playerId) {
         this.playerId = playerId;
         return this;
     }
@@ -139,11 +139,11 @@ public class LiveStreamCreatePayload implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        LiveStreamCreatePayload liveStreamCreatePayload = (LiveStreamCreatePayload) o;
-        return Objects.equals(this.name, liveStreamCreatePayload.name)
-                && Objects.equals(this.record, liveStreamCreatePayload.record)
-                && Objects.equals(this._public, liveStreamCreatePayload._public)
-                && Objects.equals(this.playerId, liveStreamCreatePayload.playerId);
+        LiveStreamCreationPayload liveStreamCreationPayload = (LiveStreamCreationPayload) o;
+        return Objects.equals(this.name, liveStreamCreationPayload.name)
+                && Objects.equals(this.record, liveStreamCreationPayload.record)
+                && Objects.equals(this._public, liveStreamCreationPayload._public)
+                && Objects.equals(this.playerId, liveStreamCreationPayload.playerId);
     }
 
     @Override
@@ -154,7 +154,7 @@ public class LiveStreamCreatePayload implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class LiveStreamCreatePayload {\n");
+        sb.append("class LiveStreamCreationPayload {\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    record: ").append(toIndentedString(record)).append("\n");
         sb.append("    _public: ").append(toIndentedString(_public)).append("\n");

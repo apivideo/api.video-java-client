@@ -231,12 +231,12 @@ public class LiveStreamsApiTest extends AbstractApiTest {
             answerOnAnyRequest(201, "{}");
 
             assertThatThrownBy(() -> api.create(null)).isInstanceOf(ApiException.class)
-                    .hasMessage("Missing the required parameter 'liveStreamCreatePayload' when calling create");
+                    .hasMessage("Missing the required parameter 'liveStreamCreationPayload' when calling create");
 
-            assertThatThrownBy(() -> api.create(new LiveStreamCreatePayload())).isInstanceOf(ApiException.class)
-                    .hasMessage("Missing the required parameter 'liveStreamCreatePayload.name' when calling create");
+            assertThatThrownBy(() -> api.create(new LiveStreamCreationPayload())).isInstanceOf(ApiException.class)
+                    .hasMessage("Missing the required parameter 'liveStreamCreationPayload.name' when calling create");
 
-            assertThatNoException().isThrownBy(() -> api.create(new LiveStreamCreatePayload().name("name")));
+            assertThatNoException().isThrownBy(() -> api.create(new LiveStreamCreationPayload().name("name")));
         }
 
         @Test
@@ -244,7 +244,7 @@ public class LiveStreamsApiTest extends AbstractApiTest {
         public void responseWithStatus200Test() throws ApiException {
             answerOnAnyRequest(200, readResourceFile(PAYLOADS_PATH + "responses/200.json"));
 
-            LiveStream res = api.create(new LiveStreamCreatePayload().name("name"));
+            LiveStream res = api.create(new LiveStreamCreationPayload().name("name"));
 
             assertThat(res.getLiveStreamId()).isEqualTo("li4pqNqGUkhKfWcBGpZVLRY5");
             assertThat(res.getStreamKey()).isEqualTo("cc1b4df0-d1c5-4064-a8f9-9f0368385135");
@@ -263,7 +263,7 @@ public class LiveStreamsApiTest extends AbstractApiTest {
         public void responseWithStatus400Test() throws ApiException {
             answerOnAnyRequest(400, "");
 
-            assertThatThrownBy(() -> api.create(new LiveStreamCreatePayload().name("name")))
+            assertThatThrownBy(() -> api.create(new LiveStreamCreationPayload().name("name")))
                     .isInstanceOf(ApiException.class)
                     .satisfies(e -> assertThat(((ApiException) e).getCode()).isEqualTo(400)).hasMessage("");
         }

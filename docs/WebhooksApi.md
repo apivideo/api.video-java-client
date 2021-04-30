@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 <a name="create"></a>
 # **create**
-> Webhook create(webhooksCreatePayload)
+> Webhook create(webhooksCreationPayload)
 
 Create Webhook
 
@@ -241,13 +241,13 @@ public class Example {
 
     WebhooksApi apiInstance = client.webhooks();
     
-    WebhooksCreatePayload webhooksCreatePayload = new WebhooksCreatePayload(); // 
-    webhooksCreatePayload.setEvents(Arrays.asList(video.encoding.quality.completed)); // A list of the webhooks that you are subscribing to. Currently &quot;video.encoding.quality.completed&quot; is the only option. video.encoding.quality.completed - a video encoding quality is ready for the video (for example the 720p quality hls encoding video is ready.)
-    webhooksCreatePayload.setUrl("https://example.com/webhooks"); // The the url to which HTTP notifications are sent. It could be any http or https URL.
+    WebhooksCreationPayload webhooksCreationPayload = new WebhooksCreationPayload(); // 
+    webhooksCreationPayload.setEvents(Arrays.asList(video.encoding.quality.completed)); // A list of the webhooks that you are subscribing to. Currently &quot;video.encoding.quality.completed&quot; is the only option. video.encoding.quality.completed - a video encoding quality is ready for the video (for example the 720p quality hls encoding video is ready.)
+    webhooksCreationPayload.setUrl("https://example.com/webhooks"); // The the url to which HTTP notifications are sent. It could be any http or https URL.
 
 
     try {
-      Webhook result = apiInstance.create(webhooksCreatePayload);
+      Webhook result = apiInstance.create(webhooksCreationPayload);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WebhooksApi#create");
@@ -264,7 +264,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhooksCreatePayload** | [**WebhooksCreatePayload**](WebhooksCreatePayload.md)|  |
+ **webhooksCreationPayload** | [**WebhooksCreationPayload**](WebhooksCreationPayload.md)|  |
 
 ### Return type
 

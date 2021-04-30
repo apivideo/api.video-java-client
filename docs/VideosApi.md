@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 <a name="getStatus"></a>
 # **getStatus**
-> Videostatus getStatus(videoId)
+> VideoStatus getStatus(videoId)
 
 Show video status
 
@@ -177,7 +177,7 @@ public class Example {
     String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the video you want the status for.
 
     try {
-      Videostatus result = apiInstance.getStatus(videoId);
+      VideoStatus result = apiInstance.getStatus(videoId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VideosApi#getStatus");
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 
-[**Videostatus**](Videostatus.md)
+[**VideoStatus**](VideoStatus.md)
 
 ### Authorization
 
@@ -546,7 +546,7 @@ No authorization required
 
 <a name="create"></a>
 # **create**
-> Video create(videoCreatePayload)
+> Video create(videoCreationPayload)
 
 Create a video
 
@@ -569,21 +569,21 @@ public class Example {
 
     VideosApi apiInstance = client.videos();
     
-    VideoCreatePayload videoCreatePayload = new VideoCreatePayload(); // video to create
-    videoCreatePayload.setTitle("Maths video"); // The title of your new video.
-    videoCreatePayload.setDescription("A video about string theory."); // A brief description of your video.
-    videoCreatePayload.setSource("https://www.myvideo.url.com/video.mp4"); // If you add a video already on the web, this is where you enter the url for the video.
-    videoCreatePayload.setPublic(true); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-    videoCreatePayload.setPanoramic(false); // Indicates if your video is a 360/immersive video.
-    videoCreatePayload.setMp4Support(true); // Enables mp4 version in addition to streamed version.
-    videoCreatePayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique identification number for your video player.
-    videoCreatePayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of tags you want to use to describe your video.
-    videoCreatePayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
-    videoCreatePayload.setPublishedAt(OffsetDateTime.parse("2020-07-14T23:36:18.598Z")); // The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
+    VideoCreationPayload videoCreationPayload = new VideoCreationPayload(); // video to create
+    videoCreationPayload.setTitle("Maths video"); // The title of your new video.
+    videoCreationPayload.setDescription("A video about string theory."); // A brief description of your video.
+    videoCreationPayload.setSource("https://www.myvideo.url.com/video.mp4"); // If you add a video already on the web, this is where you enter the url for the video.
+    videoCreationPayload.setPublic(true); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+    videoCreationPayload.setPanoramic(false); // Indicates if your video is a 360/immersive video.
+    videoCreationPayload.setMp4Support(true); // Enables mp4 version in addition to streamed version.
+    videoCreationPayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique identification number for your video player.
+    videoCreationPayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of tags you want to use to describe your video.
+    videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
+    videoCreationPayload.setPublishedAt(OffsetDateTime.parse("2020-07-14T23:36:18.598Z")); // The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
 
 
     try {
-      Video result = apiInstance.create(videoCreatePayload);
+      Video result = apiInstance.create(videoCreationPayload);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling VideosApi#create");
@@ -600,7 +600,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoCreatePayload** | [**VideoCreatePayload**](VideoCreatePayload.md)| video to create |
+ **videoCreationPayload** | [**VideoCreationPayload**](VideoCreationPayload.md)| video to create |
 
 ### Return type
 

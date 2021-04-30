@@ -575,7 +575,7 @@ public class WebhooksApi {
     /**
      * Build call for create
      * 
-     * @param webhooksCreatePayload
+     * @param webhooksCreationPayload
      *            (required)
      * @param _callback
      *            Callback for upload/download progress
@@ -604,9 +604,9 @@ public class WebhooksApi {
      *                        </tr>
      *                        </table>
      */
-    private okhttp3.Call createCall(WebhooksCreatePayload webhooksCreatePayload, final ApiCallback _callback)
+    private okhttp3.Call createCall(WebhooksCreationPayload webhooksCreationPayload, final ApiCallback _callback)
             throws ApiException {
-        Object localVarPostBody = webhooksCreatePayload;
+        Object localVarPostBody = webhooksCreationPayload;
 
         // create path and map variables
         String localVarPath = "/webhooks";
@@ -634,23 +634,24 @@ public class WebhooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createValidateBeforeCall(WebhooksCreatePayload webhooksCreatePayload,
+    private okhttp3.Call createValidateBeforeCall(WebhooksCreationPayload webhooksCreationPayload,
             final ApiCallback _callback) throws ApiException {
 
-        // verify the required parameter 'webhooksCreatePayload' is set
-        if (webhooksCreatePayload == null) {
-            throw new ApiException("Missing the required parameter 'webhooksCreatePayload' when calling create");
+        // verify the required parameter 'webhooksCreationPayload' is set
+        if (webhooksCreationPayload == null) {
+            throw new ApiException("Missing the required parameter 'webhooksCreationPayload' when calling create");
         }
 
-        if (webhooksCreatePayload.getEvents() == null) {
-            throw new ApiException("Missing the required parameter 'webhooksCreatePayload.events' when calling create");
+        if (webhooksCreationPayload.getEvents() == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'webhooksCreationPayload.events' when calling create");
         }
 
-        if (webhooksCreatePayload.getUrl() == null) {
-            throw new ApiException("Missing the required parameter 'webhooksCreatePayload.url' when calling create");
+        if (webhooksCreationPayload.getUrl() == null) {
+            throw new ApiException("Missing the required parameter 'webhooksCreationPayload.url' when calling create");
         }
 
-        okhttp3.Call localVarCall = createCall(webhooksCreatePayload, _callback);
+        okhttp3.Call localVarCall = createCall(webhooksCreationPayload, _callback);
         return localVarCall;
     }
 
@@ -664,7 +665,7 @@ public class WebhooksApi {
      * \\\&quot;encoding\\\&quot;: \\\&quot;hls\\\&quot;, \\\&quot;quality\\\&quot;: \\\&quot;720p\\\&quot;}
      * &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed.
      * 
-     * @param webhooksCreatePayload
+     * @param webhooksCreationPayload
      *            (required)
      * 
      * @return Webhook
@@ -691,8 +692,8 @@ public class WebhooksApi {
      *                        </tr>
      *                        </table>
      */
-    public Webhook create(WebhooksCreatePayload webhooksCreatePayload) throws ApiException {
-        ApiResponse<Webhook> localVarResp = createWithHttpInfo(webhooksCreatePayload);
+    public Webhook create(WebhooksCreationPayload webhooksCreationPayload) throws ApiException {
+        ApiResponse<Webhook> localVarResp = createWithHttpInfo(webhooksCreationPayload);
         return localVarResp.getData();
     }
 
@@ -706,7 +707,7 @@ public class WebhooksApi {
      * \\\&quot;encoding\\\&quot;: \\\&quot;hls\\\&quot;, \\\&quot;quality\\\&quot;: \\\&quot;720p\\\&quot;}
      * &#x60;&#x60;&#x60;. This request says that the 720p HLS encoding was completed.
      * 
-     * @param webhooksCreatePayload
+     * @param webhooksCreationPayload
      *            (required)
      * 
      * @return ApiResponse&lt;Webhook&gt;
@@ -733,8 +734,9 @@ public class WebhooksApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreatePayload webhooksCreatePayload) throws ApiException {
-        okhttp3.Call localVarCall = createValidateBeforeCall(webhooksCreatePayload, null);
+    public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreationPayload webhooksCreationPayload)
+            throws ApiException {
+        okhttp3.Call localVarCall = createValidateBeforeCall(webhooksCreationPayload, null);
         Type localVarReturnType = new TypeToken<Webhook>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);

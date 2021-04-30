@@ -419,7 +419,7 @@ public class VideosApi {
      * @param videoId
      *            The unique identifier for the video you want the status for. (required)
      * 
-     * @return Videostatus
+     * @return VideoStatus
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -443,8 +443,8 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
-    public Videostatus getStatus(String videoId) throws ApiException {
-        ApiResponse<Videostatus> localVarResp = getStatusWithHttpInfo(videoId);
+    public VideoStatus getStatus(String videoId) throws ApiException {
+        ApiResponse<VideoStatus> localVarResp = getStatusWithHttpInfo(videoId);
         return localVarResp.getData();
     }
 
@@ -455,7 +455,7 @@ public class VideosApi {
      * @param videoId
      *            The unique identifier for the video you want the status for. (required)
      * 
-     * @return ApiResponse&lt;Videostatus&gt;
+     * @return ApiResponse&lt;VideoStatus&gt;
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -479,9 +479,9 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Videostatus> getStatusWithHttpInfo(String videoId) throws ApiException {
+    public ApiResponse<VideoStatus> getStatusWithHttpInfo(String videoId) throws ApiException {
         okhttp3.Call localVarCall = getStatusValidateBeforeCall(videoId, null);
-        Type localVarReturnType = new TypeToken<Videostatus>() {
+        Type localVarReturnType = new TypeToken<VideoStatus>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1694,7 +1694,7 @@ public class VideosApi {
     /**
      * Build call for create
      * 
-     * @param videoCreatePayload
+     * @param videoCreationPayload
      *            video to create (required)
      * @param _callback
      *            Callback for upload/download progress
@@ -1728,9 +1728,9 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
-    private okhttp3.Call createCall(VideoCreatePayload videoCreatePayload, final ApiCallback _callback)
+    private okhttp3.Call createCall(VideoCreationPayload videoCreationPayload, final ApiCallback _callback)
             throws ApiException {
-        Object localVarPostBody = videoCreatePayload;
+        Object localVarPostBody = videoCreationPayload;
 
         // create path and map variables
         String localVarPath = "/videos";
@@ -1758,19 +1758,19 @@ public class VideosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createValidateBeforeCall(VideoCreatePayload videoCreatePayload, final ApiCallback _callback)
-            throws ApiException {
+    private okhttp3.Call createValidateBeforeCall(VideoCreationPayload videoCreationPayload,
+            final ApiCallback _callback) throws ApiException {
 
-        // verify the required parameter 'videoCreatePayload' is set
-        if (videoCreatePayload == null) {
-            throw new ApiException("Missing the required parameter 'videoCreatePayload' when calling create");
+        // verify the required parameter 'videoCreationPayload' is set
+        if (videoCreationPayload == null) {
+            throw new ApiException("Missing the required parameter 'videoCreationPayload' when calling create");
         }
 
-        if (videoCreatePayload.getTitle() == null) {
-            throw new ApiException("Missing the required parameter 'videoCreatePayload.title' when calling create");
+        if (videoCreationPayload.getTitle() == null) {
+            throw new ApiException("Missing the required parameter 'videoCreationPayload.title' when calling create");
         }
 
-        okhttp3.Call localVarCall = createCall(videoCreatePayload, _callback);
+        okhttp3.Call localVarCall = createCall(videoCreationPayload, _callback);
         return localVarCall;
     }
 
@@ -1790,7 +1790,7 @@ public class VideosApi {
      * videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private
      * videos](https://api.video/blog/tutorials/tutorial-private-videos)
      * 
-     * @param videoCreatePayload
+     * @param videoCreationPayload
      *            video to create (required)
      * 
      * @return Video
@@ -1822,8 +1822,8 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
-    public Video create(VideoCreatePayload videoCreatePayload) throws ApiException {
-        ApiResponse<Video> localVarResp = createWithHttpInfo(videoCreatePayload);
+    public Video create(VideoCreationPayload videoCreationPayload) throws ApiException {
+        ApiResponse<Video> localVarResp = createWithHttpInfo(videoCreationPayload);
         return localVarResp.getData();
     }
 
@@ -1843,7 +1843,7 @@ public class VideosApi {
      * videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private
      * videos](https://api.video/blog/tutorials/tutorial-private-videos)
      * 
-     * @param videoCreatePayload
+     * @param videoCreationPayload
      *            video to create (required)
      * 
      * @return ApiResponse&lt;Video&gt;
@@ -1875,8 +1875,8 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Video> createWithHttpInfo(VideoCreatePayload videoCreatePayload) throws ApiException {
-        okhttp3.Call localVarCall = createValidateBeforeCall(videoCreatePayload, null);
+    public ApiResponse<Video> createWithHttpInfo(VideoCreationPayload videoCreationPayload) throws ApiException {
+        okhttp3.Call localVarCall = createValidateBeforeCall(videoCreationPayload, null);
         Type localVarReturnType = new TypeToken<Video>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);

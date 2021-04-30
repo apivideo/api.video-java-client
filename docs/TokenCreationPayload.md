@@ -1,6 +1,6 @@
 
 
-# TokenCreatePayload
+# TokenCreationPayload
 
 ## Properties
 

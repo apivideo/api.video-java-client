@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 <a name="createToken"></a>
 # **createToken**
-> UploadToken createToken(tokenCreatePayload)
+> UploadToken createToken(tokenCreationPayload)
 
 Generate an upload token
 
@@ -245,12 +245,12 @@ public class Example {
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
-    TokenCreatePayload tokenCreatePayload = new TokenCreatePayload(); // 
-    tokenCreatePayload.setTtl(); // Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
+    TokenCreationPayload tokenCreationPayload = new TokenCreationPayload(); // 
+    tokenCreationPayload.setTtl(); // Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
 
 
     try {
-      UploadToken result = apiInstance.createToken(tokenCreatePayload);
+      UploadToken result = apiInstance.createToken(tokenCreationPayload);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UploadTokensApi#createToken");
@@ -267,7 +267,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tokenCreatePayload** | [**TokenCreatePayload**](TokenCreatePayload.md)|  |
+ **tokenCreationPayload** | [**TokenCreationPayload**](TokenCreationPayload.md)|  |
 
 ### Return type
 

@@ -24,36 +24,60 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * TokenCreatePayload
+ * PlayerAssets
  */
 
-public class TokenCreatePayload implements Serializable {
+public class PlayerAssets implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_TTL = "ttl";
-    @SerializedName(SERIALIZED_NAME_TTL)
-    private Integer ttl = 0;
+    public static final String SERIALIZED_NAME_LOGO = "logo";
+    @SerializedName(SERIALIZED_NAME_LOGO)
+    private String logo;
 
-    public TokenCreatePayload ttl(Integer ttl) {
-        this.ttl = ttl;
+    public static final String SERIALIZED_NAME_LINK = "link";
+    @SerializedName(SERIALIZED_NAME_LINK)
+    private String link;
+
+    public PlayerAssets logo(String logo) {
+        this.logo = logo;
         return this;
     }
 
     /**
-     * Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The
-     * default is to have no expiration. minimum: 0 maximum: 2147483647
+     * The name of the file containing the logo you want to use.
      * 
-     * @return ttl
+     * @return logo
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.")
+    @ApiModelProperty(example = "mylogo.jpg", value = "The name of the file containing the logo you want to use.")
 
-    public Integer getTtl() {
-        return ttl;
+    public String getLogo() {
+        return logo;
     }
 
-    public void setTtl(Integer ttl) {
-        this.ttl = ttl;
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public PlayerAssets link(String link) {
+        this.link = link;
+        return this;
+    }
+
+    /**
+     * The path to the file containing your logo.
+     * 
+     * @return link
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "path/to/my/logo/mylogo.jpg", value = "The path to the file containing your logo.")
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     @Override
@@ -64,20 +88,21 @@ public class TokenCreatePayload implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        TokenCreatePayload tokenCreatePayload = (TokenCreatePayload) o;
-        return Objects.equals(this.ttl, tokenCreatePayload.ttl);
+        PlayerAssets playerAssets = (PlayerAssets) o;
+        return Objects.equals(this.logo, playerAssets.logo) && Objects.equals(this.link, playerAssets.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ttl);
+        return Objects.hash(logo, link);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class TokenCreatePayload {\n");
-        sb.append("    ttl: ").append(toIndentedString(ttl)).append("\n");
+        sb.append("class PlayerAssets {\n");
+        sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
+        sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("}");
         return sb.toString();
     }

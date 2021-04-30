@@ -623,7 +623,7 @@ public class UploadTokensApi {
     /**
      * Build call for createToken
      * 
-     * @param tokenCreatePayload
+     * @param tokenCreationPayload
      *            (required)
      * @param _callback
      *            Callback for upload/download progress
@@ -652,9 +652,9 @@ public class UploadTokensApi {
      *                        </tr>
      *                        </table>
      */
-    private okhttp3.Call createTokenCall(TokenCreatePayload tokenCreatePayload, final ApiCallback _callback)
+    private okhttp3.Call createTokenCall(TokenCreationPayload tokenCreationPayload, final ApiCallback _callback)
             throws ApiException {
-        Object localVarPostBody = tokenCreatePayload;
+        Object localVarPostBody = tokenCreationPayload;
 
         // create path and map variables
         String localVarPath = "/upload-tokens";
@@ -682,15 +682,15 @@ public class UploadTokensApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createTokenValidateBeforeCall(TokenCreatePayload tokenCreatePayload,
+    private okhttp3.Call createTokenValidateBeforeCall(TokenCreationPayload tokenCreationPayload,
             final ApiCallback _callback) throws ApiException {
 
-        // verify the required parameter 'tokenCreatePayload' is set
-        if (tokenCreatePayload == null) {
-            throw new ApiException("Missing the required parameter 'tokenCreatePayload' when calling createToken");
+        // verify the required parameter 'tokenCreationPayload' is set
+        if (tokenCreationPayload == null) {
+            throw new ApiException("Missing the required parameter 'tokenCreationPayload' when calling createToken");
         }
 
-        okhttp3.Call localVarCall = createTokenCall(tokenCreatePayload, _callback);
+        okhttp3.Call localVarCall = createTokenCall(tokenCreationPayload, _callback);
         return localVarCall;
     }
 
@@ -698,7 +698,7 @@ public class UploadTokensApi {
      * Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate
      * video uploads while keeping your API key safe.
      * 
-     * @param tokenCreatePayload
+     * @param tokenCreationPayload
      *            (required)
      * 
      * @return UploadToken
@@ -725,8 +725,8 @@ public class UploadTokensApi {
      *                        </tr>
      *                        </table>
      */
-    public UploadToken createToken(TokenCreatePayload tokenCreatePayload) throws ApiException {
-        ApiResponse<UploadToken> localVarResp = createTokenWithHttpInfo(tokenCreatePayload);
+    public UploadToken createToken(TokenCreationPayload tokenCreationPayload) throws ApiException {
+        ApiResponse<UploadToken> localVarResp = createTokenWithHttpInfo(tokenCreationPayload);
         return localVarResp.getData();
     }
 
@@ -734,7 +734,7 @@ public class UploadTokensApi {
      * Generate an upload token Use this endpoint to generate an upload token. You can use this token to authenticate
      * video uploads while keeping your API key safe.
      * 
-     * @param tokenCreatePayload
+     * @param tokenCreationPayload
      *            (required)
      * 
      * @return ApiResponse&lt;UploadToken&gt;
@@ -761,8 +761,9 @@ public class UploadTokensApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<UploadToken> createTokenWithHttpInfo(TokenCreatePayload tokenCreatePayload) throws ApiException {
-        okhttp3.Call localVarCall = createTokenValidateBeforeCall(tokenCreatePayload, null);
+    public ApiResponse<UploadToken> createTokenWithHttpInfo(TokenCreationPayload tokenCreationPayload)
+            throws ApiException {
+        okhttp3.Call localVarCall = createTokenValidateBeforeCall(tokenCreationPayload, null);
         Type localVarReturnType = new TypeToken<UploadToken>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);

@@ -21,65 +21,39 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import video.api.client.api.models.VideoStatusEncoding;
-import video.api.client.api.models.VideoStatusIngest;
 import java.io.Serializable;
 
 /**
- * VideoStatus
+ * TokenCreationPayload
  */
 
-public class VideoStatus implements Serializable {
+public class TokenCreationPayload implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    public static final String SERIALIZED_NAME_INGEST = "ingest";
-    @SerializedName(SERIALIZED_NAME_INGEST)
-    private VideoStatusIngest ingest;
+    public static final String SERIALIZED_NAME_TTL = "ttl";
+    @SerializedName(SERIALIZED_NAME_TTL)
+    private Integer ttl = 0;
 
-    public static final String SERIALIZED_NAME_ENCODING = "encoding";
-    @SerializedName(SERIALIZED_NAME_ENCODING)
-    private VideoStatusEncoding encoding;
-
-    public VideoStatus ingest(VideoStatusIngest ingest) {
-        this.ingest = ingest;
+    public TokenCreationPayload ttl(Integer ttl) {
+        this.ttl = ttl;
         return this;
     }
 
     /**
-     * Get ingest
+     * Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The
+     * default is to have no expiration. minimum: 0 maximum: 2147483647
      * 
-     * @return ingest
+     * @return ttl
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value = "Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.")
 
-    public VideoStatusIngest getIngest() {
-        return ingest;
+    public Integer getTtl() {
+        return ttl;
     }
 
-    public void setIngest(VideoStatusIngest ingest) {
-        this.ingest = ingest;
-    }
-
-    public VideoStatus encoding(VideoStatusEncoding encoding) {
-        this.encoding = encoding;
-        return this;
-    }
-
-    /**
-     * Get encoding
-     * 
-     * @return encoding
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
-
-    public VideoStatusEncoding getEncoding() {
-        return encoding;
-    }
-
-    public void setEncoding(VideoStatusEncoding encoding) {
-        this.encoding = encoding;
+    public void setTtl(Integer ttl) {
+        this.ttl = ttl;
     }
 
     @Override
@@ -90,21 +64,20 @@ public class VideoStatus implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        VideoStatus videoStatus = (VideoStatus) o;
-        return Objects.equals(this.ingest, videoStatus.ingest) && Objects.equals(this.encoding, videoStatus.encoding);
+        TokenCreationPayload tokenCreationPayload = (TokenCreationPayload) o;
+        return Objects.equals(this.ttl, tokenCreationPayload.ttl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ingest, encoding);
+        return Objects.hash(ttl);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class VideoStatus {\n");
-        sb.append("    ingest: ").append(toIndentedString(ingest)).append("\n");
-        sb.append("    encoding: ").append(toIndentedString(encoding)).append("\n");
+        sb.append("class TokenCreationPayload {\n");
+        sb.append("    ttl: ").append(toIndentedString(ttl)).append("\n");
         sb.append("}");
         return sb.toString();
     }

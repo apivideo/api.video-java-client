@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 
 <a name="create"></a>
 # **create**
-> LiveStream create(liveStreamCreatePayload)
+> LiveStream create(liveStreamCreationPayload)
 
 Create live stream
 
@@ -392,15 +392,15 @@ public class Example {
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
-    LiveStreamCreatePayload liveStreamCreatePayload = new LiveStreamCreatePayload(); // 
-    liveStreamCreatePayload.setName("My Live Stream Video"); // Add a name for your live stream here.
-    liveStreamCreatePayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
-    liveStreamCreatePayload.setPublic(); // BETA FEATURE Please limit all public &#x3D; false (&quot;private&quot;) livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-    liveStreamCreatePayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
+    LiveStreamCreationPayload liveStreamCreationPayload = new LiveStreamCreationPayload(); // 
+    liveStreamCreationPayload.setName("My Live Stream Video"); // Add a name for your live stream here.
+    liveStreamCreationPayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
+    liveStreamCreationPayload.setPublic(); // BETA FEATURE Please limit all public &#x3D; false (&quot;private&quot;) livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+    liveStreamCreationPayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
 
 
     try {
-      LiveStream result = apiInstance.create(liveStreamCreatePayload);
+      LiveStream result = apiInstance.create(liveStreamCreationPayload);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling LiveStreamsApi#create");
@@ -417,7 +417,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamCreatePayload** | [**LiveStreamCreatePayload**](LiveStreamCreatePayload.md)|  |
+ **liveStreamCreationPayload** | [**LiveStreamCreationPayload**](LiveStreamCreationPayload.md)|  |
 
 ### Return type
 

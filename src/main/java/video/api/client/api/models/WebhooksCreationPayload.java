@@ -26,10 +26,10 @@ import java.util.List;
 import java.io.Serializable;
 
 /**
- * WebhooksCreatePayload
+ * WebhooksCreationPayload
  */
 
-public class WebhooksCreatePayload implements Serializable {
+public class WebhooksCreationPayload implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_EVENTS = "events";
@@ -40,12 +40,12 @@ public class WebhooksCreatePayload implements Serializable {
     @SerializedName(SERIALIZED_NAME_URL)
     private String url;
 
-    public WebhooksCreatePayload events(List<String> events) {
+    public WebhooksCreationPayload events(List<String> events) {
         this.events = events;
         return this;
     }
 
-    public WebhooksCreatePayload addEventsItem(String eventsItem) {
+    public WebhooksCreationPayload addEventsItem(String eventsItem) {
         this.events.add(eventsItem);
         return this;
     }
@@ -67,7 +67,7 @@ public class WebhooksCreatePayload implements Serializable {
         this.events = events;
     }
 
-    public WebhooksCreatePayload url(String url) {
+    public WebhooksCreationPayload url(String url) {
         this.url = url;
         return this;
     }
@@ -95,9 +95,9 @@ public class WebhooksCreatePayload implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        WebhooksCreatePayload webhooksCreatePayload = (WebhooksCreatePayload) o;
-        return Objects.equals(this.events, webhooksCreatePayload.events)
-                && Objects.equals(this.url, webhooksCreatePayload.url);
+        WebhooksCreationPayload webhooksCreationPayload = (WebhooksCreationPayload) o;
+        return Objects.equals(this.events, webhooksCreationPayload.events)
+                && Objects.equals(this.url, webhooksCreationPayload.url);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class WebhooksCreatePayload implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class WebhooksCreatePayload {\n");
+        sb.append("class WebhooksCreationPayload {\n");
         sb.append("    events: ").append(toIndentedString(events)).append("\n");
         sb.append("    url: ").append(toIndentedString(url)).append("\n");
         sb.append("}");

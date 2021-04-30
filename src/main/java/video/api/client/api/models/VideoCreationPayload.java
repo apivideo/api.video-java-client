@@ -28,10 +28,10 @@ import video.api.client.api.models.Metadata;
 import java.io.Serializable;
 
 /**
- * VideoCreatePayload
+ * VideoCreationPayload
  */
 
-public class VideoCreatePayload implements Serializable {
+public class VideoCreationPayload implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TITLE = "title";
@@ -74,7 +74,7 @@ public class VideoCreatePayload implements Serializable {
     @SerializedName(SERIALIZED_NAME_PUBLISHED_AT)
     private OffsetDateTime publishedAt;
 
-    public VideoCreatePayload title(String title) {
+    public VideoCreationPayload title(String title) {
         this.title = title;
         return this;
     }
@@ -94,7 +94,7 @@ public class VideoCreatePayload implements Serializable {
         this.title = title;
     }
 
-    public VideoCreatePayload description(String description) {
+    public VideoCreationPayload description(String description) {
         this.description = description;
         return this;
     }
@@ -115,7 +115,7 @@ public class VideoCreatePayload implements Serializable {
         this.description = description;
     }
 
-    public VideoCreatePayload source(String source) {
+    public VideoCreationPayload source(String source) {
         this.source = source;
         return this;
     }
@@ -136,7 +136,7 @@ public class VideoCreatePayload implements Serializable {
         this.source = source;
     }
 
-    public VideoCreatePayload _public(Boolean _public) {
+    public VideoCreationPayload _public(Boolean _public) {
         this._public = _public;
         return this;
     }
@@ -158,7 +158,7 @@ public class VideoCreatePayload implements Serializable {
         this._public = _public;
     }
 
-    public VideoCreatePayload panoramic(Boolean panoramic) {
+    public VideoCreationPayload panoramic(Boolean panoramic) {
         this.panoramic = panoramic;
         return this;
     }
@@ -179,7 +179,7 @@ public class VideoCreatePayload implements Serializable {
         this.panoramic = panoramic;
     }
 
-    public VideoCreatePayload mp4Support(Boolean mp4Support) {
+    public VideoCreationPayload mp4Support(Boolean mp4Support) {
         this.mp4Support = mp4Support;
         return this;
     }
@@ -200,7 +200,7 @@ public class VideoCreatePayload implements Serializable {
         this.mp4Support = mp4Support;
     }
 
-    public VideoCreatePayload playerId(String playerId) {
+    public VideoCreationPayload playerId(String playerId) {
         this.playerId = playerId;
         return this;
     }
@@ -221,12 +221,12 @@ public class VideoCreatePayload implements Serializable {
         this.playerId = playerId;
     }
 
-    public VideoCreatePayload tags(List<String> tags) {
+    public VideoCreationPayload tags(List<String> tags) {
         this.tags = tags;
         return this;
     }
 
-    public VideoCreatePayload addTagsItem(String tagsItem) {
+    public VideoCreationPayload addTagsItem(String tagsItem) {
         if (this.tags == null) {
             this.tags = new ArrayList<>();
         }
@@ -250,12 +250,12 @@ public class VideoCreatePayload implements Serializable {
         this.tags = tags;
     }
 
-    public VideoCreatePayload metadata(List<Metadata> metadata) {
+    public VideoCreationPayload metadata(List<Metadata> metadata) {
         this.metadata = metadata;
         return this;
     }
 
-    public VideoCreatePayload addMetadataItem(Metadata metadataItem) {
+    public VideoCreationPayload addMetadataItem(Metadata metadataItem) {
         if (this.metadata == null) {
             this.metadata = new ArrayList<>();
         }
@@ -281,7 +281,7 @@ public class VideoCreatePayload implements Serializable {
         this.metadata = metadata;
     }
 
-    public VideoCreatePayload publishedAt(OffsetDateTime publishedAt) {
+    public VideoCreationPayload publishedAt(OffsetDateTime publishedAt) {
         this.publishedAt = publishedAt;
         return this;
     }
@@ -310,17 +310,17 @@ public class VideoCreatePayload implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        VideoCreatePayload videoCreatePayload = (VideoCreatePayload) o;
-        return Objects.equals(this.title, videoCreatePayload.title)
-                && Objects.equals(this.description, videoCreatePayload.description)
-                && Objects.equals(this.source, videoCreatePayload.source)
-                && Objects.equals(this._public, videoCreatePayload._public)
-                && Objects.equals(this.panoramic, videoCreatePayload.panoramic)
-                && Objects.equals(this.mp4Support, videoCreatePayload.mp4Support)
-                && Objects.equals(this.playerId, videoCreatePayload.playerId)
-                && Objects.equals(this.tags, videoCreatePayload.tags)
-                && Objects.equals(this.metadata, videoCreatePayload.metadata)
-                && Objects.equals(this.publishedAt, videoCreatePayload.publishedAt);
+        VideoCreationPayload videoCreationPayload = (VideoCreationPayload) o;
+        return Objects.equals(this.title, videoCreationPayload.title)
+                && Objects.equals(this.description, videoCreationPayload.description)
+                && Objects.equals(this.source, videoCreationPayload.source)
+                && Objects.equals(this._public, videoCreationPayload._public)
+                && Objects.equals(this.panoramic, videoCreationPayload.panoramic)
+                && Objects.equals(this.mp4Support, videoCreationPayload.mp4Support)
+                && Objects.equals(this.playerId, videoCreationPayload.playerId)
+                && Objects.equals(this.tags, videoCreationPayload.tags)
+                && Objects.equals(this.metadata, videoCreationPayload.metadata)
+                && Objects.equals(this.publishedAt, videoCreationPayload.publishedAt);
     }
 
     @Override
@@ -332,7 +332,7 @@ public class VideoCreatePayload implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class VideoCreatePayload {\n");
+        sb.append("class VideoCreationPayload {\n");
         sb.append("    title: ").append(toIndentedString(title)).append("\n");
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    source: ").append(toIndentedString(source)).append("\n");

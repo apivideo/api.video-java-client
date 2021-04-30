@@ -23,7 +23,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>video.api</groupId>
   <artifactId>java-api-client</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -33,7 +33,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "video.api:java-api-client:1.0.2"
+compile "video.api:java-api-client:1.0.3"
 ```
 
 ### Others
@@ -46,7 +46,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/java-api-client-1.0.2.jar`
+* `target/java-api-client-1.0.3.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -68,7 +68,7 @@ public class Example {
     File myVideoFile = new File("my-video.mp4");
 
     try {
-        Video video = apiVideoClient.videos().create(new VideoCreatePayload().title("my video"));
+        Video video = apiVideoClient.videos().create(new VideoCreationPayload().title("my video"));
         video = apiVideoClient.videos().upload(video.getVideoId(), myVideoFile);
         System.out.println(video);
     } catch (ApiException e) {
@@ -268,7 +268,7 @@ Method | HTTP request | Description
  - [Link](docs/Link.md)
  - [LiveStream](docs/LiveStream.md)
  - [LiveStreamAssets](docs/LiveStreamAssets.md)
- - [LiveStreamCreatePayload](docs/LiveStreamCreatePayload.md)
+ - [LiveStreamCreationPayload](docs/LiveStreamCreationPayload.md)
  - [LiveStreamListResponse](docs/LiveStreamListResponse.md)
  - [LiveStreamSession](docs/LiveStreamSession.md)
  - [LiveStreamSessionClient](docs/LiveStreamSessionClient.md)
@@ -293,12 +293,12 @@ Method | HTTP request | Description
  - [RawStatisticsListSessionsResponse](docs/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](docs/RefreshTokenPayload.md)
  - [Subtitle](docs/Subtitle.md)
- - [TokenCreatePayload](docs/TokenCreatePayload.md)
+ - [TokenCreationPayload](docs/TokenCreationPayload.md)
  - [TokenListResponse](docs/TokenListResponse.md)
  - [UploadToken](docs/UploadToken.md)
  - [Video](docs/Video.md)
  - [VideoAssets](docs/VideoAssets.md)
- - [VideoCreatePayload](docs/VideoCreatePayload.md)
+ - [VideoCreationPayload](docs/VideoCreationPayload.md)
  - [VideoSession](docs/VideoSession.md)
  - [VideoSessionClient](docs/VideoSessionClient.md)
  - [VideoSessionDevice](docs/VideoSessionDevice.md)
@@ -309,15 +309,15 @@ Method | HTTP request | Description
  - [VideoSource](docs/VideoSource.md)
  - [VideoSourceLiveStream](docs/VideoSourceLiveStream.md)
  - [VideoSourceLiveStreamLink](docs/VideoSourceLiveStreamLink.md)
+ - [VideoStatus](docs/VideoStatus.md)
+ - [VideoStatusEncoding](docs/VideoStatusEncoding.md)
+ - [VideoStatusEncodingMetadata](docs/VideoStatusEncodingMetadata.md)
+ - [VideoStatusIngest](docs/VideoStatusIngest.md)
  - [VideoThumbnailPickPayload](docs/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](docs/VideoUpdatePayload.md)
  - [VideosListResponse](docs/VideosListResponse.md)
- - [Videostatus](docs/Videostatus.md)
- - [VideostatusEncoding](docs/VideostatusEncoding.md)
- - [VideostatusEncodingMetadata](docs/VideostatusEncodingMetadata.md)
- - [VideostatusIngest](docs/VideostatusIngest.md)
  - [Webhook](docs/Webhook.md)
- - [WebhooksCreatePayload](docs/WebhooksCreatePayload.md)
+ - [WebhooksCreationPayload](docs/WebhooksCreationPayload.md)
  - [WebhooksListResponse](docs/WebhooksListResponse.md)
 
 

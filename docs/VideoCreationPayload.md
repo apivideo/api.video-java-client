@@ -1,6 +1,6 @@
 
 
-# VideoCreatePayload
+# VideoCreationPayload
 
 ## Properties
 

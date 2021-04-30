@@ -946,7 +946,7 @@ public class LiveStreamsApi {
     /**
      * Build call for create
      * 
-     * @param liveStreamCreatePayload
+     * @param liveStreamCreationPayload
      *            (required)
      * @param _callback
      *            Callback for upload/download progress
@@ -975,9 +975,9 @@ public class LiveStreamsApi {
      *                        </tr>
      *                        </table>
      */
-    private okhttp3.Call createCall(LiveStreamCreatePayload liveStreamCreatePayload, final ApiCallback _callback)
+    private okhttp3.Call createCall(LiveStreamCreationPayload liveStreamCreationPayload, final ApiCallback _callback)
             throws ApiException {
-        Object localVarPostBody = liveStreamCreatePayload;
+        Object localVarPostBody = liveStreamCreationPayload;
 
         // create path and map variables
         String localVarPath = "/live-streams";
@@ -1005,19 +1005,20 @@ public class LiveStreamsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createValidateBeforeCall(LiveStreamCreatePayload liveStreamCreatePayload,
+    private okhttp3.Call createValidateBeforeCall(LiveStreamCreationPayload liveStreamCreationPayload,
             final ApiCallback _callback) throws ApiException {
 
-        // verify the required parameter 'liveStreamCreatePayload' is set
-        if (liveStreamCreatePayload == null) {
-            throw new ApiException("Missing the required parameter 'liveStreamCreatePayload' when calling create");
+        // verify the required parameter 'liveStreamCreationPayload' is set
+        if (liveStreamCreationPayload == null) {
+            throw new ApiException("Missing the required parameter 'liveStreamCreationPayload' when calling create");
         }
 
-        if (liveStreamCreatePayload.getName() == null) {
-            throw new ApiException("Missing the required parameter 'liveStreamCreatePayload.name' when calling create");
+        if (liveStreamCreationPayload.getName() == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'liveStreamCreationPayload.name' when calling create");
         }
 
-        okhttp3.Call localVarCall = createCall(liveStreamCreatePayload, _callback);
+        okhttp3.Call localVarCall = createCall(liveStreamCreationPayload, _callback);
         return localVarCall;
     }
 
@@ -1029,7 +1030,7 @@ public class LiveStreamsApi {
      * walkthrough of this API with OBS. Your RTMP endpoint for the livestream is
      * rtmp://broadcast.api.video/s/{streamKey}
      * 
-     * @param liveStreamCreatePayload
+     * @param liveStreamCreationPayload
      *            (required)
      * 
      * @return LiveStream
@@ -1056,8 +1057,8 @@ public class LiveStreamsApi {
      *                        </tr>
      *                        </table>
      */
-    public LiveStream create(LiveStreamCreatePayload liveStreamCreatePayload) throws ApiException {
-        ApiResponse<LiveStream> localVarResp = createWithHttpInfo(liveStreamCreatePayload);
+    public LiveStream create(LiveStreamCreationPayload liveStreamCreationPayload) throws ApiException {
+        ApiResponse<LiveStream> localVarResp = createWithHttpInfo(liveStreamCreationPayload);
         return localVarResp.getData();
     }
 
@@ -1069,7 +1070,7 @@ public class LiveStreamsApi {
      * walkthrough of this API with OBS. Your RTMP endpoint for the livestream is
      * rtmp://broadcast.api.video/s/{streamKey}
      * 
-     * @param liveStreamCreatePayload
+     * @param liveStreamCreationPayload
      *            (required)
      * 
      * @return ApiResponse&lt;LiveStream&gt;
@@ -1096,9 +1097,9 @@ public class LiveStreamsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<LiveStream> createWithHttpInfo(LiveStreamCreatePayload liveStreamCreatePayload)
+    public ApiResponse<LiveStream> createWithHttpInfo(LiveStreamCreationPayload liveStreamCreationPayload)
             throws ApiException {
-        okhttp3.Call localVarCall = createValidateBeforeCall(liveStreamCreatePayload, null);
+        okhttp3.Call localVarCall = createValidateBeforeCall(liveStreamCreationPayload, null);
         Type localVarReturnType = new TypeToken<LiveStream>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
