@@ -1861,7 +1861,7 @@ paths:
                     srclang: en
                     default: false
               schema:
-                $ref: '#/components/schemas/subtitle'
+                $ref: '#/components/schemas/caption'
           description: Success
         "404":
           content:
@@ -1919,7 +1919,7 @@ paths:
                     srclang: en
                     default: true
               schema:
-                $ref: '#/components/schemas/subtitle'
+                $ref: '#/components/schemas/caption'
           description: Success
         "400":
           content:
@@ -2000,7 +2000,7 @@ paths:
                     srclang: en
                     default: false
               schema:
-                $ref: '#/components/schemas/subtitle'
+                $ref: '#/components/schemas/caption'
           description: Success
         "400":
           content:
@@ -2461,7 +2461,7 @@ paths:
                       - rel: last
                         uri: https://ws.api.video/players?currentPage=1
               schema:
-                $ref: '#/components/schemas/players-list-response'
+                $ref: '#/components/schemas/player-themes-list-response'
           description: Success
         "400":
           content:
@@ -2503,7 +2503,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/player-creation-payload'
+              $ref: '#/components/schemas/player-theme-creation-payload'
         required: true
       responses:
         "201":
@@ -2535,7 +2535,7 @@ paths:
                     hideTitle: false
                     forceLoop: false
               schema:
-                $ref: '#/components/schemas/player'
+                $ref: '#/components/schemas/player-theme'
           description: Created
       security:
       - bearerAuth: []
@@ -2627,7 +2627,7 @@ paths:
                     hideTitle: false
                     forceLoop: false
               schema:
-                $ref: '#/components/schemas/player'
+                $ref: '#/components/schemas/player-theme'
           description: Success
         "404":
           content:
@@ -2668,7 +2668,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/player-update-payload'
+              $ref: '#/components/schemas/player-theme-update-payload'
         required: true
       responses:
         "200":
@@ -2700,7 +2700,7 @@ paths:
                     hideTitle: false
                     forceLoop: false
               schema:
-                $ref: '#/components/schemas/player'
+                $ref: '#/components/schemas/player-theme'
           description: Success
         "404":
           content:
@@ -2778,14 +2778,14 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/players-upload-logo-payload'
+              $ref: '#/components/schemas/player-theme-upload-logo-payload'
         required: true
       responses:
         "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/player'
+                $ref: '#/components/schemas/player-theme'
           description: Created
         "400":
           content:
@@ -3640,7 +3640,8 @@ components:
           description: "One array of tags (each tag is a string) in order to categorize\
             \ a video. Tags may include spaces. \n"
           example: '"tags": ["maths", "string theory", "video"]'
-          items: {}
+          items:
+            type: string
           type: array
         metadata:
           description: "Metadata you can use to categorise and filter videos. Metadata\
@@ -3676,7 +3677,7 @@ components:
           type: boolean
       title: Video
       type: object
-    player:
+    player-theme:
       example:
         trackUnplayed: trackUnplayed
         shapeMargin: 0
@@ -3786,10 +3787,10 @@ components:
           description: Deprecated
           type: string
         assets:
-          $ref: '#/components/schemas/player_assets'
-      title: Player
+          $ref: '#/components/schemas/player_theme_assets'
+      title: PlayerTheme
       type: object
-    player-creation-payload:
+    player-theme-creation-payload:
       properties:
         text:
           description: 'RGBA color for timer text. Default: rgba(255, 255, 255, 1)'
@@ -3845,8 +3846,9 @@ components:
           default: false
           description: 'enable/disable looping. Default: false'
           type: boolean
+      title: PlayerThemeCreationPayload
       type: object
-    player-update-payload:
+    player-theme-update-payload:
       properties:
         text:
           description: 'RGBA color for timer text. Default: rgba(255, 255, 255, 1)'
@@ -3897,9 +3899,9 @@ components:
         forceLoop:
           description: 'enable/disable looping. Default: false'
           type: boolean
-      title: PlayerUpdatePayload
+      title: PlayerThemeUpdatePayload
       type: object
-    subtitle:
+    caption:
       example:
         default: false
         src: src
@@ -3918,7 +3920,7 @@ components:
             have subtitles, false for no you will not have subtitles.
           example: false
           type: boolean
-      title: Subtitle
+      title: Caption
       type: object
     video-session:
       example:
@@ -4792,7 +4794,7 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/subtitle'
+            $ref: '#/components/schemas/caption'
           type: array
         pagination:
           $ref: '#/components/schemas/pagination'
@@ -4845,7 +4847,7 @@ components:
           $ref: '#/components/schemas/pagination'
       title: VideoChapters
       type: object
-    players-list-response:
+    player-themes-list-response:
       example:
         pagination:
           itemsTotal: 123
@@ -4922,13 +4924,13 @@ components:
       properties:
         data:
           items:
-            $ref: '#/components/schemas/player'
+            $ref: '#/components/schemas/player-theme'
           type: array
         pagination:
           $ref: '#/components/schemas/pagination'
-      title: Players
+      title: PlayerThemes
       type: object
-    players-upload-logo-payload:
+    player-theme-upload-logo-payload:
       properties:
         file:
           description: The name of the file you want to use for your logo.
@@ -4942,7 +4944,7 @@ components:
       required:
       - file
       - link
-      title: PlayersUploadLogoPayload
+      title: PlayerThemeUploadLogoPayload
       type: object
     raw-statistics-list-sessions-response:
       example:
@@ -5638,7 +5640,7 @@ components:
           type: string
       title: Account
       type: object
-    player_assets:
+    player_theme_assets:
       example:
         link: path/to/my/logo/mylogo.jpg
         logo: mylogo.jpg

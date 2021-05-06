@@ -24,30 +24,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import video.api.client.api.models.Pagination;
-import video.api.client.api.models.Player;
+import video.api.client.api.models.PlayerTheme;
 import java.io.Serializable;
 
 /**
- * PlayersListResponse
+ * PlayerThemesListResponse
  */
 
-public class PlayersListResponse implements Serializable {
+public class PlayerThemesListResponse implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_DATA = "data";
     @SerializedName(SERIALIZED_NAME_DATA)
-    private List<Player> data = null;
+    private List<PlayerTheme> data = null;
 
     public static final String SERIALIZED_NAME_PAGINATION = "pagination";
     @SerializedName(SERIALIZED_NAME_PAGINATION)
     private Pagination pagination;
 
-    public PlayersListResponse data(List<Player> data) {
+    public PlayerThemesListResponse data(List<PlayerTheme> data) {
         this.data = data;
         return this;
     }
 
-    public PlayersListResponse addDataItem(Player dataItem) {
+    public PlayerThemesListResponse addDataItem(PlayerTheme dataItem) {
         if (this.data == null) {
             this.data = new ArrayList<>();
         }
@@ -63,15 +63,15 @@ public class PlayersListResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "")
 
-    public List<Player> getData() {
+    public List<PlayerTheme> getData() {
         return data;
     }
 
-    public void setData(List<Player> data) {
+    public void setData(List<PlayerTheme> data) {
         this.data = data;
     }
 
-    public PlayersListResponse pagination(Pagination pagination) {
+    public PlayerThemesListResponse pagination(Pagination pagination) {
         this.pagination = pagination;
         return this;
     }
@@ -100,9 +100,9 @@ public class PlayersListResponse implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlayersListResponse playersListResponse = (PlayersListResponse) o;
-        return Objects.equals(this.data, playersListResponse.data)
-                && Objects.equals(this.pagination, playersListResponse.pagination);
+        PlayerThemesListResponse playerThemesListResponse = (PlayerThemesListResponse) o;
+        return Objects.equals(this.data, playerThemesListResponse.data)
+                && Objects.equals(this.pagination, playerThemesListResponse.pagination);
     }
 
     @Override
@@ -113,7 +113,7 @@ public class PlayersListResponse implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PlayersListResponse {\n");
+        sb.append("class PlayerThemesListResponse {\n");
         sb.append("    data: ").append(toIndentedString(data)).append("\n");
         sb.append("    pagination: ").append(toIndentedString(pagination)).append("\n");
         sb.append("}");

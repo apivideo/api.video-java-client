@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * PlayerUpdatePayload
+ * PlayerThemeCreationPayload
  */
 
-public class PlayerUpdatePayload implements Serializable {
+public class PlayerThemeCreationPayload implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TEXT = "text";
@@ -68,25 +68,25 @@ public class PlayerUpdatePayload implements Serializable {
 
     public static final String SERIALIZED_NAME_ENABLE_API = "enableApi";
     @SerializedName(SERIALIZED_NAME_ENABLE_API)
-    private Boolean enableApi;
+    private Boolean enableApi = true;
 
     public static final String SERIALIZED_NAME_ENABLE_CONTROLS = "enableControls";
     @SerializedName(SERIALIZED_NAME_ENABLE_CONTROLS)
-    private Boolean enableControls;
+    private Boolean enableControls = true;
 
     public static final String SERIALIZED_NAME_FORCE_AUTOPLAY = "forceAutoplay";
     @SerializedName(SERIALIZED_NAME_FORCE_AUTOPLAY)
-    private Boolean forceAutoplay;
+    private Boolean forceAutoplay = false;
 
     public static final String SERIALIZED_NAME_HIDE_TITLE = "hideTitle";
     @SerializedName(SERIALIZED_NAME_HIDE_TITLE)
-    private Boolean hideTitle;
+    private Boolean hideTitle = false;
 
     public static final String SERIALIZED_NAME_FORCE_LOOP = "forceLoop";
     @SerializedName(SERIALIZED_NAME_FORCE_LOOP)
-    private Boolean forceLoop;
+    private Boolean forceLoop = false;
 
-    public PlayerUpdatePayload text(String text) {
+    public PlayerThemeCreationPayload text(String text) {
         this.text = text;
         return this;
     }
@@ -107,7 +107,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.text = text;
     }
 
-    public PlayerUpdatePayload link(String link) {
+    public PlayerThemeCreationPayload link(String link) {
         this.link = link;
         return this;
     }
@@ -128,7 +128,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.link = link;
     }
 
-    public PlayerUpdatePayload linkHover(String linkHover) {
+    public PlayerThemeCreationPayload linkHover(String linkHover) {
         this.linkHover = linkHover;
         return this;
     }
@@ -149,7 +149,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.linkHover = linkHover;
     }
 
-    public PlayerUpdatePayload trackPlayed(String trackPlayed) {
+    public PlayerThemeCreationPayload trackPlayed(String trackPlayed) {
         this.trackPlayed = trackPlayed;
         return this;
     }
@@ -170,7 +170,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.trackPlayed = trackPlayed;
     }
 
-    public PlayerUpdatePayload trackUnplayed(String trackUnplayed) {
+    public PlayerThemeCreationPayload trackUnplayed(String trackUnplayed) {
         this.trackUnplayed = trackUnplayed;
         return this;
     }
@@ -191,7 +191,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.trackUnplayed = trackUnplayed;
     }
 
-    public PlayerUpdatePayload trackBackground(String trackBackground) {
+    public PlayerThemeCreationPayload trackBackground(String trackBackground) {
         this.trackBackground = trackBackground;
         return this;
     }
@@ -212,7 +212,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.trackBackground = trackBackground;
     }
 
-    public PlayerUpdatePayload backgroundTop(String backgroundTop) {
+    public PlayerThemeCreationPayload backgroundTop(String backgroundTop) {
         this.backgroundTop = backgroundTop;
         return this;
     }
@@ -233,7 +233,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.backgroundTop = backgroundTop;
     }
 
-    public PlayerUpdatePayload backgroundBottom(String backgroundBottom) {
+    public PlayerThemeCreationPayload backgroundBottom(String backgroundBottom) {
         this.backgroundBottom = backgroundBottom;
         return this;
     }
@@ -254,7 +254,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.backgroundBottom = backgroundBottom;
     }
 
-    public PlayerUpdatePayload backgroundText(String backgroundText) {
+    public PlayerThemeCreationPayload backgroundText(String backgroundText) {
         this.backgroundText = backgroundText;
         return this;
     }
@@ -275,7 +275,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.backgroundText = backgroundText;
     }
 
-    public PlayerUpdatePayload enableApi(Boolean enableApi) {
+    public PlayerThemeCreationPayload enableApi(Boolean enableApi) {
         this.enableApi = enableApi;
         return this;
     }
@@ -296,7 +296,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.enableApi = enableApi;
     }
 
-    public PlayerUpdatePayload enableControls(Boolean enableControls) {
+    public PlayerThemeCreationPayload enableControls(Boolean enableControls) {
         this.enableControls = enableControls;
         return this;
     }
@@ -317,7 +317,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.enableControls = enableControls;
     }
 
-    public PlayerUpdatePayload forceAutoplay(Boolean forceAutoplay) {
+    public PlayerThemeCreationPayload forceAutoplay(Boolean forceAutoplay) {
         this.forceAutoplay = forceAutoplay;
         return this;
     }
@@ -338,7 +338,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.forceAutoplay = forceAutoplay;
     }
 
-    public PlayerUpdatePayload hideTitle(Boolean hideTitle) {
+    public PlayerThemeCreationPayload hideTitle(Boolean hideTitle) {
         this.hideTitle = hideTitle;
         return this;
     }
@@ -359,7 +359,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.hideTitle = hideTitle;
     }
 
-    public PlayerUpdatePayload forceLoop(Boolean forceLoop) {
+    public PlayerThemeCreationPayload forceLoop(Boolean forceLoop) {
         this.forceLoop = forceLoop;
         return this;
     }
@@ -388,21 +388,21 @@ public class PlayerUpdatePayload implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlayerUpdatePayload playerUpdatePayload = (PlayerUpdatePayload) o;
-        return Objects.equals(this.text, playerUpdatePayload.text)
-                && Objects.equals(this.link, playerUpdatePayload.link)
-                && Objects.equals(this.linkHover, playerUpdatePayload.linkHover)
-                && Objects.equals(this.trackPlayed, playerUpdatePayload.trackPlayed)
-                && Objects.equals(this.trackUnplayed, playerUpdatePayload.trackUnplayed)
-                && Objects.equals(this.trackBackground, playerUpdatePayload.trackBackground)
-                && Objects.equals(this.backgroundTop, playerUpdatePayload.backgroundTop)
-                && Objects.equals(this.backgroundBottom, playerUpdatePayload.backgroundBottom)
-                && Objects.equals(this.backgroundText, playerUpdatePayload.backgroundText)
-                && Objects.equals(this.enableApi, playerUpdatePayload.enableApi)
-                && Objects.equals(this.enableControls, playerUpdatePayload.enableControls)
-                && Objects.equals(this.forceAutoplay, playerUpdatePayload.forceAutoplay)
-                && Objects.equals(this.hideTitle, playerUpdatePayload.hideTitle)
-                && Objects.equals(this.forceLoop, playerUpdatePayload.forceLoop);
+        PlayerThemeCreationPayload playerThemeCreationPayload = (PlayerThemeCreationPayload) o;
+        return Objects.equals(this.text, playerThemeCreationPayload.text)
+                && Objects.equals(this.link, playerThemeCreationPayload.link)
+                && Objects.equals(this.linkHover, playerThemeCreationPayload.linkHover)
+                && Objects.equals(this.trackPlayed, playerThemeCreationPayload.trackPlayed)
+                && Objects.equals(this.trackUnplayed, playerThemeCreationPayload.trackUnplayed)
+                && Objects.equals(this.trackBackground, playerThemeCreationPayload.trackBackground)
+                && Objects.equals(this.backgroundTop, playerThemeCreationPayload.backgroundTop)
+                && Objects.equals(this.backgroundBottom, playerThemeCreationPayload.backgroundBottom)
+                && Objects.equals(this.backgroundText, playerThemeCreationPayload.backgroundText)
+                && Objects.equals(this.enableApi, playerThemeCreationPayload.enableApi)
+                && Objects.equals(this.enableControls, playerThemeCreationPayload.enableControls)
+                && Objects.equals(this.forceAutoplay, playerThemeCreationPayload.forceAutoplay)
+                && Objects.equals(this.hideTitle, playerThemeCreationPayload.hideTitle)
+                && Objects.equals(this.forceLoop, playerThemeCreationPayload.forceLoop);
     }
 
     @Override
@@ -414,7 +414,7 @@ public class PlayerUpdatePayload implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PlayerUpdatePayload {\n");
+        sb.append("class PlayerThemeCreationPayload {\n");
         sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("    linkHover: ").append(toIndentedString(linkHover)).append("\n");

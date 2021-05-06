@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Subtitle&gt;**](Subtitle.md) |  |  [optional]
+**data** | [**List&lt;Caption&gt;**](Caption.md) |  |  [optional]
 **pagination** | [**Pagination**](Pagination.md) |  |  [optional]
 
 

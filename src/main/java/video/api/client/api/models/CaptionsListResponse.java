@@ -23,8 +23,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import video.api.client.api.models.Caption;
 import video.api.client.api.models.Pagination;
-import video.api.client.api.models.Subtitle;
 import java.io.Serializable;
 
 /**
@@ -36,18 +36,18 @@ public class CaptionsListResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DATA = "data";
     @SerializedName(SERIALIZED_NAME_DATA)
-    private List<Subtitle> data = null;
+    private List<Caption> data = null;
 
     public static final String SERIALIZED_NAME_PAGINATION = "pagination";
     @SerializedName(SERIALIZED_NAME_PAGINATION)
     private Pagination pagination;
 
-    public CaptionsListResponse data(List<Subtitle> data) {
+    public CaptionsListResponse data(List<Caption> data) {
         this.data = data;
         return this;
     }
 
-    public CaptionsListResponse addDataItem(Subtitle dataItem) {
+    public CaptionsListResponse addDataItem(Caption dataItem) {
         if (this.data == null) {
             this.data = new ArrayList<>();
         }
@@ -63,11 +63,11 @@ public class CaptionsListResponse implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(value = "")
 
-    public List<Subtitle> getData() {
+    public List<Caption> getData() {
         return data;
     }
 
-    public void setData(List<Subtitle> data) {
+    public void setData(List<Caption> data) {
         this.data = data;
     }
 

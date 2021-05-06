@@ -359,7 +359,7 @@ public class CaptionsApi {
          *                        </tr>
          *                        </table>
          */
-        public Page<Subtitle> execute() throws ApiException {
+        public Page<Caption> execute() throws ApiException {
             ApiResponse<CaptionsListResponse> localVarResp = listWithHttpInfo(videoId, currentPage, pageSize);
             return new Page<>(localVarResp.getData().getData(), localVarResp.getData().getPagination(), () -> {
                 try {
@@ -569,7 +569,7 @@ public class CaptionsApi {
      *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
      *            representation (required)
      * 
-     * @return Subtitle
+     * @return Caption
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -593,8 +593,8 @@ public class CaptionsApi {
      *                        </tr>
      *                        </table>
      */
-    public Subtitle get(String videoId, String language) throws ApiException {
-        ApiResponse<Subtitle> localVarResp = getWithHttpInfo(videoId, language);
+    public Caption get(String videoId, String language) throws ApiException {
+        ApiResponse<Caption> localVarResp = getWithHttpInfo(videoId, language);
         return localVarResp.getData();
     }
 
@@ -608,7 +608,7 @@ public class CaptionsApi {
      *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
      *            representation (required)
      * 
-     * @return ApiResponse&lt;Subtitle&gt;
+     * @return ApiResponse&lt;Caption&gt;
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -632,9 +632,9 @@ public class CaptionsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Subtitle> getWithHttpInfo(String videoId, String language) throws ApiException {
+    public ApiResponse<Caption> getWithHttpInfo(String videoId, String language) throws ApiException {
         okhttp3.Call localVarCall = getValidateBeforeCall(videoId, language, null);
-        Type localVarReturnType = new TypeToken<Subtitle>() {
+        Type localVarReturnType = new TypeToken<Caption>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -746,7 +746,7 @@ public class CaptionsApi {
      * @param captionsUpdatePayload
      *            (required)
      * 
-     * @return Subtitle
+     * @return Caption
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -775,9 +775,9 @@ public class CaptionsApi {
      *                        </tr>
      *                        </table>
      */
-    public Subtitle update(String videoId, String language, CaptionsUpdatePayload captionsUpdatePayload)
+    public Caption update(String videoId, String language, CaptionsUpdatePayload captionsUpdatePayload)
             throws ApiException {
-        ApiResponse<Subtitle> localVarResp = updateWithHttpInfo(videoId, language, captionsUpdatePayload);
+        ApiResponse<Caption> localVarResp = updateWithHttpInfo(videoId, language, captionsUpdatePayload);
         return localVarResp.getData();
     }
 
@@ -792,7 +792,7 @@ public class CaptionsApi {
      * @param captionsUpdatePayload
      *            (required)
      * 
-     * @return ApiResponse&lt;Subtitle&gt;
+     * @return ApiResponse&lt;Caption&gt;
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -821,10 +821,10 @@ public class CaptionsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Subtitle> updateWithHttpInfo(String videoId, String language,
+    public ApiResponse<Caption> updateWithHttpInfo(String videoId, String language,
             CaptionsUpdatePayload captionsUpdatePayload) throws ApiException {
         okhttp3.Call localVarCall = updateValidateBeforeCall(videoId, language, captionsUpdatePayload, null);
-        Type localVarReturnType = new TypeToken<Subtitle>() {
+        Type localVarReturnType = new TypeToken<Caption>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -939,7 +939,7 @@ public class CaptionsApi {
      * @param file
      *            The video text track (VTT) you want to upload. (required)
      * 
-     * @return Subtitle
+     * @return Caption
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -968,8 +968,8 @@ public class CaptionsApi {
      *                        </tr>
      *                        </table>
      */
-    public Subtitle upload(String videoId, String language, File file) throws ApiException {
-        ApiResponse<Subtitle> localVarResp = uploadWithHttpInfo(videoId, language, file);
+    public Caption upload(String videoId, String language, File file) throws ApiException {
+        ApiResponse<Caption> localVarResp = uploadWithHttpInfo(videoId, language, file);
         return localVarResp.getData();
     }
 
@@ -984,7 +984,7 @@ public class CaptionsApi {
      * @param file
      *            The video text track (VTT) you want to upload. (required)
      * 
-     * @return ApiResponse&lt;Subtitle&gt;
+     * @return ApiResponse&lt;Caption&gt;
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1013,9 +1013,9 @@ public class CaptionsApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Subtitle> uploadWithHttpInfo(String videoId, String language, File file) throws ApiException {
+    public ApiResponse<Caption> uploadWithHttpInfo(String videoId, String language, File file) throws ApiException {
         okhttp3.Call localVarCall = uploadValidateBeforeCall(videoId, language, file, null);
-        Type localVarReturnType = new TypeToken<Subtitle>() {
+        Type localVarReturnType = new TypeToken<Caption>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }

@@ -1,12 +1,12 @@
 
 
-# PlayersListResponse
+# PlayerThemesListResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;Player&gt;**](Player.md) |  |  [optional]
+**data** | [**List&lt;PlayerTheme&gt;**](PlayerTheme.md) |  |  [optional]
 **pagination** | [**Pagination**](Pagination.md) |  |  [optional]
 
 

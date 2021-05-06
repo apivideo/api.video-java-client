@@ -109,7 +109,7 @@ public class Example {
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 
     try {
-      Page<Subtitle> result = apiInstance.list(videoId)
+      Page<Caption> result = apiInstance.list(videoId)
             .currentPage(currentPage)
             .pageSize(pageSize)
             .execute();
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Page**](pagination.md)<[**Subtitle**](Subtitle.md)>
+[**Page**](pagination.md)<[**Caption**](Caption.md)>
 
 
 ### Authorization
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 <a name="get"></a>
 # **get**
-> Subtitle get(videoId, language)
+> Caption get(videoId, language)
 
 Show a caption
 
@@ -182,7 +182,7 @@ public class Example {
     String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
 
     try {
-      Subtitle result = apiInstance.get(videoId, language);
+      Caption result = apiInstance.get(videoId, language);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CaptionsApi#get");
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 <a name="update"></a>
 # **update**
-> Subtitle update(videoId, language, captionsUpdatePayload)
+> Caption update(videoId, language, captionsUpdatePayload)
 
 Update caption
 
@@ -254,7 +254,7 @@ public class Example {
 
 
     try {
-      Subtitle result = apiInstance.update(videoId, language, captionsUpdatePayload);
+      Caption result = apiInstance.update(videoId, language, captionsUpdatePayload);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CaptionsApi#update");
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### Authorization
 
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
 
 <a name="upload"></a>
 # **upload**
-> Subtitle upload(videoId, language, file)
+> Caption upload(videoId, language, file)
 
 Upload a caption
 
@@ -326,7 +326,7 @@ public class Example {
     File file = new File("/path/to/file"); // The video text track (VTT) you want to upload.
 
     try {
-      Subtitle result = apiInstance.upload(videoId, language, file);
+      Caption result = apiInstance.upload(videoId, language, file);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CaptionsApi#upload");
@@ -350,7 +350,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 
-[**Subtitle**](Subtitle.md)
+[**Caption**](Caption.md)
 
 ### Authorization
 

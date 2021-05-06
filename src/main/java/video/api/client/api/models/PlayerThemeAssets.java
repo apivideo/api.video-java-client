@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * PlayerAssets
+ * PlayerThemeAssets
  */
 
-public class PlayerAssets implements Serializable {
+public class PlayerThemeAssets implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_LOGO = "logo";
@@ -38,7 +38,7 @@ public class PlayerAssets implements Serializable {
     @SerializedName(SERIALIZED_NAME_LINK)
     private String link;
 
-    public PlayerAssets logo(String logo) {
+    public PlayerThemeAssets logo(String logo) {
         this.logo = logo;
         return this;
     }
@@ -59,7 +59,7 @@ public class PlayerAssets implements Serializable {
         this.logo = logo;
     }
 
-    public PlayerAssets link(String link) {
+    public PlayerThemeAssets link(String link) {
         this.link = link;
         return this;
     }
@@ -88,8 +88,8 @@ public class PlayerAssets implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlayerAssets playerAssets = (PlayerAssets) o;
-        return Objects.equals(this.logo, playerAssets.logo) && Objects.equals(this.link, playerAssets.link);
+        PlayerThemeAssets playerThemeAssets = (PlayerThemeAssets) o;
+        return Objects.equals(this.logo, playerThemeAssets.logo) && Objects.equals(this.link, playerThemeAssets.link);
     }
 
     @Override
@@ -100,7 +100,7 @@ public class PlayerAssets implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PlayerAssets {\n");
+        sb.append("class PlayerThemeAssets {\n");
         sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
         sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("}");
