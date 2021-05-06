@@ -1,6 +1,6 @@
 
 
-# PlayerCreationPayload
+# PlayerThemeUpdatePayload
 
 ## Properties
 

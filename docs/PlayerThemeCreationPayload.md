@@ -1,6 +1,6 @@
 
 
-# Player
+# PlayerThemeCreationPayload
 
 ## Properties
 
@@ -20,16 +20,6 @@ Name | Type | Description | Notes
 **forceAutoplay** | **Boolean** | enable/disable player autoplay. Default: false |  [optional]
 **hideTitle** | **Boolean** | enable/disable title. Default: false |  [optional]
 **forceLoop** | **Boolean** | enable/disable looping. Default: false |  [optional]
-**playerId** | **String** |  |  [optional]
-**createdAt** | **OffsetDateTime** | When the player was created, presented in ISO-8601 format. |  [optional]
-**updatedAt** | **OffsetDateTime** | When the player was last updated, presented in ISO-8601 format. |  [optional]
-**shapeMargin** | **Integer** | Deprecated |  [optional]
-**shapeRadius** | **Integer** | Deprecated |  [optional]
-**shapeAspect** | **String** | Deprecated |  [optional]
-**shapeBackgroundTop** | **String** | Deprecated |  [optional]
-**shapeBackgroundBottom** | **String** | Deprecated |  [optional]
-**linkActive** | **String** | Deprecated |  [optional]
-**assets** | [**PlayerAssets**](PlayerAssets.md) |  |  [optional]
 
 
 ## Implemented Interfaces

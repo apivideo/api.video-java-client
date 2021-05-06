@@ -23,7 +23,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>video.api</groupId>
   <artifactId>java-api-client</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -33,7 +33,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "video.api:java-api-client:1.0.3"
+compile "video.api:java-api-client:1.0.4"
 ```
 
 ### Others
@@ -46,7 +46,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/java-api-client-1.0.3.jar`
+* `target/java-api-client-1.0.4.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -261,6 +261,7 @@ Method | HTTP request | Description
  - [AuthenticatePayload](docs/AuthenticatePayload.md)
  - [BadRequest](docs/BadRequest.md)
  - [BytesRange](docs/BytesRange.md)
+ - [Caption](docs/Caption.md)
  - [CaptionsListResponse](docs/CaptionsListResponse.md)
  - [CaptionsUpdatePayload](docs/CaptionsUpdatePayload.md)
  - [Chapter](docs/Chapter.md)
@@ -281,18 +282,17 @@ Method | HTTP request | Description
  - [NotFound](docs/NotFound.md)
  - [Pagination](docs/Pagination.md)
  - [PaginationLink](docs/PaginationLink.md)
- - [Player](docs/Player.md)
- - [PlayerAssets](docs/PlayerAssets.md)
- - [PlayerCreationPayload](docs/PlayerCreationPayload.md)
  - [PlayerSessionEvent](docs/PlayerSessionEvent.md)
- - [PlayerUpdatePayload](docs/PlayerUpdatePayload.md)
- - [PlayersListResponse](docs/PlayersListResponse.md)
+ - [PlayerTheme](docs/PlayerTheme.md)
+ - [PlayerThemeAssets](docs/PlayerThemeAssets.md)
+ - [PlayerThemeCreationPayload](docs/PlayerThemeCreationPayload.md)
+ - [PlayerThemeUpdatePayload](docs/PlayerThemeUpdatePayload.md)
+ - [PlayerThemesListResponse](docs/PlayerThemesListResponse.md)
  - [Quality](docs/Quality.md)
  - [RawStatisticsListLiveStreamAnalyticsResponse](docs/RawStatisticsListLiveStreamAnalyticsResponse.md)
  - [RawStatisticsListPlayerSessionEventsResponse](docs/RawStatisticsListPlayerSessionEventsResponse.md)
  - [RawStatisticsListSessionsResponse](docs/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](docs/RefreshTokenPayload.md)
- - [Subtitle](docs/Subtitle.md)
  - [TokenCreationPayload](docs/TokenCreationPayload.md)
  - [TokenListResponse](docs/TokenListResponse.md)
  - [UploadToken](docs/UploadToken.md)

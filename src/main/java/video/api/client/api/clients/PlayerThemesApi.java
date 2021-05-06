@@ -3,7 +3,7 @@
  * api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
  *
  * The version of the OpenAPI document: 1
- * Contact: ecosystem-team@api.video
+ * Contact: ecosystem@api.video
  *
  * NOTE: This class is auto generated.
  * Do not edit the class manually.
@@ -384,10 +384,10 @@ public class PlayerThemesApi {
         return localVarCall;
     }
 
-    private ApiResponse<PlayersListResponse> listWithHttpInfo(String sortBy, String sortOrder, Integer currentPage,
+    private ApiResponse<PlayerThemesListResponse> listWithHttpInfo(String sortBy, String sortOrder, Integer currentPage,
             Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = listValidateBeforeCall(sortBy, sortOrder, currentPage, pageSize, null);
-        Type localVarReturnType = new TypeToken<PlayersListResponse>() {
+        Type localVarReturnType = new TypeToken<PlayerThemesListResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -492,7 +492,7 @@ public class PlayerThemesApi {
         /**
          * Execute list request
          * 
-         * @return PlayersListResponse
+         * @return PlayerThemesListResponse
          * 
          * @throws ApiException
          *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -516,8 +516,9 @@ public class PlayerThemesApi {
          *                        </tr>
          *                        </table>
          */
-        public Page<Player> execute() throws ApiException {
-            ApiResponse<PlayersListResponse> localVarResp = listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
+        public Page<PlayerTheme> execute() throws ApiException {
+            ApiResponse<PlayerThemesListResponse> localVarResp = listWithHttpInfo(sortBy, sortOrder, currentPage,
+                    pageSize);
             return new Page<>(localVarResp.getData().getData(), localVarResp.getData().getPagination(), () -> {
                 try {
                     return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
@@ -539,7 +540,7 @@ public class PlayerThemesApi {
         /**
          * Execute list request with HTTP info returned
          * 
-         * @return ApiResponse&lt;PlayersListResponse&gt;
+         * @return ApiResponse&lt;PlayerThemesListResponse&gt;
          * 
          * @throws ApiException
          *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -563,7 +564,7 @@ public class PlayerThemesApi {
          *                        </tr>
          *                        </table>
          */
-        public ApiResponse<PlayersListResponse> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<PlayerThemesListResponse> executeWithHttpInfo() throws ApiException {
             return listWithHttpInfo(sortBy, sortOrder, currentPage, pageSize);
         }
 
@@ -597,9 +598,9 @@ public class PlayerThemesApi {
          *                        </tr>
          *                        </table>
          * 
-         *                        public okhttp3.Call executeAsync(final ApiCallback<PlayersListResponse> _callback)
-         *                        throws ApiException { return listAsync(sortBy, sortOrder, currentPage, pageSize,
-         *                        _callback); }
+         *                        public okhttp3.Call executeAsync(final ApiCallback<PlayerThemesListResponse>
+         *                        _callback) throws ApiException { return listAsync(sortBy, sortOrder, currentPage,
+         *                        pageSize, _callback); }
          */
     }
 
@@ -712,7 +713,7 @@ public class PlayerThemesApi {
      * @param playerId
      *            The unique identifier for the player you want to retrieve. (required)
      * 
-     * @return Player
+     * @return PlayerTheme
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -736,8 +737,8 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    public Player get(String playerId) throws ApiException {
-        ApiResponse<Player> localVarResp = getWithHttpInfo(playerId);
+    public PlayerTheme get(String playerId) throws ApiException {
+        ApiResponse<PlayerTheme> localVarResp = getWithHttpInfo(playerId);
         return localVarResp.getData();
     }
 
@@ -747,7 +748,7 @@ public class PlayerThemesApi {
      * @param playerId
      *            The unique identifier for the player you want to retrieve. (required)
      * 
-     * @return ApiResponse&lt;Player&gt;
+     * @return ApiResponse&lt;PlayerTheme&gt;
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -771,9 +772,9 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Player> getWithHttpInfo(String playerId) throws ApiException {
+    public ApiResponse<PlayerTheme> getWithHttpInfo(String playerId) throws ApiException {
         okhttp3.Call localVarCall = getValidateBeforeCall(playerId, null);
-        Type localVarReturnType = new TypeToken<Player>() {
+        Type localVarReturnType = new TypeToken<PlayerTheme>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -783,7 +784,7 @@ public class PlayerThemesApi {
      * 
      * @param playerId
      *            The unique identifier for the player. (required)
-     * @param playerUpdatePayload
+     * @param playerThemeUpdatePayload
      *            (required)
      * @param _callback
      *            Callback for upload/download progress
@@ -812,9 +813,9 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    private okhttp3.Call updateCall(String playerId, PlayerUpdatePayload playerUpdatePayload,
+    private okhttp3.Call updateCall(String playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload,
             final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = playerUpdatePayload;
+        Object localVarPostBody = playerThemeUpdatePayload;
 
         // create path and map variables
         String localVarPath = "/players/{playerId}".replaceAll("\\{" + "playerId" + "\\}",
@@ -843,7 +844,7 @@ public class PlayerThemesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateValidateBeforeCall(String playerId, PlayerUpdatePayload playerUpdatePayload,
+    private okhttp3.Call updateValidateBeforeCall(String playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload,
             final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'playerId' is set
@@ -851,12 +852,12 @@ public class PlayerThemesApi {
             throw new ApiException("Missing the required parameter 'playerId' when calling update");
         }
 
-        // verify the required parameter 'playerUpdatePayload' is set
-        if (playerUpdatePayload == null) {
-            throw new ApiException("Missing the required parameter 'playerUpdatePayload' when calling update");
+        // verify the required parameter 'playerThemeUpdatePayload' is set
+        if (playerThemeUpdatePayload == null) {
+            throw new ApiException("Missing the required parameter 'playerThemeUpdatePayload' when calling update");
         }
 
-        okhttp3.Call localVarCall = updateCall(playerId, playerUpdatePayload, _callback);
+        okhttp3.Call localVarCall = updateCall(playerId, playerThemeUpdatePayload, _callback);
         return localVarCall;
     }
 
@@ -866,10 +867,10 @@ public class PlayerThemesApi {
      * 
      * @param playerId
      *            The unique identifier for the player. (required)
-     * @param playerUpdatePayload
+     * @param playerThemeUpdatePayload
      *            (required)
      * 
-     * @return Player
+     * @return PlayerTheme
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -893,8 +894,8 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    public Player update(String playerId, PlayerUpdatePayload playerUpdatePayload) throws ApiException {
-        ApiResponse<Player> localVarResp = updateWithHttpInfo(playerId, playerUpdatePayload);
+    public PlayerTheme update(String playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload) throws ApiException {
+        ApiResponse<PlayerTheme> localVarResp = updateWithHttpInfo(playerId, playerThemeUpdatePayload);
         return localVarResp.getData();
     }
 
@@ -904,10 +905,10 @@ public class PlayerThemesApi {
      * 
      * @param playerId
      *            The unique identifier for the player. (required)
-     * @param playerUpdatePayload
+     * @param playerThemeUpdatePayload
      *            (required)
      * 
-     * @return ApiResponse&lt;Player&gt;
+     * @return ApiResponse&lt;PlayerTheme&gt;
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -931,10 +932,10 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Player> updateWithHttpInfo(String playerId, PlayerUpdatePayload playerUpdatePayload)
-            throws ApiException {
-        okhttp3.Call localVarCall = updateValidateBeforeCall(playerId, playerUpdatePayload, null);
-        Type localVarReturnType = new TypeToken<Player>() {
+    public ApiResponse<PlayerTheme> updateWithHttpInfo(String playerId,
+            PlayerThemeUpdatePayload playerThemeUpdatePayload) throws ApiException {
+        okhttp3.Call localVarCall = updateValidateBeforeCall(playerId, playerThemeUpdatePayload, null);
+        Type localVarReturnType = new TypeToken<PlayerTheme>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -942,7 +943,7 @@ public class PlayerThemesApi {
     /**
      * Build call for create
      * 
-     * @param playerCreationPayload
+     * @param playerThemeCreationPayload
      *            (required)
      * @param _callback
      *            Callback for upload/download progress
@@ -966,9 +967,9 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    private okhttp3.Call createCall(PlayerCreationPayload playerCreationPayload, final ApiCallback _callback)
+    private okhttp3.Call createCall(PlayerThemeCreationPayload playerThemeCreationPayload, final ApiCallback _callback)
             throws ApiException {
-        Object localVarPostBody = playerCreationPayload;
+        Object localVarPostBody = playerThemeCreationPayload;
 
         // create path and map variables
         String localVarPath = "/players";
@@ -996,25 +997,25 @@ public class PlayerThemesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createValidateBeforeCall(PlayerCreationPayload playerCreationPayload,
+    private okhttp3.Call createValidateBeforeCall(PlayerThemeCreationPayload playerThemeCreationPayload,
             final ApiCallback _callback) throws ApiException {
 
-        // verify the required parameter 'playerCreationPayload' is set
-        if (playerCreationPayload == null) {
-            throw new ApiException("Missing the required parameter 'playerCreationPayload' when calling create");
+        // verify the required parameter 'playerThemeCreationPayload' is set
+        if (playerThemeCreationPayload == null) {
+            throw new ApiException("Missing the required parameter 'playerThemeCreationPayload' when calling create");
         }
 
-        okhttp3.Call localVarCall = createCall(playerCreationPayload, _callback);
+        okhttp3.Call localVarCall = createCall(playerThemeCreationPayload, _callback);
         return localVarCall;
     }
 
     /**
      * Create a player Create a player for your video, and customise it.
      * 
-     * @param playerCreationPayload
+     * @param playerThemeCreationPayload
      *            (required)
      * 
-     * @return Player
+     * @return PlayerTheme
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1033,18 +1034,18 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    public Player create(PlayerCreationPayload playerCreationPayload) throws ApiException {
-        ApiResponse<Player> localVarResp = createWithHttpInfo(playerCreationPayload);
+    public PlayerTheme create(PlayerThemeCreationPayload playerThemeCreationPayload) throws ApiException {
+        ApiResponse<PlayerTheme> localVarResp = createWithHttpInfo(playerThemeCreationPayload);
         return localVarResp.getData();
     }
 
     /**
      * Create a player Create a player for your video, and customise it.
      * 
-     * @param playerCreationPayload
+     * @param playerThemeCreationPayload
      *            (required)
      * 
-     * @return ApiResponse&lt;Player&gt;
+     * @return ApiResponse&lt;PlayerTheme&gt;
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1063,9 +1064,10 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Player> createWithHttpInfo(PlayerCreationPayload playerCreationPayload) throws ApiException {
-        okhttp3.Call localVarCall = createValidateBeforeCall(playerCreationPayload, null);
-        Type localVarReturnType = new TypeToken<Player>() {
+    public ApiResponse<PlayerTheme> createWithHttpInfo(PlayerThemeCreationPayload playerThemeCreationPayload)
+            throws ApiException {
+        okhttp3.Call localVarCall = createValidateBeforeCall(playerThemeCreationPayload, null);
+        Type localVarReturnType = new TypeToken<PlayerTheme>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1183,7 +1185,7 @@ public class PlayerThemesApi {
      * @param link
      *            The path to the file you want to upload and use as a logo. (required)
      * 
-     * @return Player
+     * @return PlayerTheme
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1212,8 +1214,8 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    public Player uploadLogo(String playerId, File file, String link) throws ApiException {
-        ApiResponse<Player> localVarResp = uploadLogoWithHttpInfo(playerId, file, link);
+    public PlayerTheme uploadLogo(String playerId, File file, String link) throws ApiException {
+        ApiResponse<PlayerTheme> localVarResp = uploadLogoWithHttpInfo(playerId, file, link);
         return localVarResp.getData();
     }
 
@@ -1228,7 +1230,7 @@ public class PlayerThemesApi {
      * @param link
      *            The path to the file you want to upload and use as a logo. (required)
      * 
-     * @return ApiResponse&lt;Player&gt;
+     * @return ApiResponse&lt;PlayerTheme&gt;
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1257,9 +1259,10 @@ public class PlayerThemesApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Player> uploadLogoWithHttpInfo(String playerId, File file, String link) throws ApiException {
+    public ApiResponse<PlayerTheme> uploadLogoWithHttpInfo(String playerId, File file, String link)
+            throws ApiException {
         okhttp3.Call localVarCall = uploadLogoValidateBeforeCall(playerId, file, link, null);
-        Type localVarReturnType = new TypeToken<Player>() {
+        Type localVarReturnType = new TypeToken<PlayerTheme>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }

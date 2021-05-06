@@ -3,7 +3,7 @@
  * api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
  *
  * The version of the OpenAPI document: 1
- * Contact: ecosystem-team@api.video
+ * Contact: ecosystem@api.video
  *
  * NOTE: This class is auto generated.
  * Do not edit the class manually.
@@ -21,13 +21,15 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
+import video.api.client.api.models.PlayerThemeAssets;
 import java.io.Serializable;
 
 /**
- * PlayerUpdatePayload
+ * PlayerTheme
  */
 
-public class PlayerUpdatePayload implements Serializable {
+public class PlayerTheme implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TEXT = "text";
@@ -86,7 +88,47 @@ public class PlayerUpdatePayload implements Serializable {
     @SerializedName(SERIALIZED_NAME_FORCE_LOOP)
     private Boolean forceLoop;
 
-    public PlayerUpdatePayload text(String text) {
+    public static final String SERIALIZED_NAME_PLAYER_ID = "playerId";
+    @SerializedName(SERIALIZED_NAME_PLAYER_ID)
+    private String playerId;
+
+    public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
+    @SerializedName(SERIALIZED_NAME_CREATED_AT)
+    private OffsetDateTime createdAt;
+
+    public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
+    @SerializedName(SERIALIZED_NAME_UPDATED_AT)
+    private OffsetDateTime updatedAt;
+
+    public static final String SERIALIZED_NAME_SHAPE_MARGIN = "shapeMargin";
+    @SerializedName(SERIALIZED_NAME_SHAPE_MARGIN)
+    private Integer shapeMargin;
+
+    public static final String SERIALIZED_NAME_SHAPE_RADIUS = "shapeRadius";
+    @SerializedName(SERIALIZED_NAME_SHAPE_RADIUS)
+    private Integer shapeRadius;
+
+    public static final String SERIALIZED_NAME_SHAPE_ASPECT = "shapeAspect";
+    @SerializedName(SERIALIZED_NAME_SHAPE_ASPECT)
+    private String shapeAspect;
+
+    public static final String SERIALIZED_NAME_SHAPE_BACKGROUND_TOP = "shapeBackgroundTop";
+    @SerializedName(SERIALIZED_NAME_SHAPE_BACKGROUND_TOP)
+    private String shapeBackgroundTop;
+
+    public static final String SERIALIZED_NAME_SHAPE_BACKGROUND_BOTTOM = "shapeBackgroundBottom";
+    @SerializedName(SERIALIZED_NAME_SHAPE_BACKGROUND_BOTTOM)
+    private String shapeBackgroundBottom;
+
+    public static final String SERIALIZED_NAME_LINK_ACTIVE = "linkActive";
+    @SerializedName(SERIALIZED_NAME_LINK_ACTIVE)
+    private String linkActive;
+
+    public static final String SERIALIZED_NAME_ASSETS = "assets";
+    @SerializedName(SERIALIZED_NAME_ASSETS)
+    private PlayerThemeAssets assets;
+
+    public PlayerTheme text(String text) {
         this.text = text;
         return this;
     }
@@ -107,7 +149,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.text = text;
     }
 
-    public PlayerUpdatePayload link(String link) {
+    public PlayerTheme link(String link) {
         this.link = link;
         return this;
     }
@@ -128,7 +170,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.link = link;
     }
 
-    public PlayerUpdatePayload linkHover(String linkHover) {
+    public PlayerTheme linkHover(String linkHover) {
         this.linkHover = linkHover;
         return this;
     }
@@ -149,7 +191,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.linkHover = linkHover;
     }
 
-    public PlayerUpdatePayload trackPlayed(String trackPlayed) {
+    public PlayerTheme trackPlayed(String trackPlayed) {
         this.trackPlayed = trackPlayed;
         return this;
     }
@@ -170,7 +212,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.trackPlayed = trackPlayed;
     }
 
-    public PlayerUpdatePayload trackUnplayed(String trackUnplayed) {
+    public PlayerTheme trackUnplayed(String trackUnplayed) {
         this.trackUnplayed = trackUnplayed;
         return this;
     }
@@ -191,7 +233,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.trackUnplayed = trackUnplayed;
     }
 
-    public PlayerUpdatePayload trackBackground(String trackBackground) {
+    public PlayerTheme trackBackground(String trackBackground) {
         this.trackBackground = trackBackground;
         return this;
     }
@@ -212,7 +254,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.trackBackground = trackBackground;
     }
 
-    public PlayerUpdatePayload backgroundTop(String backgroundTop) {
+    public PlayerTheme backgroundTop(String backgroundTop) {
         this.backgroundTop = backgroundTop;
         return this;
     }
@@ -233,7 +275,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.backgroundTop = backgroundTop;
     }
 
-    public PlayerUpdatePayload backgroundBottom(String backgroundBottom) {
+    public PlayerTheme backgroundBottom(String backgroundBottom) {
         this.backgroundBottom = backgroundBottom;
         return this;
     }
@@ -254,7 +296,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.backgroundBottom = backgroundBottom;
     }
 
-    public PlayerUpdatePayload backgroundText(String backgroundText) {
+    public PlayerTheme backgroundText(String backgroundText) {
         this.backgroundText = backgroundText;
         return this;
     }
@@ -275,7 +317,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.backgroundText = backgroundText;
     }
 
-    public PlayerUpdatePayload enableApi(Boolean enableApi) {
+    public PlayerTheme enableApi(Boolean enableApi) {
         this.enableApi = enableApi;
         return this;
     }
@@ -296,7 +338,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.enableApi = enableApi;
     }
 
-    public PlayerUpdatePayload enableControls(Boolean enableControls) {
+    public PlayerTheme enableControls(Boolean enableControls) {
         this.enableControls = enableControls;
         return this;
     }
@@ -317,7 +359,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.enableControls = enableControls;
     }
 
-    public PlayerUpdatePayload forceAutoplay(Boolean forceAutoplay) {
+    public PlayerTheme forceAutoplay(Boolean forceAutoplay) {
         this.forceAutoplay = forceAutoplay;
         return this;
     }
@@ -338,7 +380,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.forceAutoplay = forceAutoplay;
     }
 
-    public PlayerUpdatePayload hideTitle(Boolean hideTitle) {
+    public PlayerTheme hideTitle(Boolean hideTitle) {
         this.hideTitle = hideTitle;
         return this;
     }
@@ -359,7 +401,7 @@ public class PlayerUpdatePayload implements Serializable {
         this.hideTitle = hideTitle;
     }
 
-    public PlayerUpdatePayload forceLoop(Boolean forceLoop) {
+    public PlayerTheme forceLoop(Boolean forceLoop) {
         this.forceLoop = forceLoop;
         return this;
     }
@@ -380,6 +422,216 @@ public class PlayerUpdatePayload implements Serializable {
         this.forceLoop = forceLoop;
     }
 
+    public PlayerTheme playerId(String playerId) {
+        this.playerId = playerId;
+        return this;
+    }
+
+    /**
+     * Get playerId
+     * 
+     * @return playerId
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "pl45KFKdlddgk654dspkze", value = "")
+
+    public String getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(String playerId) {
+        this.playerId = playerId;
+    }
+
+    public PlayerTheme createdAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    /**
+     * When the player was created, presented in ISO-8601 format.
+     * 
+     * @return createdAt
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "2020-01-31T10:17:47Z", value = "When the player was created, presented in ISO-8601 format.")
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public PlayerTheme updatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+
+    /**
+     * When the player was last updated, presented in ISO-8601 format.
+     * 
+     * @return updatedAt
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "2020-01-31T10:18:47Z", value = "When the player was last updated, presented in ISO-8601 format.")
+
+    public OffsetDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public PlayerTheme shapeMargin(Integer shapeMargin) {
+        this.shapeMargin = shapeMargin;
+        return this;
+    }
+
+    /**
+     * Deprecated
+     * 
+     * @return shapeMargin
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Deprecated")
+
+    public Integer getShapeMargin() {
+        return shapeMargin;
+    }
+
+    public void setShapeMargin(Integer shapeMargin) {
+        this.shapeMargin = shapeMargin;
+    }
+
+    public PlayerTheme shapeRadius(Integer shapeRadius) {
+        this.shapeRadius = shapeRadius;
+        return this;
+    }
+
+    /**
+     * Deprecated
+     * 
+     * @return shapeRadius
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Deprecated")
+
+    public Integer getShapeRadius() {
+        return shapeRadius;
+    }
+
+    public void setShapeRadius(Integer shapeRadius) {
+        this.shapeRadius = shapeRadius;
+    }
+
+    public PlayerTheme shapeAspect(String shapeAspect) {
+        this.shapeAspect = shapeAspect;
+        return this;
+    }
+
+    /**
+     * Deprecated
+     * 
+     * @return shapeAspect
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Deprecated")
+
+    public String getShapeAspect() {
+        return shapeAspect;
+    }
+
+    public void setShapeAspect(String shapeAspect) {
+        this.shapeAspect = shapeAspect;
+    }
+
+    public PlayerTheme shapeBackgroundTop(String shapeBackgroundTop) {
+        this.shapeBackgroundTop = shapeBackgroundTop;
+        return this;
+    }
+
+    /**
+     * Deprecated
+     * 
+     * @return shapeBackgroundTop
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Deprecated")
+
+    public String getShapeBackgroundTop() {
+        return shapeBackgroundTop;
+    }
+
+    public void setShapeBackgroundTop(String shapeBackgroundTop) {
+        this.shapeBackgroundTop = shapeBackgroundTop;
+    }
+
+    public PlayerTheme shapeBackgroundBottom(String shapeBackgroundBottom) {
+        this.shapeBackgroundBottom = shapeBackgroundBottom;
+        return this;
+    }
+
+    /**
+     * Deprecated
+     * 
+     * @return shapeBackgroundBottom
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Deprecated")
+
+    public String getShapeBackgroundBottom() {
+        return shapeBackgroundBottom;
+    }
+
+    public void setShapeBackgroundBottom(String shapeBackgroundBottom) {
+        this.shapeBackgroundBottom = shapeBackgroundBottom;
+    }
+
+    public PlayerTheme linkActive(String linkActive) {
+        this.linkActive = linkActive;
+        return this;
+    }
+
+    /**
+     * Deprecated
+     * 
+     * @return linkActive
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Deprecated")
+
+    public String getLinkActive() {
+        return linkActive;
+    }
+
+    public void setLinkActive(String linkActive) {
+        this.linkActive = linkActive;
+    }
+
+    public PlayerTheme assets(PlayerThemeAssets assets) {
+        this.assets = assets;
+        return this;
+    }
+
+    /**
+     * Get assets
+     * 
+     * @return assets
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+
+    public PlayerThemeAssets getAssets() {
+        return assets;
+    }
+
+    public void setAssets(PlayerThemeAssets assets) {
+        this.assets = assets;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -388,33 +640,44 @@ public class PlayerUpdatePayload implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlayerUpdatePayload playerUpdatePayload = (PlayerUpdatePayload) o;
-        return Objects.equals(this.text, playerUpdatePayload.text)
-                && Objects.equals(this.link, playerUpdatePayload.link)
-                && Objects.equals(this.linkHover, playerUpdatePayload.linkHover)
-                && Objects.equals(this.trackPlayed, playerUpdatePayload.trackPlayed)
-                && Objects.equals(this.trackUnplayed, playerUpdatePayload.trackUnplayed)
-                && Objects.equals(this.trackBackground, playerUpdatePayload.trackBackground)
-                && Objects.equals(this.backgroundTop, playerUpdatePayload.backgroundTop)
-                && Objects.equals(this.backgroundBottom, playerUpdatePayload.backgroundBottom)
-                && Objects.equals(this.backgroundText, playerUpdatePayload.backgroundText)
-                && Objects.equals(this.enableApi, playerUpdatePayload.enableApi)
-                && Objects.equals(this.enableControls, playerUpdatePayload.enableControls)
-                && Objects.equals(this.forceAutoplay, playerUpdatePayload.forceAutoplay)
-                && Objects.equals(this.hideTitle, playerUpdatePayload.hideTitle)
-                && Objects.equals(this.forceLoop, playerUpdatePayload.forceLoop);
+        PlayerTheme playerTheme = (PlayerTheme) o;
+        return Objects.equals(this.text, playerTheme.text) && Objects.equals(this.link, playerTheme.link)
+                && Objects.equals(this.linkHover, playerTheme.linkHover)
+                && Objects.equals(this.trackPlayed, playerTheme.trackPlayed)
+                && Objects.equals(this.trackUnplayed, playerTheme.trackUnplayed)
+                && Objects.equals(this.trackBackground, playerTheme.trackBackground)
+                && Objects.equals(this.backgroundTop, playerTheme.backgroundTop)
+                && Objects.equals(this.backgroundBottom, playerTheme.backgroundBottom)
+                && Objects.equals(this.backgroundText, playerTheme.backgroundText)
+                && Objects.equals(this.enableApi, playerTheme.enableApi)
+                && Objects.equals(this.enableControls, playerTheme.enableControls)
+                && Objects.equals(this.forceAutoplay, playerTheme.forceAutoplay)
+                && Objects.equals(this.hideTitle, playerTheme.hideTitle)
+                && Objects.equals(this.forceLoop, playerTheme.forceLoop)
+                && Objects.equals(this.playerId, playerTheme.playerId)
+                && Objects.equals(this.createdAt, playerTheme.createdAt)
+                && Objects.equals(this.updatedAt, playerTheme.updatedAt)
+                && Objects.equals(this.shapeMargin, playerTheme.shapeMargin)
+                && Objects.equals(this.shapeRadius, playerTheme.shapeRadius)
+                && Objects.equals(this.shapeAspect, playerTheme.shapeAspect)
+                && Objects.equals(this.shapeBackgroundTop, playerTheme.shapeBackgroundTop)
+                && Objects.equals(this.shapeBackgroundBottom, playerTheme.shapeBackgroundBottom)
+                && Objects.equals(this.linkActive, playerTheme.linkActive)
+                && Objects.equals(this.assets, playerTheme.assets);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(text, link, linkHover, trackPlayed, trackUnplayed, trackBackground, backgroundTop,
-                backgroundBottom, backgroundText, enableApi, enableControls, forceAutoplay, hideTitle, forceLoop);
+                backgroundBottom, backgroundText, enableApi, enableControls, forceAutoplay, hideTitle, forceLoop,
+                playerId, createdAt, updatedAt, shapeMargin, shapeRadius, shapeAspect, shapeBackgroundTop,
+                shapeBackgroundBottom, linkActive, assets);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class PlayerUpdatePayload {\n");
+        sb.append("class PlayerTheme {\n");
         sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("    linkHover: ").append(toIndentedString(linkHover)).append("\n");
@@ -429,6 +692,16 @@ public class PlayerUpdatePayload implements Serializable {
         sb.append("    forceAutoplay: ").append(toIndentedString(forceAutoplay)).append("\n");
         sb.append("    hideTitle: ").append(toIndentedString(hideTitle)).append("\n");
         sb.append("    forceLoop: ").append(toIndentedString(forceLoop)).append("\n");
+        sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
+        sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+        sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+        sb.append("    shapeMargin: ").append(toIndentedString(shapeMargin)).append("\n");
+        sb.append("    shapeRadius: ").append(toIndentedString(shapeRadius)).append("\n");
+        sb.append("    shapeAspect: ").append(toIndentedString(shapeAspect)).append("\n");
+        sb.append("    shapeBackgroundTop: ").append(toIndentedString(shapeBackgroundTop)).append("\n");
+        sb.append("    shapeBackgroundBottom: ").append(toIndentedString(shapeBackgroundBottom)).append("\n");
+        sb.append("    linkActive: ").append(toIndentedString(linkActive)).append("\n");
+        sb.append("    assets: ").append(toIndentedString(assets)).append("\n");
         sb.append("}");
         return sb.toString();
     }

@@ -3,7 +3,7 @@
  * api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
  *
  * The version of the OpenAPI document: 1
- * Contact: ecosystem-team@api.video
+ * Contact: ecosystem@api.video
  *
  * NOTE: This class is auto generated.
  * Do not edit the class manually.
@@ -62,7 +62,7 @@ public class Video implements Serializable {
 
     public static final String SERIALIZED_NAME_TAGS = "tags";
     @SerializedName(SERIALIZED_NAME_TAGS)
-    private List<Object> tags = null;
+    private List<String> tags = null;
 
     public static final String SERIALIZED_NAME_METADATA = "metadata";
     @SerializedName(SERIALIZED_NAME_METADATA)
@@ -218,12 +218,12 @@ public class Video implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public Video tags(List<Object> tags) {
+    public Video tags(List<String> tags) {
         this.tags = tags;
         return this;
     }
 
-    public Video addTagsItem(Object tagsItem) {
+    public Video addTagsItem(String tagsItem) {
         if (this.tags == null) {
             this.tags = new ArrayList<>();
         }
@@ -239,11 +239,11 @@ public class Video implements Serializable {
     @javax.annotation.Nullable
     @ApiModelProperty(example = "\"tags\": [\"maths\", \"string theory\", \"video\"]", value = "One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  ")
 
-    public List<Object> getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<Object> tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 

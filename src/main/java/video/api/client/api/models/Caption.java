@@ -3,7 +3,7 @@
  * api.video is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
  *
  * The version of the OpenAPI document: 1
- * Contact: ecosystem-team@api.video
+ * Contact: ecosystem@api.video
  *
  * NOTE: This class is auto generated.
  * Do not edit the class manually.
@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * Subtitle
+ * Caption
  */
 
-public class Subtitle implements Serializable {
+public class Caption implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_URI = "uri";
@@ -46,7 +46,7 @@ public class Subtitle implements Serializable {
     @SerializedName(SERIALIZED_NAME_DEFAULT)
     private Boolean _default = false;
 
-    public Subtitle uri(String uri) {
+    public Caption uri(String uri) {
         this.uri = uri;
         return this;
     }
@@ -67,7 +67,7 @@ public class Subtitle implements Serializable {
         this.uri = uri;
     }
 
-    public Subtitle src(String src) {
+    public Caption src(String src) {
         this.src = src;
         return this;
     }
@@ -88,7 +88,7 @@ public class Subtitle implements Serializable {
         this.src = src;
     }
 
-    public Subtitle srclang(String srclang) {
+    public Caption srclang(String srclang) {
         this.srclang = srclang;
         return this;
     }
@@ -109,7 +109,7 @@ public class Subtitle implements Serializable {
         this.srclang = srclang;
     }
 
-    public Subtitle _default(Boolean _default) {
+    public Caption _default(Boolean _default) {
         this._default = _default;
         return this;
     }
@@ -139,9 +139,9 @@ public class Subtitle implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Subtitle subtitle = (Subtitle) o;
-        return Objects.equals(this.uri, subtitle.uri) && Objects.equals(this.src, subtitle.src)
-                && Objects.equals(this.srclang, subtitle.srclang) && Objects.equals(this._default, subtitle._default);
+        Caption caption = (Caption) o;
+        return Objects.equals(this.uri, caption.uri) && Objects.equals(this.src, caption.src)
+                && Objects.equals(this.srclang, caption.srclang) && Objects.equals(this._default, caption._default);
     }
 
     @Override
@@ -152,7 +152,7 @@ public class Subtitle implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class Subtitle {\n");
+        sb.append("class Caption {\n");
         sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
         sb.append("    src: ").append(toIndentedString(src)).append("\n");
         sb.append("    srclang: ").append(toIndentedString(srclang)).append("\n");

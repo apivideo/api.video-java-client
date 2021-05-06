@@ -145,7 +145,7 @@ null (empty response body)
 
 <a name="list"></a>
 # **list**
-> PlayersListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
+> PlayerThemesListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
 
 List all players
 
@@ -174,7 +174,7 @@ public class Example {
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 
     try {
-      Page<Player> result = apiInstance.list()
+      Page<PlayerTheme> result = apiInstance.list()
             .sortBy(sortBy)
             .sortOrder(sortOrder)
             .currentPage(currentPage)
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Page**](pagination.md)<[**Player**](Player.md)>
+[**Page**](pagination.md)<[**PlayerTheme**](PlayerTheme.md)>
 
 
 ### Authorization
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 <a name="get"></a>
 # **get**
-> Player get(playerId)
+> PlayerTheme get(playerId)
 
 Show a player
 
@@ -249,7 +249,7 @@ public class Example {
     String playerId = "pl45d5vFFGrfdsdsd156dGhh"; // The unique identifier for the player you want to retrieve. 
 
     try {
-      Player result = apiInstance.get(playerId);
+      PlayerTheme result = apiInstance.get(playerId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlayerThemesApi#get");
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### Authorization
 
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 <a name="update"></a>
 # **update**
-> Player update(playerId, playerUpdatePayload)
+> PlayerTheme update(playerId, playerThemeUpdatePayload)
 
 Update a player
 
@@ -314,25 +314,25 @@ public class Example {
     PlayerThemesApi apiInstance = client.playerThemes();
     
     String playerId = "pl45d5vFFGrfdsdsd156dGhh"; // The unique identifier for the player.
-    PlayerUpdatePayload playerUpdatePayload = new PlayerUpdatePayload(); // 
-    playerUpdatePayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
-    playerUpdatePayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
-    playerUpdatePayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
-    playerUpdatePayload.setTrackPlayed(""null""); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
-    playerUpdatePayload.setTrackUnplayed(""null""); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
-    playerUpdatePayload.setTrackBackground(""null""); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
-    playerUpdatePayload.setBackgroundTop(""null""); // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
-    playerUpdatePayload.setBackgroundBottom(""null""); // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
-    playerUpdatePayload.setBackgroundText(""null""); // RGBA color for title text. Default: rgba(255, 255, 255, 1)
-    playerUpdatePayload.setEnableApi(); // enable/disable player SDK access. Default: true
-    playerUpdatePayload.setEnableControls(); // enable/disable player controls. Default: true
-    playerUpdatePayload.setForceAutoplay(); // enable/disable player autoplay. Default: false
-    playerUpdatePayload.setHideTitle(); // enable/disable title. Default: false
-    playerUpdatePayload.setForceLoop(); // enable/disable looping. Default: false
+    PlayerThemeUpdatePayload playerThemeUpdatePayload = new PlayerThemeUpdatePayload(); // 
+    playerThemeUpdatePayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
+    playerThemeUpdatePayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
+    playerThemeUpdatePayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
+    playerThemeUpdatePayload.setTrackPlayed(""null""); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
+    playerThemeUpdatePayload.setTrackUnplayed(""null""); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
+    playerThemeUpdatePayload.setTrackBackground(""null""); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
+    playerThemeUpdatePayload.setBackgroundTop(""null""); // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
+    playerThemeUpdatePayload.setBackgroundBottom(""null""); // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
+    playerThemeUpdatePayload.setBackgroundText(""null""); // RGBA color for title text. Default: rgba(255, 255, 255, 1)
+    playerThemeUpdatePayload.setEnableApi(); // enable/disable player SDK access. Default: true
+    playerThemeUpdatePayload.setEnableControls(); // enable/disable player controls. Default: true
+    playerThemeUpdatePayload.setForceAutoplay(); // enable/disable player autoplay. Default: false
+    playerThemeUpdatePayload.setHideTitle(); // enable/disable title. Default: false
+    playerThemeUpdatePayload.setForceLoop(); // enable/disable looping. Default: false
 
 
     try {
-      Player result = apiInstance.update(playerId, playerUpdatePayload);
+      PlayerTheme result = apiInstance.update(playerId, playerThemeUpdatePayload);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlayerThemesApi#update");
@@ -350,12 +350,12 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playerId** | **String**| The unique identifier for the player. |
- **playerUpdatePayload** | [**PlayerUpdatePayload**](PlayerUpdatePayload.md)|  |
+ **playerThemeUpdatePayload** | [**PlayerThemeUpdatePayload**](PlayerThemeUpdatePayload.md)|  |
 
 ### Return type
 
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### Authorization
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 <a name="create"></a>
 # **create**
-> Player create(playerCreationPayload)
+> PlayerTheme create(playerThemeCreationPayload)
 
 Create a player
 
@@ -397,25 +397,25 @@ public class Example {
 
     PlayerThemesApi apiInstance = client.playerThemes();
     
-    PlayerCreationPayload playerCreationPayload = new PlayerCreationPayload(); // 
-    playerCreationPayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
-    playerCreationPayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
-    playerCreationPayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
-    playerCreationPayload.setTrackPlayed(""null""); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
-    playerCreationPayload.setTrackUnplayed(""null""); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
-    playerCreationPayload.setTrackBackground(""null""); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
-    playerCreationPayload.setBackgroundTop(""null""); // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
-    playerCreationPayload.setBackgroundBottom(""null""); // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
-    playerCreationPayload.setBackgroundText(""null""); // RGBA color for title text. Default: rgba(255, 255, 255, 1)
-    playerCreationPayload.setEnableApi(); // enable/disable player SDK access. Default: true
-    playerCreationPayload.setEnableControls(); // enable/disable player controls. Default: true
-    playerCreationPayload.setForceAutoplay(); // enable/disable player autoplay. Default: false
-    playerCreationPayload.setHideTitle(); // enable/disable title. Default: false
-    playerCreationPayload.setForceLoop(); // enable/disable looping. Default: false
+    PlayerThemeCreationPayload playerThemeCreationPayload = new PlayerThemeCreationPayload(); // 
+    playerThemeCreationPayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
+    playerThemeCreationPayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
+    playerThemeCreationPayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
+    playerThemeCreationPayload.setTrackPlayed(""null""); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
+    playerThemeCreationPayload.setTrackUnplayed(""null""); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
+    playerThemeCreationPayload.setTrackBackground(""null""); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
+    playerThemeCreationPayload.setBackgroundTop(""null""); // RGBA color: top 50% of background. Default: rgba(0, 0, 0, .7)
+    playerThemeCreationPayload.setBackgroundBottom(""null""); // RGBA color: bottom 50% of background. Default: rgba(0, 0, 0, .7)
+    playerThemeCreationPayload.setBackgroundText(""null""); // RGBA color for title text. Default: rgba(255, 255, 255, 1)
+    playerThemeCreationPayload.setEnableApi(); // enable/disable player SDK access. Default: true
+    playerThemeCreationPayload.setEnableControls(); // enable/disable player controls. Default: true
+    playerThemeCreationPayload.setForceAutoplay(); // enable/disable player autoplay. Default: false
+    playerThemeCreationPayload.setHideTitle(); // enable/disable title. Default: false
+    playerThemeCreationPayload.setForceLoop(); // enable/disable looping. Default: false
 
 
     try {
-      Player result = apiInstance.create(playerCreationPayload);
+      PlayerTheme result = apiInstance.create(playerThemeCreationPayload);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlayerThemesApi#create");
@@ -432,12 +432,12 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **playerCreationPayload** | [**PlayerCreationPayload**](PlayerCreationPayload.md)|  |
+ **playerThemeCreationPayload** | [**PlayerThemeCreationPayload**](PlayerThemeCreationPayload.md)|  |
 
 ### Return type
 
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### Authorization
 
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 
 <a name="uploadLogo"></a>
 # **uploadLogo**
-> Player uploadLogo(playerId, file, link)
+> PlayerTheme uploadLogo(playerId, file, link)
 
 Upload a logo
 
@@ -483,7 +483,7 @@ public class Example {
     String link = "link_example"; // The path to the file you want to upload and use as a logo.
 
     try {
-      Player result = apiInstance.uploadLogo(playerId, file, link);
+      PlayerTheme result = apiInstance.uploadLogo(playerId, file, link);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PlayerThemesApi#uploadLogo");
@@ -507,7 +507,7 @@ Name | Type | Description  | Notes
 ### Return type
 
 
-[**Player**](Player.md)
+[**PlayerTheme**](PlayerTheme.md)
 
 ### Authorization
 
