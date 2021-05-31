@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;PlayerSessionEvent&gt;**](PlayerSessionEvent.md) |  |  [optional]
-**pagination** | [**Pagination**](Pagination.md) |  |  [optional]
+**data** | [**List&lt;PlayerSessionEvent&gt;**](PlayerSessionEvent.md) |  | 
+**pagination** | [**Pagination**](Pagination.md) |  | 
 
 
 ## Implemented Interfaces

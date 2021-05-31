@@ -102,8 +102,7 @@ public class Video implements Serializable {
      * 
      * @return videoId
      **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(example = "vi4k0jvEUuaTdRAEjQ4Prklg", value = "The unique identifier of the video object.")
+    @ApiModelProperty(example = "vi4k0jvEUuaTdRAEjQ4Prklg", required = true, value = "The unique identifier of the video object.")
 
     public String getVideoId() {
         return videoId;
@@ -124,7 +123,7 @@ public class Video implements Serializable {
      * @return createdAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-06-24T11:45:01.109Z", value = "When an webhook was created, presented in ISO-8601 format.")
+    @ApiModelProperty(value = "When an webhook was created, presented in ISO-8601 format.")
 
     public OffsetDateTime getCreatedAt() {
         return createdAt;
@@ -144,8 +143,7 @@ public class Video implements Serializable {
      * 
      * @return title
      **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(example = "Maths video", value = "The title of the video content. ")
+    @ApiModelProperty(example = "Maths video", required = true, value = "The title of the video content. ")
 
     public String getTitle() {
         return title;
@@ -237,7 +235,7 @@ public class Video implements Serializable {
      * @return tags
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "\"tags\": [\"maths\", \"string theory\", \"video\"]", value = "One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  ")
+    @ApiModelProperty(example = "\"tags\": [\"maths\", \"string theory\", \"video\"]", value = "One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces. ")
 
     public List<String> getTags() {
         return tags;
@@ -267,7 +265,7 @@ public class Video implements Serializable {
      * @return metadata
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "[{\"key\":\"Author\", \"value\":\"John Doe\"}, {\"key\":\"Format\", \"value\":\"Tutorial\"}]", value = "Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video.  ")
+    @ApiModelProperty(example = "[{\"key\":\"Author\", \"value\":\"John Doe\"}, {\"key\":\"Format\", \"value\":\"Tutorial\"}]", value = "Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. ")
 
     public List<Metadata> getMetadata() {
         return metadata;

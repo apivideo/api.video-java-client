@@ -432,8 +432,7 @@ public class PlayerTheme implements Serializable {
      * 
      * @return playerId
      **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(example = "pl45KFKdlddgk654dspkze", value = "")
+    @ApiModelProperty(example = "pl45KFKdlddgk654dspkze", required = true, value = "")
 
     public String getPlayerId() {
         return playerId;

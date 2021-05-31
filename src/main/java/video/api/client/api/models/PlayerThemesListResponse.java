@@ -36,7 +36,7 @@ public class PlayerThemesListResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DATA = "data";
     @SerializedName(SERIALIZED_NAME_DATA)
-    private List<PlayerTheme> data = null;
+    private List<PlayerTheme> data = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PAGINATION = "pagination";
     @SerializedName(SERIALIZED_NAME_PAGINATION)
@@ -48,9 +48,6 @@ public class PlayerThemesListResponse implements Serializable {
     }
 
     public PlayerThemesListResponse addDataItem(PlayerTheme dataItem) {
-        if (this.data == null) {
-            this.data = new ArrayList<>();
-        }
         this.data.add(dataItem);
         return this;
     }
@@ -60,8 +57,7 @@ public class PlayerThemesListResponse implements Serializable {
      * 
      * @return data
      **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(required = true, value = "")
 
     public List<PlayerTheme> getData() {
         return data;
@@ -81,8 +77,7 @@ public class PlayerThemesListResponse implements Serializable {
      * 
      * @return pagination
      **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(required = true, value = "")
 
     public Pagination getPagination() {
         return pagination;
