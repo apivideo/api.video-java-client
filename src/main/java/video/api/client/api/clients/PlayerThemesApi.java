@@ -1080,7 +1080,8 @@ public class PlayerThemesApi {
      * @param file
      *            The name of the file you want to use for your logo. (required)
      * @param link
-     *            The path to the file you want to upload and use as a logo. (required)
+     *            A public link that you want to advertise in your player. For example, you could add a link to your
+     *            company. When a viewer clicks on your logo, they will be taken to this address. (optional)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -1165,11 +1166,6 @@ public class PlayerThemesApi {
             throw new ApiException("Missing the required parameter 'file' when calling uploadLogo");
         }
 
-        // verify the required parameter 'link' is set
-        if (link == null) {
-            throw new ApiException("Missing the required parameter 'link' when calling uploadLogo");
-        }
-
         okhttp3.Call localVarCall = uploadLogoCall(playerId, file, link, _callback);
         return localVarCall;
     }
@@ -1183,7 +1179,8 @@ public class PlayerThemesApi {
      * @param file
      *            The name of the file you want to use for your logo. (required)
      * @param link
-     *            The path to the file you want to upload and use as a logo. (required)
+     *            A public link that you want to advertise in your player. For example, you could add a link to your
+     *            company. When a viewer clicks on your logo, they will be taken to this address. (optional)
      * 
      * @return PlayerTheme
      * 
@@ -1228,7 +1225,8 @@ public class PlayerThemesApi {
      * @param file
      *            The name of the file you want to use for your logo. (required)
      * @param link
-     *            The path to the file you want to upload and use as a logo. (required)
+     *            A public link that you want to advertise in your player. For example, you could add a link to your
+     *            company. When a viewer clicks on your logo, they will be taken to this address. (optional)
      * 
      * @return ApiResponse&lt;PlayerTheme&gt;
      * 

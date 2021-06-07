@@ -33,7 +33,7 @@ public class Example {
 
     ChaptersApi apiInstance = client.chapters();
     
-    String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the video you want to delete a chapter from. 
+    String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the video you want to delete a chapter from.
     String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
 
     try {
@@ -53,7 +53,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoId** | **String**| The unique identifier for the video you want to delete a chapter from.  |
+ **videoId** | **String**| The unique identifier for the video you want to delete a chapter from. |
  **language** | **String**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
 
 ### Return type

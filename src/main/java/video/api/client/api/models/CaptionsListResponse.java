@@ -36,7 +36,7 @@ public class CaptionsListResponse implements Serializable {
 
     public static final String SERIALIZED_NAME_DATA = "data";
     @SerializedName(SERIALIZED_NAME_DATA)
-    private List<Caption> data = null;
+    private List<Caption> data = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PAGINATION = "pagination";
     @SerializedName(SERIALIZED_NAME_PAGINATION)
@@ -48,9 +48,6 @@ public class CaptionsListResponse implements Serializable {
     }
 
     public CaptionsListResponse addDataItem(Caption dataItem) {
-        if (this.data == null) {
-            this.data = new ArrayList<>();
-        }
         this.data.add(dataItem);
         return this;
     }
@@ -60,8 +57,7 @@ public class CaptionsListResponse implements Serializable {
      * 
      * @return data
      **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(required = true, value = "")
 
     public List<Caption> getData() {
         return data;
@@ -81,8 +77,7 @@ public class CaptionsListResponse implements Serializable {
      * 
      * @return pagination
      **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(required = true, value = "")
 
     public Pagination getPagination() {
         return pagination;

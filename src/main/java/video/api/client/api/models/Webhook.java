@@ -81,7 +81,7 @@ public class Webhook implements Serializable {
      * @return createdAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-06-24T11:45:01.109Z", value = "When an webhook was created, presented in ISO-8601 format.")
+    @ApiModelProperty(value = "When an webhook was created, presented in ISO-8601 format.")
 
     public OffsetDateTime getCreatedAt() {
         return createdAt;

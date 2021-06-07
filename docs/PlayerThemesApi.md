@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 Upload a logo
 
-The uploaded image maximum size should be 200x100 and its weight should be 200KB.  It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+The uploaded image maximum size should be 200x100 and its weight should be 200KB. It will be scaled down to 30px height and converted to PNG to be displayed in the player.
 
 ### Example
 ```java
@@ -480,7 +480,7 @@ public class Example {
     
     String playerId = "pl14Db6oMJRH6SRVoOwORacK"; // The unique identifier for the player.
     File file = new File("/path/to/file"); // The name of the file you want to use for your logo.
-    String link = "link_example"; // The path to the file you want to upload and use as a logo.
+    String link = "link_example"; // A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address.
 
     try {
       PlayerTheme result = apiInstance.uploadLogo(playerId, file, link);
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playerId** | **String**| The unique identifier for the player. |
  **file** | **File**| The name of the file you want to use for your logo. |
- **link** | **String**| The path to the file you want to upload and use as a logo. |
+ **link** | **String**| A public link that you want to advertise in your player. For example, you could add a link to your company. When a viewer clicks on your logo, they will be taken to this address. | [optional]
 
 ### Return type
 
