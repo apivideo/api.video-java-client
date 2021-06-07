@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List&lt;VideoSession&gt;**](VideoSession.md) |  |  [optional]
-**pagination** | [**Pagination**](Pagination.md) |  |  [optional]
+**data** | [**List&lt;VideoSession&gt;**](VideoSession.md) |  | 
+**pagination** | [**Pagination**](Pagination.md) |  | 
 
 
 ## Implemented Interfaces

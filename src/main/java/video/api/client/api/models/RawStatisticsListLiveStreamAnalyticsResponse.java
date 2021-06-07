@@ -36,7 +36,7 @@ public class RawStatisticsListLiveStreamAnalyticsResponse implements Serializabl
 
     public static final String SERIALIZED_NAME_DATA = "data";
     @SerializedName(SERIALIZED_NAME_DATA)
-    private List<LiveStreamSession> data = null;
+    private List<LiveStreamSession> data = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_PAGINATION = "pagination";
     @SerializedName(SERIALIZED_NAME_PAGINATION)
@@ -48,9 +48,6 @@ public class RawStatisticsListLiveStreamAnalyticsResponse implements Serializabl
     }
 
     public RawStatisticsListLiveStreamAnalyticsResponse addDataItem(LiveStreamSession dataItem) {
-        if (this.data == null) {
-            this.data = new ArrayList<>();
-        }
         this.data.add(dataItem);
         return this;
     }
@@ -60,8 +57,7 @@ public class RawStatisticsListLiveStreamAnalyticsResponse implements Serializabl
      * 
      * @return data
      **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(required = true, value = "")
 
     public List<LiveStreamSession> getData() {
         return data;
@@ -81,8 +77,7 @@ public class RawStatisticsListLiveStreamAnalyticsResponse implements Serializabl
      * 
      * @return pagination
      **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(required = true, value = "")
 
     public Pagination getPagination() {
         return pagination;

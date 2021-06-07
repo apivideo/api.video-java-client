@@ -247,7 +247,7 @@ public class Example {
 
     CaptionsApi apiInstance = client.captions();
     
-    String videoId = "vi4k0jvEUuaTdRAEjQ4Prklg"; // The unique identifier for the video you want to have automatic captions for. 
+    String videoId = "vi4k0jvEUuaTdRAEjQ4Prklg"; // The unique identifier for the video you want to have automatic captions for.
     String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
     CaptionsUpdatePayload captionsUpdatePayload = new CaptionsUpdatePayload(); // 
     captionsUpdatePayload.setDefault(); // 
@@ -271,7 +271,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoId** | **String**| The unique identifier for the video you want to have automatic captions for.  |
+ **videoId** | **String**| The unique identifier for the video you want to have automatic captions for. |
  **language** | **String**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
  **captionsUpdatePayload** | [**CaptionsUpdatePayload**](CaptionsUpdatePayload.md)|  |
 

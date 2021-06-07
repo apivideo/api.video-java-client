@@ -82,8 +82,7 @@ public class LiveStream implements Serializable {
      * 
      * @return liveStreamId
      **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(example = "li400mYKSgQ6xs7taUeSaEKr", value = "The unique identifier for the live stream. Live stream IDs begin with \"li.\"")
+    @ApiModelProperty(example = "li400mYKSgQ6xs7taUeSaEKr", required = true, value = "The unique identifier for the live stream. Live stream IDs begin with \"li.\"")
 
     public String getLiveStreamId() {
         return liveStreamId;
