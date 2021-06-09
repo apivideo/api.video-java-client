@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import video.api.client.api.models.Metadata;
 import java.io.Serializable;
 
 /**
@@ -42,6 +45,10 @@ public class VideoSessionSession implements Serializable {
     public static final String SERIALIZED_NAME_ENDED_AT = "endedAt";
     @SerializedName(SERIALIZED_NAME_ENDED_AT)
     private OffsetDateTime endedAt;
+
+    public static final String SERIALIZED_NAME_METADATA = "metadata";
+    @SerializedName(SERIALIZED_NAME_METADATA)
+    private List<Metadata> metadata = null;
 
     public VideoSessionSession sessionId(String sessionId) {
         this.sessionId = sessionId;
@@ -106,6 +113,37 @@ public class VideoSessionSession implements Serializable {
         this.endedAt = endedAt;
     }
 
+    public VideoSessionSession metadata(List<Metadata> metadata) {
+        this.metadata = metadata;
+        return this;
+    }
+
+    public VideoSessionSession addMetadataItem(Metadata metadataItem) {
+        if (this.metadata == null) {
+            this.metadata = new ArrayList<>();
+        }
+        this.metadata.add(metadataItem);
+        return this;
+    }
+
+    /**
+     * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic,
+     * allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your
+     * videos.
+     * 
+     * @return metadata
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "[{\"key\": \"Author\", \"value\": \"John Doe\"}]", value = "A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.")
+
+    public List<Metadata> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(List<Metadata> metadata) {
+        this.metadata = metadata;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -117,12 +155,13 @@ public class VideoSessionSession implements Serializable {
         VideoSessionSession videoSessionSession = (VideoSessionSession) o;
         return Objects.equals(this.sessionId, videoSessionSession.sessionId)
                 && Objects.equals(this.loadedAt, videoSessionSession.loadedAt)
-                && Objects.equals(this.endedAt, videoSessionSession.endedAt);
+                && Objects.equals(this.endedAt, videoSessionSession.endedAt)
+                && Objects.equals(this.metadata, videoSessionSession.metadata);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(sessionId, loadedAt, endedAt);
+        return Objects.hash(sessionId, loadedAt, endedAt, metadata);
     }
 
     @Override
@@ -132,6 +171,7 @@ public class VideoSessionSession implements Serializable {
         sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
         sb.append("    loadedAt: ").append(toIndentedString(loadedAt)).append("\n");
         sb.append("    endedAt: ").append(toIndentedString(endedAt)).append("\n");
+        sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
         sb.append("}");
         return sb.toString();
     }
