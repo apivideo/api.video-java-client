@@ -615,7 +615,7 @@ public class RawStatisticsApi {
         return new APIlistSessionEventsRequest(sessionId);
     }
 
-    private okhttp3.Call listVideoSessionsCall(String videoId, String period, List<String> metadata,
+    private okhttp3.Call listVideoSessionsCall(String videoId, String period, Map<String, String> metadata,
             Integer currentPage, Integer pageSize, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
@@ -634,7 +634,7 @@ public class RawStatisticsApi {
         }
 
         if (metadata != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metadata", metadata));
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("metadata", metadata));
         }
 
         if (currentPage != null) {
@@ -664,8 +664,9 @@ public class RawStatisticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listVideoSessionsValidateBeforeCall(String videoId, String period, List<String> metadata,
-            Integer currentPage, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listVideoSessionsValidateBeforeCall(String videoId, String period,
+            Map<String, String> metadata, Integer currentPage, Integer pageSize, final ApiCallback _callback)
+            throws ApiException {
 
         // verify the required parameter 'videoId' is set
         if (videoId == null) {
@@ -677,7 +678,7 @@ public class RawStatisticsApi {
     }
 
     private ApiResponse<RawStatisticsListSessionsResponse> listVideoSessionsWithHttpInfo(String videoId, String period,
-            List<String> metadata, Integer currentPage, Integer pageSize) throws ApiException {
+            Map<String, String> metadata, Integer currentPage, Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = listVideoSessionsValidateBeforeCall(videoId, period, metadata, currentPage,
                 pageSize, null);
         Type localVarReturnType = new TypeToken<RawStatisticsListSessionsResponse>() {
@@ -688,7 +689,7 @@ public class RawStatisticsApi {
     public class APIlistVideoSessionsRequest {
         private final String videoId;
         private String period;
-        private List<String> metadata;
+        private Map<String, String> metadata;
         private Integer currentPage;
         private Integer pageSize;
 
@@ -720,7 +721,7 @@ public class RawStatisticsApi {
          * 
          * @return APIlistVideoSessionsRequest
          */
-        public APIlistVideoSessionsRequest metadata(List<String> metadata) {
+        public APIlistVideoSessionsRequest metadata(Map<String, String> metadata) {
             this.metadata = metadata;
             return this;
         }
