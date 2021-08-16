@@ -558,7 +558,8 @@ public class ChaptersApi {
     }
 
     /**
-     * Show a chapter
+     * Show a chapter Chapters help your viewers find the sections of the video they are most interested in viewing.
+     * Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
      * 
      * @param videoId
      *            The unique identifier for the video you want to show a chapter for. (required)
@@ -596,7 +597,8 @@ public class ChaptersApi {
     }
 
     /**
-     * Show a chapter
+     * Show a chapter Chapters help your viewers find the sections of the video they are most interested in viewing.
+     * Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
      * 
      * @param videoId
      *            The unique identifier for the video you want to show a chapter for. (required)
