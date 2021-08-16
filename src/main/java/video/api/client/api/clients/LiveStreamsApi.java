@@ -713,7 +713,8 @@ public class LiveStreamsApi {
 
     /**
      * Show live stream Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the
-     * livestream.
+     * livestream. Tutorials that use the [show livestream
+     * endpoint](https://api.video/blog/endpoints/live-stream-status).
      * 
      * @param liveStreamId
      *            The unique ID for the live stream you want to watch. (required)
@@ -744,7 +745,8 @@ public class LiveStreamsApi {
 
     /**
      * Show live stream Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the
-     * livestream.
+     * livestream. Tutorials that use the [show livestream
+     * endpoint](https://api.video/blog/endpoints/live-stream-status).
      * 
      * @param liveStreamId
      *            The unique ID for the live stream you want to watch. (required)
@@ -1028,7 +1030,8 @@ public class LiveStreamsApi {
      * &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000
      * viewers or fewer. See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a
      * walkthrough of this API with OBS. Your RTMP endpoint for the livestream is
-     * rtmp://broadcast.api.video/s/{streamKey}
+     * rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live
+     * streams](https://api.video/blog/endpoints/live-create).
      * 
      * @param liveStreamCreationPayload
      *            (required)
@@ -1068,7 +1071,8 @@ public class LiveStreamsApi {
      * &#39;private livestream&#39; is available as a BETA feature, and should be limited to livestreams of 3,000
      * viewers or fewer. See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a
      * walkthrough of this API with OBS. Your RTMP endpoint for the livestream is
-     * rtmp://broadcast.api.video/s/{streamKey}
+     * rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live
+     * streams](https://api.video/blog/endpoints/live-create).
      * 
      * @param liveStreamCreationPayload
      *            (required)
@@ -1197,7 +1201,8 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Upload a thumbnail Upload an image to use as a backdrop for your livestream.
+     * Upload a thumbnail Upload an image to use as a backdrop for your livestream. Tutorials that [update live stream
+     * thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
      * 
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)
@@ -1239,7 +1244,8 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Upload a thumbnail Upload an image to use as a backdrop for your livestream.
+     * Upload a thumbnail Upload an image to use as a backdrop for your livestream. Tutorials that [update live stream
+     * thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
      * 
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)

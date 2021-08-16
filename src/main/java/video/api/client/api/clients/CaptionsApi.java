@@ -561,7 +561,8 @@ public class CaptionsApi {
 
     /**
      * Show a caption Display a caption for a video in a specific language. If the language is available, the caption is
-     * returned. Otherwise, you will get a response indicating the caption was not found.
+     * returned. Otherwise, you will get a response indicating the caption was not found. Tutorials that use the
+     * [captions endpoint](https://api.video/blog/endpoints/captions).
      * 
      * @param videoId
      *            The unique identifier for the video you want captions for. (required)
@@ -600,7 +601,8 @@ public class CaptionsApi {
 
     /**
      * Show a caption Display a caption for a video in a specific language. If the language is available, the caption is
-     * returned. Otherwise, you will get a response indicating the caption was not found.
+     * returned. Otherwise, you will get a response indicating the caption was not found. Tutorials that use the
+     * [captions endpoint](https://api.video/blog/endpoints/captions).
      * 
      * @param videoId
      *            The unique identifier for the video you want captions for. (required)
