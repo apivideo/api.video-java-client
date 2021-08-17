@@ -46,6 +46,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ApiClient {
+    private static final long DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
+    private static final long MIN_CHUNK_SIZE = 5 * 1024 * 1024;
+    private static final long MAX_CHUNK_SIZE = 128 * 1024 * 1024;
     private boolean debugging = false;
     private String basePath;
     private Map<String, String> defaultHeaderMap = new HashMap<>();
@@ -63,7 +66,7 @@ public class ApiClient {
 
     private ApiVideoAuthInterceptor apiVideoAuthInterceptor;
     private String apiKey;
-    private long uploadChunkSize = 100 * 1024 * 1024;
+    private long uploadChunkSize = DEFAULT_CHUNK_SIZE;
 
     public ApiClient(String basePath) {
         this.basePath = basePath;
@@ -110,7 +113,7 @@ public class ApiClient {
     private void init() {
         verifyingSsl = true;
         json = new JSON();
-        setUserAgent("api.video client (java; v:1.0.6; )");
+        setUserAgent("api.video client (java; v:1.0.7; )");
     }
 
     /**
@@ -1291,6 +1294,10 @@ public class ApiClient {
     }
 
     public void setUploadChunkSize(long uploadChunkSize) {
+        if (uploadChunkSize < MIN_CHUNK_SIZE || uploadChunkSize > MAX_CHUNK_SIZE) {
+            throw new IllegalArgumentException("Invalid chunk size value. Must be greater than " + MIN_CHUNK_SIZE
+                    + " bytes and lower than " + MAX_CHUNK_SIZE + " bytes.");
+        }
         this.uploadChunkSize = uploadChunkSize;
     }
 
