@@ -100,26 +100,6 @@ public class PlayerTheme implements Serializable {
     @SerializedName(SERIALIZED_NAME_UPDATED_AT)
     private OffsetDateTime updatedAt;
 
-    public static final String SERIALIZED_NAME_SHAPE_MARGIN = "shapeMargin";
-    @SerializedName(SERIALIZED_NAME_SHAPE_MARGIN)
-    private Integer shapeMargin;
-
-    public static final String SERIALIZED_NAME_SHAPE_RADIUS = "shapeRadius";
-    @SerializedName(SERIALIZED_NAME_SHAPE_RADIUS)
-    private Integer shapeRadius;
-
-    public static final String SERIALIZED_NAME_SHAPE_ASPECT = "shapeAspect";
-    @SerializedName(SERIALIZED_NAME_SHAPE_ASPECT)
-    private String shapeAspect;
-
-    public static final String SERIALIZED_NAME_SHAPE_BACKGROUND_TOP = "shapeBackgroundTop";
-    @SerializedName(SERIALIZED_NAME_SHAPE_BACKGROUND_TOP)
-    private String shapeBackgroundTop;
-
-    public static final String SERIALIZED_NAME_SHAPE_BACKGROUND_BOTTOM = "shapeBackgroundBottom";
-    @SerializedName(SERIALIZED_NAME_SHAPE_BACKGROUND_BOTTOM)
-    private String shapeBackgroundBottom;
-
     public static final String SERIALIZED_NAME_LINK_ACTIVE = "linkActive";
     @SerializedName(SERIALIZED_NAME_LINK_ACTIVE)
     private String linkActive;
@@ -484,111 +464,6 @@ public class PlayerTheme implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public PlayerTheme shapeMargin(Integer shapeMargin) {
-        this.shapeMargin = shapeMargin;
-        return this;
-    }
-
-    /**
-     * Deprecated
-     * 
-     * @return shapeMargin
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "Deprecated")
-
-    public Integer getShapeMargin() {
-        return shapeMargin;
-    }
-
-    public void setShapeMargin(Integer shapeMargin) {
-        this.shapeMargin = shapeMargin;
-    }
-
-    public PlayerTheme shapeRadius(Integer shapeRadius) {
-        this.shapeRadius = shapeRadius;
-        return this;
-    }
-
-    /**
-     * Deprecated
-     * 
-     * @return shapeRadius
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "Deprecated")
-
-    public Integer getShapeRadius() {
-        return shapeRadius;
-    }
-
-    public void setShapeRadius(Integer shapeRadius) {
-        this.shapeRadius = shapeRadius;
-    }
-
-    public PlayerTheme shapeAspect(String shapeAspect) {
-        this.shapeAspect = shapeAspect;
-        return this;
-    }
-
-    /**
-     * Deprecated
-     * 
-     * @return shapeAspect
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "Deprecated")
-
-    public String getShapeAspect() {
-        return shapeAspect;
-    }
-
-    public void setShapeAspect(String shapeAspect) {
-        this.shapeAspect = shapeAspect;
-    }
-
-    public PlayerTheme shapeBackgroundTop(String shapeBackgroundTop) {
-        this.shapeBackgroundTop = shapeBackgroundTop;
-        return this;
-    }
-
-    /**
-     * Deprecated
-     * 
-     * @return shapeBackgroundTop
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "Deprecated")
-
-    public String getShapeBackgroundTop() {
-        return shapeBackgroundTop;
-    }
-
-    public void setShapeBackgroundTop(String shapeBackgroundTop) {
-        this.shapeBackgroundTop = shapeBackgroundTop;
-    }
-
-    public PlayerTheme shapeBackgroundBottom(String shapeBackgroundBottom) {
-        this.shapeBackgroundBottom = shapeBackgroundBottom;
-        return this;
-    }
-
-    /**
-     * Deprecated
-     * 
-     * @return shapeBackgroundBottom
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "Deprecated")
-
-    public String getShapeBackgroundBottom() {
-        return shapeBackgroundBottom;
-    }
-
-    public void setShapeBackgroundBottom(String shapeBackgroundBottom) {
-        this.shapeBackgroundBottom = shapeBackgroundBottom;
-    }
-
     public PlayerTheme linkActive(String linkActive) {
         this.linkActive = linkActive;
         return this;
@@ -656,11 +531,6 @@ public class PlayerTheme implements Serializable {
                 && Objects.equals(this.playerId, playerTheme.playerId)
                 && Objects.equals(this.createdAt, playerTheme.createdAt)
                 && Objects.equals(this.updatedAt, playerTheme.updatedAt)
-                && Objects.equals(this.shapeMargin, playerTheme.shapeMargin)
-                && Objects.equals(this.shapeRadius, playerTheme.shapeRadius)
-                && Objects.equals(this.shapeAspect, playerTheme.shapeAspect)
-                && Objects.equals(this.shapeBackgroundTop, playerTheme.shapeBackgroundTop)
-                && Objects.equals(this.shapeBackgroundBottom, playerTheme.shapeBackgroundBottom)
                 && Objects.equals(this.linkActive, playerTheme.linkActive)
                 && Objects.equals(this.assets, playerTheme.assets);
     }
@@ -669,8 +539,7 @@ public class PlayerTheme implements Serializable {
     public int hashCode() {
         return Objects.hash(text, link, linkHover, trackPlayed, trackUnplayed, trackBackground, backgroundTop,
                 backgroundBottom, backgroundText, enableApi, enableControls, forceAutoplay, hideTitle, forceLoop,
-                playerId, createdAt, updatedAt, shapeMargin, shapeRadius, shapeAspect, shapeBackgroundTop,
-                shapeBackgroundBottom, linkActive, assets);
+                playerId, createdAt, updatedAt, linkActive, assets);
     }
 
     @Override
@@ -694,11 +563,6 @@ public class PlayerTheme implements Serializable {
         sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
         sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
         sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-        sb.append("    shapeMargin: ").append(toIndentedString(shapeMargin)).append("\n");
-        sb.append("    shapeRadius: ").append(toIndentedString(shapeRadius)).append("\n");
-        sb.append("    shapeAspect: ").append(toIndentedString(shapeAspect)).append("\n");
-        sb.append("    shapeBackgroundTop: ").append(toIndentedString(shapeBackgroundTop)).append("\n");
-        sb.append("    shapeBackgroundBottom: ").append(toIndentedString(shapeBackgroundBottom)).append("\n");
         sb.append("    linkActive: ").append(toIndentedString(linkActive)).append("\n");
         sb.append("    assets: ").append(toIndentedString(assets)).append("\n");
         sb.append("}");
