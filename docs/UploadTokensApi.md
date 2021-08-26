@@ -246,7 +246,7 @@ public class Example {
     UploadTokensApi apiInstance = client.uploadTokens();
     
     TokenCreationPayload tokenCreationPayload = new TokenCreationPayload(); // 
-    tokenCreationPayload.setTtl(); // Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
+    tokenCreationPayload.setTtl(); // Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.
 
 
     try {
