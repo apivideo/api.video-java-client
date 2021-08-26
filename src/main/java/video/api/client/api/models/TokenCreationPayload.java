@@ -40,13 +40,13 @@ public class TokenCreationPayload implements Serializable {
     }
 
     /**
-     * Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The
+     * Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The
      * default is to have no expiration. minimum: 0 maximum: 2147483647
      * 
      * @return ttl
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.")
+    @ApiModelProperty(value = "Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.")
 
     public Integer getTtl() {
         return ttl;
