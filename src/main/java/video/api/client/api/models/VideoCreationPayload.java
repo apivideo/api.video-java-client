@@ -21,7 +21,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import video.api.client.api.models.Metadata;
@@ -69,10 +68,6 @@ public class VideoCreationPayload implements Serializable {
     public static final String SERIALIZED_NAME_METADATA = "metadata";
     @SerializedName(SERIALIZED_NAME_METADATA)
     private List<Metadata> metadata = null;
-
-    public static final String SERIALIZED_NAME_PUBLISHED_AT = "publishedAt";
-    @SerializedName(SERIALIZED_NAME_PUBLISHED_AT)
-    private OffsetDateTime publishedAt;
 
     public VideoCreationPayload title(String title) {
         this.title = title;
@@ -281,27 +276,6 @@ public class VideoCreationPayload implements Serializable {
         this.metadata = metadata;
     }
 
-    public VideoCreationPayload publishedAt(OffsetDateTime publishedAt) {
-        this.publishedAt = publishedAt;
-        return this;
-    }
-
-    /**
-     * The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
-     * 
-     * @return publishedAt
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(example = "2020-07-14T23:36:18.598Z", value = "The API uses ISO-8601 format for time, and includes 3 places for milliseconds.")
-
-    public OffsetDateTime getPublishedAt() {
-        return publishedAt;
-    }
-
-    public void setPublishedAt(OffsetDateTime publishedAt) {
-        this.publishedAt = publishedAt;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -319,14 +293,12 @@ public class VideoCreationPayload implements Serializable {
                 && Objects.equals(this.mp4Support, videoCreationPayload.mp4Support)
                 && Objects.equals(this.playerId, videoCreationPayload.playerId)
                 && Objects.equals(this.tags, videoCreationPayload.tags)
-                && Objects.equals(this.metadata, videoCreationPayload.metadata)
-                && Objects.equals(this.publishedAt, videoCreationPayload.publishedAt);
+                && Objects.equals(this.metadata, videoCreationPayload.metadata);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, description, source, _public, panoramic, mp4Support, playerId, tags, metadata,
-                publishedAt);
+        return Objects.hash(title, description, source, _public, panoramic, mp4Support, playerId, tags, metadata);
     }
 
     @Override
@@ -342,7 +314,6 @@ public class VideoCreationPayload implements Serializable {
         sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
         sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
         sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
-        sb.append("    publishedAt: ").append(toIndentedString(publishedAt)).append("\n");
         sb.append("}");
         return sb.toString();
     }
