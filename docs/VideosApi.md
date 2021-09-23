@@ -579,7 +579,6 @@ public class Example {
     videoCreationPayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique identification number for your video player.
     videoCreationPayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of tags you want to use to describe your video.
     videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
-    videoCreationPayload.setPublishedAt(OffsetDateTime.parse("2020-07-14T23:36:18.598Z")); // The API uses ISO-8601 format for time, and includes 3 places for milliseconds.
 
 
     try {

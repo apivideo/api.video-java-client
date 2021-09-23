@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **playerId** | **String** | The unique identification number for your video player. |  [optional]
 **tags** | **List&lt;String&gt;** | A list of tags you want to use to describe your video. |  [optional]
 **metadata** | [**List&lt;Metadata&gt;**](Metadata.md) | A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos. |  [optional]
-**publishedAt** | **OffsetDateTime** | The API uses ISO-8601 format for time, and includes 3 places for milliseconds. |  [optional]
 
 
 ## Implemented Interfaces
