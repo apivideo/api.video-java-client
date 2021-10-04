@@ -31,6 +31,57 @@ public class Quality implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * The type of video (hls or mp4).
+     */
+    @JsonAdapter(TypeEnum.Adapter.class)
+    public enum TypeEnum {
+        HLS("hls"),
+
+        MP4("mp4");
+
+        private String value;
+
+        TypeEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TypeEnum fromValue(String value) {
+            for (TypeEnum b : TypeEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        public static class Adapter extends TypeAdapter<TypeEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public TypeEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return TypeEnum.fromValue(value);
+            }
+        }
+    }
+
+    public static final String SERIALIZED_NAME_TYPE = "type";
+    @SerializedName(SERIALIZED_NAME_TYPE)
+    private TypeEnum type;
+
+    /**
      * The quality of the video you have, in pixels. Choices include 360p, 480p, 720p, 1080p, and 2160p.
      */
     @JsonAdapter(QualityEnum.Adapter.class)
@@ -146,6 +197,27 @@ public class Quality implements Serializable {
     @SerializedName(SERIALIZED_NAME_STATUS)
     private StatusEnum status;
 
+    public Quality type(TypeEnum type) {
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * The type of video (hls or mp4).
+     * 
+     * @return type
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "hls", value = "The type of video (hls or mp4).")
+
+    public TypeEnum getType() {
+        return type;
+    }
+
+    public void setType(TypeEnum type) {
+        this.type = type;
+    }
+
     public Quality quality(QualityEnum quality) {
         this.quality = quality;
         return this;
@@ -199,18 +271,20 @@ public class Quality implements Serializable {
             return false;
         }
         Quality quality = (Quality) o;
-        return Objects.equals(this.quality, quality.quality) && Objects.equals(this.status, quality.status);
+        return Objects.equals(this.type, quality.type) && Objects.equals(this.quality, quality.quality)
+                && Objects.equals(this.status, quality.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(quality, status);
+        return Objects.hash(type, quality, status);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class Quality {\n");
+        sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    quality: ").append(toIndentedString(quality)).append("\n");
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
         sb.append("}");
