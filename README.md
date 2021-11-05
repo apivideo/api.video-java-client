@@ -8,7 +8,7 @@
 
 [api.video](https://api.video) is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
 
-# api.video java API client
+# api.video Java API client
 
 api.video's Java API client streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
 
