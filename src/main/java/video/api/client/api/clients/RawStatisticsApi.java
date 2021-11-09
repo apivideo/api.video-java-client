@@ -716,8 +716,8 @@ public class RawStatisticsApi {
          * Set metadata
          * 
          * @param metadata
-         *            Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios
-         *            with. (optional)
+         *            Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an
+         *            array of key value pairs you want to filter sessios with. (optional)
          * 
          * @return APIlistVideoSessionsRequest
          */

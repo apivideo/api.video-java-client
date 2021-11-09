@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 Show video status
 
-This API provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback.  Once encoding is completed, the response also lists the available stream qualities. Tutorials using [video status](https://api.video/blog/endpoints/video-status).
+This API provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities. Tutorials using [video status](https://api.video/blog/endpoints/video-status).
 
 ### Example
 ```java
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 List all videos
 
-Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below. We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
+Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below.  We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
 
 ### Example
 ```java
@@ -243,7 +243,7 @@ public class Example {
     
     String title = "My Video.mp4"; // The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
     List<String> tags = Arrays.asList(); // A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
-    Map<String, String> metadata = new HashMap(); // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
+    Map<String, String> metadata = new HashMap(); // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
     String description = "New Zealand"; // If you described a video with a term or sentence, you can add it here to return videos containing this string.
     String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here.
     String sortBy = "publishedAt"; // Allowed: publishedAt, title. You can search by the time videos were published at, or by title.
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **String**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional]
  **tags** | [**List&lt;String&gt;**](String.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
- **metadata** | [**Map&lt;String, String&gt;**](String.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
+ **metadata** | [**Map&lt;String, String&gt;**](String.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. | [optional]
  **description** | **String**| If you described a video with a term or sentence, you can add it here to return videos containing this string. | [optional]
  **liveStreamId** | **String**| If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here. | [optional]
  **sortBy** | **String**| Allowed: publishedAt, title. You can search by the time videos were published at, or by title. | [optional]
@@ -339,11 +339,11 @@ public class Example {
     videoUpdatePayload.setPlayerId("pl4k0jvEUuaTdRAEjQ4Jfrgz"); // The unique ID for the player you want to associate with your video.
     videoUpdatePayload.setTitle("null"); // The title you want to use for your video.
     videoUpdatePayload.setDescription("A film about good books."); // A brief description of the video.
-    videoUpdatePayload.setPublic(true); // Whether the video is publicly available or not. False means it is set to private.
+    videoUpdatePayload.setPublic(true); // Whether the video is publicly available or not. False means it is set to private. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
     videoUpdatePayload.setPanoramic(false); // Whether the video is a 360 degree or immersive video.
     videoUpdatePayload.setMp4Support(true); // Whether the player supports the mp4 format.
     videoUpdatePayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of terms or words you want to tag the video with. Make sure the list includes all the tags you want as whatever you send in this list will overwrite the existing list for the video.
-    videoUpdatePayload.setMetadata(Collections.<Metadata>emptyList()); // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video.
+    videoUpdatePayload.setMetadata(Collections.<Metadata>emptyList()); // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
 
 
     try {
@@ -415,12 +415,12 @@ public class Example {
     
     String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
     VideoThumbnailPickPayload videoThumbnailPickPayload = new VideoThumbnailPickPayload(); // 
-    videoThumbnailPickPayload.setTimecode("null"); // Frame in video to be used as a placeholder before the video plays.
+    videoThumbnailPickPayload.setTimecode("null"); // Frame in video to be used as a placeholder before the video plays. 
 Example: &#39;&quot;00:01:00.000&quot; for 1 minute into the video.&#39;
-Valid Patterns:
+Valid Patterns: 
 &quot;hh:mm:ss.ms&quot;
 &quot;hh:mm:ss:frameNumber&quot;
-&quot;124&quot; (integer value is reported as seconds)
+&quot;124&quot; (integer value is reported as seconds) 
 If selection is out of range, &quot;00:00:00.00&quot; will be chosen.
 
 
@@ -524,6 +524,23 @@ apiVideoClient.setUploadChunkSize(50*1024*1024); // use 50MB chunks
 apiVideoClient.videos().uploadWithUploadToken(token, file);
 ```
 
+### Progressive uploads
+
+Progressive uploads make it possible to upload a video source "progressively," i.e., before knowing the total size of the video. This is done by sending chunks of the video source file sequentially.
+The last chunk is sent by calling a different method, so api.video knows that it is time to reassemble the different chunks that were received.
+
+```java
+String token = "to1tcmSFHeYY5KzyhOqVKMKb"; // The unique identifier for the token you want to use to upload a video.;
+
+UploadWithUploadTokenProgressiveSession session = apiVideoClient.createUploadWithUploadTokenProgressiveSession(token)
+
+session.uploadPart(new File("sample.mp4.part1"));
+session.uploadPart(new File("sample.mp4.part2"));
+// ...
+Video result = session.uploadLastPart(new File("sample.mp4.partn"));
+```
+
+
 ### Return type
 
 
@@ -550,7 +567,7 @@ No authorization required
 
 Create a video
 
-To create a video, you create its metadata first, before adding the video file (exception - when using an existing HTTP source). * Videos are public by default. [Learn about Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * Up to 6 responsive video streams will be created (from 240p to 4k) * Mp4 encoded versions are created at the highest quality (max 1080p) by default. * Panoramic videos are for videos recorded in 360 degrees.  You can toggle this after your 360 video upload. * Searchable parameters: title, description, tags and metadata   ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"title\":\"My video\",      \"description\":\"so many details\",      \"mp4Support\":true }' ``` ### add an URL to upload on creation You can also create a video directly from a video hosted on a third-party server by giving its URI in `source` parameter: ```shell $ curl https://ws.api.video/videos \\ -H 'Authorization: Bearer {access_token} \\ -d '{\"source\":\"http://uri/to/video.mp4\", \"title\":\"My video\"}' ``` In this case, the service will respond `202 Accepted` and download the video asynchronously. ### Track users with Dynamic Metadata Metadata values can be a key:value where the values are predefined, but Dynamic metadata allows you to enter *any* value for a defined key.  To defined a dynamic metadata pair use: ``` \"metadata\":[{\"dynamicKey\": \"__dynamicKey__\"}] ``` The double underscore on both sides of the value allows any variable to be added for a given video session. Added the the url you might have: ``` <iframe type=\"text/html\" src=\"https://embed.api.video/vod/vi6QvU9dhYCzW3BpPvPsZUa8?metadata[classUserName]=Doug\" width=\"960\" height=\"320\" frameborder=\"0\" scrollling=\"no\"></iframe> ``` This video session will be tagged as watched by Doug - allowing for in-depth analysis on how each viewer interacts with the videos.   We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata) * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
+ ## We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos)   * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
 
 ### Example
 ```java
@@ -573,12 +590,12 @@ public class Example {
     videoCreationPayload.setTitle("Maths video"); // The title of your new video.
     videoCreationPayload.setDescription("A video about string theory."); // A brief description of your video.
     videoCreationPayload.setSource("https://www.myvideo.url.com/video.mp4"); // If you add a video already on the web, this is where you enter the url for the video.
-    videoCreationPayload.setPublic(true); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+    videoCreationPayload.setPublic(true); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
     videoCreationPayload.setPanoramic(false); // Indicates if your video is a 360/immersive video.
     videoCreationPayload.setMp4Support(true); // Enables mp4 version in addition to streamed version.
     videoCreationPayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique identification number for your video player.
     videoCreationPayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of tags you want to use to describe your video.
-    videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
+    videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).
 
 
     try {
@@ -628,7 +645,7 @@ Name | Type | Description  | Notes
 
 Upload a video
 
-To upload a video to the videoId you created. Replace {videoId} with the id you'd like to use, {access_token} with your token, and /path/to/video.mp4 with the path to the video you'd like to upload. You can only upload your video to the videoId once. ```bash curl https://ws.api.video/videos/{videoId}/source \\   -H 'Authorization: Bearer {access_token}' \\   -F file=@/path/to/video.mp4   ``` Tutorials using [video upload](https://api.video/blog/endpoints/video-upload)
+To upload a video to the videoId you created. Replace {videoId} with the id you'd like to use, {access_token} with your token, and /path/to/video.mp4 with the path to the video you'd like to upload. You can only upload your video to the videoId once. ```bash curl https://ws.api.video/videos/{videoId}/source \\   -H 'Authorization: Bearer {access_token}' \\   -F file=@/path/to/video.mp4    ``` Tutorials using [video upload](https://api.video/blog/endpoints/video-upload).
 
 ### Example
 ```java
@@ -681,6 +698,23 @@ apiVideoClient.setUploadChunkSize(50*1024*1024); // use 50MB chunks
 apiVideoClient.videos().upload(videoId, file);
 ```
 
+### Progressive uploads
+
+Progressive uploads make it possible to upload a video source "progressively," i.e., before knowing the total size of the video. This is done by sending chunks of the video source file sequentially.
+The last chunk is sent by calling a different method, so api.video knows that it is time to reassemble the different chunks that were received.
+
+```java
+String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // Enter the videoId you want to use to upload your video.;
+
+UploadProgressiveSession session = apiVideoClient.createUploadProgressiveSession(videoId)
+
+session.uploadPart(new File("sample.mp4.part1"));
+session.uploadPart(new File("sample.mp4.part2"));
+// ...
+Video result = session.uploadLastPart(new File("sample.mp4.partn"));
+```
+
+
 ### Return type
 
 
@@ -708,7 +742,7 @@ apiVideoClient.videos().upload(videoId, file);
 
 Upload a thumbnail
 
-The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video. Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).
+The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video.  Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).
 
 ### Example
 ```java

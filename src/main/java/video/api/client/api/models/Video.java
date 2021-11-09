@@ -118,12 +118,12 @@ public class Video implements Serializable {
     }
 
     /**
-     * When an webhook was created, presented in ISO-8601 format.
+     * When a video was created, presented in ISO-8601 format.
      * 
      * @return createdAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "When an webhook was created, presented in ISO-8601 format.")
+    @ApiModelProperty(value = "When a video was created, presented in ISO-8601 format.")
 
     public OffsetDateTime getCreatedAt() {
         return createdAt;
@@ -235,7 +235,7 @@ public class Video implements Serializable {
      * @return tags
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "\"tags\": [\"maths\", \"string theory\", \"video\"]", value = "One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces. ")
+    @ApiModelProperty(example = "\"tags\": [\"maths\", \"string theory\", \"video\"]", value = "One array of tags (each tag is a string) in order to categorize a video. Tags may include spaces.  ")
 
     public List<String> getTags() {
         return tags;
@@ -260,12 +260,14 @@ public class Video implements Serializable {
 
     /**
      * Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary
-     * represents a key value pair for categorising a video.
+     * represents a key value pair for categorising a video. [Dynamic
+     * Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value
+     * pair.
      * 
      * @return metadata
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "[{\"key\":\"Author\", \"value\":\"John Doe\"}, {\"key\":\"Format\", \"value\":\"Tutorial\"}]", value = "Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. ")
+    @ApiModelProperty(example = "[{\"key\":\"Author\", \"value\":\"John Doe\"}, {\"key\":\"Format\", \"value\":\"Tutorial\"}]", value = "Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. ")
 
     public List<Metadata> getMetadata() {
         return metadata;
@@ -344,12 +346,13 @@ public class Video implements Serializable {
     }
 
     /**
-     * Defines if the content is publicly reachable or if a unique token is needed for each play session.
+     * Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is
+     * true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
      * 
      * @return _public
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "false", value = "Defines if the content is publicly reachable or if a unique token is needed for each play session. ")
+    @ApiModelProperty(example = "false", value = "Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos). ")
 
     public Boolean getPublic() {
         return _public;

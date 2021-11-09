@@ -138,12 +138,13 @@ public class VideoCreationPayload implements Serializable {
 
     /**
      * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will
-     * require a unique token for each view.
+     * require a unique token for each view. Default is true. Tutorials on [private
+     * videos](https://api.video/blog/endpoints/private-videos).
      * 
      * @return _public
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "true", value = "Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.")
+    @ApiModelProperty(example = "true", value = "Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).")
 
     public Boolean getPublic() {
         return _public;
@@ -260,13 +261,13 @@ public class VideoCreationPayload implements Serializable {
 
     /**
      * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic,
-     * allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your
-     * videos.
+     * allowing you to segment your audience. Read more on [dynamic
+     * metadata](https://api.video/blog/endpoints/dynamic-metadata).
      * 
      * @return metadata
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "[{\"key\": \"Author\", \"value\": \"John Doe\"}]", value = "A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.")
+    @ApiModelProperty(example = "[{\"key\": \"Author\", \"value\": \"John Doe\"}]", value = "A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).")
 
     public List<Metadata> getMetadata() {
         return metadata;
