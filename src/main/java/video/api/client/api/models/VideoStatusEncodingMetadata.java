@@ -207,7 +207,7 @@ public class VideoStatusEncodingMetadata implements Serializable {
      * @return videoCodec
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library.")
+    @ApiModelProperty(value = "The method used to compress and decompress digital video. API Video supports all codecs in the libavcodec library. ")
 
     public String getVideoCodec() {
         return videoCodec;

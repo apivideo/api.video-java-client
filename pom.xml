@@ -5,9 +5,9 @@
     <artifactId>java-api-client</artifactId>
     <packaging>jar</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
-    <version>1.0.10</version>
+    <version>1.0.11</version>
     <url>https://github.com/apivideo/java-api-client</url>
-    <description>api.video java API client</description>
+    <description>api.video Java API client</description>
     <scm>
         <connection>scm:git:git://github.com/apivideo/java-api-client.git</connection>
         <developerConnection>scm:git:ssh://github.com:apivideo/java-api-client.git</developerConnection>

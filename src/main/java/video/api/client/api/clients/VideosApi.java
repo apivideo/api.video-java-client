@@ -624,7 +624,9 @@ public class VideosApi {
          * 
          * @param metadata
          *            Videos can be tagged with metadata tags in key:value pairs. You can search for videos with
-         *            specific key value pairs using this parameter. (optional)
+         *            specific key value pairs using this parameter. [Dynamic
+         *            Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that
+         *            allows any value pair. (optional)
          * 
          * @return APIlistRequest
          */
@@ -1337,7 +1339,8 @@ public class VideosApi {
 
     private okhttp3.Call uploadWithUploadTokenChunkCall(String token, File file, String videoId, long chunkStart,
             long chunkEnd, long totalBytes, Integer chunksCount, Integer chunkNum,
-            UploadProgressListener progressListener, final ApiCallback _callback) throws ApiException {
+            UploadProgressListener progressListener, UploadPartProgressListener partProgressListener,
+            final ApiCallback _callback, boolean isProgressiveUpload) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1350,15 +1353,19 @@ public class VideosApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         if (file != null) {
-            localVarFormParams.put("file", new UploadChunkRequestBody(file, chunksCount, chunkNum, totalBytes,
-                    chunkStart, chunkEnd + 1, progressListener));
+            if (isProgressiveUpload) {
+                localVarFormParams.put("file", new UploadChunkRequestBody(file, totalBytes, partProgressListener));
+            } else {
+                localVarFormParams.put("file", new UploadChunkRequestBody(file, chunksCount, chunkNum, totalBytes,
+                        chunkStart, chunkEnd + 1, progressListener));
+            }
         }
 
         if (token != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
         }
 
-        localVarHeaderParams.put("Content-Range", "bytes " + chunkStart + "-" + chunkEnd + "/" + totalBytes);
+        localVarHeaderParams.put("Content-Range", "part " + chunkNum + "/" + (chunksCount != null ? chunksCount : "*"));
 
         if (videoId != null) {
             localVarFormParams.put("videoId", videoId);
@@ -1401,7 +1408,8 @@ public class VideosApi {
     @SuppressWarnings("rawtypes")
     private okhttp3.Call uploadWithUploadTokenChunkValidateBeforeCall(String token, File file, String videoId,
             long chunkStart, long chunkEnd, long totalBytes, Integer chunksCount, Integer chunkNum,
-            UploadProgressListener progressListener, final ApiCallback _callback) throws ApiException {
+            UploadProgressListener progressListener, UploadPartProgressListener partProgressListener,
+            final ApiCallback _callback, boolean isProgressiveUpload) throws ApiException {
 
         // verify the required parameter 'token' is set
         if (token == null) {
@@ -1414,7 +1422,8 @@ public class VideosApi {
         }
 
         okhttp3.Call localVarCall = uploadWithUploadTokenChunkCall(token, file, videoId, chunkStart, chunkEnd,
-                totalBytes, chunksCount, chunkNum, progressListener, _callback);
+                totalBytes, chunksCount, chunkNum, progressListener, partProgressListener, _callback,
+                isProgressiveUpload);
         return localVarCall;
 
     }
@@ -1589,6 +1598,59 @@ public class VideosApi {
         return uploadWithUploadTokenWithHttpInfo(token, file, null);
     }
 
+    public ApiResponse<Video> uploadWithUploadTokenPartWithHttpInfo(String token, File file, String videoId,
+            Integer part, boolean isLast, UploadPartProgressListener uploadProgressListener) throws ApiException {
+        long fileSize = file.length();
+        okhttp3.Call localVarCall = uploadWithUploadTokenChunkValidateBeforeCall(token, file, videoId, 0, fileSize,
+                fileSize, isLast ? part : null, part, null, uploadProgressListener, null, true);
+        Type localVarReturnType = new TypeToken<Video>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    public class UploadWithUploadTokenProgressiveSession {
+        private Integer part = 1;
+        private String videoId;
+
+        private String token;
+
+        public UploadWithUploadTokenProgressiveSession(String token) {
+            this.token = token;
+        }
+
+        public Video uploadPart(File part) throws ApiException {
+            return uploadPart(part, false, null);
+        }
+
+        public Video uploadLastPart(File part) throws ApiException {
+            return uploadPart(part, true, null);
+        }
+
+        public Video uploadPart(File part, UploadPartProgressListener uploadProgressListener) throws ApiException {
+            return uploadPart(part, false, uploadProgressListener);
+        }
+
+        public Video uploadLastPart(File part, UploadPartProgressListener uploadProgressListener) throws ApiException {
+            return uploadPart(part, true, uploadProgressListener);
+        }
+
+        public Video uploadPart(File part, boolean isLastPart, UploadPartProgressListener uploadProgressListener)
+                throws ApiException {
+            Integer lastPart = this.part;
+            this.part++;
+            ApiResponse<Video> localVarResp = uploadWithUploadTokenPartWithHttpInfo(this.token, part, this.videoId,
+                    lastPart, isLastPart, uploadProgressListener);
+            if (this.videoId == null) {
+                this.videoId = localVarResp.getData().getVideoId();
+            }
+            return localVarResp.getData();
+        }
+    }
+
+    public UploadWithUploadTokenProgressiveSession createUploadWithUploadTokenProgressiveSession(String token) {
+        return new UploadWithUploadTokenProgressiveSession(token);
+    }
+
     /**
      * Upload with an upload token When given a token, anyone can upload a file to the URI
      * &#x60;https://ws.api.video/upload?token&#x3D;&lt;tokenId&gt;&#x60;. Example with cURL: &#x60;&#x60;&#x60;curl $
@@ -1657,7 +1719,8 @@ public class VideosApi {
             for (long i = 0; i < totalBytes; i += chunkSize) {
                 okhttp3.Call localVarCall = uploadWithUploadTokenChunkValidateBeforeCall(token, file, videoId, i,
                         Math.min(i + chunkSize, totalBytes) - 1, totalBytes,
-                        (int) Math.ceil((float) totalBytes / chunkSize), chunkNum + 1, uploadProgressListener, null);
+                        (int) Math.ceil((float) totalBytes / chunkSize), chunkNum + 1, uploadProgressListener, null,
+                        null, false);
                 Type localVarReturnType = new TypeToken<Video>() {
                 }.getType();
                 lastRes = localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1782,30 +1845,8 @@ public class VideosApi {
     }
 
     /**
-     * Create a video To create a video, you create its metadata first, before adding the video file (exception - when
-     * using an existing HTTP source). * Videos are public by default. [Learn about Private
-     * videos](https://api.video/blog/tutorials/tutorial-private-videos) * Up to 6 responsive video streams will be
-     * created (from 240p to 4k) * Mp4 encoded versions are created at the highest quality (max 1080p) by default. *
-     * Panoramic videos are for videos recorded in 360 degrees. You can toggle this after your 360 video upload. *
-     * Searchable parameters: title, description, tags and metadata &#x60;&#x60;&#x60;shell $ curl
-     * https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d
-     * &#39;{\&quot;title\&quot;:\&quot;My video\&quot;, \&quot;description\&quot;:\&quot;so many details\&quot;,
-     * \&quot;mp4Support\&quot;:true }&#39; &#x60;&#x60;&#x60; ### add an URL to upload on creation You can also create
-     * a video directly from a video hosted on a third-party server by giving its URI in &#x60;source&#x60; parameter:
-     * &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d
-     * &#39;{\&quot;source\&quot;:\&quot;http://uri/to/video.mp4\&quot;, \&quot;title\&quot;:\&quot;My
-     * video\&quot;}&#39; &#x60;&#x60;&#x60; In this case, the service will respond &#x60;202 Accepted&#x60; and
-     * download the video asynchronously. ### Track users with Dynamic Metadata Metadata values can be a key:value where
-     * the values are predefined, but Dynamic metadata allows you to enter *any* value for a defined key. To defined a
-     * dynamic metadata pair use: &#x60;&#x60;&#x60; \&quot;metadata\&quot;:[{\&quot;dynamicKey\&quot;:
-     * \&quot;__dynamicKey__\&quot;}] &#x60;&#x60;&#x60; The double underscore on both sides of the value allows any
-     * variable to be added for a given video session. Added the the url you might have: &#x60;&#x60;&#x60; &lt;iframe
-     * type&#x3D;\&quot;text/html\&quot;
-     * src&#x3D;\&quot;https://embed.api.video/vod/vi6QvU9dhYCzW3BpPvPsZUa8?metadata[classUserName]&#x3D;Doug\&quot;
-     * width&#x3D;\&quot;960\&quot; height&#x3D;\&quot;320\&quot; frameborder&#x3D;\&quot;0\&quot;
-     * scrollling&#x3D;\&quot;no\&quot;&gt;&lt;/iframe&gt; &#x60;&#x60;&#x60; This video session will be tagged as
-     * watched by Doug - allowing for in-depth analysis on how each viewer interacts with the videos. We have tutorials
-     * on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large
+     * Create a video ## We have tutorials on: * [Creating and uploading
+     * videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large
      * videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with
      * videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private
      * videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic
@@ -1850,30 +1891,8 @@ public class VideosApi {
     }
 
     /**
-     * Create a video To create a video, you create its metadata first, before adding the video file (exception - when
-     * using an existing HTTP source). * Videos are public by default. [Learn about Private
-     * videos](https://api.video/blog/tutorials/tutorial-private-videos) * Up to 6 responsive video streams will be
-     * created (from 240p to 4k) * Mp4 encoded versions are created at the highest quality (max 1080p) by default. *
-     * Panoramic videos are for videos recorded in 360 degrees. You can toggle this after your 360 video upload. *
-     * Searchable parameters: title, description, tags and metadata &#x60;&#x60;&#x60;shell $ curl
-     * https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d
-     * &#39;{\&quot;title\&quot;:\&quot;My video\&quot;, \&quot;description\&quot;:\&quot;so many details\&quot;,
-     * \&quot;mp4Support\&quot;:true }&#39; &#x60;&#x60;&#x60; ### add an URL to upload on creation You can also create
-     * a video directly from a video hosted on a third-party server by giving its URI in &#x60;source&#x60; parameter:
-     * &#x60;&#x60;&#x60;shell $ curl https://ws.api.video/videos \\ -H &#39;Authorization: Bearer {access_token} \\ -d
-     * &#39;{\&quot;source\&quot;:\&quot;http://uri/to/video.mp4\&quot;, \&quot;title\&quot;:\&quot;My
-     * video\&quot;}&#39; &#x60;&#x60;&#x60; In this case, the service will respond &#x60;202 Accepted&#x60; and
-     * download the video asynchronously. ### Track users with Dynamic Metadata Metadata values can be a key:value where
-     * the values are predefined, but Dynamic metadata allows you to enter *any* value for a defined key. To defined a
-     * dynamic metadata pair use: &#x60;&#x60;&#x60; \&quot;metadata\&quot;:[{\&quot;dynamicKey\&quot;:
-     * \&quot;__dynamicKey__\&quot;}] &#x60;&#x60;&#x60; The double underscore on both sides of the value allows any
-     * variable to be added for a given video session. Added the the url you might have: &#x60;&#x60;&#x60; &lt;iframe
-     * type&#x3D;\&quot;text/html\&quot;
-     * src&#x3D;\&quot;https://embed.api.video/vod/vi6QvU9dhYCzW3BpPvPsZUa8?metadata[classUserName]&#x3D;Doug\&quot;
-     * width&#x3D;\&quot;960\&quot; height&#x3D;\&quot;320\&quot; frameborder&#x3D;\&quot;0\&quot;
-     * scrollling&#x3D;\&quot;no\&quot;&gt;&lt;/iframe&gt; &#x60;&#x60;&#x60; This video session will be tagged as
-     * watched by Doug - allowing for in-depth analysis on how each viewer interacts with the videos. We have tutorials
-     * on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large
+     * Create a video ## We have tutorials on: * [Creating and uploading
+     * videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large
      * videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with
      * videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private
      * videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic
@@ -1994,7 +2013,8 @@ public class VideosApi {
     }
 
     private okhttp3.Call uploadChunkCall(String videoId, File file, long chunkStart, long chunkEnd, long totalBytes,
-            Integer chunksCount, Integer chunkNum, UploadProgressListener progressListener, final ApiCallback _callback)
+            Integer chunksCount, Integer chunkNum, UploadProgressListener progressListener,
+            UploadPartProgressListener partProgressListener, final ApiCallback _callback, boolean isProgressiveUpload)
             throws ApiException {
         Object localVarPostBody = null;
 
@@ -2009,11 +2029,15 @@ public class VideosApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         if (file != null) {
-            localVarFormParams.put("file", new UploadChunkRequestBody(file, chunksCount, chunkNum, totalBytes,
-                    chunkStart, chunkEnd + 1, progressListener));
+            if (isProgressiveUpload) {
+                localVarFormParams.put("file", new UploadChunkRequestBody(file, totalBytes, partProgressListener));
+            } else {
+                localVarFormParams.put("file", new UploadChunkRequestBody(file, chunksCount, chunkNum, totalBytes,
+                        chunkStart, chunkEnd + 1, progressListener));
+            }
         }
 
-        localVarHeaderParams.put("Content-Range", "bytes " + chunkStart + "-" + chunkEnd + "/" + totalBytes);
+        localVarHeaderParams.put("Content-Range", "part " + chunkNum + "/" + (chunksCount != null ? chunksCount : "*"));
 
         final String[] localVarAccepts = { "application/json" };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
@@ -2052,7 +2076,8 @@ public class VideosApi {
     @SuppressWarnings("rawtypes")
     private okhttp3.Call uploadChunkValidateBeforeCall(String videoId, File file, long chunkStart, long chunkEnd,
             long totalBytes, Integer chunksCount, Integer chunkNum, UploadProgressListener progressListener,
-            final ApiCallback _callback) throws ApiException {
+            UploadPartProgressListener partProgressListener, final ApiCallback _callback, boolean isProgressiveUpload)
+            throws ApiException {
 
         // verify the required parameter 'videoId' is set
         if (videoId == null) {
@@ -2065,7 +2090,7 @@ public class VideosApi {
         }
 
         okhttp3.Call localVarCall = uploadChunkCall(videoId, file, chunkStart, chunkEnd, totalBytes, chunksCount,
-                chunkNum, progressListener, _callback);
+                chunkNum, progressListener, partProgressListener, _callback, isProgressiveUpload);
         return localVarCall;
 
     }
@@ -2076,7 +2101,7 @@ public class VideosApi {
      * can only upload your video to the videoId once. &#x60;&#x60;&#x60;bash curl
      * https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer {access_token}&#39; \\ -F
      * file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
-     * upload](https://api.video/blog/endpoints/video-upload)
+     * upload](https://api.video/blog/endpoints/video-upload).
      * 
      * @param videoId
      *            Enter the videoId you want to use to upload your video. (required)
@@ -2125,7 +2150,7 @@ public class VideosApi {
      * can only upload your video to the videoId once. &#x60;&#x60;&#x60;bash curl
      * https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer {access_token}&#39; \\ -F
      * file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
-     * upload](https://api.video/blog/endpoints/video-upload)
+     * upload](https://api.video/blog/endpoints/video-upload).
      * 
      * @param videoId
      *            Enter the videoId you want to use to upload your video. (required)
@@ -2176,7 +2201,7 @@ public class VideosApi {
      * can only upload your video to the videoId once. &#x60;&#x60;&#x60;bash curl
      * https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer {access_token}&#39; \\ -F
      * file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
-     * upload](https://api.video/blog/endpoints/video-upload)
+     * upload](https://api.video/blog/endpoints/video-upload).
      * 
      * @param videoId
      *            Enter the videoId you want to use to upload your video. (required)
@@ -2218,13 +2243,63 @@ public class VideosApi {
         return uploadWithHttpInfo(videoId, file, null);
     }
 
+    public ApiResponse<Video> uploadPartWithHttpInfo(String videoId, File file, Integer part, boolean isLast,
+            UploadPartProgressListener uploadProgressListener) throws ApiException {
+        long fileSize = file.length();
+        okhttp3.Call localVarCall = uploadChunkValidateBeforeCall(videoId, file, 0, fileSize, fileSize,
+                isLast ? part : null, part, null, uploadProgressListener, null, true);
+        Type localVarReturnType = new TypeToken<Video>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    public class UploadProgressiveSession {
+        private Integer part = 1;
+
+        private String videoId;
+
+        public UploadProgressiveSession(String videoId) {
+            this.videoId = videoId;
+        }
+
+        public Video uploadPart(File part) throws ApiException {
+            return uploadPart(part, false, null);
+        }
+
+        public Video uploadLastPart(File part) throws ApiException {
+            return uploadPart(part, true, null);
+        }
+
+        public Video uploadPart(File part, UploadPartProgressListener uploadProgressListener) throws ApiException {
+            return uploadPart(part, false, uploadProgressListener);
+        }
+
+        public Video uploadLastPart(File part, UploadPartProgressListener uploadProgressListener) throws ApiException {
+            return uploadPart(part, true, uploadProgressListener);
+        }
+
+        public Video uploadPart(File part, boolean isLastPart, UploadPartProgressListener uploadProgressListener)
+                throws ApiException {
+            Integer lastPart = this.part;
+            this.part++;
+            ApiResponse<Video> localVarResp = uploadPartWithHttpInfo(this.videoId, part, lastPart, isLastPart,
+                    uploadProgressListener);
+
+            return localVarResp.getData();
+        }
+    }
+
+    public UploadProgressiveSession createUploadProgressiveSession(String videoId) {
+        return new UploadProgressiveSession(videoId);
+    }
+
     /**
      * Upload a video To upload a video to the videoId you created. Replace {videoId} with the id you&#39;d like to use,
      * {access_token} with your token, and /path/to/video.mp4 with the path to the video you&#39;d like to upload. You
      * can only upload your video to the videoId once. &#x60;&#x60;&#x60;bash curl
      * https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer {access_token}&#39; \\ -F
      * file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
-     * upload](https://api.video/blog/endpoints/video-upload)
+     * upload](https://api.video/blog/endpoints/video-upload).
      * 
      * @param videoId
      *            Enter the videoId you want to use to upload your video. (required)
@@ -2278,7 +2353,8 @@ public class VideosApi {
             for (long i = 0; i < totalBytes; i += chunkSize) {
                 okhttp3.Call localVarCall = uploadChunkValidateBeforeCall(videoId, file, i,
                         Math.min(i + chunkSize, totalBytes) - 1, totalBytes,
-                        (int) Math.ceil((float) totalBytes / chunkSize), chunkNum + 1, uploadProgressListener, null);
+                        (int) Math.ceil((float) totalBytes / chunkSize), chunkNum + 1, uploadProgressListener, null,
+                        null, false);
                 Type localVarReturnType = new TypeToken<Video>() {
                 }.getType();
                 lastRes = localVarApiClient.execute(localVarCall, localVarReturnType);

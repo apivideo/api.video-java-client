@@ -36,6 +36,21 @@ public class UploadChunkRequestBody extends RequestBody {
         }
     }
 
+    public UploadChunkRequestBody(File file, long totalBytes, UploadPartProgressListener progressListener)
+            throws ApiException {
+        this.chunkLength = totalBytes;
+        this.fileName = file.getName();
+
+        try {
+            this.inputStream = new ChunkedInputStream(file, 0, totalBytes, progress -> {
+                if (progressListener != null)
+                    progressListener.onProgress(progress, totalBytes);
+            });
+        } catch (IOException e) {
+            throw new ApiException(e);
+        }
+    }
+
     @Nullable
     @Override
     public MediaType contentType() {
