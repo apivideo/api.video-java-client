@@ -1,16 +1,42 @@
-[![badge](https://img.shields.io/twitter/follow/api_video?style=social)](https://twitter.com/intent/follow?screen_name=api_video)
-
-[![badge](https://img.shields.io/github/stars/apivideo/java-api-client?style=social)](https://github.com/apivideo/java-api-client)
-
-[![badge](https://img.shields.io/discourse/topics?server=https%3A%2F%2Fcommunity.api.video)](https://community.api.video)
-
+[![badge](https://img.shields.io/twitter/follow/api_video?style=social)](https://twitter.com/intent/follow?screen_name=api_video) &nbsp; [![badge](https://img.shields.io/github/stars/apivideo/api.video-java-client?style=social)](https://github.com/apivideo/api.video-java-client) &nbsp; [![badge](https://img.shields.io/discourse/topics?server=https%3A%2F%2Fcommunity.api.video)](https://community.api.video)
 ![](https://github.com/apivideo/API_OAS_file/blob/master/apivideo_banner.png)
+<h1 align="center">api.video Java client</h1>
 
-[api.video](https://api.video) is an API that encodes on the go to facilitate immediate playback, enhancing viewer streaming experiences across multiple devices and platforms. You can stream live or on-demand online videos within minutes.
+[api.video](https://api.video) is the video infrastructure for product builders. Lightning fast video APIs for integrating, scaling, and managing on-demand & low latency live streaming features in your app.
 
-# api.video Java API client
+# Table of contents
+
+- [Project description](#project-description)
+- [Getting started](#getting-started)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+    - [Maven users](#maven-users)
+    - [Gradle users](#gradle-users)
+    - [Others](#others)
+  - [Code sample](#code-sample)
+- [Documentation](#documentation)
+  - [API Endpoints](#api-endpoints)
+    - [CaptionsApi](#CaptionsApi)
+    - [ChaptersApi](#ChaptersApi)
+    - [LiveStreamsApi](#LiveStreamsApi)
+    - [PlayerThemesApi](#PlayerThemesApi)
+    - [RawStatisticsApi](#RawStatisticsApi)
+    - [UploadTokensApi](#UploadTokensApi)
+    - [VideosApi](#VideosApi)
+    - [WebhooksApi](#WebhooksApi)
+  - [Models](#models)
+  - [Authorization](#documentation-for-authorization)
+    - [API token](#api-token)
+    - [Public endpoints](#public-endpoints)
+  - [Recommendation](#recommendation)
+- [Have you gotten use from this API client?](#have-you-gotten-use-from-this-api-client-)
+- [Contribution](#contribution)
+
+# Project description
 
 api.video's Java API client streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
+
+# Getting started
 
 ## Requirements
 
@@ -54,7 +80,7 @@ Then manually install the following JARs:
 * `target/java-api-client-1.0.11.jar`
 * `target/lib/*.jar`
 
-## Getting Started
+## Code sample
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
@@ -88,7 +114,9 @@ public class Example {
 
 ```
 
-## Documentation for API Endpoints
+# Documentation
+
+## API Endpoints
 
 All URIs are relative to *https://ws.api.video*
 
@@ -351,3 +379,6 @@ Please take a moment to leave a star on the client ⭐
 
 This helps other users to find the clients and also helps us understand which clients are most popular. Thank you!
 
+# Contribution
+
+Since this API client is generated from an OpenAPI description, we cannot accept pull requests made directly to the repository. If you want to contribute, you can open a pull request on the repository of our [client generator](https://github.com/apivideo/api-client-generator). Otherwise, you can also simply open an issue detailing your need on this repository.
