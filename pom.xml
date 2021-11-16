@@ -6,11 +6,11 @@
     <packaging>jar</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <version>1.0.11</version>
-    <url>https://github.com/apivideo/java-api-client</url>
+    <url>https://github.com/apivideo/api.video-java-client</url>
     <description>api.video Java API client</description>
     <scm>
-        <connection>scm:git:git://github.com/apivideo/java-api-client.git</connection>
-        <developerConnection>scm:git:ssh://github.com:apivideo/java-api-client.git</developerConnection>
+        <connection>scm:git:git://github.com/apivideo/api.video-java-client.git</connection>
+        <developerConnection>scm:git:ssh://github.com:apivideo/api.video-java-client.git</developerConnection>
         <url>https://github.com/apivideo/java-api-client</url>
     </scm>
 
