@@ -25,8 +25,7 @@ public class VideosTest {
     ApiVideoClient apiClient;
 
     public VideosTest() {
-        this.apiClient = new ApiVideoClient(System.getenv().get("INTEGRATION_TESTS_API_TOKEN"),
-                ApiVideoClient.Environment.SANDBOX);
+        this.apiClient = new ApiVideoClient(System.getenv().get("INTEGRATION_TESTS_API_TOKEN"), Environment.SANDBOX);
     }
 
     @Nested

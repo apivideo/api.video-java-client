@@ -2,6 +2,7 @@ package video.api.client;
 
 import video.api.client.api.*;
 import video.api.client.api.clients.*;
+import video.api.client.api.models.Environment;
 import okhttp3.OkHttpClient;
 
 public class ApiVideoClient {
@@ -15,16 +16,6 @@ public class ApiVideoClient {
     private final UploadTokensApi uploadTokens;
     private final VideosApi videos;
     private final WebhooksApi webhooks;
-
-    public enum Environment {
-        PRODUCTION("https://ws.api.video"), SANDBOX("https://sandbox.api.video");
-
-        private final String basePath;
-
-        Environment(String basePath) {
-            this.basePath = basePath;
-        }
-    }
 
     /**
      * Build an instance that targets production environment without authentication

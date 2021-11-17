@@ -4,6 +4,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
+import video.api.client.api.models.Environment;
 import video.api.client.api.models.Page;
 import video.api.client.api.models.Webhook;
 import video.api.client.api.models.WebhooksCreationPayload;
@@ -24,8 +25,7 @@ public class WebhooksTest {
     private Webhook webhook;
 
     public WebhooksTest() {
-        this.apiClient = new ApiVideoClient(System.getenv().get("INTEGRATION_TESTS_API_TOKEN"),
-                ApiVideoClient.Environment.SANDBOX);
+        this.apiClient = new ApiVideoClient(System.getenv().get("INTEGRATION_TESTS_API_TOKEN"), Environment.SANDBOX);
     }
 
     @Test

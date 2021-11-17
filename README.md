@@ -34,7 +34,7 @@
 
 # Project description
 
-api.video's Java API client streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
+api.video's Java client streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
 
 # Getting started
 
@@ -64,7 +64,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "video.api:java-api-client:1.0.11"
+implementation "video.api:java-api-client:1.0.11"
 ```
 
 ### Others
@@ -94,7 +94,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient apiVideoClient = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environments.SANDBOX);
+    // ApiVideoClient apiVideoClient = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
 
     File myVideoFile = new File("my-video.mp4");
 
@@ -114,6 +114,7 @@ public class Example {
 
 ```
 
+
 # Documentation
 
 ## API Endpoints
@@ -126,9 +127,11 @@ All URIs are relative to *https://ws.api.video*
 
 #### Retrieve an instance of CaptionsApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
 CaptionsApi captions = client.captions()
 ```
+
+
 
 #### Endpoints
 
@@ -146,9 +149,11 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of ChaptersApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
 ChaptersApi chapters = client.chapters()
 ```
+
+
 
 #### Endpoints
 
@@ -165,9 +170,11 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of LiveStreamsApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
 LiveStreamsApi liveStreams = client.liveStreams()
 ```
+
+
 
 #### Endpoints
 
@@ -187,9 +194,11 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of PlayerThemesApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
 PlayerThemesApi playerThemes = client.playerThemes()
 ```
+
+
 
 #### Endpoints
 
@@ -209,9 +218,11 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of RawStatisticsApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
 RawStatisticsApi rawStatistics = client.rawStatistics()
 ```
+
+
 
 #### Endpoints
 
@@ -227,9 +238,11 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of UploadTokensApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
 UploadTokensApi uploadTokens = client.uploadTokens()
 ```
+
+
 
 #### Endpoints
 
@@ -246,9 +259,11 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of VideosApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
 VideosApi videos = client.videos()
 ```
+
+
 
 #### Endpoints
 
@@ -271,9 +286,11 @@ Method | HTTP request | Description
 
 #### Retrieve an instance of WebhooksApi:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
 WebhooksApi webhooks = client.webhooks()
 ```
+
+
 
 #### Endpoints
 
@@ -359,14 +376,14 @@ Method | HTTP request | Description
 Most endpoints required to be authenticated using the API token mechanism described in our [documentation](https://docs.api.video/reference#authentication).
 The access token generation mechanism is automatically handled by the client. All you have to do is provide an API token when instantiating the ApiVideoClient:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient("YOUR_API_TOKEN");
+ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
 ```
 
 ### Public endpoints
 
-Some endpoints don't require authentication. These one can be called with an ApiVideoClient instantiated without API token:
+Some endpoints don't require authentication. These one can be called with a client instantiated without API token:
 ```java
-ApiVideoClient apiVideoClient = new ApiVideoClient();
+ApiVideoClient client = new ApiVideoClient();
 ```
 
 ## Recommendation
