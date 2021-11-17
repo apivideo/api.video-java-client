@@ -19,7 +19,7 @@ public abstract class AbstractApiTest {
     protected final ApiVideoClient apiClientMock = new ApiVideoClient(httpClient);
 
     private Call buildAnswer(InvocationOnMock invocationOnMock, Integer statusCode, String body) throws IOException {
-        Request request = invocationOnMock.getArgumentAt(0, Request.class);
+        Request request = invocationOnMock.getArgument(0, Request.class);
         Call call = mock(Call.class);
 
         when(call.execute()).thenReturn(new Response.Builder().request(request).protocol(Protocol.HTTP_2)

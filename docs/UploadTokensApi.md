@@ -31,7 +31,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
@@ -97,7 +97,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
@@ -174,7 +174,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
@@ -241,7 +241,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     

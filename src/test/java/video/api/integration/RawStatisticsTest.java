@@ -24,8 +24,7 @@ public class RawStatisticsTest {
     ApiVideoClient apiClient;
 
     public RawStatisticsTest() {
-        this.apiClient = new ApiVideoClient(System.getenv().get("INTEGRATION_TESTS_API_TOKEN"),
-                ApiVideoClient.Environment.SANDBOX);
+        this.apiClient = new ApiVideoClient(System.getenv().get("INTEGRATION_TESTS_API_TOKEN"), Environment.SANDBOX);
     }
 
     @Nested
