@@ -68,6 +68,12 @@ public class ApiClient {
     private String apiKey;
     private long uploadChunkSize = DEFAULT_CHUNK_SIZE;
 
+    /**
+     * Constructor for ApiClient with custom API base path where API key is not required.
+     * 
+     * @param basePath
+     *            the api base path. Expected Environment.PRODUCTION.basePath (default) or Environment.SANDBOX.basePath.
+     */
     public ApiClient(String basePath) {
         this.basePath = basePath;
         this.httpClient = initHttpClient(Collections.emptyList());
@@ -80,8 +86,7 @@ public class ApiClient {
      * @param apiKey
      *            the api key to use to authenticate to the API
      * @param basePath
-     *            the api base path. Can in particular be ApiClient.BasePaths.PRODUCTION (default) or
-     *            ApiClient.BasePaths.SANDBOX
+     *            the api base path. Expected Environment.PRODUCTION.basePath (default) or Environment.SANDBOX.basePath.
      */
     public ApiClient(String apiKey, String basePath) {
         this.basePath = basePath;
