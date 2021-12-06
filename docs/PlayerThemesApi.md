@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
 [**deleteLogo**](PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
-[**list**](PlayerThemesApi.md#list) | **GET** /players | List all players
+[**list**](PlayerThemesApi.md#list) | **GET** /players | List all player themes
 [**get**](PlayerThemesApi.md#get) | **GET** /players/{playerId} | Show a player
 [**update**](PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
 [**create**](PlayerThemesApi.md#create) | **POST** /players | Create a player
@@ -147,9 +147,9 @@ null (empty response body)
 # **list**
 > PlayerThemesListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
 
-List all players
+List all player themes
 
-Retrieve a list of all the players you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
 
 ### Example
 ```java
@@ -168,7 +168,7 @@ public class Example {
 
     PlayerThemesApi apiInstance = client.playerThemes();
     
-    String sortBy = "createdAt"; // createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
+    String sortBy = "name"; // createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
     String sortOrder = "asc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
     Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
@@ -196,7 +196,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sortBy** | **String**| createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. | [optional] [enum: createdAt, updatedAt]
+ **sortBy** | **String**| createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. | [optional] [enum: name, createdAt, updatedAt]
  **sortOrder** | **String**| Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. | [optional] [enum: asc, desc]
  **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
  **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
@@ -315,6 +315,7 @@ public class Example {
     
     String playerId = "pl45d5vFFGrfdsdsd156dGhh"; // The unique identifier for the player.
     PlayerThemeUpdatePayload playerThemeUpdatePayload = new PlayerThemeUpdatePayload(); // 
+    playerThemeUpdatePayload.setName(""null""); // Add a name for your player theme here.
     playerThemeUpdatePayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
     playerThemeUpdatePayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
     playerThemeUpdatePayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
@@ -398,6 +399,7 @@ public class Example {
     PlayerThemesApi apiInstance = client.playerThemes();
     
     PlayerThemeCreationPayload playerThemeCreationPayload = new PlayerThemeCreationPayload(); // 
+    playerThemeCreationPayload.setName(""null""); // Add a name for your player theme here.
     playerThemeCreationPayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
     playerThemeCreationPayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
     playerThemeCreationPayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)

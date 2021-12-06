@@ -1475,7 +1475,9 @@ public class VideosApi {
      * function(oEvent) { if (oReq.status &#x3D;&#x3D;201) { oOutput.innerHTML &#x3D; \&quot;Your video is
      * uploaded!&lt;br/&gt;\&quot; + oReq.response; } else { oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status
      * + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;; } }; }, false); &lt;/script&gt;
-     * &#x60;&#x60;&#x60; ### Dealing with large files We have created a &lt;a
+     * &#x60;&#x60;&#x60; ### Dealing with large files You can upload large files on api.video with &lt;a
+     * href&#x3D;&#39;https://docs.api.video/reference/post_videos-videoid-source&#39;&gt;Progressive Upload&lt;/a&gt;.
+     * Alternatively, if you want to use regular upload, we have created a &lt;a
      * href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt;
      * to walk through the steps required.
      * 
@@ -1531,7 +1533,9 @@ public class VideosApi {
      * function(oEvent) { if (oReq.status &#x3D;&#x3D;201) { oOutput.innerHTML &#x3D; \&quot;Your video is
      * uploaded!&lt;br/&gt;\&quot; + oReq.response; } else { oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status
      * + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;; } }; }, false); &lt;/script&gt;
-     * &#x60;&#x60;&#x60; ### Dealing with large files We have created a &lt;a
+     * &#x60;&#x60;&#x60; ### Dealing with large files You can upload large files on api.video with &lt;a
+     * href&#x3D;&#39;https://docs.api.video/reference/post_videos-videoid-source&#39;&gt;Progressive Upload&lt;/a&gt;.
+     * Alternatively, if you want to use regular upload, we have created a &lt;a
      * href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt;
      * to walk through the steps required.
      * 
@@ -1590,7 +1594,9 @@ public class VideosApi {
      * function(oEvent) { if (oReq.status &#x3D;&#x3D;201) { oOutput.innerHTML &#x3D; \&quot;Your video is
      * uploaded!&lt;br/&gt;\&quot; + oReq.response; } else { oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status
      * + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;; } }; }, false); &lt;/script&gt;
-     * &#x60;&#x60;&#x60; ### Dealing with large files We have created a &lt;a
+     * &#x60;&#x60;&#x60; ### Dealing with large files You can upload large files on api.video with &lt;a
+     * href&#x3D;&#39;https://docs.api.video/reference/post_videos-videoid-source&#39;&gt;Progressive Upload&lt;/a&gt;.
+     * Alternatively, if you want to use regular upload, we have created a &lt;a
      * href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt;
      * to walk through the steps required.
      * 
@@ -1698,7 +1704,9 @@ public class VideosApi {
      * function(oEvent) { if (oReq.status &#x3D;&#x3D;201) { oOutput.innerHTML &#x3D; \&quot;Your video is
      * uploaded!&lt;br/&gt;\&quot; + oReq.response; } else { oOutput.innerHTML &#x3D; \&quot;Error \&quot; + oReq.status
      * + \&quot; occurred when trying to upload your file.&lt;br /&gt;\&quot;; } }; }, false); &lt;/script&gt;
-     * &#x60;&#x60;&#x60; ### Dealing with large files We have created a &lt;a
+     * &#x60;&#x60;&#x60; ### Dealing with large files You can upload large files on api.video with &lt;a
+     * href&#x3D;&#39;https://docs.api.video/reference/post_videos-videoid-source&#39;&gt;Progressive Upload&lt;/a&gt;.
+     * Alternatively, if you want to use regular upload, we have created a &lt;a
      * href&#x3D;&#39;https://api.video/blog/tutorials/uploading-large-files-with-javascript&#39;&gt;tutorial&lt;/a&gt;
      * to walk through the steps required.
      * 
@@ -2127,15 +2135,15 @@ public class VideosApi {
     /**
      * Upload a video To upload a video to the videoId you created. Replace {videoId} with the id you&#39;d like to use,
      * {access_token} with your token, and /path/to/video.mp4 with the path to the video you&#39;d like to upload. You
-     * can only upload your video to the videoId once.\\nWe offer 2 types of upload: * Regular uploads * Progressive
-     * uploads The latter allows you to split a video source into X chunks and send those chunks independently
-     * (concurrently or sequentially). The 2 main goals for our users are to * (1) allow the upload of video sources
-     * &gt; 200 MiB (200 MiB &#x3D; the max. allowed file size for regular upload) * (2) allow to send a video source
-     * \&quot;progressively\&quot;, i.e., before before knowing the total size of the video.\\nOnce all chunks have been
-     * sent, they are reaggregated to one source file. The video source is considered as \&quot;completely sent\&quot;
-     * when the \&quot;last\&quot; chunk is sent (i.e., the chunk that \&quot;completes\&quot; the upload).
-     * &#x60;&#x60;&#x60;bash curl https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer
-     * {access_token}&#39; \\ -F file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
+     * can only upload your video to the videoId once. We offer 2 types of upload: * Regular upload * Progressive upload
+     * The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or
+     * sequentially). The 2 main goals for our users are to * allow the upload of video sources &gt; 200 MiB (200 MiB
+     * &#x3D; the max. allowed file size for regular upload) * allow to send a video source \&quot;progressively\&quot;,
+     * i.e., before before knowing the total size of the video. Once all chunks have been sent, they are reaggregated to
+     * one source file. The video source is considered as \&quot;completely sent\&quot; when the \&quot;last\&quot;
+     * chunk is sent (i.e., the chunk that \&quot;completes\&quot; the upload). &#x60;&#x60;&#x60;bash curl
+     * https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer {access_token}&#39; \\ -F
+     * file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
      * upload](https://api.video/blog/endpoints/video-upload).
      * 
      * @param videoId
@@ -2182,15 +2190,15 @@ public class VideosApi {
     /**
      * Upload a video To upload a video to the videoId you created. Replace {videoId} with the id you&#39;d like to use,
      * {access_token} with your token, and /path/to/video.mp4 with the path to the video you&#39;d like to upload. You
-     * can only upload your video to the videoId once.\\nWe offer 2 types of upload: * Regular uploads * Progressive
-     * uploads The latter allows you to split a video source into X chunks and send those chunks independently
-     * (concurrently or sequentially). The 2 main goals for our users are to * (1) allow the upload of video sources
-     * &gt; 200 MiB (200 MiB &#x3D; the max. allowed file size for regular upload) * (2) allow to send a video source
-     * \&quot;progressively\&quot;, i.e., before before knowing the total size of the video.\\nOnce all chunks have been
-     * sent, they are reaggregated to one source file. The video source is considered as \&quot;completely sent\&quot;
-     * when the \&quot;last\&quot; chunk is sent (i.e., the chunk that \&quot;completes\&quot; the upload).
-     * &#x60;&#x60;&#x60;bash curl https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer
-     * {access_token}&#39; \\ -F file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
+     * can only upload your video to the videoId once. We offer 2 types of upload: * Regular upload * Progressive upload
+     * The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or
+     * sequentially). The 2 main goals for our users are to * allow the upload of video sources &gt; 200 MiB (200 MiB
+     * &#x3D; the max. allowed file size for regular upload) * allow to send a video source \&quot;progressively\&quot;,
+     * i.e., before before knowing the total size of the video. Once all chunks have been sent, they are reaggregated to
+     * one source file. The video source is considered as \&quot;completely sent\&quot; when the \&quot;last\&quot;
+     * chunk is sent (i.e., the chunk that \&quot;completes\&quot; the upload). &#x60;&#x60;&#x60;bash curl
+     * https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer {access_token}&#39; \\ -F
+     * file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
      * upload](https://api.video/blog/endpoints/video-upload).
      * 
      * @param videoId
@@ -2239,15 +2247,15 @@ public class VideosApi {
     /**
      * Upload a video To upload a video to the videoId you created. Replace {videoId} with the id you&#39;d like to use,
      * {access_token} with your token, and /path/to/video.mp4 with the path to the video you&#39;d like to upload. You
-     * can only upload your video to the videoId once.\\nWe offer 2 types of upload: * Regular uploads * Progressive
-     * uploads The latter allows you to split a video source into X chunks and send those chunks independently
-     * (concurrently or sequentially). The 2 main goals for our users are to * (1) allow the upload of video sources
-     * &gt; 200 MiB (200 MiB &#x3D; the max. allowed file size for regular upload) * (2) allow to send a video source
-     * \&quot;progressively\&quot;, i.e., before before knowing the total size of the video.\\nOnce all chunks have been
-     * sent, they are reaggregated to one source file. The video source is considered as \&quot;completely sent\&quot;
-     * when the \&quot;last\&quot; chunk is sent (i.e., the chunk that \&quot;completes\&quot; the upload).
-     * &#x60;&#x60;&#x60;bash curl https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer
-     * {access_token}&#39; \\ -F file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
+     * can only upload your video to the videoId once. We offer 2 types of upload: * Regular upload * Progressive upload
+     * The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or
+     * sequentially). The 2 main goals for our users are to * allow the upload of video sources &gt; 200 MiB (200 MiB
+     * &#x3D; the max. allowed file size for regular upload) * allow to send a video source \&quot;progressively\&quot;,
+     * i.e., before before knowing the total size of the video. Once all chunks have been sent, they are reaggregated to
+     * one source file. The video source is considered as \&quot;completely sent\&quot; when the \&quot;last\&quot;
+     * chunk is sent (i.e., the chunk that \&quot;completes\&quot; the upload). &#x60;&#x60;&#x60;bash curl
+     * https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer {access_token}&#39; \\ -F
+     * file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
      * upload](https://api.video/blog/endpoints/video-upload).
      * 
      * @param videoId
@@ -2343,15 +2351,15 @@ public class VideosApi {
     /**
      * Upload a video To upload a video to the videoId you created. Replace {videoId} with the id you&#39;d like to use,
      * {access_token} with your token, and /path/to/video.mp4 with the path to the video you&#39;d like to upload. You
-     * can only upload your video to the videoId once.\\nWe offer 2 types of upload: * Regular uploads * Progressive
-     * uploads The latter allows you to split a video source into X chunks and send those chunks independently
-     * (concurrently or sequentially). The 2 main goals for our users are to * (1) allow the upload of video sources
-     * &gt; 200 MiB (200 MiB &#x3D; the max. allowed file size for regular upload) * (2) allow to send a video source
-     * \&quot;progressively\&quot;, i.e., before before knowing the total size of the video.\\nOnce all chunks have been
-     * sent, they are reaggregated to one source file. The video source is considered as \&quot;completely sent\&quot;
-     * when the \&quot;last\&quot; chunk is sent (i.e., the chunk that \&quot;completes\&quot; the upload).
-     * &#x60;&#x60;&#x60;bash curl https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer
-     * {access_token}&#39; \\ -F file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
+     * can only upload your video to the videoId once. We offer 2 types of upload: * Regular upload * Progressive upload
+     * The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or
+     * sequentially). The 2 main goals for our users are to * allow the upload of video sources &gt; 200 MiB (200 MiB
+     * &#x3D; the max. allowed file size for regular upload) * allow to send a video source \&quot;progressively\&quot;,
+     * i.e., before before knowing the total size of the video. Once all chunks have been sent, they are reaggregated to
+     * one source file. The video source is considered as \&quot;completely sent\&quot; when the \&quot;last\&quot;
+     * chunk is sent (i.e., the chunk that \&quot;completes\&quot; the upload). &#x60;&#x60;&#x60;bash curl
+     * https://ws.api.video/videos/{videoId}/source \\ -H &#39;Authorization: Bearer {access_token}&#39; \\ -F
+     * file&#x3D;@/path/to/video.mp4 &#x60;&#x60;&#x60; Tutorials using [video
      * upload](https://api.video/blog/endpoints/video-upload).
      * 
      * @param videoId

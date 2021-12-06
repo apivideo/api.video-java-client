@@ -30,6 +30,10 @@ import java.io.Serializable;
 public class PlayerThemeUpdatePayload implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public static final String SERIALIZED_NAME_NAME = "name";
+    @SerializedName(SERIALIZED_NAME_NAME)
+    private String name;
+
     public static final String SERIALIZED_NAME_TEXT = "text";
     @SerializedName(SERIALIZED_NAME_TEXT)
     private String text;
@@ -85,6 +89,27 @@ public class PlayerThemeUpdatePayload implements Serializable {
     public static final String SERIALIZED_NAME_FORCE_LOOP = "forceLoop";
     @SerializedName(SERIALIZED_NAME_FORCE_LOOP)
     private Boolean forceLoop;
+
+    public PlayerThemeUpdatePayload name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * Add a name for your player theme here.
+     * 
+     * @return name
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Add a name for your player theme here.")
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public PlayerThemeUpdatePayload text(String text) {
         this.text = text;
@@ -389,7 +414,8 @@ public class PlayerThemeUpdatePayload implements Serializable {
             return false;
         }
         PlayerThemeUpdatePayload playerThemeUpdatePayload = (PlayerThemeUpdatePayload) o;
-        return Objects.equals(this.text, playerThemeUpdatePayload.text)
+        return Objects.equals(this.name, playerThemeUpdatePayload.name)
+                && Objects.equals(this.text, playerThemeUpdatePayload.text)
                 && Objects.equals(this.link, playerThemeUpdatePayload.link)
                 && Objects.equals(this.linkHover, playerThemeUpdatePayload.linkHover)
                 && Objects.equals(this.trackPlayed, playerThemeUpdatePayload.trackPlayed)
@@ -407,7 +433,7 @@ public class PlayerThemeUpdatePayload implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(text, link, linkHover, trackPlayed, trackUnplayed, trackBackground, backgroundTop,
+        return Objects.hash(name, text, link, linkHover, trackPlayed, trackUnplayed, trackBackground, backgroundTop,
                 backgroundBottom, backgroundText, enableApi, enableControls, forceAutoplay, hideTitle, forceLoop);
     }
 
@@ -415,6 +441,7 @@ public class PlayerThemeUpdatePayload implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class PlayerThemeUpdatePayload {\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("    linkHover: ").append(toIndentedString(linkHover)).append("\n");
