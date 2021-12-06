@@ -143,7 +143,8 @@ public class Video implements Serializable {
      * 
      * @return title
      **/
-    @ApiModelProperty(example = "Maths video", required = true, value = "The title of the video content. ")
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "Maths video", value = "The title of the video content. ")
 
     public String getTitle() {
         return title;
