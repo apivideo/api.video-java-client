@@ -1144,7 +1144,7 @@ public class LiveStreamsApi {
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)
      * @param file
-     *            The image to be added as a thumbnail. (required)
+     *            The .jpg image to be added as a thumbnail. (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -1236,7 +1236,7 @@ public class LiveStreamsApi {
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)
      * @param file
-     *            The image to be added as a thumbnail. (required)
+     *            The .jpg image to be added as a thumbnail. (required)
      * 
      * @return LiveStream
      * 
@@ -1279,7 +1279,7 @@ public class LiveStreamsApi {
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)
      * @param file
-     *            The image to be added as a thumbnail. (required)
+     *            The .jpg image to be added as a thumbnail. (required)
      * 
      * @return ApiResponse&lt;LiveStream&gt;
      * 

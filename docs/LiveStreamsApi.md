@@ -464,7 +464,7 @@ public class Example {
     LiveStreamsApi apiInstance = client.liveStreams();
     
     String liveStreamId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique ID for the live stream you want to upload.
-    File file = new File("/path/to/file"); // The image to be added as a thumbnail.
+    File file = new File("/path/to/file"); // The .jpg image to be added as a thumbnail.
 
     try {
       LiveStream result = apiInstance.uploadThumbnail(liveStreamId, file);
@@ -485,7 +485,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **liveStreamId** | **String**| The unique ID for the live stream you want to upload. |
- **file** | **File**| The image to be added as a thumbnail. |
+ **file** | **File**| The .jpg image to be added as a thumbnail. |
 
 ### Return type
 
