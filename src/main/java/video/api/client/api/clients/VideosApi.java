@@ -2459,7 +2459,7 @@ public class VideosApi {
      * @param videoId
      *            Unique identifier of the chosen video (required)
      * @param file
-     *            The image to be added as a thumbnail. (required)
+     *            The .jpg image to be added as a thumbnail. (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -2554,7 +2554,7 @@ public class VideosApi {
      * @param videoId
      *            Unique identifier of the chosen video (required)
      * @param file
-     *            The image to be added as a thumbnail. (required)
+     *            The .jpg image to be added as a thumbnail. (required)
      * 
      * @return Video
      * 
@@ -2600,7 +2600,7 @@ public class VideosApi {
      * @param videoId
      *            Unique identifier of the chosen video (required)
      * @param file
-     *            The image to be added as a thumbnail. (required)
+     *            The .jpg image to be added as a thumbnail. (required)
      * 
      * @return ApiResponse&lt;Video&gt;
      * 

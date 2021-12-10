@@ -762,7 +762,7 @@ public class Example {
     VideosApi apiInstance = client.videos();
     
     String videoId = "videoId_example"; // Unique identifier of the chosen video 
-    File file = new File("/path/to/file"); // The image to be added as a thumbnail.
+    File file = new File("/path/to/file"); // The .jpg image to be added as a thumbnail.
 
     try {
       Video result = apiInstance.uploadThumbnail(videoId, file);
@@ -783,7 +783,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **String**| Unique identifier of the chosen video  |
- **file** | **File**| The image to be added as a thumbnail. |
+ **file** | **File**| The .jpg image to be added as a thumbnail. |
 
 ### Return type
 
