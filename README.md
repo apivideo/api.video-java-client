@@ -54,7 +54,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>video.api</groupId>
   <artifactId>java-api-client</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -64,7 +64,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-implementation "video.api:java-api-client:1.1.0"
+implementation "video.api:java-api-client:1.1.1"
 ```
 
 ### Others
@@ -77,7 +77,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/java-api-client-1.1.0.jar`
+* `target/java-api-client-1.1.1.jar`
 * `target/lib/*.jar`
 
 ## Code sample
