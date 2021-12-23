@@ -495,12 +495,12 @@ public class PlayerTheme implements Serializable {
     }
 
     /**
-     * Deprecated
+     * RGBA color for the play button when hovered.
      * 
      * @return linkActive
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Deprecated")
+    @ApiModelProperty(value = "RGBA color for the play button when hovered.")
 
     public String getLinkActive() {
         return linkActive;
