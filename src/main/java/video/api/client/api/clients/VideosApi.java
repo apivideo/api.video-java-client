@@ -536,7 +536,7 @@ public class VideosApi {
         }
 
         if (tags != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "tags", tags));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "tags[]", tags));
         }
 
         if (metadata != null) {
