@@ -596,6 +596,8 @@ public class Example {
     videoCreationPayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique identification number for your video player.
     videoCreationPayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of tags you want to use to describe your video.
     videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).
+    videoCreationPayload.setClip(); // 
+    videoCreationPayload.setWatermark(); // 
 
 
     try {

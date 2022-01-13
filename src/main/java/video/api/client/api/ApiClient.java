@@ -118,7 +118,7 @@ public class ApiClient {
     private void init() {
         verifyingSsl = true;
         json = new JSON();
-        setUserAgent("api.video client (java; v:1.1.1; )");
+        setUserAgent("api.video client (java; v:1.2.0; )");
     }
 
     /**

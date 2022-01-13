@@ -2,7 +2,6 @@ package video.api.integration;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
-import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.clients.VideosApi;
 import video.api.client.api.models.*;
@@ -20,14 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayName("Integration tests of api.videos() methods")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @EnabledIfEnvironmentVariable(named = "INTEGRATION_TESTS_API_TOKEN", matches = ".+")
-public class VideosTest {
-
-    ApiVideoClient apiClient;
-
-    public VideosTest() {
-        this.apiClient = new ApiVideoClient(System.getenv().get("INTEGRATION_TESTS_API_TOKEN"), Environment.SANDBOX);
-    }
-
+public class VideosTest extends AbstractTest {
     @Nested
     @DisplayName("upload by chunk")
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)

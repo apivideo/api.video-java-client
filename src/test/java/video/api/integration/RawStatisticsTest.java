@@ -3,29 +3,29 @@ package video.api.integration;
 import okhttp3.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
-import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
+import video.api.client.api.models.Metadata;
+import video.api.client.api.models.Page;
+import video.api.client.api.models.Video;
+import video.api.client.api.models.VideoCreationPayload;
+import video.api.client.api.models.VideoSession;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TimeZone;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Integration tests of api.videos() methods")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @EnabledIfEnvironmentVariable(named = "INTEGRATION_TESTS_API_TOKEN", matches = ".+")
-public class RawStatisticsTest {
-
-    ApiVideoClient apiClient;
-
-    public RawStatisticsTest() {
-        this.apiClient = new ApiVideoClient(System.getenv().get("INTEGRATION_TESTS_API_TOKEN"), Environment.SANDBOX);
-    }
+public class RawStatisticsTest extends AbstractTest {
 
     @Nested
     @DisplayName("list video sessions")
@@ -54,7 +54,7 @@ public class RawStatisticsTest {
         public void logSession() throws IOException {
             TimeZone tz = TimeZone.getTimeZone("UTC");
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.000Z'"); // Quoted "Z" to indicate UTC, no
-                                                                                  // timezone offset
+            // timezone offset
             df.setTimeZone(tz);
             String nowAsISO = df.format(new Date());
             String json = "{\"emitted_at\": \"" + nowAsISO + "\",\n"
