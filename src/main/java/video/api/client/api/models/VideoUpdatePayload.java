@@ -35,7 +35,7 @@ public class VideoUpdatePayload implements Serializable {
 
     public static final String SERIALIZED_NAME_PLAYER_ID = "playerId";
     @SerializedName(SERIALIZED_NAME_PLAYER_ID)
-    private String playerId;
+    private Nullable<String> playerId;
 
     public static final String SERIALIZED_NAME_TITLE = "title";
     @SerializedName(SERIALIZED_NAME_TITLE)
@@ -66,7 +66,13 @@ public class VideoUpdatePayload implements Serializable {
     private List<Metadata> metadata = null;
 
     public VideoUpdatePayload playerId(String playerId) {
-        this.playerId = playerId;
+        this.playerId = new Nullable<String>(playerId);
+
+        return this;
+    }
+
+    public VideoUpdatePayload unsetPlayerId() {
+        this.playerId = null;
         return this;
     }
 
@@ -79,11 +85,11 @@ public class VideoUpdatePayload implements Serializable {
     @ApiModelProperty(example = "pl4k0jvEUuaTdRAEjQ4Jfrgz", value = "The unique ID for the player you want to associate with your video.")
 
     public String getPlayerId() {
-        return playerId;
+        return playerId == null ? null : playerId.getValue();
     }
 
     public void setPlayerId(String playerId) {
-        this.playerId = playerId;
+        this.playerId = new Nullable<>(playerId);
     }
 
     public VideoUpdatePayload title(String title) {

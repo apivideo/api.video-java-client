@@ -11,14 +11,11 @@
 
 package video.api.client.api;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapter;
+import com.google.gson.*;
 import com.google.gson.internal.bind.util.ISO8601Utils;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.google.gson.JsonElement;
 import io.gsonfire.GsonFireBuilder;
 import io.gsonfire.TypeSelector;
 
@@ -27,6 +24,7 @@ import okio.ByteString;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -47,6 +45,7 @@ public class JSON {
     private OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
     private LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
     private ByteArrayAdapter byteArrayAdapter = new ByteArrayAdapter();
+    private NullableTypeAdapterFactory nullableTypeAdapterFactory = new NullableTypeAdapterFactory();
 
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder();
@@ -86,6 +85,7 @@ public class JSON {
         gson = createGson().registerTypeAdapter(Date.class, dateTypeAdapter)
                 .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
                 .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
+                .registerTypeAdapterFactory(nullableTypeAdapterFactory)
                 .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
                 .registerTypeAdapter(byte[].class, byteArrayAdapter).create();
     }
@@ -397,6 +397,52 @@ public class JSON {
                 }
             } catch (IllegalArgumentException e) {
                 throw new JsonParseException(e);
+            }
+        }
+    }
+
+    static final class NullableTypeAdapterFactory implements TypeAdapterFactory {
+
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!Nullable.class.isAssignableFrom(type.getRawType())) {
+                return null;
+            }
+
+            Type[] actualTypeArguments = ((ParameterizedType) type.getType()).getActualTypeArguments();
+            if (actualTypeArguments.length != 1) {
+                return null;
+            }
+            Type actualTypeArgument = actualTypeArguments[0];
+            final TypeAdapter<Object> innerTypeAdapter = (TypeAdapter<Object>) gson.getDelegateAdapter(this,
+                    TypeToken.get(actualTypeArgument));
+            return new ValueTypeAdapter(innerTypeAdapter);
+        }
+
+        private static final class ValueTypeAdapter<T> extends TypeAdapter<Nullable<T>> {
+
+            private final TypeAdapter<T> innerTypeAdapter;
+
+            private ValueTypeAdapter(final TypeAdapter<T> innerTypeAdapter) {
+                this.innerTypeAdapter = innerTypeAdapter;
+            }
+
+            @Override
+            public void write(final JsonWriter out, final Nullable<T> value) throws IOException {
+                if (value != null) {
+                    final T innerValue = value.getValue();
+                    out.setSerializeNulls(true);
+                    innerTypeAdapter.write(out, innerValue);
+                    out.setSerializeNulls(false);
+                    return;
+                }
+                innerTypeAdapter.write(out, null);
+            }
+
+            @Override
+            public Nullable<T> read(final JsonReader in) throws IOException {
+
+                throw new IOException("Shouldn't happen");
             }
         }
     }
