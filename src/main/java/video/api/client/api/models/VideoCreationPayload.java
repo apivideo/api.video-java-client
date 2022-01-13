@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import video.api.client.api.models.Metadata;
+import video.api.client.api.models.VideoClip;
+import video.api.client.api.models.VideoWatermark;
 import java.io.Serializable;
 
 /**
@@ -68,6 +70,14 @@ public class VideoCreationPayload implements Serializable {
     public static final String SERIALIZED_NAME_METADATA = "metadata";
     @SerializedName(SERIALIZED_NAME_METADATA)
     private List<Metadata> metadata = null;
+
+    public static final String SERIALIZED_NAME_CLIP = "clip";
+    @SerializedName(SERIALIZED_NAME_CLIP)
+    private VideoClip clip;
+
+    public static final String SERIALIZED_NAME_WATERMARK = "watermark";
+    @SerializedName(SERIALIZED_NAME_WATERMARK)
+    private VideoWatermark watermark;
 
     public VideoCreationPayload title(String title) {
         this.title = title;
@@ -277,6 +287,48 @@ public class VideoCreationPayload implements Serializable {
         this.metadata = metadata;
     }
 
+    public VideoCreationPayload clip(VideoClip clip) {
+        this.clip = clip;
+        return this;
+    }
+
+    /**
+     * Get clip
+     * 
+     * @return clip
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+
+    public VideoClip getClip() {
+        return clip;
+    }
+
+    public void setClip(VideoClip clip) {
+        this.clip = clip;
+    }
+
+    public VideoCreationPayload watermark(VideoWatermark watermark) {
+        this.watermark = watermark;
+        return this;
+    }
+
+    /**
+     * Get watermark
+     * 
+     * @return watermark
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+
+    public VideoWatermark getWatermark() {
+        return watermark;
+    }
+
+    public void setWatermark(VideoWatermark watermark) {
+        this.watermark = watermark;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -294,12 +346,15 @@ public class VideoCreationPayload implements Serializable {
                 && Objects.equals(this.mp4Support, videoCreationPayload.mp4Support)
                 && Objects.equals(this.playerId, videoCreationPayload.playerId)
                 && Objects.equals(this.tags, videoCreationPayload.tags)
-                && Objects.equals(this.metadata, videoCreationPayload.metadata);
+                && Objects.equals(this.metadata, videoCreationPayload.metadata)
+                && Objects.equals(this.clip, videoCreationPayload.clip)
+                && Objects.equals(this.watermark, videoCreationPayload.watermark);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, description, source, _public, panoramic, mp4Support, playerId, tags, metadata);
+        return Objects.hash(title, description, source, _public, panoramic, mp4Support, playerId, tags, metadata, clip,
+                watermark);
     }
 
     @Override
@@ -315,6 +370,8 @@ public class VideoCreationPayload implements Serializable {
         sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
         sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
         sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+        sb.append("    clip: ").append(toIndentedString(clip)).append("\n");
+        sb.append("    watermark: ").append(toIndentedString(watermark)).append("\n");
         sb.append("}");
         return sb.toString();
     }

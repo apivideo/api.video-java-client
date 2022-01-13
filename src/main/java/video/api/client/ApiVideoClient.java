@@ -15,6 +15,7 @@ public class ApiVideoClient {
     private final RawStatisticsApi rawStatistics;
     private final UploadTokensApi uploadTokens;
     private final VideosApi videos;
+    private final WatermarksApi watermarks;
     private final WebhooksApi webhooks;
 
     /**
@@ -78,7 +79,7 @@ public class ApiVideoClient {
         this(new ApiClient(client, environment.basePath));
     }
 
-    private ApiVideoClient(ApiClient apiClient) {
+    public ApiVideoClient(ApiClient apiClient) {
         this.apiClient = apiClient;
 
         this.captions = new CaptionsApi(this.apiClient);
@@ -88,6 +89,7 @@ public class ApiVideoClient {
         this.rawStatistics = new RawStatisticsApi(this.apiClient);
         this.uploadTokens = new UploadTokensApi(this.apiClient);
         this.videos = new VideosApi(this.apiClient);
+        this.watermarks = new WatermarksApi(this.apiClient);
         this.webhooks = new WebhooksApi(this.apiClient);
     }
 
@@ -152,6 +154,15 @@ public class ApiVideoClient {
      */
     public VideosApi videos() {
         return this.videos;
+    }
+
+    /**
+     * Get an WatermarksApi instance
+     * 
+     * @return WatermarksApi
+     */
+    public WatermarksApi watermarks() {
+        return this.watermarks;
     }
 
     /**
