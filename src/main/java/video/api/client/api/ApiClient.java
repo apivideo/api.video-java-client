@@ -49,6 +49,7 @@ public class ApiClient {
     private static final long DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
     private static final long MIN_CHUNK_SIZE = 5 * 1024 * 1024;
     private static final long MAX_CHUNK_SIZE = 128 * 1024 * 1024;
+    private static final String DEFAULT_USER_AGENT = "api.video client (java; v:1.2.1; )";
     private boolean debugging = false;
     private String basePath;
     private Map<String, String> defaultHeaderMap = new HashMap<>();
@@ -118,7 +119,18 @@ public class ApiClient {
     private void init() {
         verifyingSsl = true;
         json = new JSON();
-        setUserAgent("api.video client (java; v:1.2.0; )");
+        setUserAgent(DEFAULT_USER_AGENT);
+    }
+
+    public void setApplicationName(String applicationName) {
+        if (applicationName == null) {
+            setUserAgent(DEFAULT_USER_AGENT);
+        }
+        if (!applicationName.matches("^[\\w-/\\.]{1,50}$")) {
+            throw new IllegalArgumentException(
+                    "Invalid application name. Allowed characters: A-Z, a-z, 0-9, '-', '_', '/'. Max length: 50.");
+        }
+        setUserAgent(DEFAULT_USER_AGENT + " " + applicationName);
     }
 
     /**

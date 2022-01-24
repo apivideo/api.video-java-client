@@ -185,4 +185,8 @@ public class ApiVideoClient {
     public void setUploadChunkSize(long uploadChunkSize) {
         this.apiClient.setUploadChunkSize(uploadChunkSize);
     }
+
+    public void setApplicationName(String applicationName) {
+        this.apiClient.setApplicationName(applicationName);
+    }
 }
