@@ -13,5 +13,6 @@ public abstract class AbstractTest {
                 .orElse("https://ws.api.video");
         this.apiClient = new ApiVideoClient(
                 new ApiClient(System.getenv().get("INTEGRATION_TESTS_API_TOKEN"), basePath));
+        this.apiClient.setApplicationName("client-integration-tests");
     }
 }
