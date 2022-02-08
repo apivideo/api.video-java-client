@@ -319,6 +319,7 @@ public class Example {
     playerThemeUpdatePayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
     playerThemeUpdatePayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
     playerThemeUpdatePayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
+    playerThemeUpdatePayload.setLinkActive(""null""); // RGBA color for the play button when hovered.
     playerThemeUpdatePayload.setTrackPlayed(""null""); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
     playerThemeUpdatePayload.setTrackUnplayed(""null""); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
     playerThemeUpdatePayload.setTrackBackground(""null""); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
@@ -403,6 +404,7 @@ public class Example {
     playerThemeCreationPayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
     playerThemeCreationPayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
     playerThemeCreationPayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
+    playerThemeCreationPayload.setLinkActive(""null""); // RGBA color for the play button when hovered.
     playerThemeCreationPayload.setTrackPlayed(""null""); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
     playerThemeCreationPayload.setTrackUnplayed(""null""); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
     playerThemeCreationPayload.setTrackBackground(""null""); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)

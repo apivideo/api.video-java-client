@@ -48,6 +48,10 @@ public class PlayerTheme implements Serializable {
     @SerializedName(SERIALIZED_NAME_LINK_HOVER)
     private String linkHover;
 
+    public static final String SERIALIZED_NAME_LINK_ACTIVE = "linkActive";
+    @SerializedName(SERIALIZED_NAME_LINK_ACTIVE)
+    private String linkActive;
+
     public static final String SERIALIZED_NAME_TRACK_PLAYED = "trackPlayed";
     @SerializedName(SERIALIZED_NAME_TRACK_PLAYED)
     private String trackPlayed;
@@ -103,10 +107,6 @@ public class PlayerTheme implements Serializable {
     public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
     @SerializedName(SERIALIZED_NAME_UPDATED_AT)
     private OffsetDateTime updatedAt;
-
-    public static final String SERIALIZED_NAME_LINK_ACTIVE = "linkActive";
-    @SerializedName(SERIALIZED_NAME_LINK_ACTIVE)
-    private String linkActive;
 
     public static final String SERIALIZED_NAME_ASSETS = "assets";
     @SerializedName(SERIALIZED_NAME_ASSETS)
@@ -194,6 +194,27 @@ public class PlayerTheme implements Serializable {
 
     public void setLinkHover(String linkHover) {
         this.linkHover = linkHover;
+    }
+
+    public PlayerTheme linkActive(String linkActive) {
+        this.linkActive = linkActive;
+        return this;
+    }
+
+    /**
+     * RGBA color for the play button when hovered.
+     * 
+     * @return linkActive
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "RGBA color for the play button when hovered.")
+
+    public String getLinkActive() {
+        return linkActive;
+    }
+
+    public void setLinkActive(String linkActive) {
+        this.linkActive = linkActive;
     }
 
     public PlayerTheme trackPlayed(String trackPlayed) {
@@ -489,27 +510,6 @@ public class PlayerTheme implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public PlayerTheme linkActive(String linkActive) {
-        this.linkActive = linkActive;
-        return this;
-    }
-
-    /**
-     * RGBA color for the play button when hovered.
-     * 
-     * @return linkActive
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "RGBA color for the play button when hovered.")
-
-    public String getLinkActive() {
-        return linkActive;
-    }
-
-    public void setLinkActive(String linkActive) {
-        this.linkActive = linkActive;
-    }
-
     public PlayerTheme assets(PlayerThemeAssets assets) {
         this.assets = assets;
         return this;
@@ -542,6 +542,7 @@ public class PlayerTheme implements Serializable {
         PlayerTheme playerTheme = (PlayerTheme) o;
         return Objects.equals(this.name, playerTheme.name) && Objects.equals(this.text, playerTheme.text)
                 && Objects.equals(this.link, playerTheme.link) && Objects.equals(this.linkHover, playerTheme.linkHover)
+                && Objects.equals(this.linkActive, playerTheme.linkActive)
                 && Objects.equals(this.trackPlayed, playerTheme.trackPlayed)
                 && Objects.equals(this.trackUnplayed, playerTheme.trackUnplayed)
                 && Objects.equals(this.trackBackground, playerTheme.trackBackground)
@@ -556,15 +557,14 @@ public class PlayerTheme implements Serializable {
                 && Objects.equals(this.playerId, playerTheme.playerId)
                 && Objects.equals(this.createdAt, playerTheme.createdAt)
                 && Objects.equals(this.updatedAt, playerTheme.updatedAt)
-                && Objects.equals(this.linkActive, playerTheme.linkActive)
                 && Objects.equals(this.assets, playerTheme.assets);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, text, link, linkHover, trackPlayed, trackUnplayed, trackBackground, backgroundTop,
-                backgroundBottom, backgroundText, enableApi, enableControls, forceAutoplay, hideTitle, forceLoop,
-                playerId, createdAt, updatedAt, linkActive, assets);
+        return Objects.hash(name, text, link, linkHover, linkActive, trackPlayed, trackUnplayed, trackBackground,
+                backgroundTop, backgroundBottom, backgroundText, enableApi, enableControls, forceAutoplay, hideTitle,
+                forceLoop, playerId, createdAt, updatedAt, assets);
     }
 
     @Override
@@ -575,6 +575,7 @@ public class PlayerTheme implements Serializable {
         sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("    linkHover: ").append(toIndentedString(linkHover)).append("\n");
+        sb.append("    linkActive: ").append(toIndentedString(linkActive)).append("\n");
         sb.append("    trackPlayed: ").append(toIndentedString(trackPlayed)).append("\n");
         sb.append("    trackUnplayed: ").append(toIndentedString(trackUnplayed)).append("\n");
         sb.append("    trackBackground: ").append(toIndentedString(trackBackground)).append("\n");
@@ -589,7 +590,6 @@ public class PlayerTheme implements Serializable {
         sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
         sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
         sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
-        sb.append("    linkActive: ").append(toIndentedString(linkActive)).append("\n");
         sb.append("    assets: ").append(toIndentedString(assets)).append("\n");
         sb.append("}");
         return sb.toString();

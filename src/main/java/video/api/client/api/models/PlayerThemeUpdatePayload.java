@@ -46,6 +46,10 @@ public class PlayerThemeUpdatePayload implements Serializable {
     @SerializedName(SERIALIZED_NAME_LINK_HOVER)
     private String linkHover;
 
+    public static final String SERIALIZED_NAME_LINK_ACTIVE = "linkActive";
+    @SerializedName(SERIALIZED_NAME_LINK_ACTIVE)
+    private String linkActive;
+
     public static final String SERIALIZED_NAME_TRACK_PLAYED = "trackPlayed";
     @SerializedName(SERIALIZED_NAME_TRACK_PLAYED)
     private String trackPlayed;
@@ -172,6 +176,27 @@ public class PlayerThemeUpdatePayload implements Serializable {
 
     public void setLinkHover(String linkHover) {
         this.linkHover = linkHover;
+    }
+
+    public PlayerThemeUpdatePayload linkActive(String linkActive) {
+        this.linkActive = linkActive;
+        return this;
+    }
+
+    /**
+     * RGBA color for the play button when hovered.
+     * 
+     * @return linkActive
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "RGBA color for the play button when hovered.")
+
+    public String getLinkActive() {
+        return linkActive;
+    }
+
+    public void setLinkActive(String linkActive) {
+        this.linkActive = linkActive;
     }
 
     public PlayerThemeUpdatePayload trackPlayed(String trackPlayed) {
@@ -418,6 +443,7 @@ public class PlayerThemeUpdatePayload implements Serializable {
                 && Objects.equals(this.text, playerThemeUpdatePayload.text)
                 && Objects.equals(this.link, playerThemeUpdatePayload.link)
                 && Objects.equals(this.linkHover, playerThemeUpdatePayload.linkHover)
+                && Objects.equals(this.linkActive, playerThemeUpdatePayload.linkActive)
                 && Objects.equals(this.trackPlayed, playerThemeUpdatePayload.trackPlayed)
                 && Objects.equals(this.trackUnplayed, playerThemeUpdatePayload.trackUnplayed)
                 && Objects.equals(this.trackBackground, playerThemeUpdatePayload.trackBackground)
@@ -433,8 +459,9 @@ public class PlayerThemeUpdatePayload implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, text, link, linkHover, trackPlayed, trackUnplayed, trackBackground, backgroundTop,
-                backgroundBottom, backgroundText, enableApi, enableControls, forceAutoplay, hideTitle, forceLoop);
+        return Objects.hash(name, text, link, linkHover, linkActive, trackPlayed, trackUnplayed, trackBackground,
+                backgroundTop, backgroundBottom, backgroundText, enableApi, enableControls, forceAutoplay, hideTitle,
+                forceLoop);
     }
 
     @Override
@@ -445,6 +472,7 @@ public class PlayerThemeUpdatePayload implements Serializable {
         sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("    linkHover: ").append(toIndentedString(linkHover)).append("\n");
+        sb.append("    linkActive: ").append(toIndentedString(linkActive)).append("\n");
         sb.append("    trackPlayed: ").append(toIndentedString(trackPlayed)).append("\n");
         sb.append("    trackUnplayed: ").append(toIndentedString(trackUnplayed)).append("\n");
         sb.append("    trackBackground: ").append(toIndentedString(trackBackground)).append("\n");
