@@ -1,6 +1,6 @@
 [![badge](https://img.shields.io/twitter/follow/api_video?style=social)](https://twitter.com/intent/follow?screen_name=api_video) &nbsp; [![badge](https://img.shields.io/github/stars/apivideo/api.video-java-client?style=social)](https://github.com/apivideo/api.video-java-client) &nbsp; [![badge](https://img.shields.io/discourse/topics?server=https%3A%2F%2Fcommunity.api.video)](https://community.api.video)
 ![](https://github.com/apivideo/API_OAS_file/blob/master/apivideo_banner.png)
-<h1 align="center">api.video Java client</h1>
+<h1 align="center">api.video Java </h1>
 
 [api.video](https://api.video) is the video infrastructure for product builders. Lightning fast video APIs for integrating, scaling, and managing on-demand & low latency live streaming features in your app.
 
@@ -35,7 +35,7 @@
 
 # Project description
 
-api.video's Java client streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
+api.video's Java  streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
 
 # Getting started
 
@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>video.api</groupId>
   <artifactId>java-api-client</artifactId>
-  <version>1.2.1</version>
+  <version>1.2.2</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -65,7 +65,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-implementation "video.api:java-api-client:1.2.1"
+implementation "video.api:java-api-client:1.2.2"
 ```
 
 ### Others
@@ -78,7 +78,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/java-api-client-1.2.1.jar`
+* `target/java-api-client-1.2.2.jar`
 * `target/lib/*.jar`
 
 ## Code sample
