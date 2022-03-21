@@ -55,7 +55,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>video.api</groupId>
   <artifactId>java-api-client</artifactId>
-  <version>1.2.3</version>
+  <version>1.2.4</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -65,7 +65,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-implementation "video.api:java-api-client:1.2.3"
+implementation "video.api:java-api-client:1.2.4"
 ```
 
 ### Others
@@ -78,7 +78,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/java-api-client-1.2.3.jar`
+* `target/java-api-client-1.2.4.jar`
 * `target/lib/*.jar`
 
 ## Code sample
@@ -383,6 +383,7 @@ Method | HTTP request | Description
  - [VideoStatusEncoding](docs/VideoStatusEncoding.md)
  - [VideoStatusEncodingMetadata](docs/VideoStatusEncodingMetadata.md)
  - [VideoStatusIngest](docs/VideoStatusIngest.md)
+ - [VideoStatusIngestReceivedParts](docs/VideoStatusIngestReceivedParts.md)
  - [VideoThumbnailPickPayload](docs/VideoThumbnailPickPayload.md)
  - [VideoUpdatePayload](docs/VideoUpdatePayload.md)
  - [VideoWatermark](docs/VideoWatermark.md)

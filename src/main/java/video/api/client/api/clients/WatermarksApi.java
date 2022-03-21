@@ -147,8 +147,7 @@ public class WatermarksApi {
     }
 
     /**
-     * Delete a watermark Delete a watermark. A watermark is a static image overlapping a video used as a
-     * \&quot;stamp\&quot; to limit leetching.
+     * Delete a watermark Delete a watermark. A watermark is a static image, directly burnt-into a video.
      * 
      * @param watermarkId
      *            The watermark ID for the watermark you want to delete. (required)
@@ -180,8 +179,7 @@ public class WatermarksApi {
     }
 
     /**
-     * Delete a watermark Delete a watermark. A watermark is a static image overlapping a video used as a
-     * \&quot;stamp\&quot; to limit leetching.
+     * Delete a watermark Delete a watermark. A watermark is a static image, directly burnt-into a video.
      * 
      * @param watermarkId
      *            The watermark ID for the watermark you want to delete. (required)
@@ -490,8 +488,9 @@ public class WatermarksApi {
     }
 
     /**
-     * List all watermarks List all watermarks. A watermark is a static image overlapping a video used as a
-     * \&quot;stamp\&quot; to limit leetching.
+     * List all watermarks List all watermarks. A watermark is a static image, directly burnt into a video. After you
+     * have created your watermark, you can define its placement and aspect when you [create a
+     * video](https://docs.api.video/reference/post-video).
      * 
      * @return APIlistRequest
      * 
@@ -522,7 +521,7 @@ public class WatermarksApi {
      * Build call for upload
      * 
      * @param file
-     *            The .jpg or .png image to be added as a watermark. (required)
+     *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -595,11 +594,12 @@ public class WatermarksApi {
     }
 
     /**
-     * Upload a watermark Create a new watermark by uploading a .jpg or a .png image. A watermark is a static image
-     * overlapping a video used as a \&quot;stamp\&quot; to limit leetching.
+     * Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark
+     * is a static image, directly burnt into a video. After you have created your watermark, you can define its
+     * placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
      * 
      * @param file
-     *            The .jpg or .png image to be added as a watermark. (required)
+     *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
      * 
      * @return Watermark
      * 
@@ -631,11 +631,12 @@ public class WatermarksApi {
     }
 
     /**
-     * Upload a watermark Create a new watermark by uploading a .jpg or a .png image. A watermark is a static image
-     * overlapping a video used as a \&quot;stamp\&quot; to limit leetching.
+     * Upload a watermark Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark
+     * is a static image, directly burnt into a video. After you have created your watermark, you can define its
+     * placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
      * 
      * @param file
-     *            The .jpg or .png image to be added as a watermark. (required)
+     *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
      * 
      * @return ApiResponse&lt;Watermark&gt;
      * 

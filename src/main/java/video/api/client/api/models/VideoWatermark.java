@@ -179,7 +179,7 @@ public class VideoWatermark implements Serializable {
      * @return width
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "50%", value = "Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use initial")
+    @ApiModelProperty(example = "initial", value = "Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed width. NOTE: To keep intrinsic watermark-image width use initial")
 
     public String getWidth() {
         return width;
@@ -201,7 +201,7 @@ public class VideoWatermark implements Serializable {
      * @return height
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "50%", value = "Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use initial")
+    @ApiModelProperty(example = "initial", value = "Width of the watermark-image relative to the video if expressed in %. Otherwise a fixed height. NOTE: To keep intrinsic watermark-image height use initial")
 
     public String getHeight() {
         return height;
