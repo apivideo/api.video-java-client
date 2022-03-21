@@ -90,12 +90,12 @@ public class BytesRange implements Serializable {
     }
 
     /**
-     * The total number of bytes in the provided range.
+     * The total number of expected bytes.
      * 
      * @return total
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "10000", value = "The total number of bytes in the provided range.")
+    @ApiModelProperty(example = "10000", value = "The total number of expected bytes.")
 
     public Integer getTotal() {
         return total;

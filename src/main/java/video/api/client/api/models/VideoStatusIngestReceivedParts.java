@@ -54,13 +54,13 @@ public class VideoStatusIngestReceivedParts implements Serializable {
     }
 
     /**
-     * The parts that are have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been
+     * The parts that have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been
      * uploaded, the output will be [1, 2].
      * 
      * @return parts
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "[1, 2, 3]", value = "The parts that are have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been uploaded, the output will be [1, 2].")
+    @ApiModelProperty(example = "[1, 2, 3]", value = "The parts that have been uploaded, ordered. For example, if part 2 was sent before part 1, and both have been uploaded, the output will be [1, 2].")
 
     public List<Integer> getParts() {
         return parts;
