@@ -2469,7 +2469,8 @@ public class VideosApi {
      * @param videoId
      *            Unique identifier of the chosen video (required)
      * @param file
-     *            The .jpg image to be added as a thumbnail. (required)
+     *            The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The
+     *            max allowed size is 8 MiB. (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -2564,7 +2565,8 @@ public class VideosApi {
      * @param videoId
      *            Unique identifier of the chosen video (required)
      * @param file
-     *            The .jpg image to be added as a thumbnail. (required)
+     *            The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The
+     *            max allowed size is 8 MiB. (required)
      * 
      * @return Video
      * 
@@ -2610,7 +2612,8 @@ public class VideosApi {
      * @param videoId
      *            Unique identifier of the chosen video (required)
      * @param file
-     *            The .jpg image to be added as a thumbnail. (required)
+     *            The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The
+     *            max allowed size is 8 MiB. (required)
      * 
      * @return ApiResponse&lt;Video&gt;
      * 

@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import video.api.client.api.models.BytesRange;
+import video.api.client.api.models.VideoStatusIngestReceivedParts;
 import java.io.Serializable;
 
 /**
@@ -95,6 +96,10 @@ public class VideoStatusIngest implements Serializable {
     public static final String SERIALIZED_NAME_RECEIVED_BYTES = "receivedBytes";
     @SerializedName(SERIALIZED_NAME_RECEIVED_BYTES)
     private List<BytesRange> receivedBytes = null;
+
+    public static final String SERIALIZED_NAME_RECEIVED_PARTS = "receivedParts";
+    @SerializedName(SERIALIZED_NAME_RECEIVED_PARTS)
+    private VideoStatusIngestReceivedParts receivedParts;
 
     public VideoStatusIngest status(StatusEnum status) {
         this.status = status;
@@ -168,6 +173,27 @@ public class VideoStatusIngest implements Serializable {
         this.receivedBytes = receivedBytes;
     }
 
+    public VideoStatusIngest receivedParts(VideoStatusIngestReceivedParts receivedParts) {
+        this.receivedParts = receivedParts;
+        return this;
+    }
+
+    /**
+     * Get receivedParts
+     * 
+     * @return receivedParts
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "")
+
+    public VideoStatusIngestReceivedParts getReceivedParts() {
+        return receivedParts;
+    }
+
+    public void setReceivedParts(VideoStatusIngestReceivedParts receivedParts) {
+        this.receivedParts = receivedParts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -179,12 +205,13 @@ public class VideoStatusIngest implements Serializable {
         VideoStatusIngest videoStatusIngest = (VideoStatusIngest) o;
         return Objects.equals(this.status, videoStatusIngest.status)
                 && Objects.equals(this.filesize, videoStatusIngest.filesize)
-                && Objects.equals(this.receivedBytes, videoStatusIngest.receivedBytes);
+                && Objects.equals(this.receivedBytes, videoStatusIngest.receivedBytes)
+                && Objects.equals(this.receivedParts, videoStatusIngest.receivedParts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(status, filesize, receivedBytes);
+        return Objects.hash(status, filesize, receivedBytes, receivedParts);
     }
 
     @Override
@@ -194,6 +221,7 @@ public class VideoStatusIngest implements Serializable {
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
         sb.append("    filesize: ").append(toIndentedString(filesize)).append("\n");
         sb.append("    receivedBytes: ").append(toIndentedString(receivedBytes)).append("\n");
+        sb.append("    receivedParts: ").append(toIndentedString(receivedParts)).append("\n");
         sb.append("}");
         return sb.toString();
     }

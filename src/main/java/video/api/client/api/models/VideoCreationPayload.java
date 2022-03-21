@@ -126,12 +126,15 @@ public class VideoCreationPayload implements Serializable {
     }
 
     /**
-     * If you add a video already on the web, this is where you enter the url for the video.
+     * You can either add a video already on the web, by entering the URL of the video, or you can also enter the
+     * &#x60;videoId&#x60; of one of the videos you already have on your api.video acccount, and this will generate a
+     * copy of your video. Creating a copy of a video can be especially useful if you want to keep your original video
+     * and trim or apply a watermark onto the copy you would create.
      * 
      * @return source
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "https://www.myvideo.url.com/video.mp4", value = "If you add a video already on the web, this is where you enter the url for the video.")
+    @ApiModelProperty(example = "https://www.myvideo.url.com/video.mp4 OR vi4k0jvEUuaTdRAEjQ4JfOyl", value = "You can either add a video already on the web, by entering the URL of the video, or you can also enter the `videoId` of one of the videos you already have on your api.video acccount, and this will generate a copy of your video. Creating a copy of a video can be especially useful if you want to keep your original video and trim or apply a watermark onto the copy you would create.")
 
     public String getSource() {
         return source;

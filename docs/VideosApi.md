@@ -589,7 +589,7 @@ public class Example {
     VideoCreationPayload videoCreationPayload = new VideoCreationPayload(); // video to create
     videoCreationPayload.setTitle("Maths video"); // The title of your new video.
     videoCreationPayload.setDescription("A video about string theory."); // A brief description of your video.
-    videoCreationPayload.setSource("https://www.myvideo.url.com/video.mp4"); // If you add a video already on the web, this is where you enter the url for the video.
+    videoCreationPayload.setSource("https://www.myvideo.url.com/video.mp4 OR vi4k0jvEUuaTdRAEjQ4JfOyl"); // You can either add a video already on the web, by entering the URL of the video, or you can also enter the &#x60;videoId&#x60; of one of the videos you already have on your api.video acccount, and this will generate a copy of your video. Creating a copy of a video can be especially useful if you want to keep your original video and trim or apply a watermark onto the copy you would create.
     videoCreationPayload.setPublic(true); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
     videoCreationPayload.setPanoramic(false); // Indicates if your video is a 360/immersive video.
     videoCreationPayload.setMp4Support(true); // Enables mp4 version in addition to streamed version.
@@ -764,7 +764,7 @@ public class Example {
     VideosApi apiInstance = client.videos();
     
     String videoId = "videoId_example"; // Unique identifier of the chosen video 
-    File file = new File("/path/to/file"); // The .jpg image to be added as a thumbnail.
+    File file = new File("/path/to/file"); // The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
 
     try {
       Video result = apiInstance.uploadThumbnail(videoId, file);
@@ -785,7 +785,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **String**| Unique identifier of the chosen video  |
- **file** | **File**| The .jpg image to be added as a thumbnail. |
+ **file** | **File**| The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB. |
 
 ### Return type
 

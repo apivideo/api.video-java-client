@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Delete a watermark
 
-Delete a watermark. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+Delete a watermark. A watermark is a static image, directly burnt-into a video.
 
 ### Example
 ```java
@@ -81,7 +81,7 @@ null (empty response body)
 
 List all watermarks
 
-List all watermarks. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
 
 ### Example
 ```java
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 Upload a watermark
 
-Create a new watermark by uploading a .jpg or a .png image. A watermark is a static image overlapping a video used as a \"stamp\" to limit leetching.
+Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
 
 ### Example
 ```java
@@ -178,7 +178,7 @@ public class Example {
 
     WatermarksApi apiInstance = client.watermarks();
     
-    File file = new File("/path/to/file"); // The .jpg or .png image to be added as a watermark.
+    File file = new File("/path/to/file"); // The `.jpg` or `.png` image to be added as a watermark.
 
     try {
       Watermark result = apiInstance.upload(file);
@@ -198,7 +198,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| The .jpg or .png image to be added as a watermark. |
+ **file** | **File**| The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. |
 
 ### Return type
 

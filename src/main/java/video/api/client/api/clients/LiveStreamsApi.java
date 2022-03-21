@@ -1144,7 +1144,8 @@ public class LiveStreamsApi {
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)
      * @param file
-     *            The .jpg image to be added as a thumbnail. (required)
+     *            The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The
+     *            max allowed size is 8 MiB. (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -1236,7 +1237,8 @@ public class LiveStreamsApi {
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)
      * @param file
-     *            The .jpg image to be added as a thumbnail. (required)
+     *            The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The
+     *            max allowed size is 8 MiB. (required)
      * 
      * @return LiveStream
      * 
@@ -1279,7 +1281,8 @@ public class LiveStreamsApi {
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)
      * @param file
-     *            The .jpg image to be added as a thumbnail. (required)
+     *            The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The
+     *            max allowed size is 8 MiB. (required)
      * 
      * @return ApiResponse&lt;LiveStream&gt;
      * 
