@@ -21,34 +21,36 @@ Delete a live stream
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveStreamsApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
-
-    LiveStreamsApi apiInstance = client.liveStreams();
-    
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to remove.
-
-    try {
-      apiInstance.delete(liveStreamId);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling LiveStreamsApi#delete");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+  import video.api.client.ApiVideoClient;
+  import video.api.client.api.ApiException;
+  import video.api.client.api.models.*;
+  import video.api.client.api.clients.LiveStreamsApi;
+  import java.util.*;
+  
+  public class Example {
+    public static void main(String[] args) {
+      ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+      // if you rather like to use the sandbox environment:
+      // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+  
+      LiveStreamsApi apiInstance = client.liveStreams();
+      
+      String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to remove.
+  
+      try {
+        apiInstance.delete(liveStreamId);
+      } catch (ApiException e) {
+        System.err.println("Exception when calling LiveStreamsApi#delete");
+        System.err.println("Status code: " + e.getCode());
+        System.err.println("Reason: " + e.getMessage());
+        System.err.println("Response headers: " + e.getResponseHeaders());
+        e.printStackTrace();
+      }
     }
   }
-}
 ```
 
 ### Parameters
@@ -86,6 +88,8 @@ Send the unique identifier for a live stream to delete it from the system.
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -97,7 +101,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
@@ -153,6 +157,8 @@ With no parameters added to the url, this will return all livestreams. Query by 
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -164,14 +170,14 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
     String streamKey = "30087931-229e-42cf-b5f9-e91bcc1f7332"; // The unique stream key that allows you to stream videos.
     String name = "My Video"; // You can filter live streams by their name or a part of their name.
     String sortBy = "createdAt"; // Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format.
-    String sortOrder = "asc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
+    String sortOrder = "desc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
     Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 
@@ -236,6 +242,8 @@ Supply a LivestreamId, and you'll get all the details for streaming into, and wa
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -247,7 +255,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
@@ -302,6 +310,8 @@ Use this endpoint to update the player, or to turn recording on/off (saving a co
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -313,14 +323,15 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
     String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
     LiveStreamUpdatePayload liveStreamUpdatePayload = new LiveStreamUpdatePayload(); // 
     liveStreamUpdatePayload.setName("My Live Stream Video"); // The name you want to use for your live stream.
-    liveStreamUpdatePayload.setPublic(); // BETA FEATURE Please limit all public &#x3D; false (&quot;private&quot;) livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+    liveStreamUpdatePayload.setPublic(); // BETA FEATURE Please limit all public &amp;#x3D; false (&amp;quot;private&amp;quot;) livestreams to 3,000 users.
+Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
     liveStreamUpdatePayload.setRecord(true); // Use this to indicate whether you want the recording on or off. On is true, off is false.
     liveStreamUpdatePayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique ID for the player associated with a live stream that you want to update.
 
@@ -376,6 +387,8 @@ A live stream will give you the 'connection point' to RTMP your video stream to 
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -387,14 +400,14 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
     LiveStreamCreationPayload liveStreamCreationPayload = new LiveStreamCreationPayload(); // 
     liveStreamCreationPayload.setName("My Live Stream Video"); // Add a name for your live stream here.
     liveStreamCreationPayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
-    liveStreamCreationPayload.setPublic(); // BETA FEATURE Please limit all public &#x3D; false (&quot;private&quot;) livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+    liveStreamCreationPayload.setPublic(); // BETA FEATURE Please limit all public &amp;#x3D; false (&amp;quot;private&amp;quot;) livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
     liveStreamCreationPayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
 
 
@@ -448,6 +461,8 @@ Upload an image to use as a backdrop for your livestream. Tutorials that [update
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -459,12 +474,12 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
     String liveStreamId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique ID for the live stream you want to upload.
-    File file = new File("/path/to/file"); // The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
+    File file = new File("/path/to/file"); // The image to be added as a thumbnail.
 
     try {
       LiveStream result = apiInstance.uploadThumbnail(liveStreamId, file);

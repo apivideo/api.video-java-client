@@ -23,6 +23,8 @@ Delete a player if you no longer need it. You can delete any player that you hav
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -34,7 +36,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     PlayerThemesApi apiInstance = client.playerThemes();
     
@@ -87,6 +89,8 @@ Delete logo
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -98,7 +102,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     PlayerThemesApi apiInstance = client.playerThemes();
     
@@ -153,6 +157,8 @@ Retrieve a list of all the player themes you created, as well as details about e
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -164,11 +170,11 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     PlayerThemesApi apiInstance = client.playerThemes();
     
-    String sortBy = "name"; // createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
+    String sortBy = "createdAt"; // createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
     String sortOrder = "asc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
     Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
@@ -231,6 +237,8 @@ Use a player ID to retrieve details about the player and display it for viewers.
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -242,7 +250,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     PlayerThemesApi apiInstance = client.playerThemes();
     
@@ -298,6 +306,8 @@ Use a player ID to update specific details for a player. NOTE: It may take up to
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -309,17 +319,15 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     PlayerThemesApi apiInstance = client.playerThemes();
     
     String playerId = "pl45d5vFFGrfdsdsd156dGhh"; // The unique identifier for the player.
     PlayerThemeUpdatePayload playerThemeUpdatePayload = new PlayerThemeUpdatePayload(); // 
-    playerThemeUpdatePayload.setName(""null""); // Add a name for your player theme here.
     playerThemeUpdatePayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
     playerThemeUpdatePayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
     playerThemeUpdatePayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
-    playerThemeUpdatePayload.setLinkActive(""null""); // RGBA color for the play button when hovered.
     playerThemeUpdatePayload.setTrackPlayed(""null""); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
     playerThemeUpdatePayload.setTrackUnplayed(""null""); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
     playerThemeUpdatePayload.setTrackBackground(""null""); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
@@ -384,6 +392,8 @@ Create a player for your video, and customise it.
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -395,16 +405,14 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     PlayerThemesApi apiInstance = client.playerThemes();
     
     PlayerThemeCreationPayload playerThemeCreationPayload = new PlayerThemeCreationPayload(); // 
-    playerThemeCreationPayload.setName(""null""); // Add a name for your player theme here.
     playerThemeCreationPayload.setText(""null""); // RGBA color for timer text. Default: rgba(255, 255, 255, 1)
     playerThemeCreationPayload.setLink(""null""); // RGBA color for all controls. Default: rgba(255, 255, 255, 1)
     playerThemeCreationPayload.setLinkHover(""null""); // RGBA color for all controls when hovered. Default: rgba(255, 255, 255, 1)
-    playerThemeCreationPayload.setLinkActive(""null""); // RGBA color for the play button when hovered.
     playerThemeCreationPayload.setTrackPlayed(""null""); // RGBA color playback bar: played content. Default: rgba(88, 131, 255, .95)
     playerThemeCreationPayload.setTrackUnplayed(""null""); // RGBA color playback bar: downloaded but unplayed (buffered) content. Default: rgba(255, 255, 255, .35)
     playerThemeCreationPayload.setTrackBackground(""null""); // RGBA color playback bar: background. Default: rgba(255, 255, 255, .2)
@@ -467,6 +475,8 @@ The uploaded image maximum size should be 200x100 and its weight should be 100KB
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -478,7 +488,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     PlayerThemesApi apiInstance = client.playerThemes();
     

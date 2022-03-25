@@ -18,6 +18,8 @@ Delete a chapter
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -29,7 +31,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     ChaptersApi apiInstance = client.chapters();
     
@@ -86,6 +88,8 @@ Retrieve a list of all chapters for a specified video.
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -97,22 +101,18 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     ChaptersApi apiInstance = client.chapters();
     
-    String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the video you want to retrieve a list of chapters for.
-    Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
-    Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
+    String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the video you want to show a chapter for.
+    String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
 
     try {
-      Page<Chapter> result = apiInstance.list(videoId)
-            .currentPage(currentPage)
-            .pageSize(pageSize)
-            .execute();
+      Chapter result = apiInstance.get(videoId, language);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling ChaptersApi#list");
+      System.err.println("Exception when calling ChaptersApi#get");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -160,6 +160,8 @@ Chapters help your viewers find the sections of the video they are most interest
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -171,7 +173,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     ChaptersApi apiInstance = client.chapters();
     
@@ -229,6 +231,8 @@ Chapters help break the video into sections. Read our [tutorial](https://api.vid
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -240,7 +244,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     ChaptersApi apiInstance = client.chapters();
     

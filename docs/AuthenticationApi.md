@@ -18,37 +18,8 @@ To get started, submit your API key in the body of your request. api.video retur
 
 ### Example
 ```java
-// Import classes:
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.AuthenticationApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient();
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient(ApiVideoClient.BasePaths.SANDBOX);
-
-    AuthenticationApi apiInstance = client.authentication();
-    
-    AuthenticatePayload authenticatePayload = new AuthenticatePayload(); // 
-    authenticatePayload.setApiKey("null"); // Your account API key. You can use your sandbox API key, or you can use your production API key.
-
-
-    try {
-      AccessToken result = apiInstance.authenticate(authenticatePayload);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AuthenticationApi#authenticate");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
+//With the api.video API clients, authentication is taken care of with each client created.
+// You get to skip this step!
 ```
 
 ### Parameters
@@ -87,38 +58,8 @@ Use the refresh endpoint with the refresh token you received when you first auth
 
 ### Example
 ```java
-// Import classes:
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.AuthenticationApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient();
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient(ApiVideoClient.BasePaths.SANDBOX);
-
-    AuthenticationApi apiInstance = client.authentication();
-    
-    RefreshTokenPayload refreshTokenPayload = new RefreshTokenPayload(); // 
-    refreshTokenPayload.setRefreshToken("null"); // The refresh token is either the first refresh token you received when you authenticated with the auth/api-key endpoint, or it&#39;s the refresh token from the last time you used the auth/refresh endpoint. Place this in the body of your request to obtain a new access token (which is valid for an hour) and a new refresh token.
-
-
-
-    try {
-      AccessToken result = apiInstance.refresh(refreshTokenPayload);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling AuthenticationApi#refresh");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
+//With the api.video API clients, authentication is taken care of with each client created.
+// You get to skip this step!
 ```
 
 ### Parameters

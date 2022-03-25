@@ -163,6 +163,8 @@ Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a s
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -171,26 +173,26 @@ import video.api.client.api.clients.WatermarksApi;
 import java.util.*;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+ public static void main(String[] args) {
+   ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+   // if you rather like to use the sandbox environment:
+   // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
-    WatermarksApi apiInstance = client.watermarks();
-    
-    File file = new File("/path/to/file"); // The `.jpg` or `.png` image to be added as a watermark.
+   WatermarksApi watermarkApi = apiClient.watermarks();
 
-    try {
-      Watermark result = apiInstance.upload(file);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling WatermarksApi#upload");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
+   File file = new File("/path/to/file"); // The watermark image.
+
+   try {
+     Watermark result = watermarkApi.upload(file);
+     System.out.println(result);
+   } catch (ApiException e) {
+     System.err.println("Exception when calling WatermarksApi#upload");
+     System.err.println("Status code: " + e.getCode());
+     System.err.println("Reason: " + e.getMessage());
+     System.err.println("Response headers: " + e.getResponseHeaders());
+     e.printStackTrace();
+   }
+ }
 }
 ```
 
