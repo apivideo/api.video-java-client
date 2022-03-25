@@ -82,7 +82,7 @@ public class VideoSessionSession implements Serializable {
      * @return loadedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "When the video session started, presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2019-06-24T11:45:01.109Z", value = "When the video session started, presented in ISO-8601 format.")
 
     public OffsetDateTime getLoadedAt() {
         return loadedAt;
@@ -103,7 +103,7 @@ public class VideoSessionSession implements Serializable {
      * @return endedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "When the video session ended, presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2019-06-24T12:45:01.109Z", value = "When the video session ended, presented in ISO-8601 format.")
 
     public OffsetDateTime getEndedAt() {
         return endedAt;

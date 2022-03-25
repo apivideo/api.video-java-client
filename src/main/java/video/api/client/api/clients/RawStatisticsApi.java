@@ -340,6 +340,7 @@ public class RawStatisticsApi {
 
     /**
      * List live stream player sessions
+     *
      * 
      * @param liveStreamId
      *            The unique identifier for the live stream you want to retrieve analytics for. (required)
@@ -614,7 +615,9 @@ public class RawStatisticsApi {
     }
 
     /**
-     * List player session events Useful to track and measure video&#39;s engagement.
+     * List player session events
+     *
+     * Useful to track and measure video&#39;s engagement.
      * 
      * @param sessionId
      *            A unique identifier you can use to reference and track a session with. (required)
@@ -931,8 +934,10 @@ public class RawStatisticsApi {
     }
 
     /**
-     * List video player sessions Retrieve all available user sessions for a specific video. Tutorials that use the
-     * [analytics endpoint](https://api.video/blog/endpoints/analytics).
+     * List video player sessions
+     *
+     * Retrieve all available user sessions for a specific video. Tutorials that use the [analytics
+     * endpoint](https://api.video/blog/endpoints/analytics).
      * 
      * @param videoId
      *            The unique identifier for the video you want to retrieve session information for. (required)

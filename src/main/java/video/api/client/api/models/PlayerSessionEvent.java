@@ -83,7 +83,7 @@ public class PlayerSessionEvent implements Serializable {
      * @return emittedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "When an event occurred, presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2019-06-24T11:45:01.109Z", value = "When an event occurred, presented in ISO-8601 format.")
 
     public OffsetDateTime getEmittedAt() {
         return emittedAt;

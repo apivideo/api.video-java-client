@@ -147,8 +147,9 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Delete a player Delete a player if you no longer need it. You can delete any player that you have the player ID
-     * for.
+     * Delete a player
+     *
+     * Delete a player if you no longer need it. You can delete any player that you have the player ID for.
      * 
      * @param playerId
      *            The unique identifier for the player you want to delete. (required)
@@ -180,8 +181,9 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Delete a player Delete a player if you no longer need it. You can delete any player that you have the player ID
-     * for.
+     * Delete a player
+     *
+     * Delete a player if you no longer need it. You can delete any player that you have the player ID for.
      * 
      * @param playerId
      *            The unique identifier for the player you want to delete. (required)
@@ -293,6 +295,7 @@ public class PlayerThemesApi {
 
     /**
      * Delete logo
+     *
      * 
      * @param playerId
      *            The unique identifier for the player. (required)
@@ -325,6 +328,7 @@ public class PlayerThemesApi {
 
     /**
      * Delete logo
+     *
      * 
      * @param playerId
      *            The unique identifier for the player. (required)
@@ -634,8 +638,10 @@ public class PlayerThemesApi {
     }
 
     /**
-     * List all player themes Retrieve a list of all the player themes you created, as well as details about each one.
-     * Tutorials that use the [player endpoint](https://api.video/blog/endpoints/player).
+     * List all player themes
+     *
+     * Retrieve a list of all the player themes you created, as well as details about each one. Tutorials that use the
+     * [player endpoint](https://api.video/blog/endpoints/player).
      * 
      * @return APIlistRequest
      * 
@@ -738,7 +744,9 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Show a player Use a player ID to retrieve details about the player and display it for viewers.
+     * Show a player
+     *
+     * Use a player ID to retrieve details about the player and display it for viewers.
      * 
      * @param playerId
      *            The unique identifier for the player you want to retrieve. (required)
@@ -773,7 +781,9 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Show a player Use a player ID to retrieve details about the player and display it for viewers.
+     * Show a player
+     *
+     * Use a player ID to retrieve details about the player and display it for viewers.
      * 
      * @param playerId
      *            The unique identifier for the player you want to retrieve. (required)
@@ -892,8 +902,10 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Update a player Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before
-     * the new player configuration is available from our CDN.
+     * Update a player
+     *
+     * Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player
+     * configuration is available from our CDN.
      * 
      * @param playerId
      *            The unique identifier for the player. (required)
@@ -930,8 +942,10 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Update a player Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before
-     * the new player configuration is available from our CDN.
+     * Update a player
+     *
+     * Use a player ID to update specific details for a player. NOTE: It may take up to 10 min before the new player
+     * configuration is available from our CDN.
      * 
      * @param playerId
      *            The unique identifier for the player. (required)
@@ -1040,7 +1054,9 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Create a player Create a player for your video, and customise it.
+     * Create a player
+     *
+     * Create a player for your video, and customise it.
      * 
      * @param playerThemeCreationPayload
      *            (required)
@@ -1070,7 +1086,9 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Create a player Create a player for your video, and customise it.
+     * Create a player
+     *
+     * Create a player for your video, and customise it.
      * 
      * @param playerThemeCreationPayload
      *            (required)
@@ -1201,8 +1219,10 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 100KB. It will be scaled
-     * down to 30px height and converted to PNG to be displayed in the player.
+     * Upload a logo
+     *
+     * The uploaded image maximum size should be 200x100 and its weight should be 100KB. It will be scaled down to 30px
+     * height and converted to PNG to be displayed in the player.
      * 
      * @param playerId
      *            The unique identifier for the player. (required)
@@ -1247,8 +1267,10 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Upload a logo The uploaded image maximum size should be 200x100 and its weight should be 100KB. It will be scaled
-     * down to 30px height and converted to PNG to be displayed in the player.
+     * Upload a logo
+     *
+     * The uploaded image maximum size should be 200x100 and its weight should be 100KB. It will be scaled down to 30px
+     * height and converted to PNG to be displayed in the player.
      * 
      * @param playerId
      *            The unique identifier for the player. (required)

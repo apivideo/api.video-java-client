@@ -151,8 +151,10 @@ public class AuthenticationApi {
     }
 
     /**
-     * Authenticate To get started, submit your API key in the body of your request. api.video returns an access token
-     * that is valid for one hour (3600 seconds). A refresh token is also returned. View a
+     * Authenticate
+     *
+     * To get started, submit your API key in the body of your request. api.video returns an access token that is valid
+     * for one hour (3600 seconds). A refresh token is also returned. View a
      * [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the
      * [authentication endpoint](https://api.video/blog/endpoints/authenticate)
      * 
@@ -189,8 +191,10 @@ public class AuthenticationApi {
     }
 
     /**
-     * Authenticate To get started, submit your API key in the body of your request. api.video returns an access token
-     * that is valid for one hour (3600 seconds). A refresh token is also returned. View a
+     * Authenticate
+     *
+     * To get started, submit your API key in the body of your request. api.video returns an access token that is valid
+     * for one hour (3600 seconds). A refresh token is also returned. View a
      * [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the
      * [authentication endpoint](https://api.video/blog/endpoints/authenticate)
      * 
@@ -309,9 +313,11 @@ public class AuthenticationApi {
     }
 
     /**
-     * Refresh token Use the refresh endpoint with the refresh token you received when you first authenticated using the
-     * api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access
-     * token that is valid for one hour (3600 seconds) and a new refresh token.
+     * Refresh token
+     *
+     * Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key
+     * endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that
+     * is valid for one hour (3600 seconds) and a new refresh token.
      * 
      * @param refreshTokenPayload
      *            (required)
@@ -346,9 +352,11 @@ public class AuthenticationApi {
     }
 
     /**
-     * Refresh token Use the refresh endpoint with the refresh token you received when you first authenticated using the
-     * api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access
-     * token that is valid for one hour (3600 seconds) and a new refresh token.
+     * Refresh token
+     *
+     * Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key
+     * endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that
+     * is valid for one hour (3600 seconds) and a new refresh token.
      * 
      * @param refreshTokenPayload
      *            (required)

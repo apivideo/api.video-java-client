@@ -75,7 +75,7 @@ public class LiveStreamSessionSession implements Serializable {
      * @return loadedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "When the session started, with the date and time presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2019-06-24T11:45:01.109Z", value = "When the session started, with the date and time presented in ISO-8601 format.")
 
     public OffsetDateTime getLoadedAt() {
         return loadedAt;
@@ -96,7 +96,7 @@ public class LiveStreamSessionSession implements Serializable {
      * @return endedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "When the session ended, with the date and time presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2019-06-24T12:45:01.109Z", value = "When the session ended, with the date and time presented in ISO-8601 format.")
 
     public OffsetDateTime getEndedAt() {
         return endedAt;

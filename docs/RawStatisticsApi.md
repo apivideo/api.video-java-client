@@ -17,6 +17,8 @@ List live stream player sessions
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -28,12 +30,12 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     RawStatisticsApi apiInstance = client.rawStatistics();
     
     String liveStreamId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the live stream you want to retrieve analytics for.
-    String period = "2019-01-01"; // Period must have one of the following formats:  - For a day : \"2018-01-01\", - For a week: \"2018-W01\",  - For a month: \"2018-01\" - For a year: \"2018\" For a range period:  -  Date range: \"2018-01-01/2018-01-15\" 
+    String period = "2019-01-01"; // Period must have one of the following formats:  - For a day : "2018-01-01", - For a week: "2018-W01", - For a month: "2018-01" - For a year: "2018"  For a range period: -  Date range: "2018-01-01/2018-01-15" 
     Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 
@@ -94,6 +96,8 @@ Useful to track and measure video's engagement.
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -105,7 +109,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     RawStatisticsApi apiInstance = client.rawStatistics();
     
@@ -168,6 +172,8 @@ Retrieve all available user sessions for a specific video. Tutorials that use th
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -179,13 +185,13 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     RawStatisticsApi apiInstance = client.rawStatistics();
     
     String videoId = "vi4k0jvEUuaTdRAEjQ4Prklg"; // The unique identifier for the video you want to retrieve session information for.
-    String period = "period_example"; // Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15 
-    Map<String, String> metadata = new HashMap(); // Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with.
+    String period = "period_example"; // Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01, - For a month: 2018-01 - For a year: 2018  For a range period: -  Date range: 2018-01-01/2018-01-15 
+    Map<String, String> metadata = new HashMap(); // Metadata and Dynamic Metadata filter. Send an array of key value pairs you want to filter sessios with.
     Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 

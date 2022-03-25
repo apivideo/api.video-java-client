@@ -22,27 +22,29 @@ Method | HTTP request | Description
 
 Delete a video
 
-If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. Tutorials using [video deletion](https://api.video/blog/endpoints/video-delete).
+If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
 import video.api.client.api.clients.VideosApi;
 import java.util.*;
-
+  
 public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
-
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    
     VideosApi apiInstance = client.videos();
     
     String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The video ID for the video you want to delete.
-
+    
     try {
       apiInstance.delete(videoId);
     } catch (ApiException e) {
@@ -88,10 +90,12 @@ null (empty response body)
 
 Show a video
 
-This call provides the same JSON information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL. Tutorials using [video GET](https://api.video/blog/endpoints/video-get).
+This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -103,7 +107,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     VideosApi apiInstance = client.videos();
     
@@ -120,7 +124,7 @@ public class Example {
       e.printStackTrace();
     }
   }
-}
+}  
 ```
 
 ### Parameters
@@ -155,10 +159,12 @@ Name | Type | Description  | Notes
 
 Show video status
 
-This API provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities. Tutorials using [video status](https://api.video/blog/endpoints/video-status).
+This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available stream qualities.
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -170,7 +176,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     VideosApi apiInstance = client.videos();
     
@@ -222,57 +228,31 @@ Name | Type | Description  | Notes
 
 List all videos
 
-Requests to this endpoint return a list of your videos (with all their details). With no parameters added to this query, the API returns all videos. You can filter what videos the API returns using the parameters described below.  We have [several tutorials](https://api.video/blog/endpoints/video-list) that demonstrate this endpoint.
+This method returns a list of your videos (with all their details). With no parameters added, the API returns the first page of all videos. You can filter videos using the parameters described below.
 
 ### Example
 ```java
-// Import classes:
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.VideosApi;
-import java.util.*;
+// instantiate the client
+ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+VideosApi videosApi = client.videos();
 
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+// list all videos (all pages)
+Page<Video> videosPages = videosApi.list().execute();
+videosPages.forEach(videosPage -> videosPage.getItems().forEach(video ->
+    System.out.println(video.getVideoId())
+));
 
-    VideosApi apiInstance = client.videos();
-    
-    String title = "My Video.mp4"; // The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
-    List<String> tags = Arrays.asList(); // A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
-    Map<String, String> metadata = new HashMap(); // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
-    String description = "New Zealand"; // If you described a video with a term or sentence, you can add it here to return videos containing this string.
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here.
-    String sortBy = "publishedAt"; // Allowed: publishedAt, title. You can search by the time videos were published at, or by title.
-    String sortOrder = "asc"; // Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to A.
-    Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
-    Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
+// list videos that have all the given tags (only first results page)
+List<Video> videosWithTags = videosApi.list()
+    .tags(Arrays.asList("tag1", "tag2"))
+    .execute()
+    .getItems();
 
-    try {
-      Page<Video> result = apiInstance.list()
-            .title(title)
-            .tags(tags)
-            .metadata(metadata)
-            .description(description)
-            .liveStreamId(liveStreamId)
-            .sortBy(sortBy)
-            .sortOrder(sortOrder)
-            .currentPage(currentPage)
-            .pageSize(pageSize)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling VideosApi#list");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
+// list videos that have all the given metadata values (only first results page)
+List<Video> videosWithMetadata = videosApi.list()
+    .metadata(Map.of("key1", "value1", "key2", "value2"))
+    .execute()
+    .getItems();
 ```
 
 ### Parameters
@@ -315,10 +295,15 @@ Name | Type | Description  | Notes
 
 Update a video
 
-Use this endpoint to update the parameters associated with your video. The video you are updating is determined by the video ID you provide in the path. For each parameter you want to update, include the update in the request body. NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it. Tutorials using [video update](https://api.video/blog/endpoints/video-update).
+Updates the parameters associated with your video. The video you are updating is determined by the video ID you provide. 
+
+NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is in the system rather than appending to it.
+
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -330,7 +315,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     VideosApi apiInstance = client.videos();
     
@@ -339,11 +324,11 @@ public class Example {
     videoUpdatePayload.setPlayerId("pl4k0jvEUuaTdRAEjQ4Jfrgz"); // The unique ID for the player you want to associate with your video.
     videoUpdatePayload.setTitle("null"); // The title you want to use for your video.
     videoUpdatePayload.setDescription("A film about good books."); // A brief description of the video.
-    videoUpdatePayload.setPublic(true); // Whether the video is publicly available or not. False means it is set to private. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
+    videoUpdatePayload.setPublic(true); // Whether the video is publicly available or not. False means it is set to private.
     videoUpdatePayload.setPanoramic(false); // Whether the video is a 360 degree or immersive video.
     videoUpdatePayload.setMp4Support(true); // Whether the player supports the mp4 format.
     videoUpdatePayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of terms or words you want to tag the video with. Make sure the list includes all the tags you want as whatever you send in this list will overwrite the existing list for the video.
-    videoUpdatePayload.setMetadata(Collections.<Metadata>emptyList()); // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
+    videoUpdatePayload.setMetadata(Collections.<Metadata>emptyList()); // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video.
 
 
     try {
@@ -394,10 +379,17 @@ Name | Type | Description  | Notes
 
 Pick a thumbnail
 
-Pick a thumbnail from the given time code. If you'd like to upload an image for your thumbnail, use the [Upload a Thumbnail](https://docs.api.video/reference#post_videos-videoid-thumbnail) endpoint. There may be a short delay for the thumbnail to update. Tutorials using [Thumbnail picking](https://api.video/blog/endpoints/video-pick-a-thumbnail).
+Pick a thumbnail from the given time code. 
+
+If you'd like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail). 
+
+There may be a short delay for the thumbnail to update.
+
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -409,19 +401,19 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     VideosApi apiInstance = client.videos();
     
     String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // Unique identifier of the video you want to add a thumbnail to, where you use a section of your video as the thumbnail.
     VideoThumbnailPickPayload videoThumbnailPickPayload = new VideoThumbnailPickPayload(); // 
-    videoThumbnailPickPayload.setTimecode("null"); // Frame in video to be used as a placeholder before the video plays. 
-Example: &#39;&quot;00:01:00.000&quot; for 1 minute into the video.&#39;
-Valid Patterns: 
-&quot;hh:mm:ss.ms&quot;
-&quot;hh:mm:ss:frameNumber&quot;
-&quot;124&quot; (integer value is reported as seconds) 
-If selection is out of range, &quot;00:00:00.00&quot; will be chosen.
+    videoThumbnailPickPayload.setTimecode("null"); // Frame in video to be used as a placeholder before the video plays.
+Example: &amp;#39;&amp;quot;00:01:00.000&amp;quot; for 1 minute into the video.&amp;#39;
+Valid Patterns:
+&amp;quot;hh:mm:ss.ms&amp;quot;
+&amp;quot;hh:mm:ss:frameNumber&amp;quot;
+&amp;quot;124&amp;quot; (integer value is reported as seconds)
+If selection is out of range, &amp;quot;00:00:00.00&amp;quot; will be chosen.
 
 
     try {
@@ -435,7 +427,7 @@ If selection is out of range, &quot;00:00:00.00&quot; will be chosen.
       e.printStackTrace();
     }
   }
-}
+}        
 ```
 
 ### Parameters
@@ -471,40 +463,13 @@ Name | Type | Description  | Notes
 
 Upload with an upload token
 
-When given a token, anyone can upload a file to the URI `https://ws.api.video/upload?token=<tokenId>`.  Example with cURL:  ```curl $ curl  --request POST --url 'https://ws.api.video/upload?token=toXXX'  --header 'content-type: multipart/form-data'  -F file=@video.mp4 ```  Or in an HTML form, with a little JavaScript to convert the form into JSON: ```html <!--form for user interaction--> <form name=\"videoUploadForm\" >   <label for=video>Video:</label>   <input type=file name=source/><br/>   <input value=\"Submit\" type=\"submit\"> </form> <div></div> <!--JS takes the form data      uses FormData to turn the response into JSON.     then uses POST to upload the video file.     Update the token parameter in the url to your upload token.     --> <script>    var form = document.forms.namedItem(\"videoUploadForm\");     form.addEventListener('submit', function(ev) {   ev.preventDefault();      var oOutput = document.querySelector(\"div\"),          oData = new FormData(form);      var oReq = new XMLHttpRequest();         oReq.open(\"POST\", \"https://ws.api.video/upload?token=toXXX\", true);      oReq.send(oData);   oReq.onload = function(oEvent) {        if (oReq.status ==201) {          oOutput.innerHTML = \"Your video is uploaded!<br/>\"  + oReq.response;        } else {          oOutput.innerHTML = \"Error \" + oReq.status + \" occurred when trying to upload your file.<br />\";        }      };    }, false);  </script> ```   ### Dealing with large files  You can upload large files on api.video with <a href='https://docs.api.video/reference/post_videos-videoid-source'>Progressive Upload</a>. Alternatively, if you want to use regular upload, we have created a <a href='https://api.video/blog/tutorials/uploading-large-files-with-javascript'>tutorial</a> to walk through the steps required.
+This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload is done from the client side. If you want to upload a video from your server-side application, you'd better use the [standard upload method](#upload).
 
 ### Example
 ```java
-// Import classes:
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.VideosApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient();
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient(ApiVideoClient.BasePaths.SANDBOX);
-
-    VideosApi apiInstance = client.videos();
-    
-    String token = "to1tcmSFHeYY5KzyhOqVKMKb"; // The unique identifier for the token you want to use to upload a video.
-    File file = new File("/path/to/file"); // The path to the video you want to upload.
-
-    try {
-      Video result = apiInstance.uploadWithUploadToken(token, file);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling VideosApi#uploadWithUploadToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
+//The upload will happen on the front end, and not on the backend code.  
+//Our [JavaScript uploader(https://docs.api.video/docs/video-uploader) is a great place to look for uploading videos with the delegated token.
+//We also have uploaders for a number of [mobile languages](https://docs.api.video/docs/flutter-uploader).
 ```
 
 ### Parameters
@@ -567,10 +532,12 @@ No authorization required
 
 Create a video
 
- ## We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos)   * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
+We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic Metadata](https://api.video/blog/tutorials/dynamic-metadata)  * Full list of [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint. 
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -582,22 +549,20 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     VideosApi apiInstance = client.videos();
     
     VideoCreationPayload videoCreationPayload = new VideoCreationPayload(); // video to create
     videoCreationPayload.setTitle("Maths video"); // The title of your new video.
     videoCreationPayload.setDescription("A video about string theory."); // A brief description of your video.
-    videoCreationPayload.setSource("https://www.myvideo.url.com/video.mp4 OR vi4k0jvEUuaTdRAEjQ4JfOyl"); // You can either add a video already on the web, by entering the URL of the video, or you can also enter the &#x60;videoId&#x60; of one of the videos you already have on your api.video acccount, and this will generate a copy of your video. Creating a copy of a video can be especially useful if you want to keep your original video and trim or apply a watermark onto the copy you would create.
-    videoCreationPayload.setPublic(true); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
+    videoCreationPayload.setSource("https://www.myvideo.url.com/video.mp4"); // If you add a video already on the web, this is where you enter the url for the video.
+    videoCreationPayload.setPublic(true); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
     videoCreationPayload.setPanoramic(false); // Indicates if your video is a 360/immersive video.
     videoCreationPayload.setMp4Support(true); // Enables mp4 version in addition to streamed version.
     videoCreationPayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique identification number for your video player.
     videoCreationPayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of tags you want to use to describe your video.
-    videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).
-    videoCreationPayload.setClip(); // 
-    videoCreationPayload.setWatermark(); // 
+    videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. You can also just use the pairs as another way to tag and categorize your videos.
 
 
     try {
@@ -647,10 +612,21 @@ Name | Type | Description  | Notes
 
 Upload a video
 
-To upload a video to the videoId you created. Replace {videoId} with the id you'd like to use, {access_token} with your token, and /path/to/video.mp4 with the path to the video you'd like to upload. You can only upload your video to the videoId once. We offer 2 types of upload:  * Regular upload  * Progressive upload The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to   * allow the upload of video sources > 200 MiB (200 MiB = the max. allowed file size for regular upload)   * allow to send a video source \"progressively\", i.e., before before knowing the total size of the video.   Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as \"completely sent\" when the \"last\" chunk is sent (i.e., the chunk that \"completes\" the upload). ```bash curl https://ws.api.video/videos/{videoId}/source \\   -H 'Authorization: Bearer {access_token}' \\   -F file=@/path/to/video.mp4    ``` Tutorials using [video upload](https://api.video/blog/endpoints/video-upload).
+To upload a video to the videoId you created. You can only upload your video to the videoId once.
+
+We offer 2 types of upload: 
+* Regular upload 
+* Progressive upload
+The latter allows you to split a video source into X chunks and send those chunks independently (concurrently or sequentially). The 2 main goals for our users are to
+  * allow the upload of video sources > 200 MiB (200 MiB = the max. allowed file size for regular upload)
+  * allow to send a video source "progressively", i.e., before before knowing the total size of the video.
+  Once all chunks have been sent, they are reaggregated to one source file. The video source is considered as "completely sent" when the "last" chunk is sent (i.e., the chunk that "completes" the upload).
+
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -662,12 +638,12 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
     VideosApi apiInstance = client.videos();
-    
+
     String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // Enter the videoId you want to use to upload your video.
-    File file = new File("/path/to/file"); // The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the \\\"/videos\\\" endpoint and add the \\\"source\\\" parameter when you create a new video.
+    File file = new File("/path/to/file"); // The path to the video you would like to upload. The path must be local. If you want to use a video from an online source, you must use the "/videos" endpoint and add the "source" parameter when you create a new video.
 
     try {
       Video result = apiInstance.upload(videoId, file);
@@ -744,10 +720,18 @@ Video result = session.uploadLastPart(new File("sample.mp4.partn"));
 
 Upload a thumbnail
 
-The thumbnail is the poster that appears in the player window before video playback begins. This endpoint allows you to upload an image for the thumbnail. To select a still frame from the video using a time stamp, use [Pick a Thumbnail](https://docs.api.video/reference#patch_videos-videoid-thumbnail) to pick a time in the video.  Note: There may be a short delay before the new thumbnail is delivered to our CDN. Tutorials using [Thumbnail upload](https://api.video/blog/endpoints/videos-upload-a-thumbnail).
+The thumbnail is the poster that appears in the player window before video playback begins.
+
+This endpoint allows you to upload an image for the thumbnail.
+
+To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a time in the video.
+
+Note: There may be a short delay before the new thumbnail is delivered to our CDN.
 
 ### Example
 ```java
+//dependency addition instructions
+//https://github.com/apivideo/api.video-java-client
 // Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
@@ -756,27 +740,27 @@ import video.api.client.api.clients.VideosApi;
 import java.util.*;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+ public static void main(String[] args) {
+   ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+   // if you rather like to use the sandbox environment:
+   // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
-    VideosApi apiInstance = client.videos();
-    
-    String videoId = "videoId_example"; // Unique identifier of the chosen video 
-    File file = new File("/path/to/file"); // The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
+   VideosApi apiInstance = client.videos();
 
-    try {
-      Video result = apiInstance.uploadThumbnail(videoId, file);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling VideosApi#uploadThumbnail");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
+   String videoId = "videoId_example"; // Unique identifier of the chosen video 
+   File file = new File("/path/to/file"); // The image to be added as a thumbnail.
+
+   try {
+     Video result = apiInstance.uploadThumbnail(videoId, file);
+     System.out.println(result);
+   } catch (ApiException e) {
+     System.err.println("Exception when calling VideosApi#uploadThumbnail");
+     System.err.println("Status code: " + e.getCode());
+     System.err.println("Reason: " + e.getMessage());
+     System.err.println("Response headers: " + e.getResponseHeaders());
+     e.printStackTrace();
+   }
+ }
 }
 ```
 

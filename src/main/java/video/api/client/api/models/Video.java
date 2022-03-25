@@ -186,7 +186,7 @@ public class Video implements Serializable {
      * @return publishedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-12-16T08:25:51+00:00", value = "The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.")
+    @ApiModelProperty(example = "2019-12-16T08:25:51.000Z", value = "The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.")
 
     public String getPublishedAt() {
         return publishedAt;
@@ -207,7 +207,7 @@ public class Video implements Serializable {
      * @return updatedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-12-16T08:25:51+00:10", value = "The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.")
+    @ApiModelProperty(example = "2019-12-16T08:15:51Z", value = "The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.")
 
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
