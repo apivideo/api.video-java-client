@@ -32,7 +32,7 @@ Delete a live stream
   
   public class Example {
     public static void main(String[] args) {
-      ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+      ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
       // if you rather like to use the sandbox environment:
       // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
   
@@ -99,7 +99,7 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
@@ -168,7 +168,7 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
@@ -253,7 +253,7 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
@@ -321,7 +321,7 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
@@ -387,41 +387,21 @@ A live stream will give you the 'connection point' to RTMP your video stream to 
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveStreamsApi;
-import java.util.*;
+// instantiate the client 
+ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
 
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
-
-    LiveStreamsApi apiInstance = client.liveStreams();
-    
-    LiveStreamCreationPayload liveStreamCreationPayload = new LiveStreamCreationPayload(); // 
-    liveStreamCreationPayload.setName("My Live Stream Video"); // Add a name for your live stream here.
-    liveStreamCreationPayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
-    liveStreamCreationPayload.setPublic(); // BETA FEATURE Please limit all public &amp;#x3D; false (&amp;quot;private&amp;quot;) livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
-    liveStreamCreationPayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
+LiveStreamCreationPayload liveStreamCreationPayload = new LiveStreamCreationPayload(); 
+liveStreamCreationPayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
+liveStreamCreationPayload.setName("My Live Stream Video"); // Add a name for your live stream here.
+liveStreamCreationPayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it.
+liveStreamCreationPayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
 
 
-    try {
-      LiveStream result = apiInstance.create(liveStreamCreationPayload);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling LiveStreamsApi#create");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
+try {
+  LiveStream liveStream = client.liveStreams().create(liveStreamCreationPayload);
+  System.out.println(liveStream);
+} catch (ApiException e) {
+  e.printStackTrace();
 }
 ```
 
@@ -472,7 +452,7 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
