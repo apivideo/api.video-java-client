@@ -31,7 +31,7 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
@@ -99,7 +99,7 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
@@ -170,7 +170,7 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
@@ -239,7 +239,7 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
 
