@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
 [**list**](ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
-[**get**](ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Show a chapter
+[**get**](ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
 [**upload**](ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
 
 
@@ -16,11 +16,10 @@ Method | HTTP request | Description
 
 Delete a chapter
 
+Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter from and the language the chapter is in.
+
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -31,7 +30,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     ChaptersApi apiInstance = client.chapters();
     
@@ -65,7 +64,7 @@ null (empty response body)
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -88,9 +87,6 @@ Retrieve a list of all chapters for a specified video.
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -101,7 +97,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     ChaptersApi apiInstance = client.chapters();
     
@@ -137,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -154,15 +150,12 @@ Name | Type | Description  | Notes
 # **get**
 > Chapter get(videoId, language)
 
-Show a chapter
+Retrieve a chapter
 
-Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -173,7 +166,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     ChaptersApi apiInstance = client.chapters();
     
@@ -208,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -227,13 +220,10 @@ Name | Type | Description  | Notes
 
 Upload a chapter
 
-Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -244,7 +234,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     ChaptersApi apiInstance = client.chapters();
     
@@ -281,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 

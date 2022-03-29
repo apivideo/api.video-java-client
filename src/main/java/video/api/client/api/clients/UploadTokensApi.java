@@ -579,7 +579,7 @@ public class UploadTokensApi {
     }
 
     /**
-     * Show upload token
+     * Retrieve upload token
      *
      * You can retrieve details about a specific upload token if you have the unique identifier for the upload token.
      * Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it
@@ -618,7 +618,7 @@ public class UploadTokensApi {
     }
 
     /**
-     * Show upload token
+     * Retrieve upload token
      *
      * You can retrieve details about a specific upload token if you have the unique identifier for the upload token.
      * Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it

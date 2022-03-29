@@ -28,9 +28,9 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_KEY", Environment.SANDBOX);
 
     WatermarksApi apiInstance = client.watermarks();
     
@@ -62,7 +62,7 @@ null (empty response body)
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -94,9 +94,9 @@ import java.util.*;
 
 public class Example {
   public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_TOKEN");
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_KEY", Environment.SANDBOX);
 
     WatermarksApi apiInstance = client.watermarks();
     
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -163,9 +163,6 @@ Create a new watermark by uploading a `JPG` or a `PNG` image. A watermark is a s
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -176,7 +173,7 @@ public class Example {
  public static void main(String[] args) {
    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
    // if you rather like to use the sandbox environment:
-   // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+   // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
    WatermarksApi watermarkApi = apiClient.watermarks();
 
@@ -209,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 

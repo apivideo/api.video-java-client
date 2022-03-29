@@ -296,6 +296,7 @@ public class PlayerThemesApi {
     /**
      * Delete logo
      *
+     * Delete the logo associated to a player.
      * 
      * @param playerId
      *            The unique identifier for the player. (required)
@@ -329,6 +330,7 @@ public class PlayerThemesApi {
     /**
      * Delete logo
      *
+     * Delete the logo associated to a player.
      * 
      * @param playerId
      *            The unique identifier for the player. (required)
@@ -744,7 +746,7 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Show a player
+     * Retrieve a player
      *
      * Use a player ID to retrieve details about the player and display it for viewers.
      * 
@@ -781,7 +783,7 @@ public class PlayerThemesApi {
     }
 
     /**
-     * Show a player
+     * Retrieve a player
      *
      * Use a player ID to retrieve details about the player and display it for viewers.
      * 

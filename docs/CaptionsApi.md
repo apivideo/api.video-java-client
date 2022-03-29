@@ -6,8 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**delete**](CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
 [**list**](CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
-[**get**](CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Show a caption
-[**update**](CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update caption
+[**get**](CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
+[**update**](CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
 [**upload**](CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
 
 
@@ -21,9 +21,6 @@ Delete a caption in a specific language by providing the video ID for the video 
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -34,7 +31,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     CaptionsApi apiInstance = client.captions();
     
@@ -68,7 +65,7 @@ null (empty response body)
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -91,9 +88,6 @@ Retrieve a list of available captions for the videoId you provide.
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -104,7 +98,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     CaptionsApi apiInstance = client.captions();
     
@@ -140,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -157,15 +151,14 @@ Name | Type | Description  | Notes
 # **get**
 > Caption get(videoId, language)
 
-Show a caption
+Retrieve a caption
 
-Display a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a response indicating the caption was not found. Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
+Retrieve a caption for a video in a specific language. If the language is available, the caption is returned. Otherwise, you will get a error indicating the caption was not found.
+
+Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -176,7 +169,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     CaptionsApi apiInstance = client.captions();
     
@@ -211,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -228,15 +221,12 @@ Name | Type | Description  | Notes
 # **update**
 > Caption update(videoId, language, captionsUpdatePayload)
 
-Update caption
+Update a caption
 
-To have the captions on automatically, use this PATCH to set default: true.
+To have the captions on automatically, use this method to set default: true.
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -247,7 +237,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     CaptionsApi apiInstance = client.captions();
     
@@ -286,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -310,9 +300,6 @@ Upload a VTT file to add captions to your video.  Read our [captioning tutorial]
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -323,7 +310,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     CaptionsApi apiInstance = client.captions();
     
@@ -359,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 

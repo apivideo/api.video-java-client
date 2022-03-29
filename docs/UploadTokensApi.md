@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteToken**](UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
 [**list**](UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
-[**getToken**](UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Show upload token
+[**getToken**](UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
 [**createToken**](UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
 
 
@@ -20,9 +20,6 @@ Delete an existing upload token. This is especially useful for tokens you may ha
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -33,7 +30,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
@@ -65,7 +62,7 @@ null (empty response body)
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -88,9 +85,6 @@ A delegated token is used to allow secure uploads without exposing your API key.
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -101,7 +95,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
@@ -137,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -153,15 +147,12 @@ Name | Type | Description  | Notes
 # **getToken**
 > UploadToken getToken(uploadToken)
 
-Show upload token
+Retrieve upload token
 
 You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -172,7 +163,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
@@ -205,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
@@ -228,9 +219,6 @@ Use this endpoint to generate an upload token. You can use this token to authent
 
 ### Example
 ```java
-//dependency addition instructions
-//https://github.com/apivideo/api.video-java-client
-// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -241,7 +229,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOU_SANDBOX_API_TOKEN", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
@@ -276,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API token](../README.md#api-token)
+[API key](../README.md#api-key)
 
 ### HTTP request headers
 
