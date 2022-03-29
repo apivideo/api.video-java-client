@@ -595,11 +595,12 @@ public class CaptionsApi {
     }
 
     /**
-     * Show a caption
+     * Retrieve a caption
      *
-     * Display a caption for a video in a specific language. If the language is available, the caption is returned.
-     * Otherwise, you will get a response indicating the caption was not found. Tutorials that use the [captions
-     * endpoint](https://api.video/blog/endpoints/captions).
+     * Retrieve a caption for a video in a specific language. If the language is available, the caption is returned.
+     * Otherwise, you will get a error indicating the caption was not found.
+     * 
+     * Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
      * 
      * @param videoId
      *            The unique identifier for the video you want captions for. (required)
@@ -637,11 +638,12 @@ public class CaptionsApi {
     }
 
     /**
-     * Show a caption
+     * Retrieve a caption
      *
-     * Display a caption for a video in a specific language. If the language is available, the caption is returned.
-     * Otherwise, you will get a response indicating the caption was not found. Tutorials that use the [captions
-     * endpoint](https://api.video/blog/endpoints/captions).
+     * Retrieve a caption for a video in a specific language. If the language is available, the caption is returned.
+     * Otherwise, you will get a error indicating the caption was not found.
+     * 
+     * Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
      * 
      * @param videoId
      *            The unique identifier for the video you want captions for. (required)
@@ -777,9 +779,9 @@ public class CaptionsApi {
     }
 
     /**
-     * Update caption
+     * Update a caption
      *
-     * To have the captions on automatically, use this PATCH to set default: true.
+     * To have the captions on automatically, use this method to set default: true.
      * 
      * @param videoId
      *            The unique identifier for the video you want to have automatic captions for. (required)
@@ -825,9 +827,9 @@ public class CaptionsApi {
     }
 
     /**
-     * Update caption
+     * Update a caption
      *
-     * To have the captions on automatically, use this PATCH to set default: true.
+     * To have the captions on automatically, use this method to set default: true.
      * 
      * @param videoId
      *            The unique identifier for the video you want to have automatic captions for. (required)

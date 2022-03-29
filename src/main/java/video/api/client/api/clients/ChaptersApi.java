@@ -159,6 +159,8 @@ public class ChaptersApi {
     /**
      * Delete a chapter
      *
+     * Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter
+     * from and the language the chapter is in.
      * 
      * @param videoId
      *            The unique identifier for the video you want to delete a chapter from. (required)
@@ -195,6 +197,8 @@ public class ChaptersApi {
     /**
      * Delete a chapter
      *
+     * Delete a chapter in a specific language by providing the video ID for the video you want to delete the chapter
+     * from and the language the chapter is in.
      * 
      * @param videoId
      *            The unique identifier for the video you want to delete a chapter from. (required)
@@ -591,10 +595,11 @@ public class ChaptersApi {
     }
 
     /**
-     * Show a chapter
+     * Retrieve a chapter
      *
-     * Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use
-     * the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+     * Retrieve a chapter for a video in a specific language. Chapters help your viewers find the sections of the video
+     * they are most interested in viewing. Tutorials that use the [chapters
+     * endpoint](https://api.video/blog/endpoints/chapters).
      * 
      * @param videoId
      *            The unique identifier for the video you want to show a chapter for. (required)
@@ -632,10 +637,11 @@ public class ChaptersApi {
     }
 
     /**
-     * Show a chapter
+     * Retrieve a chapter
      *
-     * Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use
-     * the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+     * Retrieve a chapter for a video in a specific language. Chapters help your viewers find the sections of the video
+     * they are most interested in viewing. Tutorials that use the [chapters
+     * endpoint](https://api.video/blog/endpoints/chapters).
      * 
      * @param videoId
      *            The unique identifier for the video you want to show a chapter for. (required)
@@ -777,7 +783,7 @@ public class ChaptersApi {
     /**
      * Upload a chapter
      *
-     * Chapters help break the video into sections. Read our
+     * Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our
      * [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
      * 
      * @param videoId
@@ -825,7 +831,7 @@ public class ChaptersApi {
     /**
      * Upload a chapter
      *
-     * Chapters help break the video into sections. Read our
+     * Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our
      * [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
      * 
      * @param videoId

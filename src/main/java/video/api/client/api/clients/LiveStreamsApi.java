@@ -147,6 +147,8 @@ public class LiveStreamsApi {
     /**
      * Delete a live stream
      *
+     * If you do not need a live stream any longer, you can send a request to delete it. All you need is the
+     * liveStreamId.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream that you want to remove. (required)
@@ -175,6 +177,8 @@ public class LiveStreamsApi {
     /**
      * Delete a live stream
      *
+     * If you do not need a live stream any longer, you can send a request to delete it. All you need is the
+     * liveStreamId.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream that you want to remove. (required)
@@ -207,7 +211,7 @@ public class LiveStreamsApi {
      * Build call for deleteThumbnail
      * 
      * @param liveStreamId
-     *            The unique identifier for the live stream you want to delete. (required)
+     *            The unique identifier of the live stream whose thumbnail you want to delete. (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -282,10 +286,10 @@ public class LiveStreamsApi {
     /**
      * Delete a thumbnail
      *
-     * Send the unique identifier for a live stream to delete it from the system.
+     * Send the unique identifier for a live stream to delete its thumbnail.
      * 
      * @param liveStreamId
-     *            The unique identifier for the live stream you want to delete. (required)
+     *            The unique identifier of the live stream whose thumbnail you want to delete. (required)
      * 
      * @return LiveStream
      * 
@@ -319,10 +323,10 @@ public class LiveStreamsApi {
     /**
      * Delete a thumbnail
      *
-     * Send the unique identifier for a live stream to delete it from the system.
+     * Send the unique identifier for a live stream to delete its thumbnail.
      * 
      * @param liveStreamId
-     *            The unique identifier for the live stream you want to delete. (required)
+     *            The unique identifier of the live stream whose thumbnail you want to delete. (required)
      * 
      * @return ApiResponse&lt;LiveStream&gt;
      * 
@@ -748,9 +752,9 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Show live stream
+     * Retrieve live stream
      *
-     * Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
+     * Supply a liveStreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
      * Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
      * 
      * @param liveStreamId
@@ -781,9 +785,9 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Show live stream
+     * Retrieve live stream
      *
-     * Supply a LivestreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
+     * Supply a liveStreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
      * Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
      * 
      * @param liveStreamId
@@ -903,7 +907,7 @@ public class LiveStreamsApi {
      *
      * Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If
      * the livestream is actively streaming, changing the recording status will only affect the NEXT stream. The
-     * public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to
+     * public&#x3D;false \&quot;private livestream\&quot; is available as a BETA feature, and should be limited to
      * livestreams of 3,000 viewers or fewer.
      * 
      * @param liveStreamId
@@ -946,7 +950,7 @@ public class LiveStreamsApi {
      *
      * Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If
      * the livestream is actively streaming, changing the recording status will only affect the NEXT stream. The
-     * public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to
+     * public&#x3D;false \&quot;private livestream\&quot; is available as a BETA feature, and should be limited to
      * livestreams of 3,000 viewers or fewer.
      * 
      * @param liveStreamId
