@@ -72,6 +72,162 @@ public class WatermarksApi {
     }
 
     /**
+     * Build call for upload
+     * 
+     * @param file
+     *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call uploadCall(File file, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/watermarks";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (file != null) {
+            localVarFormParams.put("file", file);
+        }
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = { "multipart/form-data" };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call uploadValidateBeforeCall(File file, final ApiCallback _callback) throws ApiException {
+
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling upload");
+        }
+
+        okhttp3.Call localVarCall = uploadCall(file, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Upload a watermark
+     *
+     * Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image,
+     * directly burnt into a video. After you have created your watermark, you can define its placement and aspect when
+     * you [create a video](https://docs.api.video/reference/post-video).
+     * 
+     * @param file
+     *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
+     * 
+     * @return Watermark
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public Watermark upload(File file) throws ApiException {
+        ApiResponse<Watermark> localVarResp = uploadWithHttpInfo(file);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Upload a watermark
+     *
+     * Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image,
+     * directly burnt into a video. After you have created your watermark, you can define its placement and aspect when
+     * you [create a video](https://docs.api.video/reference/post-video).
+     * 
+     * @param file
+     *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
+     * 
+     * @return ApiResponse&lt;Watermark&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Watermark> uploadWithHttpInfo(File file) throws ApiException {
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(file, null);
+        Type localVarReturnType = new TypeToken<Watermark>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
      * Build call for delete
      * 
      * @param watermarkId
@@ -522,161 +678,4 @@ public class WatermarksApi {
     public APIlistRequest list() {
         return new APIlistRequest();
     }
-
-    /**
-     * Build call for upload
-     * 
-     * @param file
-     *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
-     * @param _callback
-     *            Callback for upload/download progress
-     * 
-     * @return Call to execute
-     * 
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    private okhttp3.Call uploadCall(File file, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/watermarks";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (file != null) {
-            localVarFormParams.put("file", file);
-        }
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = { "multipart/form-data" };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call uploadValidateBeforeCall(File file, final ApiCallback _callback) throws ApiException {
-
-        // verify the required parameter 'file' is set
-        if (file == null) {
-            throw new ApiException("Missing the required parameter 'file' when calling upload");
-        }
-
-        okhttp3.Call localVarCall = uploadCall(file, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Upload a watermark
-     *
-     * Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image,
-     * directly burnt into a video. After you have created your watermark, you can define its placement and aspect when
-     * you [create a video](https://docs.api.video/reference/post-video).
-     * 
-     * @param file
-     *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
-     * 
-     * @return Watermark
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public Watermark upload(File file) throws ApiException {
-        ApiResponse<Watermark> localVarResp = uploadWithHttpInfo(file);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Upload a watermark
-     *
-     * Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image,
-     * directly burnt into a video. After you have created your watermark, you can define its placement and aspect when
-     * you [create a video](https://docs.api.video/reference/post-video).
-     * 
-     * @param file
-     *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
-     * 
-     * @return ApiResponse&lt;Watermark&gt;
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<Watermark> uploadWithHttpInfo(File file) throws ApiException {
-        okhttp3.Call localVarCall = uploadValidateBeforeCall(file, null);
-        Type localVarReturnType = new TypeToken<Watermark>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
 }

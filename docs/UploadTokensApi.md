@@ -4,11 +4,145 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createToken**](UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
+[**getToken**](UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
 [**deleteToken**](UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
 [**list**](UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
-[**getToken**](UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
-[**createToken**](UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
 
+
+<a name="createToken"></a>
+# **createToken**
+> UploadToken createToken(tokenCreationPayload)
+
+Generate an upload token
+
+Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+
+### Example
+```java
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.UploadTokensApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+
+    UploadTokensApi apiInstance = client.uploadTokens();
+    
+    TokenCreationPayload tokenCreationPayload = new TokenCreationPayload(); // 
+    tokenCreationPayload.setTtl(); // Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.
+
+
+    try {
+      UploadToken result = apiInstance.createToken(tokenCreationPayload);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UploadTokensApi#createToken");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tokenCreationPayload** | [**TokenCreationPayload**](TokenCreationPayload.md)|  |
+
+### Return type
+
+
+[**UploadToken**](UploadToken.md)
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+
+<a name="getToken"></a>
+# **getToken**
+> UploadToken getToken(uploadToken)
+
+Retrieve upload token
+
+You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+
+### Example
+```java
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.UploadTokensApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+
+    UploadTokensApi apiInstance = client.uploadTokens();
+    
+    String uploadToken = "to1tcmSFHeYY5KzyhOqVKMKb"; // The unique identifier for the token you want information about.
+
+    try {
+      UploadToken result = apiInstance.getToken(uploadToken);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UploadTokensApi#getToken");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uploadToken** | **String**| The unique identifier for the token you want information about. |
+
+### Return type
+
+
+[**UploadToken**](UploadToken.md)
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**404** | Not Found |  -  |
 
 <a name="deleteToken"></a>
 # **deleteToken**
@@ -142,138 +276,4 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
-
-<a name="getToken"></a>
-# **getToken**
-> UploadToken getToken(uploadToken)
-
-Retrieve upload token
-
-You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
-
-### Example
-```java
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.UploadTokensApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
-
-    UploadTokensApi apiInstance = client.uploadTokens();
-    
-    String uploadToken = "to1tcmSFHeYY5KzyhOqVKMKb"; // The unique identifier for the token you want information about.
-
-    try {
-      UploadToken result = apiInstance.getToken(uploadToken);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling UploadTokensApi#getToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **uploadToken** | **String**| The unique identifier for the token you want information about. |
-
-### Return type
-
-
-[**UploadToken**](UploadToken.md)
-
-### Authorization
-
-[API key](../README.md#api-key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | Not Found |  -  |
-
-<a name="createToken"></a>
-# **createToken**
-> UploadToken createToken(tokenCreationPayload)
-
-Generate an upload token
-
-Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
-
-### Example
-```java
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.UploadTokensApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
-
-    UploadTokensApi apiInstance = client.uploadTokens();
-    
-    TokenCreationPayload tokenCreationPayload = new TokenCreationPayload(); // 
-    tokenCreationPayload.setTtl(); // Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.
-
-
-    try {
-      UploadToken result = apiInstance.createToken(tokenCreationPayload);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling UploadTokensApi#createToken");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tokenCreationPayload** | [**TokenCreationPayload**](TokenCreationPayload.md)|  |
-
-### Return type
-
-
-[**UploadToken**](UploadToken.md)
-
-### Authorization
-
-[API key](../README.md#api-key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Bad Request |  -  |
 

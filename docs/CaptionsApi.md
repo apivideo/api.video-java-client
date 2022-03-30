@@ -4,87 +4,20 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
-[**list**](CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
+[**upload**](CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
 [**get**](CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
 [**update**](CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
-[**upload**](CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
+[**delete**](CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
+[**list**](CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
 
 
-<a name="delete"></a>
-# **delete**
-> delete(videoId, language)
+<a name="upload"></a>
+# **upload**
+> Caption upload(videoId, language, file)
 
-Delete a caption
+Upload a caption
 
-Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
-
-### Example
-```java
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.CaptionsApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
-
-    CaptionsApi apiInstance = client.captions();
-    
-    String videoId = "vi4k0jvEUuaTdRAEjQ4Prklgc"; // The unique identifier for the video you want to delete a caption from.
-    String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-
-    try {
-      apiInstance.delete(videoId, language);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling CaptionsApi#delete");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **videoId** | **String**| The unique identifier for the video you want to delete a caption from. |
- **language** | **String**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
-
-### Return type
-
-
-null (empty response body)
-
-### Authorization
-
-[API key](../README.md#api-key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | No Content |  -  |
-**404** | Not Found |  -  |
-
-<a name="list"></a>
-# **list**
-> CaptionsListResponse list(videoId).currentPage(currentPage).pageSize(pageSize).execute();
-
-List video captions
-
-Retrieve a list of available captions for the videoId you provide.
+Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
 
 ### Example
 ```java
@@ -123,14 +56,14 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoId** | **String**| The unique identifier for the video you want to retrieve a list of captions for. |
- **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
- **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
+ **videoId** | **String**| The unique identifier for the video you want to add a caption to. |
+ **language** | **String**| A valid BCP 47 language representation. |
+ **file** | **File**| The video text track (VTT) you want to upload. |
 
 ### Return type
 
-[**Page**](pagination.md)<[**Caption**](Caption.md)>
 
+[**Caption**](Caption.md)
 
 ### Authorization
 
@@ -138,13 +71,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
+**400** | Bad Request |  -  |
 **404** | Not Found |  -  |
 
 <a name="get"></a>
@@ -290,13 +224,80 @@ Name | Type | Description  | Notes
 **400** | Bad Request |  -  |
 **404** | Not Found |  -  |
 
-<a name="upload"></a>
-# **upload**
-> Caption upload(videoId, language, file)
+<a name="delete"></a>
+# **delete**
+> delete(videoId, language)
 
-Upload a caption
+Delete a caption
 
-Upload a VTT file to add captions to your video.  Read our [captioning tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
+Delete a caption in a specific language by providing the video ID for the video you want to delete the caption from and the language the caption is in.
+
+### Example
+```java
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.CaptionsApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+
+    CaptionsApi apiInstance = client.captions();
+    
+    String videoId = "vi4k0jvEUuaTdRAEjQ4Prklgc"; // The unique identifier for the video you want to delete a caption from.
+    String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+
+    try {
+      apiInstance.delete(videoId, language);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CaptionsApi#delete");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **String**| The unique identifier for the video you want to delete a caption from. |
+ **language** | **String**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**404** | Not Found |  -  |
+
+<a name="list"></a>
+# **list**
+> CaptionsListResponse list(videoId).currentPage(currentPage).pageSize(pageSize).execute();
+
+List video captions
+
+Retrieve a list of available captions for the videoId you provide.
 
 ### Example
 ```java
@@ -335,14 +336,14 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **videoId** | **String**| The unique identifier for the video you want to add a caption to. |
- **language** | **String**| A valid BCP 47 language representation. |
- **file** | **File**| The video text track (VTT) you want to upload. |
+ **videoId** | **String**| The unique identifier for the video you want to retrieve a list of captions for. |
+ **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
+ **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
 ### Return type
 
+[**Page**](pagination.md)<[**Caption**](Caption.md)>
 
-[**Caption**](Caption.md)
 
 ### Authorization
 
@@ -350,13 +351,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
-**400** | Bad Request |  -  |
 **404** | Not Found |  -  |
 

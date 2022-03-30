@@ -72,6 +72,315 @@ public class UploadTokensApi {
     }
 
     /**
+     * Build call for createToken
+     * 
+     * @param tokenCreationPayload
+     *            (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call createTokenCall(TokenCreationPayload tokenCreationPayload, final ApiCallback _callback)
+            throws ApiException {
+        Object localVarPostBody = tokenCreationPayload;
+
+        // create path and map variables
+        String localVarPath = "/upload-tokens";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createTokenValidateBeforeCall(TokenCreationPayload tokenCreationPayload,
+            final ApiCallback _callback) throws ApiException {
+
+        // verify the required parameter 'tokenCreationPayload' is set
+        if (tokenCreationPayload == null) {
+            throw new ApiException("Missing the required parameter 'tokenCreationPayload' when calling createToken");
+        }
+
+        okhttp3.Call localVarCall = createTokenCall(tokenCreationPayload, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Generate an upload token
+     *
+     * Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping
+     * your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+     * 
+     * @param tokenCreationPayload
+     *            (required)
+     * 
+     * @return UploadToken
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public UploadToken createToken(TokenCreationPayload tokenCreationPayload) throws ApiException {
+        ApiResponse<UploadToken> localVarResp = createTokenWithHttpInfo(tokenCreationPayload);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Generate an upload token
+     *
+     * Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping
+     * your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+     * 
+     * @param tokenCreationPayload
+     *            (required)
+     * 
+     * @return ApiResponse&lt;UploadToken&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<UploadToken> createTokenWithHttpInfo(TokenCreationPayload tokenCreationPayload)
+            throws ApiException {
+        okhttp3.Call localVarCall = createTokenValidateBeforeCall(tokenCreationPayload, null);
+        Type localVarReturnType = new TypeToken<UploadToken>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Build call for getToken
+     * 
+     * @param uploadToken
+     *            The unique identifier for the token you want information about. (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call getTokenCall(String uploadToken, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/upload-tokens/{uploadToken}".replaceAll("\\{" + "uploadToken" + "\\}",
+                localVarApiClient.escapeString(uploadToken.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTokenValidateBeforeCall(String uploadToken, final ApiCallback _callback)
+            throws ApiException {
+
+        // verify the required parameter 'uploadToken' is set
+        if (uploadToken == null) {
+            throw new ApiException("Missing the required parameter 'uploadToken' when calling getToken");
+        }
+
+        okhttp3.Call localVarCall = getTokenCall(uploadToken, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Retrieve upload token
+     *
+     * You can retrieve details about a specific upload token if you have the unique identifier for the upload token.
+     * Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it
+     * will expire.
+     * 
+     * @param uploadToken
+     *            The unique identifier for the token you want information about. (required)
+     * 
+     * @return UploadToken
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public UploadToken getToken(String uploadToken) throws ApiException {
+        ApiResponse<UploadToken> localVarResp = getTokenWithHttpInfo(uploadToken);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retrieve upload token
+     *
+     * You can retrieve details about a specific upload token if you have the unique identifier for the upload token.
+     * Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it
+     * will expire.
+     * 
+     * @param uploadToken
+     *            The unique identifier for the token you want information about. (required)
+     * 
+     * @return ApiResponse&lt;UploadToken&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<UploadToken> getTokenWithHttpInfo(String uploadToken) throws ApiException {
+        okhttp3.Call localVarCall = getTokenValidateBeforeCall(uploadToken, null);
+        Type localVarReturnType = new TypeToken<UploadToken>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
      * Build call for deleteToken
      * 
      * @param uploadToken
@@ -501,314 +810,4 @@ public class UploadTokensApi {
     public APIlistRequest list() {
         return new APIlistRequest();
     }
-
-    /**
-     * Build call for getToken
-     * 
-     * @param uploadToken
-     *            The unique identifier for the token you want information about. (required)
-     * @param _callback
-     *            Callback for upload/download progress
-     * 
-     * @return Call to execute
-     * 
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
-     *                        <td>Not Found</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    private okhttp3.Call getTokenCall(String uploadToken, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/upload-tokens/{uploadToken}".replaceAll("\\{" + "uploadToken" + "\\}",
-                localVarApiClient.escapeString(uploadToken.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTokenValidateBeforeCall(String uploadToken, final ApiCallback _callback)
-            throws ApiException {
-
-        // verify the required parameter 'uploadToken' is set
-        if (uploadToken == null) {
-            throw new ApiException("Missing the required parameter 'uploadToken' when calling getToken");
-        }
-
-        okhttp3.Call localVarCall = getTokenCall(uploadToken, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Retrieve upload token
-     *
-     * You can retrieve details about a specific upload token if you have the unique identifier for the upload token.
-     * Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it
-     * will expire.
-     * 
-     * @param uploadToken
-     *            The unique identifier for the token you want information about. (required)
-     * 
-     * @return UploadToken
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
-     *                        <td>Not Found</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public UploadToken getToken(String uploadToken) throws ApiException {
-        ApiResponse<UploadToken> localVarResp = getTokenWithHttpInfo(uploadToken);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Retrieve upload token
-     *
-     * You can retrieve details about a specific upload token if you have the unique identifier for the upload token.
-     * Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it
-     * will expire.
-     * 
-     * @param uploadToken
-     *            The unique identifier for the token you want information about. (required)
-     * 
-     * @return ApiResponse&lt;UploadToken&gt;
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
-     *                        <td>Not Found</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<UploadToken> getTokenWithHttpInfo(String uploadToken) throws ApiException {
-        okhttp3.Call localVarCall = getTokenValidateBeforeCall(uploadToken, null);
-        Type localVarReturnType = new TypeToken<UploadToken>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Build call for createToken
-     * 
-     * @param tokenCreationPayload
-     *            (required)
-     * @param _callback
-     *            Callback for upload/download progress
-     * 
-     * @return Call to execute
-     * 
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    private okhttp3.Call createTokenCall(TokenCreationPayload tokenCreationPayload, final ApiCallback _callback)
-            throws ApiException {
-        Object localVarPostBody = tokenCreationPayload;
-
-        // create path and map variables
-        String localVarPath = "/upload-tokens";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createTokenValidateBeforeCall(TokenCreationPayload tokenCreationPayload,
-            final ApiCallback _callback) throws ApiException {
-
-        // verify the required parameter 'tokenCreationPayload' is set
-        if (tokenCreationPayload == null) {
-            throw new ApiException("Missing the required parameter 'tokenCreationPayload' when calling createToken");
-        }
-
-        okhttp3.Call localVarCall = createTokenCall(tokenCreationPayload, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Generate an upload token
-     *
-     * Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping
-     * your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
-     * 
-     * @param tokenCreationPayload
-     *            (required)
-     * 
-     * @return UploadToken
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public UploadToken createToken(TokenCreationPayload tokenCreationPayload) throws ApiException {
-        ApiResponse<UploadToken> localVarResp = createTokenWithHttpInfo(tokenCreationPayload);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Generate an upload token
-     *
-     * Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping
-     * your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
-     * 
-     * @param tokenCreationPayload
-     *            (required)
-     * 
-     * @return ApiResponse&lt;UploadToken&gt;
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<UploadToken> createTokenWithHttpInfo(TokenCreationPayload tokenCreationPayload)
-            throws ApiException {
-        okhttp3.Call localVarCall = createTokenValidateBeforeCall(tokenCreationPayload, null);
-        Type localVarReturnType = new TypeToken<UploadToken>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
 }

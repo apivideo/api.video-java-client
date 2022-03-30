@@ -72,6 +72,328 @@ public class WebhooksApi {
     }
 
     /**
+     * Build call for create
+     * 
+     * @param webhooksCreationPayload
+     *            (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call createCall(WebhooksCreationPayload webhooksCreationPayload, final ApiCallback _callback)
+            throws ApiException {
+        Object localVarPostBody = webhooksCreationPayload;
+
+        // create path and map variables
+        String localVarPath = "/webhooks";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createValidateBeforeCall(WebhooksCreationPayload webhooksCreationPayload,
+            final ApiCallback _callback) throws ApiException {
+
+        // verify the required parameter 'webhooksCreationPayload' is set
+        if (webhooksCreationPayload == null) {
+            throw new ApiException("Missing the required parameter 'webhooksCreationPayload' when calling create");
+        }
+
+        if (webhooksCreationPayload.getEvents() == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'webhooksCreationPayload.events' when calling create");
+        }
+
+        if (webhooksCreationPayload.getUrl() == null) {
+            throw new ApiException("Missing the required parameter 'webhooksCreationPayload.url' when calling create");
+        }
+
+        okhttp3.Call localVarCall = createCall(webhooksCreationPayload, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Create Webhook
+     *
+     * Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer
+     * four events: * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is
+     * uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is
+     * encoded, your webhook will get a notification. It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;:
+     * \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;:
+     * \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;,
+     * \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This
+     * request says that the 720p HLS encoding was completed. *
+     * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60; When a live stream begins broadcasting, the
+     * broadcasting parameter changes from false to true, and this webhook fires. *
+     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when the live stream has
+     * finished broadcasting, and the broadcasting parameter flips from false to true. *
+     * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is recorded and
+     * submitted for encoding.
+     * 
+     * @param webhooksCreationPayload
+     *            (required)
+     * 
+     * @return Webhook
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public Webhook create(WebhooksCreationPayload webhooksCreationPayload) throws ApiException {
+        ApiResponse<Webhook> localVarResp = createWithHttpInfo(webhooksCreationPayload);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create Webhook
+     *
+     * Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer
+     * four events: * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is
+     * uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is
+     * encoded, your webhook will get a notification. It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;:
+     * \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;:
+     * \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;,
+     * \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This
+     * request says that the 720p HLS encoding was completed. *
+     * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60; When a live stream begins broadcasting, the
+     * broadcasting parameter changes from false to true, and this webhook fires. *
+     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when the live stream has
+     * finished broadcasting, and the broadcasting parameter flips from false to true. *
+     * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is recorded and
+     * submitted for encoding.
+     * 
+     * @param webhooksCreationPayload
+     *            (required)
+     * 
+     * @return ApiResponse&lt;Webhook&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreationPayload webhooksCreationPayload)
+            throws ApiException {
+        okhttp3.Call localVarCall = createValidateBeforeCall(webhooksCreationPayload, null);
+        Type localVarReturnType = new TypeToken<Webhook>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Build call for get
+     * 
+     * @param webhookId
+     *            The unique webhook you wish to retreive details on. (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call getCall(String webhookId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/webhooks/{webhookId}".replaceAll("\\{" + "webhookId" + "\\}",
+                localVarApiClient.escapeString(webhookId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getValidateBeforeCall(String webhookId, final ApiCallback _callback) throws ApiException {
+
+        // verify the required parameter 'webhookId' is set
+        if (webhookId == null) {
+            throw new ApiException("Missing the required parameter 'webhookId' when calling get");
+        }
+
+        okhttp3.Call localVarCall = getCall(webhookId, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Retrieve Webhook details
+     *
+     * This call provides the same JSON information provided on Webhook creation.
+     * 
+     * @param webhookId
+     *            The unique webhook you wish to retreive details on. (required)
+     * 
+     * @return Webhook
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public Webhook get(String webhookId) throws ApiException {
+        ApiResponse<Webhook> localVarResp = getWithHttpInfo(webhookId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retrieve Webhook details
+     *
+     * This call provides the same JSON information provided on Webhook creation.
+     * 
+     * @param webhookId
+     *            The unique webhook you wish to retreive details on. (required)
+     * 
+     * @return ApiResponse&lt;Webhook&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Webhook> getWithHttpInfo(String webhookId) throws ApiException {
+        okhttp3.Call localVarCall = getValidateBeforeCall(webhookId, null);
+        Type localVarReturnType = new TypeToken<Webhook>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
      * Build call for delete
      * 
      * @param webhookId
@@ -215,142 +537,6 @@ public class WebhooksApi {
     public ApiResponse<Void> deleteWithHttpInfo(String webhookId) throws ApiException {
         okhttp3.Call localVarCall = deleteValidateBeforeCall(webhookId, null);
         return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Build call for get
-     * 
-     * @param webhookId
-     *            The unique webhook you wish to retreive details on. (required)
-     * @param _callback
-     *            Callback for upload/download progress
-     * 
-     * @return Call to execute
-     * 
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    private okhttp3.Call getCall(String webhookId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/webhooks/{webhookId}".replaceAll("\\{" + "webhookId" + "\\}",
-                localVarApiClient.escapeString(webhookId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValidateBeforeCall(String webhookId, final ApiCallback _callback) throws ApiException {
-
-        // verify the required parameter 'webhookId' is set
-        if (webhookId == null) {
-            throw new ApiException("Missing the required parameter 'webhookId' when calling get");
-        }
-
-        okhttp3.Call localVarCall = getCall(webhookId, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Retrieve Webhook details
-     *
-     * This call provides the same JSON information provided on Webhook creation.
-     * 
-     * @param webhookId
-     *            The unique webhook you wish to retreive details on. (required)
-     * 
-     * @return Webhook
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public Webhook get(String webhookId) throws ApiException {
-        ApiResponse<Webhook> localVarResp = getWithHttpInfo(webhookId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Retrieve Webhook details
-     *
-     * This call provides the same JSON information provided on Webhook creation.
-     * 
-     * @param webhookId
-     *            The unique webhook you wish to retreive details on. (required)
-     * 
-     * @return ApiResponse&lt;Webhook&gt;
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<Webhook> getWithHttpInfo(String webhookId) throws ApiException {
-        okhttp3.Call localVarCall = getValidateBeforeCall(webhookId, null);
-        Type localVarReturnType = new TypeToken<Webhook>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call listCall(String events, Integer currentPage, Integer pageSize, final ApiCallback _callback)
@@ -611,191 +797,4 @@ public class WebhooksApi {
     public APIlistRequest list() {
         return new APIlistRequest();
     }
-
-    /**
-     * Build call for create
-     * 
-     * @param webhooksCreationPayload
-     *            (required)
-     * @param _callback
-     *            Callback for upload/download progress
-     * 
-     * @return Call to execute
-     * 
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    private okhttp3.Call createCall(WebhooksCreationPayload webhooksCreationPayload, final ApiCallback _callback)
-            throws ApiException {
-        Object localVarPostBody = webhooksCreationPayload;
-
-        // create path and map variables
-        String localVarPath = "/webhooks";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = { "application/json" };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call createValidateBeforeCall(WebhooksCreationPayload webhooksCreationPayload,
-            final ApiCallback _callback) throws ApiException {
-
-        // verify the required parameter 'webhooksCreationPayload' is set
-        if (webhooksCreationPayload == null) {
-            throw new ApiException("Missing the required parameter 'webhooksCreationPayload' when calling create");
-        }
-
-        if (webhooksCreationPayload.getEvents() == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'webhooksCreationPayload.events' when calling create");
-        }
-
-        if (webhooksCreationPayload.getUrl() == null) {
-            throw new ApiException("Missing the required parameter 'webhooksCreationPayload.url' when calling create");
-        }
-
-        okhttp3.Call localVarCall = createCall(webhooksCreationPayload, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Create Webhook
-     *
-     * Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer
-     * four events: * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is
-     * uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is
-     * encoded, your webhook will get a notification. It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;:
-     * \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;:
-     * \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;,
-     * \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This
-     * request says that the 720p HLS encoding was completed. *
-     * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60; When a live stream begins broadcasting, the
-     * broadcasting parameter changes from false to true, and this webhook fires. *
-     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when the live stream has
-     * finished broadcasting, and the broadcasting parameter flips from false to true. *
-     * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is recorded and
-     * submitted for encoding.
-     * 
-     * @param webhooksCreationPayload
-     *            (required)
-     * 
-     * @return Webhook
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public Webhook create(WebhooksCreationPayload webhooksCreationPayload) throws ApiException {
-        ApiResponse<Webhook> localVarResp = createWithHttpInfo(webhooksCreationPayload);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Create Webhook
-     *
-     * Webhooks can push notifications to your server, rather than polling api.video for changes. We currently offer
-     * four events: * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60; Occurs when a new video is
-     * uploaded into your account, it will be encoded into several different HLS and mp4 qualities. When each version is
-     * encoded, your webhook will get a notification. It will look like &#x60;&#x60;&#x60;{ \&quot;type\&quot;:
-     * \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;:
-     * \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;,
-     * \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This
-     * request says that the 720p HLS encoding was completed. *
-     * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60; When a live stream begins broadcasting, the
-     * broadcasting parameter changes from false to true, and this webhook fires. *
-     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when the live stream has
-     * finished broadcasting, and the broadcasting parameter flips from false to true. *
-     * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is recorded and
-     * submitted for encoding.
-     * 
-     * @param webhooksCreationPayload
-     *            (required)
-     * 
-     * @return ApiResponse&lt;Webhook&gt;
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>201</td>
-     *                        <td>Created</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<Webhook> createWithHttpInfo(WebhooksCreationPayload webhooksCreationPayload)
-            throws ApiException {
-        okhttp3.Call localVarCall = createValidateBeforeCall(webhooksCreationPayload, null);
-        Type localVarReturnType = new TypeToken<Webhook>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
 }

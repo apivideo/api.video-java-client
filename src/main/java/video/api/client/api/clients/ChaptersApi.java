@@ -72,6 +72,375 @@ public class ChaptersApi {
     }
 
     /**
+     * Build call for upload
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to upload a chapter for. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * @param file
+     *            The VTT file describing the chapters you want to upload. (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call uploadCall(String videoId, String language, File file, final ApiCallback _callback)
+            throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/videos/{videoId}/chapters/{language}"
+                .replaceAll("\\{" + "videoId" + "\\}", localVarApiClient.escapeString(videoId.toString()))
+                .replaceAll("\\{" + "language" + "\\}", localVarApiClient.escapeString(language.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (file != null) {
+            localVarFormParams.put("file", file);
+        }
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = { "multipart/form-data" };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call uploadValidateBeforeCall(String videoId, String language, File file,
+            final ApiCallback _callback) throws ApiException {
+
+        // verify the required parameter 'videoId' is set
+        if (videoId == null) {
+            throw new ApiException("Missing the required parameter 'videoId' when calling upload");
+        }
+
+        // verify the required parameter 'language' is set
+        if (language == null) {
+            throw new ApiException("Missing the required parameter 'language' when calling upload");
+        }
+
+        // verify the required parameter 'file' is set
+        if (file == null) {
+            throw new ApiException("Missing the required parameter 'file' when calling upload");
+        }
+
+        okhttp3.Call localVarCall = uploadCall(videoId, language, file, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Upload a chapter
+     *
+     * Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our
+     * [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to upload a chapter for. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * @param file
+     *            The VTT file describing the chapters you want to upload. (required)
+     * 
+     * @return Chapter
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public Chapter upload(String videoId, String language, File file) throws ApiException {
+        ApiResponse<Chapter> localVarResp = uploadWithHttpInfo(videoId, language, file);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Upload a chapter
+     *
+     * Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our
+     * [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to upload a chapter for. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * @param file
+     *            The VTT file describing the chapters you want to upload. (required)
+     * 
+     * @return ApiResponse&lt;Chapter&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Chapter> uploadWithHttpInfo(String videoId, String language, File file) throws ApiException {
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(videoId, language, file, null);
+        Type localVarReturnType = new TypeToken<Chapter>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Build call for get
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to show a chapter for. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call getCall(String videoId, String language, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/videos/{videoId}/chapters/{language}"
+                .replaceAll("\\{" + "videoId" + "\\}", localVarApiClient.escapeString(videoId.toString()))
+                .replaceAll("\\{" + "language" + "\\}", localVarApiClient.escapeString(language.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
+                _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getValidateBeforeCall(String videoId, String language, final ApiCallback _callback)
+            throws ApiException {
+
+        // verify the required parameter 'videoId' is set
+        if (videoId == null) {
+            throw new ApiException("Missing the required parameter 'videoId' when calling get");
+        }
+
+        // verify the required parameter 'language' is set
+        if (language == null) {
+            throw new ApiException("Missing the required parameter 'language' when calling get");
+        }
+
+        okhttp3.Call localVarCall = getCall(videoId, language, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Retrieve a chapter
+     *
+     * Retrieve a chapter for a video in a specific language. Chapters help your viewers find the sections of the video
+     * they are most interested in viewing. Tutorials that use the [chapters
+     * endpoint](https://api.video/blog/endpoints/chapters).
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to show a chapter for. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * 
+     * @return Chapter
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public Chapter get(String videoId, String language) throws ApiException {
+        ApiResponse<Chapter> localVarResp = getWithHttpInfo(videoId, language);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retrieve a chapter
+     *
+     * Retrieve a chapter for a video in a specific language. Chapters help your viewers find the sections of the video
+     * they are most interested in viewing. Tutorials that use the [chapters
+     * endpoint](https://api.video/blog/endpoints/chapters).
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to show a chapter for. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * 
+     * @return ApiResponse&lt;Chapter&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Chapter> getWithHttpInfo(String videoId, String language) throws ApiException {
+        okhttp3.Call localVarCall = getValidateBeforeCall(videoId, language, null);
+        Type localVarReturnType = new TypeToken<Chapter>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
      * Build call for delete
      * 
      * @param videoId
@@ -508,374 +877,4 @@ public class ChaptersApi {
     public APIlistRequest list(String videoId) {
         return new APIlistRequest(videoId);
     }
-
-    /**
-     * Build call for get
-     * 
-     * @param videoId
-     *            The unique identifier for the video you want to show a chapter for. (required)
-     * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
-     * @param _callback
-     *            Callback for upload/download progress
-     * 
-     * @return Call to execute
-     * 
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
-     *                        <td>Not Found</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    private okhttp3.Call getCall(String videoId, String language, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/videos/{videoId}/chapters/{language}"
-                .replaceAll("\\{" + "videoId" + "\\}", localVarApiClient.escapeString(videoId.toString()))
-                .replaceAll("\\{" + "language" + "\\}", localVarApiClient.escapeString(language.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValidateBeforeCall(String videoId, String language, final ApiCallback _callback)
-            throws ApiException {
-
-        // verify the required parameter 'videoId' is set
-        if (videoId == null) {
-            throw new ApiException("Missing the required parameter 'videoId' when calling get");
-        }
-
-        // verify the required parameter 'language' is set
-        if (language == null) {
-            throw new ApiException("Missing the required parameter 'language' when calling get");
-        }
-
-        okhttp3.Call localVarCall = getCall(videoId, language, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Retrieve a chapter
-     *
-     * Retrieve a chapter for a video in a specific language. Chapters help your viewers find the sections of the video
-     * they are most interested in viewing. Tutorials that use the [chapters
-     * endpoint](https://api.video/blog/endpoints/chapters).
-     * 
-     * @param videoId
-     *            The unique identifier for the video you want to show a chapter for. (required)
-     * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
-     * 
-     * @return Chapter
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
-     *                        <td>Not Found</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public Chapter get(String videoId, String language) throws ApiException {
-        ApiResponse<Chapter> localVarResp = getWithHttpInfo(videoId, language);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Retrieve a chapter
-     *
-     * Retrieve a chapter for a video in a specific language. Chapters help your viewers find the sections of the video
-     * they are most interested in viewing. Tutorials that use the [chapters
-     * endpoint](https://api.video/blog/endpoints/chapters).
-     * 
-     * @param videoId
-     *            The unique identifier for the video you want to show a chapter for. (required)
-     * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
-     * 
-     * @return ApiResponse&lt;Chapter&gt;
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
-     *                        <td>Not Found</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<Chapter> getWithHttpInfo(String videoId, String language) throws ApiException {
-        okhttp3.Call localVarCall = getValidateBeforeCall(videoId, language, null);
-        Type localVarReturnType = new TypeToken<Chapter>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Build call for upload
-     * 
-     * @param videoId
-     *            The unique identifier for the video you want to upload a chapter for. (required)
-     * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
-     * @param file
-     *            The VTT file describing the chapters you want to upload. (required)
-     * @param _callback
-     *            Callback for upload/download progress
-     * 
-     * @return Call to execute
-     * 
-     * @throws ApiException
-     *             If fail to serialize the request body object
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
-     *                        <td>Not Found</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    private okhttp3.Call uploadCall(String videoId, String language, File file, final ApiCallback _callback)
-            throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/videos/{videoId}/chapters/{language}"
-                .replaceAll("\\{" + "videoId" + "\\}", localVarApiClient.escapeString(videoId.toString()))
-                .replaceAll("\\{" + "language" + "\\}", localVarApiClient.escapeString(language.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (file != null) {
-            localVarFormParams.put("file", file);
-        }
-
-        final String[] localVarAccepts = { "application/json" };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = { "multipart/form-data" };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
-                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames,
-                _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call uploadValidateBeforeCall(String videoId, String language, File file,
-            final ApiCallback _callback) throws ApiException {
-
-        // verify the required parameter 'videoId' is set
-        if (videoId == null) {
-            throw new ApiException("Missing the required parameter 'videoId' when calling upload");
-        }
-
-        // verify the required parameter 'language' is set
-        if (language == null) {
-            throw new ApiException("Missing the required parameter 'language' when calling upload");
-        }
-
-        // verify the required parameter 'file' is set
-        if (file == null) {
-            throw new ApiException("Missing the required parameter 'file' when calling upload");
-        }
-
-        okhttp3.Call localVarCall = uploadCall(videoId, language, file, _callback);
-        return localVarCall;
-    }
-
-    /**
-     * Upload a chapter
-     *
-     * Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our
-     * [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
-     * 
-     * @param videoId
-     *            The unique identifier for the video you want to upload a chapter for. (required)
-     * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
-     * @param file
-     *            The VTT file describing the chapters you want to upload. (required)
-     * 
-     * @return Chapter
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
-     *                        <td>Not Found</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public Chapter upload(String videoId, String language, File file) throws ApiException {
-        ApiResponse<Chapter> localVarResp = uploadWithHttpInfo(videoId, language, file);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Upload a chapter
-     *
-     * Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our
-     * [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
-     * 
-     * @param videoId
-     *            The unique identifier for the video you want to upload a chapter for. (required)
-     * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
-     * @param file
-     *            The VTT file describing the chapters you want to upload. (required)
-     * 
-     * @return ApiResponse&lt;Chapter&gt;
-     * 
-     * @throws ApiException
-     *             If fail to call the API, e.g. server error or cannot deserialize the response body
-     * 
-     * @http.response.details
-     *                        <table summary="Response Details" border="1">
-     *                        <tr>
-     *                        <td>Status Code</td>
-     *                        <td>Description</td>
-     *                        <td>Response Headers</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>200</td>
-     *                        <td>Success</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>400</td>
-     *                        <td>Bad Request</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        <tr>
-     *                        <td>404</td>
-     *                        <td>Not Found</td>
-     *                        <td>-</td>
-     *                        </tr>
-     *                        </table>
-     */
-    public ApiResponse<Chapter> uploadWithHttpInfo(String videoId, String language, File file) throws ApiException {
-        okhttp3.Call localVarCall = uploadValidateBeforeCall(videoId, language, file, null);
-        Type localVarReturnType = new TypeToken<Chapter>() {
-        }.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
 }
