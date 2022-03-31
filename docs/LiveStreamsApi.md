@@ -4,116 +4,40 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete**](LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
-[**deleteThumbnail**](LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
-[**list**](LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
+[**create**](LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
 [**get**](LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Retrieve live stream
 [**update**](LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
-[**create**](LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
+[**delete**](LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
+[**list**](LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
 [**uploadThumbnail**](LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
+[**deleteThumbnail**](LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
 
 
-<a name="delete"></a>
-# **delete**
-> delete(liveStreamId)
+<a name="create"></a>
+# **create**
+> LiveStream create(liveStreamCreationPayload)
 
-Delete a live stream
+Create live stream
 
-If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
-
-### Example
-```java
-  import video.api.client.ApiVideoClient;
-  import video.api.client.api.ApiException;
-  import video.api.client.api.models.*;
-  import video.api.client.api.clients.LiveStreamsApi;
-  import java.util.*;
-  
-  public class Example {
-    public static void main(String[] args) {
-      ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-      // if you rather like to use the sandbox environment:
-      // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
-  
-      LiveStreamsApi apiInstance = client.liveStreams();
-      
-      String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to remove.
-  
-      try {
-        apiInstance.delete(liveStreamId);
-      } catch (ApiException e) {
-        System.err.println("Exception when calling LiveStreamsApi#delete");
-        System.err.println("Status code: " + e.getCode());
-        System.err.println("Reason: " + e.getMessage());
-        System.err.println("Response headers: " + e.getResponseHeaders());
-        e.printStackTrace();
-      }
-    }
-  }
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **liveStreamId** | **String**| The unique ID for the live stream that you want to remove. |
-
-### Return type
-
-
-null (empty response body)
-
-### Authorization
-
-[API key](../README.md#api-key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | No Content |  -  |
-
-<a name="deleteThumbnail"></a>
-# **deleteThumbnail**
-> LiveStream deleteThumbnail(liveStreamId)
-
-Delete a thumbnail
-
-Send the unique identifier for a live stream to delete its thumbnail.
+A live stream will give you the 'connection point' to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
 
 ### Example
 ```java
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveStreamsApi;
-import java.util.*;
+// instantiate the client 
+ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
 
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+LiveStreamCreationPayload liveStreamCreationPayload = new LiveStreamCreationPayload(); 
+liveStreamCreationPayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
+liveStreamCreationPayload.setName("My Live Stream Video"); // Add a name for your live stream here.
+liveStreamCreationPayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it.
+liveStreamCreationPayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
 
-    LiveStreamsApi apiInstance = client.liveStreams();
-    
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique identifier for the live stream you want to delete. 
 
-    try {
-      LiveStream result = apiInstance.deleteThumbnail(liveStreamId);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling LiveStreamsApi#deleteThumbnail");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
+try {
+  LiveStream liveStream = client.liveStreams().create(liveStreamCreationPayload);
+  System.out.println(liveStream);
+} catch (ApiException e) {
+  e.printStackTrace();
 }
 ```
 
@@ -121,7 +45,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamId** | **String**| The unique identifier of the live stream whose thumbnail you want to delete. |
+ **liveStreamCreationPayload** | [**LiveStreamCreationPayload**](LiveStreamCreationPayload.md)|  |
 
 ### Return type
 
@@ -134,96 +58,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
-**404** | Not Found |  -  |
-
-<a name="list"></a>
-# **list**
-> LiveStreamListResponse list().streamKey(streamKey).name(name).sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
-
-List all live streams
-
-With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
-
-### Example
-```java
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.LiveStreamsApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
-
-    LiveStreamsApi apiInstance = client.liveStreams();
-    
-    String streamKey = "30087931-229e-42cf-b5f9-e91bcc1f7332"; // The unique stream key that allows you to stream videos.
-    String name = "My Video"; // You can filter live streams by their name or a part of their name.
-    String sortBy = "createdAt"; // Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format.
-    String sortOrder = "desc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
-    Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
-    Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
-
-    try {
-      Page<LiveStream> result = apiInstance.list()
-            .streamKey(streamKey)
-            .name(name)
-            .sortBy(sortBy)
-            .sortOrder(sortOrder)
-            .currentPage(currentPage)
-            .pageSize(pageSize)
-            .execute();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling LiveStreamsApi#list");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **streamKey** | **String**| The unique stream key that allows you to stream videos. | [optional]
- **name** | **String**| You can filter live streams by their name or a part of their name. | [optional]
- **sortBy** | **String**| Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. | [optional]
- **sortOrder** | **String**| Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. | [optional] [enum: asc, desc]
- **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
- **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
-
-### Return type
-
-[**Page**](pagination.md)<[**LiveStream**](LiveStream.md)>
-
-
-### Authorization
-
-[API key](../README.md#api-key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
+**400** | Bad Request |  -  |
 
 <a name="get"></a>
 # **get**
@@ -364,44 +206,55 @@ Name | Type | Description  | Notes
 **200** | Success |  -  |
 **400** | Bad Request |  -  |
 
-<a name="create"></a>
-# **create**
-> LiveStream create(liveStreamCreationPayload)
+<a name="delete"></a>
+# **delete**
+> delete(liveStreamId)
 
-Create live stream
+Delete a live stream
 
-A live stream will give you the 'connection point' to RTMP your video stream to api.video.  It will also give you the details for viewers to watch the same livestream.   The public=false 'private livestream' is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer.  See our [Live Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.  Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live streams](https://api.video/blog/endpoints/live-create).
+If you do not need a live stream any longer, you can send a request to delete it. All you need is the liveStreamId.
 
 ### Example
 ```java
-// instantiate the client 
-ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-
-LiveStreamCreationPayload liveStreamCreationPayload = new LiveStreamCreationPayload(); 
-liveStreamCreationPayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
-liveStreamCreationPayload.setName("My Live Stream Video"); // Add a name for your live stream here.
-liveStreamCreationPayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it.
-liveStreamCreationPayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
-
-
-try {
-  LiveStream liveStream = client.liveStreams().create(liveStreamCreationPayload);
-  System.out.println(liveStream);
-} catch (ApiException e) {
-  e.printStackTrace();
-}
+  import video.api.client.ApiVideoClient;
+  import video.api.client.api.ApiException;
+  import video.api.client.api.models.*;
+  import video.api.client.api.clients.LiveStreamsApi;
+  import java.util.*;
+  
+  public class Example {
+    public static void main(String[] args) {
+      ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+      // if you rather like to use the sandbox environment:
+      // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+  
+      LiveStreamsApi apiInstance = client.liveStreams();
+      
+      String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to remove.
+  
+      try {
+        apiInstance.delete(liveStreamId);
+      } catch (ApiException e) {
+        System.err.println("Exception when calling LiveStreamsApi#delete");
+        System.err.println("Status code: " + e.getCode());
+        System.err.println("Reason: " + e.getMessage());
+        System.err.println("Response headers: " + e.getResponseHeaders());
+        e.printStackTrace();
+      }
+    }
+  }
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamCreationPayload** | [**LiveStreamCreationPayload**](LiveStreamCreationPayload.md)|  |
+ **liveStreamId** | **String**| The unique ID for the live stream that you want to remove. |
 
 ### Return type
 
 
-[**LiveStream**](LiveStream.md)
+null (empty response body)
 
 ### Authorization
 
@@ -409,14 +262,95 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+
+<a name="list"></a>
+# **list**
+> LiveStreamListResponse list().streamKey(streamKey).name(name).sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
+
+List all live streams
+
+With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
+
+### Example
+```java
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.LiveStreamsApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+
+    LiveStreamsApi apiInstance = client.liveStreams();
+    
+    String streamKey = "30087931-229e-42cf-b5f9-e91bcc1f7332"; // The unique stream key that allows you to stream videos.
+    String name = "My Video"; // You can filter live streams by their name or a part of their name.
+    String sortBy = "createdAt"; // Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format.
+    String sortOrder = "desc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
+    Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
+    Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
+
+    try {
+      Page<LiveStream> result = apiInstance.list()
+            .streamKey(streamKey)
+            .name(name)
+            .sortBy(sortBy)
+            .sortOrder(sortOrder)
+            .currentPage(currentPage)
+            .pageSize(pageSize)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#list");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **streamKey** | **String**| The unique stream key that allows you to stream videos. | [optional]
+ **name** | **String**| You can filter live streams by their name or a part of their name. | [optional]
+ **sortBy** | **String**| Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format. | [optional]
+ **sortOrder** | **String**| Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. | [optional] [enum: asc, desc]
+ **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
+ **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
+
+### Return type
+
+[**Page**](pagination.md)<[**LiveStream**](LiveStream.md)>
+
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
-**400** | Bad Request |  -  |
 
 <a name="uploadThumbnail"></a>
 # **uploadThumbnail**
@@ -485,5 +419,71 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Created |  -  |
 **400** | Bad Request |  -  |
+**404** | Not Found |  -  |
+
+<a name="deleteThumbnail"></a>
+# **deleteThumbnail**
+> LiveStream deleteThumbnail(liveStreamId)
+
+Delete a thumbnail
+
+Send the unique identifier for a live stream to delete its thumbnail.
+
+### Example
+```java
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.LiveStreamsApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+
+    LiveStreamsApi apiInstance = client.liveStreams();
+    
+    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique identifier for the live stream you want to delete. 
+
+    try {
+      LiveStream result = apiInstance.deleteThumbnail(liveStreamId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#deleteThumbnail");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **liveStreamId** | **String**| The unique identifier of the live stream whose thumbnail you want to delete. |
+
+### Return type
+
+
+[**LiveStream**](LiveStream.md)
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
 **404** | Not Found |  -  |
 

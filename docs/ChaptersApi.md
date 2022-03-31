@@ -4,11 +4,150 @@ All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**upload**](ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
+[**get**](ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
 [**delete**](ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
 [**list**](ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
-[**get**](ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
-[**upload**](ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
 
+
+<a name="upload"></a>
+# **upload**
+> Chapter upload(videoId, language, file)
+
+Upload a chapter
+
+Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+
+### Example
+```java
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.ChaptersApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+
+    ChaptersApi apiInstance = client.chapters();
+    
+    String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the video you want to upload a chapter for.
+    String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+    File file = new File("/path/to/file"); // The VTT file describing the chapters you want to upload.
+
+    try {
+      Chapter result = apiInstance.upload(videoId, language, file);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ChaptersApi#upload");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **String**| The unique identifier for the video you want to upload a chapter for. |
+ **language** | **String**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
+ **file** | **File**| The VTT file describing the chapters you want to upload. |
+
+### Return type
+
+
+[**Chapter**](Chapter.md)
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | Bad Request |  -  |
+**404** | Not Found |  -  |
+
+<a name="get"></a>
+# **get**
+> Chapter get(videoId, language)
+
+Retrieve a chapter
+
+Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
+
+### Example
+```java
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.ChaptersApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+
+    ChaptersApi apiInstance = client.chapters();
+    
+    String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the video you want to show a chapter for.
+    String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
+
+    try {
+      Chapter result = apiInstance.get(videoId, language);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ChaptersApi#get");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **String**| The unique identifier for the video you want to show a chapter for. |
+ **language** | **String**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
+
+### Return type
+
+
+[**Chapter**](Chapter.md)
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**404** | Not Found |  -  |
 
 <a name="delete"></a>
 # **delete**
@@ -144,144 +283,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
-**404** | Not Found |  -  |
-
-<a name="get"></a>
-# **get**
-> Chapter get(videoId, language)
-
-Retrieve a chapter
-
-Retrieve a chapter for a video in a specific language.  Chapters help your viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters endpoint](https://api.video/blog/endpoints/chapters).
-
-### Example
-```java
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.ChaptersApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
-
-    ChaptersApi apiInstance = client.chapters();
-    
-    String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the video you want to show a chapter for.
-    String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-
-    try {
-      Chapter result = apiInstance.get(videoId, language);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ChaptersApi#get");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **videoId** | **String**| The unique identifier for the video you want to show a chapter for. |
- **language** | **String**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
-
-### Return type
-
-
-[**Chapter**](Chapter.md)
-
-### Authorization
-
-[API key](../README.md#api-key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
-**404** | Not Found |  -  |
-
-<a name="upload"></a>
-# **upload**
-> Chapter upload(videoId, language, file)
-
-Upload a chapter
-
-Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
-
-### Example
-```java
-import video.api.client.ApiVideoClient;
-import video.api.client.api.ApiException;
-import video.api.client.api.models.*;
-import video.api.client.api.clients.ChaptersApi;
-import java.util.*;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-    // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
-
-    ChaptersApi apiInstance = client.chapters();
-    
-    String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique identifier for the video you want to upload a chapter for.
-    String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation.
-    File file = new File("/path/to/file"); // The VTT file describing the chapters you want to upload.
-
-    try {
-      Chapter result = apiInstance.upload(videoId, language, file);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ChaptersApi#upload");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getMessage());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **videoId** | **String**| The unique identifier for the video you want to upload a chapter for. |
- **language** | **String**| A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation. |
- **file** | **File**| The VTT file describing the chapters you want to upload. |
-
-### Return type
-
-
-[**Chapter**](Chapter.md)
-
-### Authorization
-
-[API key](../README.md#api-key)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | Bad Request |  -  |
 **404** | Not Found |  -  |
 
