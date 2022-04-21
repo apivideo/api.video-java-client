@@ -54,7 +54,7 @@ public class Video implements Serializable {
 
     public static final String SERIALIZED_NAME_PUBLISHED_AT = "publishedAt";
     @SerializedName(SERIALIZED_NAME_PUBLISHED_AT)
-    private String publishedAt;
+    private OffsetDateTime publishedAt;
 
     public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
     @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -175,7 +175,7 @@ public class Video implements Serializable {
         this.description = description;
     }
 
-    public Video publishedAt(String publishedAt) {
+    public Video publishedAt(OffsetDateTime publishedAt) {
         this.publishedAt = publishedAt;
         return this;
     }
@@ -186,13 +186,13 @@ public class Video implements Serializable {
      * @return publishedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-12-16T08:25:51.000Z", value = "The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.")
+    @ApiModelProperty(example = "2019-12-16T08:25:51Z", value = "The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.")
 
-    public String getPublishedAt() {
+    public OffsetDateTime getPublishedAt() {
         return publishedAt;
     }
 
-    public void setPublishedAt(String publishedAt) {
+    public void setPublishedAt(OffsetDateTime publishedAt) {
         this.publishedAt = publishedAt;
     }
 
