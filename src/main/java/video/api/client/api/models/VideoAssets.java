@@ -149,7 +149,7 @@ public class VideoAssets implements Serializable {
      * @return mp4
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "https://cdn.api.video/vod/vi4k0jvEUuaTdRAEjQ4Jfrgz/token/8fd70443-d9f0-45d2-b01c-12c8cfc707c9/mp4/720/source.mp4", value = "Available only if mp4Support is enabled. Raw mp4 url.")
+    @ApiModelProperty(example = "https://cdn.api.video/vod/vi4k0jvEUuaTdRAEjQ4Jfrgz/token/8fd70443-d9f0-45d2-b01c-12c8cfc707c9/mp4/source.mp4", value = "Available only if mp4Support is enabled. Raw mp4 url.")
 
     public URI getMp4() {
         return mp4;
