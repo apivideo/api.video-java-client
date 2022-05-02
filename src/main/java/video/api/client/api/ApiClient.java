@@ -984,8 +984,6 @@ public class ApiClient {
      *            The cookie parameters
      * @param formParams
      *            The form parameters
-     * @param authNames
-     *            The authentications to apply
      * @param callback
      *            Callback for upload/download progress
      * 
@@ -996,9 +994,9 @@ public class ApiClient {
      */
     public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams,
             Object body, Map<String, String> headerParams, Map<String, String> cookieParams,
-            Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
+            Map<String, Object> formParams, ApiCallback callback) throws ApiException {
         Request request = buildRequest(path, method, queryParams, collectionQueryParams, body, headerParams,
-                cookieParams, formParams, authNames, callback);
+                cookieParams, formParams, callback);
 
         return httpClient.newCall(request);
     }
@@ -1022,8 +1020,6 @@ public class ApiClient {
      *            The cookie parameters
      * @param formParams
      *            The form parameters
-     * @param authNames
-     *            The authentications to apply
      * @param callback
      *            Callback for upload/download progress
      * 
@@ -1034,7 +1030,7 @@ public class ApiClient {
      */
     public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams,
             Object body, Map<String, String> headerParams, Map<String, String> cookieParams,
-            Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
+            Map<String, Object> formParams, ApiCallback callback) throws ApiException {
 
         final String url = buildUrl(path, queryParams, collectionQueryParams);
         final Request.Builder reqBuilder = new Request.Builder().url(url);
