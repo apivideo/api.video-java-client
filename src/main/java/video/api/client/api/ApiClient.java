@@ -46,9 +46,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ApiClient {
-    private static final long DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
-    private static final long MIN_CHUNK_SIZE = 5 * 1024 * 1024;
-    private static final long MAX_CHUNK_SIZE = 128 * 1024 * 1024;
+    public static final long DEFAULT_CHUNK_SIZE = 50 * 1024 * 1024;
+    public static final long MIN_CHUNK_SIZE = 5 * 1024 * 1024;
+    public static final long MAX_CHUNK_SIZE = 128 * 1024 * 1024;
     private boolean debugging = false;
     private String basePath;
     private Map<String, String> defaultHeaderMap = new HashMap<>();
