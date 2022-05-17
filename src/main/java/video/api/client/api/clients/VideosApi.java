@@ -611,7 +611,7 @@ public class VideosApi {
     }
 
     public class UploadProgressiveSession implements IProgressiveUploadSession {
-        private Integer part = 1;
+        private Integer partId = 1;
 
         private String videoId;
 
@@ -642,9 +642,25 @@ public class VideosApi {
         @Override
         public Video uploadPart(File part, boolean isLastPart, UploadPartProgressListener uploadProgressListener)
                 throws ApiException {
-            Integer lastPart = this.part;
-            this.part++;
-            ApiResponse<Video> localVarResp = uploadPartWithHttpInfo(this.videoId, part, lastPart, isLastPart,
+            return uploadPart(part, this.partId++, isLastPart, uploadProgressListener);
+        }
+
+        @Override
+        public Video uploadPart(File part, Integer partId, UploadPartProgressListener uploadProgressListener)
+                throws ApiException {
+            return uploadPart(part, partId, false, uploadProgressListener);
+        }
+
+        @Override
+        public Video uploadLastPart(File part, Integer partId, UploadPartProgressListener uploadProgressListener)
+                throws ApiException {
+            return uploadPart(part, partId, true, uploadProgressListener);
+        }
+
+        @Override
+        public Video uploadPart(File part, Integer partId, boolean isLastPart,
+                UploadPartProgressListener uploadProgressListener) throws ApiException {
+            ApiResponse<Video> localVarResp = uploadPartWithHttpInfo(this.videoId, part, partId, isLastPart,
                     uploadProgressListener);
 
             return localVarResp.getData();
@@ -1065,7 +1081,7 @@ public class VideosApi {
     }
 
     public class UploadWithUploadTokenProgressiveSession implements IProgressiveUploadSession {
-        private Integer part = 1;
+        private Integer partId = 1;
         private String videoId;
 
         private String token;
@@ -1097,10 +1113,26 @@ public class VideosApi {
         @Override
         public Video uploadPart(File part, boolean isLastPart, UploadPartProgressListener uploadProgressListener)
                 throws ApiException {
-            Integer lastPart = this.part;
-            this.part++;
+            return uploadPart(part, this.partId++, isLastPart, uploadProgressListener);
+        }
+
+        @Override
+        public Video uploadPart(File part, Integer partId, UploadPartProgressListener uploadProgressListener)
+                throws ApiException {
+            return uploadPart(part, partId, false, uploadProgressListener);
+        }
+
+        @Override
+        public Video uploadLastPart(File part, Integer partId, UploadPartProgressListener uploadProgressListener)
+                throws ApiException {
+            return uploadPart(part, partId, true, uploadProgressListener);
+        }
+
+        @Override
+        public Video uploadPart(File part, Integer partId, boolean isLastPart,
+                UploadPartProgressListener uploadProgressListener) throws ApiException {
             ApiResponse<Video> localVarResp = uploadWithUploadTokenPartWithHttpInfo(this.token, part, this.videoId,
-                    lastPart, isLastPart, uploadProgressListener);
+                    partId, isLastPart, uploadProgressListener);
             if (this.videoId == null) {
                 this.videoId = localVarResp.getData().getVideoId();
             }

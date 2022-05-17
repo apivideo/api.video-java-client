@@ -16,4 +16,13 @@ public interface IProgressiveUploadSession {
 
     public Video uploadPart(File part, boolean isLastPart, UploadPartProgressListener uploadProgressListener)
             throws ApiException;
+
+    public Video uploadPart(File part, Integer partId, UploadPartProgressListener uploadProgressListener)
+            throws ApiException;
+
+    public Video uploadLastPart(File part, Integer partId, UploadPartProgressListener uploadProgressListener)
+            throws ApiException;
+
+    public Video uploadPart(File part, Integer partId, boolean isLastPart,
+            UploadPartProgressListener uploadProgressListener) throws ApiException;
 }
