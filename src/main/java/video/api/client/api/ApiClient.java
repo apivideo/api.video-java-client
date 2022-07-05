@@ -118,34 +118,50 @@ public class ApiClient {
     private void init() {
         verifyingSsl = true;
         json = new JSON();
-        addDefaultHeader("AV-Origin-Client", "java:1.2.5");
+        addDefaultHeader("AV-Origin-Client", "java:1.2.6");
     }
 
-    public void setApplicationName(String applicationName) {
-        this.setApplicationName(applicationName, null);
-    }
-
-    public void setApplicationName(String applicationName, String applicationVersion) {
-        if (applicationName == null) {
-            if (applicationVersion != null) {
-                throw new IllegalArgumentException("applicationName is mandatory when applicationVersion is set.");
-            }
-            removeDefaultHeader("AV-Origin-App");
-        }
-        if (!applicationName.matches("^[\\w-]{1,50}$")) {
-            throw new IllegalArgumentException(
-                    "Invalid applicationName value. Allowed characters: A-Z, a-z, 0-9, \"-\", \"_\". Max length: 50.");
-        }
-        if (applicationVersion != null && !applicationVersion.matches("^\\d{1,3}(\\.\\d{1,3}(\\.\\d{1,3})?)?$")) {
-            throw new IllegalArgumentException(
-                    "Invalid applicationVersion value. The version should match the xxx[.yyy][.zzz] pattern.");
-        }
-
-        if (applicationVersion == null) {
-            addDefaultHeader("AV-Origin-App", applicationName);
+    private boolean isValid(String regex, String field) {
+        if (field.matches(regex)) {
+            return true;
         } else {
-            addDefaultHeader("AV-Origin-App", applicationName + ":" + applicationVersion);
+            return false;
         }
+    }
+
+    private boolean isValidName(String name) {
+        return isValid("^[\\w-]{1,50}$", name);
+    }
+
+    private boolean isValidVersion(String version) {
+        return isValid("^\\d{1,3}(\\.\\d{1,3}(\\.\\d{1,3})?)?$", version);
+    }
+
+    private void setName(String key, String name, String version) {
+        if (name == null) {
+            throw new IllegalArgumentException("Name cannot be null");
+        }
+        if (version == null) {
+            throw new IllegalArgumentException("Version cannot be null");
+        }
+        if (!isValidName(name)) {
+            throw new IllegalArgumentException(
+                    "Invalid name value. Allowed characters: A-Z, a-z, 0-9, \"-\", \"_\". Max length: 50.");
+        }
+        if (!isValidVersion(version)) {
+            throw new IllegalArgumentException(
+                    "Invalid version value. The version should match the xxx[.yyy][.zzz] pattern.");
+        }
+
+        addDefaultHeader(key, name + ":" + version);
+    }
+
+    public void setSdkName(String name, String version) {
+        setName("AV-Origin-Sdk", name, version);
+    }
+
+    public void setApplicationName(String name, String version) {
+        setName("AV-Origin-App", name, version);
     }
 
     /**
