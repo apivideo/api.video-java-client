@@ -256,6 +256,60 @@ public class WebhooksApi {
     }
 
     /**
+     * Create Webhook (asynchronously) Webhooks can push notifications to your server, rather than polling api.video for
+     * changes. We currently offer four events: * &#x60;&#x60;&#x60;video.encoding.quality.completed&#x60;&#x60;&#x60;
+     * Occurs when a new video is uploaded into your account, it will be encoded into several different HLS and mp4
+     * qualities. When each version is encoded, your webhook will get a notification. It will look like
+     * &#x60;&#x60;&#x60;{ \&quot;type\&quot;: \&quot;video.encoding.quality.completed\&quot;, \&quot;emittedAt\&quot;:
+     * \&quot;2021-01-29T16:46:25.217+01:00\&quot;, \&quot;videoId\&quot;: \&quot;viXXXXXXXX\&quot;,
+     * \&quot;encoding\&quot;: \&quot;hls\&quot;, \&quot;quality\&quot;: \&quot;720p\&quot;} &#x60;&#x60;&#x60;. This
+     * request says that the 720p HLS encoding was completed. *
+     * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60; When a live stream begins broadcasting, the
+     * broadcasting parameter changes from false to true, and this webhook fires. *
+     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when the live stream has
+     * finished broadcasting, and the broadcasting parameter flips from false to true. *
+     * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is recorded and
+     * submitted for encoding.
+     * 
+     * @param webhooksCreationPayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call createAsync(WebhooksCreationPayload webhooksCreationPayload,
+            final ApiCallback<Webhook> _callback) throws ApiException {
+        okhttp3.Call localVarCall = createValidateBeforeCall(webhooksCreationPayload, _callback);
+        Type localVarReturnType = new TypeToken<Webhook>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for get
      * 
      * @param webhookId
@@ -387,6 +441,42 @@ public class WebhooksApi {
         Type localVarReturnType = new TypeToken<Webhook>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve Webhook details (asynchronously) This call provides the same JSON information provided on Webhook
+     * creation.
+     * 
+     * @param webhookId
+     *            The unique webhook you wish to retreive details on. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getAsync(String webhookId, final ApiCallback<Webhook> _callback) throws ApiException {
+        okhttp3.Call localVarCall = getValidateBeforeCall(webhookId, _callback);
+        Type localVarReturnType = new TypeToken<Webhook>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -533,6 +623,44 @@ public class WebhooksApi {
         return localVarApiClient.execute(localVarCall);
     }
 
+    /**
+     * Delete a Webhook (asynchronously) This method will delete the indicated webhook.
+     * 
+     * @param webhookId
+     *            The webhook you wish to delete. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteAsync(String webhookId, final ApiCallback<Void> _callback) throws ApiException {
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(webhookId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
     private okhttp3.Call listCall(String events, Integer currentPage, Integer pageSize, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = null;
@@ -588,6 +716,15 @@ public class WebhooksApi {
         Type localVarReturnType = new TypeToken<WebhooksListResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listAsync(String events, Integer currentPage, Integer pageSize,
+            final ApiCallback<WebhooksListResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = listValidateBeforeCall(events, currentPage, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<WebhooksListResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     public class APIlistRequest {
@@ -757,10 +894,39 @@ public class WebhooksApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final ApiCallback<WebhooksListResponse> _callback)
-         *                        throws ApiException { return listAsync(events, currentPage, pageSize, _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<Webhook>> _callback) throws ApiException {
+            ApiCallback<WebhooksListResponse> apiCallback = new ApiCallback<WebhooksListResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(WebhooksListResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listAsync(events, currentPage, pageSize, apiCallback);
+        }
     }
 
     /**

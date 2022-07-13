@@ -223,6 +223,49 @@ public class UploadTokensApi {
     }
 
     /**
+     * Generate an upload token (asynchronously) Use this endpoint to generate an upload token. You can use this token
+     * to authenticate video uploads while keeping your API key safe. Tutorials using [delegated
+     * upload](https://api.video/blog/endpoints/delegated-upload).
+     * 
+     * @param tokenCreationPayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call createTokenAsync(TokenCreationPayload tokenCreationPayload,
+            final ApiCallback<UploadToken> _callback) throws ApiException {
+        okhttp3.Call localVarCall = createTokenValidateBeforeCall(tokenCreationPayload, _callback);
+        Type localVarReturnType = new TypeToken<UploadToken>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for getToken
      * 
      * @param uploadToken
@@ -377,6 +420,49 @@ public class UploadTokensApi {
     }
 
     /**
+     * Retrieve upload token (asynchronously) You can retrieve details about a specific upload token if you have the
+     * unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl),
+     * when the token was created, and when it will expire.
+     * 
+     * @param uploadToken
+     *            The unique identifier for the token you want information about. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getTokenAsync(String uploadToken, final ApiCallback<UploadToken> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = getTokenValidateBeforeCall(uploadToken, _callback);
+        Type localVarReturnType = new TypeToken<UploadToken>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for deleteToken
      * 
      * @param uploadToken
@@ -524,6 +610,46 @@ public class UploadTokensApi {
         return localVarApiClient.execute(localVarCall);
     }
 
+    /**
+     * Delete an upload token (asynchronously) Delete an existing upload token. This is especially useful for tokens you
+     * may have created that do not expire.
+     * 
+     * @param uploadToken
+     *            The unique identifier for the upload token you want to delete. Deleting a token will make it so the
+     *            token can no longer be used for authentication. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteTokenAsync(String uploadToken, final ApiCallback<Void> _callback) throws ApiException {
+        okhttp3.Call localVarCall = deleteTokenValidateBeforeCall(uploadToken, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
     private okhttp3.Call listCall(String sortBy, String sortOrder, Integer currentPage, Integer pageSize,
             final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
@@ -583,6 +709,15 @@ public class UploadTokensApi {
         Type localVarReturnType = new TypeToken<TokenListResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listAsync(String sortBy, String sortOrder, Integer currentPage, Integer pageSize,
+            final ApiCallback<TokenListResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = listValidateBeforeCall(sortBy, sortOrder, currentPage, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<TokenListResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     public class APIlistRequest {
@@ -769,11 +904,39 @@ public class UploadTokensApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final ApiCallback<TokenListResponse> _callback)
-         *                        throws ApiException { return listAsync(sortBy, sortOrder, currentPage, pageSize,
-         *                        _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<UploadToken>> _callback) throws ApiException {
+            ApiCallback<TokenListResponse> apiCallback = new ApiCallback<TokenListResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(TokenListResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listAsync(sortBy, sortOrder, currentPage, pageSize, apiCallback);
+        }
     }
 
     /**

@@ -135,6 +135,17 @@ public class RawStatisticsApi {
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call listLiveStreamSessionsAsync(String liveStreamId, String period, Integer currentPage,
+            Integer pageSize, final ApiCallback<RawStatisticsListLiveStreamAnalyticsResponse> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = listLiveStreamSessionsValidateBeforeCall(liveStreamId, period, currentPage,
+                pageSize, _callback);
+        Type localVarReturnType = new TypeToken<RawStatisticsListLiveStreamAnalyticsResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
     public class APIlistLiveStreamSessionsRequest {
         private final String liveStreamId;
         private String period;
@@ -328,12 +339,39 @@ public class RawStatisticsApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final
-         *                        ApiCallback<RawStatisticsListLiveStreamAnalyticsResponse> _callback) throws
-         *                        ApiException { return listLiveStreamSessionsAsync(liveStreamId, period, currentPage,
-         *                        pageSize, _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<LiveStreamSession>> _callback) throws ApiException {
+            ApiCallback<RawStatisticsListLiveStreamAnalyticsResponse> apiCallback = new ApiCallback<RawStatisticsListLiveStreamAnalyticsResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(RawStatisticsListLiveStreamAnalyticsResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listLiveStreamSessionsAsync(liveStreamId, period, currentPage, pageSize, apiCallback);
+        }
     }
 
     /**
@@ -425,6 +463,15 @@ public class RawStatisticsApi {
         Type localVarReturnType = new TypeToken<RawStatisticsListPlayerSessionEventsResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listSessionEventsAsync(String sessionId, Integer currentPage, Integer pageSize,
+            final ApiCallback<RawStatisticsListPlayerSessionEventsResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = listSessionEventsValidateBeforeCall(sessionId, currentPage, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<RawStatisticsListPlayerSessionEventsResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     public class APIlistSessionEventsRequest {
@@ -602,12 +649,39 @@ public class RawStatisticsApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final
-         *                        ApiCallback<RawStatisticsListPlayerSessionEventsResponse> _callback) throws
-         *                        ApiException { return listSessionEventsAsync(sessionId, currentPage, pageSize,
-         *                        _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<PlayerSessionEvent>> _callback) throws ApiException {
+            ApiCallback<RawStatisticsListPlayerSessionEventsResponse> apiCallback = new ApiCallback<RawStatisticsListPlayerSessionEventsResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(RawStatisticsListPlayerSessionEventsResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listSessionEventsAsync(sessionId, currentPage, pageSize, apiCallback);
+        }
     }
 
     /**
@@ -710,6 +784,17 @@ public class RawStatisticsApi {
         Type localVarReturnType = new TypeToken<RawStatisticsListSessionsResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listVideoSessionsAsync(String videoId, String period, Map<String, String> metadata,
+            Integer currentPage, Integer pageSize, final ApiCallback<RawStatisticsListSessionsResponse> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = listVideoSessionsValidateBeforeCall(videoId, period, metadata, currentPage,
+                pageSize, _callback);
+        Type localVarReturnType = new TypeToken<RawStatisticsListSessionsResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     public class APIlistVideoSessionsRequest {
@@ -920,11 +1005,39 @@ public class RawStatisticsApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final ApiCallback<RawStatisticsListSessionsResponse>
-         *                        _callback) throws ApiException { return listVideoSessionsAsync(videoId, period,
-         *                        metadata, currentPage, pageSize, _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<VideoSession>> _callback) throws ApiException {
+            ApiCallback<RawStatisticsListSessionsResponse> apiCallback = new ApiCallback<RawStatisticsListSessionsResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(RawStatisticsListSessionsResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listVideoSessionsAsync(videoId, period, metadata, currentPage, pageSize, apiCallback);
+        }
     }
 
     /**

@@ -268,6 +268,59 @@ public class ChaptersApi {
     }
 
     /**
+     * Upload a chapter (asynchronously) Upload a VTT file to add chapters to your video. Chapters help break the video
+     * into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more
+     * details.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to upload a chapter for. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * @param file
+     *            The VTT file describing the chapters you want to upload. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call uploadAsync(String videoId, String language, File file, final ApiCallback<Chapter> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(videoId, language, file, _callback);
+        Type localVarReturnType = new TypeToken<Chapter>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for get
      * 
      * @param videoId
@@ -437,6 +490,52 @@ public class ChaptersApi {
     }
 
     /**
+     * Retrieve a chapter (asynchronously) Retrieve a chapter for a video in a specific language. Chapters help your
+     * viewers find the sections of the video they are most interested in viewing. Tutorials that use the [chapters
+     * endpoint](https://api.video/blog/endpoints/chapters).
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to show a chapter for. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getAsync(String videoId, String language, final ApiCallback<Chapter> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = getValidateBeforeCall(videoId, language, _callback);
+        Type localVarReturnType = new TypeToken<Chapter>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for delete
      * 
      * @param videoId
@@ -598,6 +697,49 @@ public class ChaptersApi {
         return localVarApiClient.execute(localVarCall);
     }
 
+    /**
+     * Delete a chapter (asynchronously) Delete a chapter in a specific language by providing the video ID for the video
+     * you want to delete the chapter from and the language the chapter is in.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to delete a chapter from. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteAsync(String videoId, String language, final ApiCallback<Void> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(videoId, language, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
     private okhttp3.Call listCall(String videoId, Integer currentPage, Integer pageSize, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = null;
@@ -655,6 +797,15 @@ public class ChaptersApi {
         Type localVarReturnType = new TypeToken<ChaptersListResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listAsync(String videoId, Integer currentPage, Integer pageSize,
+            final ApiCallback<ChaptersListResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = listValidateBeforeCall(videoId, currentPage, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<ChaptersListResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     public class APIlistRequest {
@@ -831,10 +982,39 @@ public class ChaptersApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final ApiCallback<ChaptersListResponse> _callback)
-         *                        throws ApiException { return listAsync(videoId, currentPage, pageSize, _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<Chapter>> _callback) throws ApiException {
+            ApiCallback<ChaptersListResponse> apiCallback = new ApiCallback<ChaptersListResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(ChaptersListResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listAsync(videoId, currentPage, pageSize, apiCallback);
+        }
     }
 
     /**

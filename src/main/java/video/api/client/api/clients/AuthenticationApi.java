@@ -232,6 +232,50 @@ public class AuthenticationApi {
     }
 
     /**
+     * Authenticate (asynchronously) To get started, submit your API key in the body of your request. api.video returns
+     * an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a
+     * [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the
+     * [authentication endpoint](https://api.video/blog/endpoints/authenticate)
+     * 
+     * @param authenticatePayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call authenticateAsync(AuthenticatePayload authenticatePayload,
+            final ApiCallback<AccessToken> _callback) throws ApiException {
+        okhttp3.Call localVarCall = authenticateValidateBeforeCall(authenticatePayload, _callback);
+        Type localVarReturnType = new TypeToken<AccessToken>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for refresh
      * 
      * @param refreshTokenPayload
@@ -386,6 +430,49 @@ public class AuthenticationApi {
         Type localVarReturnType = new TypeToken<AccessToken>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Refresh token (asynchronously) Use the refresh endpoint with the refresh token you received when you first
+     * authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API
+     * returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.
+     * 
+     * @param refreshTokenPayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call refreshAsync(RefreshTokenPayload refreshTokenPayload, final ApiCallback<AccessToken> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = refreshValidateBeforeCall(refreshTokenPayload, _callback);
+        Type localVarReturnType = new TypeToken<AccessToken>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
 }

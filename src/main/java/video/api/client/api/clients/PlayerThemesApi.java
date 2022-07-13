@@ -206,6 +206,42 @@ public class PlayerThemesApi {
     }
 
     /**
+     * Create a player (asynchronously) Create a player for your video, and customise it.
+     * 
+     * @param playerThemeCreationPayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call createAsync(PlayerThemeCreationPayload playerThemeCreationPayload,
+            final ApiCallback<PlayerTheme> _callback) throws ApiException {
+        okhttp3.Call localVarCall = createValidateBeforeCall(playerThemeCreationPayload, _callback);
+        Type localVarReturnType = new TypeToken<PlayerTheme>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for get
      * 
      * @param playerId
@@ -352,6 +388,47 @@ public class PlayerThemesApi {
         Type localVarReturnType = new TypeToken<PlayerTheme>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve a player (asynchronously) Use a player ID to retrieve details about the player and display it for
+     * viewers.
+     * 
+     * @param playerId
+     *            The unique identifier for the player you want to retrieve. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getAsync(String playerId, final ApiCallback<PlayerTheme> _callback) throws ApiException {
+        okhttp3.Call localVarCall = getValidateBeforeCall(playerId, _callback);
+        Type localVarReturnType = new TypeToken<PlayerTheme>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -518,6 +595,50 @@ public class PlayerThemesApi {
     }
 
     /**
+     * Update a player (asynchronously) Use a player ID to update specific details for a player. NOTE: It may take up to
+     * 10 min before the new player configuration is available from our CDN.
+     * 
+     * @param playerId
+     *            The unique identifier for the player. (required)
+     * @param playerThemeUpdatePayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call updateAsync(String playerId, PlayerThemeUpdatePayload playerThemeUpdatePayload,
+            final ApiCallback<PlayerTheme> _callback) throws ApiException {
+        okhttp3.Call localVarCall = updateValidateBeforeCall(playerId, playerThemeUpdatePayload, _callback);
+        Type localVarReturnType = new TypeToken<PlayerTheme>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for delete
      * 
      * @param playerId
@@ -661,6 +782,45 @@ public class PlayerThemesApi {
         return localVarApiClient.execute(localVarCall);
     }
 
+    /**
+     * Delete a player (asynchronously) Delete a player if you no longer need it. You can delete any player that you
+     * have the player ID for.
+     * 
+     * @param playerId
+     *            The unique identifier for the player you want to delete. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteAsync(String playerId, final ApiCallback<Void> _callback) throws ApiException {
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(playerId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
     private okhttp3.Call listCall(String sortBy, String sortOrder, Integer currentPage, Integer pageSize,
             final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
@@ -720,6 +880,15 @@ public class PlayerThemesApi {
         Type localVarReturnType = new TypeToken<PlayerThemesListResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listAsync(String sortBy, String sortOrder, Integer currentPage, Integer pageSize,
+            final ApiCallback<PlayerThemesListResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = listValidateBeforeCall(sortBy, sortOrder, currentPage, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<PlayerThemesListResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     public class APIlistRequest {
@@ -927,11 +1096,39 @@ public class PlayerThemesApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final ApiCallback<PlayerThemesListResponse>
-         *                        _callback) throws ApiException { return listAsync(sortBy, sortOrder, currentPage,
-         *                        pageSize, _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<PlayerTheme>> _callback) throws ApiException {
+            ApiCallback<PlayerThemesListResponse> apiCallback = new ApiCallback<PlayerThemesListResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(PlayerThemesListResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listAsync(sortBy, sortOrder, currentPage, pageSize, apiCallback);
+        }
     }
 
     /**
@@ -1161,6 +1358,58 @@ public class PlayerThemesApi {
     }
 
     /**
+     * Upload a logo (asynchronously) The uploaded image maximum size should be 200x100 and its weight should be 100KB.
+     * It will be scaled down to 30px height and converted to PNG to be displayed in the player.
+     * 
+     * @param playerId
+     *            The unique identifier for the player. (required)
+     * @param file
+     *            The name of the file you want to use for your logo. (required)
+     * @param link
+     *            A public link that you want to advertise in your player. For example, you could add a link to your
+     *            company. When a viewer clicks on your logo, they will be taken to this address. (optional)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call uploadLogoAsync(String playerId, File file, String link,
+            final ApiCallback<PlayerTheme> _callback) throws ApiException {
+        okhttp3.Call localVarCall = uploadLogoValidateBeforeCall(playerId, file, link, _callback);
+        Type localVarReturnType = new TypeToken<PlayerTheme>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for deleteLogo
      * 
      * @param playerId
@@ -1303,6 +1552,44 @@ public class PlayerThemesApi {
     public ApiResponse<Void> deleteLogoWithHttpInfo(String playerId) throws ApiException {
         okhttp3.Call localVarCall = deleteLogoValidateBeforeCall(playerId, null);
         return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Delete logo (asynchronously) Delete the logo associated to a player.
+     * 
+     * @param playerId
+     *            The unique identifier for the player. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteLogoAsync(String playerId, final ApiCallback<Void> _callback) throws ApiException {
+        okhttp3.Call localVarCall = deleteLogoValidateBeforeCall(playerId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
     }
 
 }

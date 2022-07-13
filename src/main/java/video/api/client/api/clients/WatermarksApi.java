@@ -226,6 +226,48 @@ public class WatermarksApi {
     }
 
     /**
+     * Upload a watermark (asynchronously) Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60;
+     * image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can
+     * define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
+     * 
+     * @param file
+     *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call uploadAsync(File file, final ApiCallback<Watermark> _callback) throws ApiException {
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(file, _callback);
+        Type localVarReturnType = new TypeToken<Watermark>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for delete
      * 
      * @param watermarkId
@@ -369,6 +411,45 @@ public class WatermarksApi {
         return localVarApiClient.execute(localVarCall);
     }
 
+    /**
+     * Delete a watermark (asynchronously) Delete a watermark. A watermark is a static image, directly burnt-into a
+     * video.
+     * 
+     * @param watermarkId
+     *            The watermark ID for the watermark you want to delete. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteAsync(String watermarkId, final ApiCallback<Void> _callback) throws ApiException {
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(watermarkId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
     private okhttp3.Call listCall(String sortBy, String sortOrder, Integer currentPage, Integer pageSize,
             final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
@@ -428,6 +509,15 @@ public class WatermarksApi {
         Type localVarReturnType = new TypeToken<WatermarksListResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listAsync(String sortBy, String sortOrder, Integer currentPage, Integer pageSize,
+            final ApiCallback<WatermarksListResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = listValidateBeforeCall(sortBy, sortOrder, currentPage, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<WatermarksListResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     public class APIlistRequest {
@@ -634,11 +724,39 @@ public class WatermarksApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final ApiCallback<WatermarksListResponse> _callback)
-         *                        throws ApiException { return listAsync(sortBy, sortOrder, currentPage, pageSize,
-         *                        _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<Watermark>> _callback) throws ApiException {
+            ApiCallback<WatermarksListResponse> apiCallback = new ApiCallback<WatermarksListResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(WatermarksListResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listAsync(sortBy, sortOrder, currentPage, pageSize, apiCallback);
+        }
     }
 
     /**
