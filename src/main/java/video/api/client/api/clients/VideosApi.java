@@ -249,6 +249,58 @@ public class VideosApi {
     }
 
     /**
+     * Create a video (asynchronously) We have tutorials on: * [Creating and uploading
+     * videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large
+     * videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with
+     * videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private
+     * videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic
+     * Metadata](https://api.video/blog/tutorials/dynamic-metadata) * Full list of
+     * [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint.
+     * 
+     * @param videoCreationPayload
+     *            video to create (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>202</td>
+     *                        <td>Accepted</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call createAsync(VideoCreationPayload videoCreationPayload, final ApiCallback<Video> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = createValidateBeforeCall(videoCreationPayload, _callback);
+        Type localVarReturnType = new TypeToken<Video>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for upload
      * 
      * @param videoId
@@ -1391,6 +1443,48 @@ public class VideosApi {
     }
 
     /**
+     * Retrieve a video (asynchronously) This call provides the same information provided on video creation. For private
+     * videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a
+     * private viewing URL.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want details about. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getAsync(String videoId, final ApiCallback<Video> _callback) throws ApiException {
+        okhttp3.Call localVarCall = getValidateBeforeCall(videoId, _callback);
+        Type localVarReturnType = new TypeToken<Video>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for update
      * 
      * @param videoId
@@ -1581,6 +1675,61 @@ public class VideosApi {
     }
 
     /**
+     * Update a video (asynchronously) Updates the parameters associated with your video. The video you are updating is
+     * determined by the video ID you provide.
+     * 
+     * 
+     * 
+     * NOTE: If you are updating an array, you must provide the entire array as what you provide here overwrites what is
+     * in the system rather than appending to it.
+     * 
+     * 
+     * @param videoId
+     *            The video ID for the video you want to delete. (required)
+     * @param videoUpdatePayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call updateAsync(String videoId, VideoUpdatePayload videoUpdatePayload,
+            final ApiCallback<Video> _callback) throws ApiException {
+        okhttp3.Call localVarCall = updateValidateBeforeCall(videoId, videoUpdatePayload, _callback);
+        Type localVarReturnType = new TypeToken<Video>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for delete
      * 
      * @param videoId
@@ -1724,6 +1873,45 @@ public class VideosApi {
         return localVarApiClient.execute(localVarCall);
     }
 
+    /**
+     * Delete a video (asynchronously) If you do not need a video any longer, you can send a request to delete it. All
+     * you need is the videoId.
+     * 
+     * @param videoId
+     *            The video ID for the video you want to delete. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteAsync(String videoId, final ApiCallback<Void> _callback) throws ApiException {
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(videoId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
     private okhttp3.Call listCall(String title, List<String> tags, Map<String, String> metadata, String description,
             String liveStreamId, String sortBy, String sortOrder, Integer currentPage, Integer pageSize,
             final ApiCallback _callback) throws ApiException {
@@ -1808,6 +1996,17 @@ public class VideosApi {
         Type localVarReturnType = new TypeToken<VideosListResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listAsync(String title, List<String> tags, Map<String, String> metadata, String description,
+            String liveStreamId, String sortBy, String sortOrder, Integer currentPage, Integer pageSize,
+            final ApiCallback<VideosListResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = listValidateBeforeCall(title, tags, metadata, description, liveStreamId, sortBy,
+                sortOrder, currentPage, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<VideosListResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     public class APIlistRequest {
@@ -2100,11 +2299,40 @@ public class VideosApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final ApiCallback<VideosListResponse> _callback)
-         *                        throws ApiException { return listAsync(title, tags, metadata, description,
-         *                        liveStreamId, sortBy, sortOrder, currentPage, pageSize, _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<Video>> _callback) throws ApiException {
+            ApiCallback<VideosListResponse> apiCallback = new ApiCallback<VideosListResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(VideosListResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listAsync(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage, pageSize,
+                    apiCallback);
+        }
     }
 
     /**
@@ -2347,6 +2575,69 @@ public class VideosApi {
     }
 
     /**
+     * Upload a thumbnail (asynchronously) The thumbnail is the poster that appears in the player window before video
+     * playback begins.
+     * 
+     * 
+     * 
+     * This endpoint allows you to upload an image for the thumbnail.
+     * 
+     * 
+     * 
+     * To select a still frame from the video using a time stamp, use the [dedicated method](#pickThumbnail) to pick a
+     * time in the video.
+     * 
+     * 
+     * 
+     * Note: There may be a short delay before the new thumbnail is delivered to our CDN.
+     * 
+     * @param videoId
+     *            Unique identifier of the chosen video (required)
+     * @param file
+     *            The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The
+     *            max allowed size is 8 MiB. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call uploadThumbnailAsync(String videoId, File file, final ApiCallback<Video> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = uploadThumbnailValidateBeforeCall(videoId, file, _callback);
+        Type localVarReturnType = new TypeToken<Video>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for pickThumbnail
      * 
      * @param videoId
@@ -2541,6 +2832,59 @@ public class VideosApi {
     }
 
     /**
+     * Pick a thumbnail (asynchronously) Pick a thumbnail from the given time code.
+     * 
+     * 
+     * 
+     * If you&#39;d like to upload an image for your thumbnail, use the dedicated [method](#uploadThumbnail).
+     * 
+     * 
+     * 
+     * There may be a short delay for the thumbnail to update.
+     * 
+     * 
+     * @param videoId
+     *            Unique identifier of the video you want to add a thumbnail to, where you use a section of your video
+     *            as the thumbnail. (required)
+     * @param videoThumbnailPickPayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call pickThumbnailAsync(String videoId, VideoThumbnailPickPayload videoThumbnailPickPayload,
+            final ApiCallback<Video> _callback) throws ApiException {
+        okhttp3.Call localVarCall = pickThumbnailValidateBeforeCall(videoId, videoThumbnailPickPayload, _callback);
+        Type localVarReturnType = new TypeToken<Video>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for getStatus
      * 
      * @param videoId
@@ -2689,6 +3033,48 @@ public class VideosApi {
         Type localVarReturnType = new TypeToken<VideoStatus>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve video status (asynchronously) This method provides upload status &amp; encoding status to determine when
+     * the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available
+     * stream qualities.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want the status for. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getStatusAsync(String videoId, final ApiCallback<VideoStatus> _callback) throws ApiException {
+        okhttp3.Call localVarCall = getStatusValidateBeforeCall(videoId, _callback);
+        Type localVarReturnType = new TypeToken<VideoStatus>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
 }

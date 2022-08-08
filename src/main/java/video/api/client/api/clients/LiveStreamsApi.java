@@ -236,6 +236,53 @@ public class LiveStreamsApi {
     }
 
     /**
+     * Create live stream (asynchronously) A live stream will give you the &#39;connection point&#39; to RTMP your video
+     * stream to api.video. It will also give you the details for viewers to watch the same livestream. The
+     * public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to
+     * livestreams of 3,000 viewers or fewer. See our [Live Stream
+     * Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your
+     * RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live
+     * streams](https://api.video/blog/endpoints/live-create).
+     * 
+     * @param liveStreamCreationPayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call createAsync(LiveStreamCreationPayload liveStreamCreationPayload,
+            final ApiCallback<LiveStream> _callback) throws ApiException {
+        okhttp3.Call localVarCall = createValidateBeforeCall(liveStreamCreationPayload, _callback);
+        Type localVarReturnType = new TypeToken<LiveStream>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for get
      * 
      * @param liveStreamId
@@ -369,6 +416,43 @@ public class LiveStreamsApi {
         Type localVarReturnType = new TypeToken<LiveStream>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve live stream (asynchronously) Supply a liveStreamId, and you&#39;ll get all the details for streaming
+     * into, and watching the livestream. Tutorials that use the [show livestream
+     * endpoint](https://api.video/blog/endpoints/live-stream-status).
+     * 
+     * @param liveStreamId
+     *            The unique ID for the live stream you want to watch. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getAsync(String liveStreamId, final ApiCallback<LiveStream> _callback) throws ApiException {
+        okhttp3.Call localVarCall = getValidateBeforeCall(liveStreamId, _callback);
+        Type localVarReturnType = new TypeToken<LiveStream>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -542,6 +626,53 @@ public class LiveStreamsApi {
     }
 
     /**
+     * Update a live stream (asynchronously) Use this endpoint to update the player, or to turn recording on/off (saving
+     * a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only
+     * affect the NEXT stream. The public&#x3D;false \&quot;private livestream\&quot; is available as a BETA feature,
+     * and should be limited to livestreams of 3,000 viewers or fewer.
+     * 
+     * @param liveStreamId
+     *            The unique ID for the live stream that you want to update information for such as player details, or
+     *            whether you want the recording on or off. (required)
+     * @param liveStreamUpdatePayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call updateAsync(String liveStreamId, LiveStreamUpdatePayload liveStreamUpdatePayload,
+            final ApiCallback<LiveStream> _callback) throws ApiException {
+        okhttp3.Call localVarCall = updateValidateBeforeCall(liveStreamId, liveStreamUpdatePayload, _callback);
+        Type localVarReturnType = new TypeToken<LiveStream>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for delete
      * 
      * @param liveStreamId
@@ -675,6 +806,40 @@ public class LiveStreamsApi {
         return localVarApiClient.execute(localVarCall);
     }
 
+    /**
+     * Delete a live stream (asynchronously) If you do not need a live stream any longer, you can send a request to
+     * delete it. All you need is the liveStreamId.
+     * 
+     * @param liveStreamId
+     *            The unique ID for the live stream that you want to remove. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteAsync(String liveStreamId, final ApiCallback<Void> _callback) throws ApiException {
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(liveStreamId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
     private okhttp3.Call listCall(String streamKey, String name, String sortBy, String sortOrder, Integer currentPage,
             Integer pageSize, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
@@ -743,6 +908,16 @@ public class LiveStreamsApi {
         Type localVarReturnType = new TypeToken<LiveStreamListResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listAsync(String streamKey, String name, String sortBy, String sortOrder, Integer currentPage,
+            Integer pageSize, final ApiCallback<LiveStreamListResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = listValidateBeforeCall(streamKey, name, sortBy, sortOrder, currentPage, pageSize,
+                _callback);
+        Type localVarReturnType = new TypeToken<LiveStreamListResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     public class APIlistRequest {
@@ -963,11 +1138,39 @@ public class LiveStreamsApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final ApiCallback<LiveStreamListResponse> _callback)
-         *                        throws ApiException { return listAsync(streamKey, name, sortBy, sortOrder,
-         *                        currentPage, pageSize, _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<LiveStream>> _callback) throws ApiException {
+            ApiCallback<LiveStreamListResponse> apiCallback = new ApiCallback<LiveStreamListResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(LiveStreamListResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listAsync(streamKey, name, sortBy, sortOrder, currentPage, pageSize, apiCallback);
+        }
     }
 
     /**
@@ -1180,6 +1383,56 @@ public class LiveStreamsApi {
     }
 
     /**
+     * Upload a thumbnail (asynchronously) Upload an image to use as a backdrop for your livestream. Tutorials that
+     * [update live stream thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
+     * 
+     * @param liveStreamId
+     *            The unique ID for the live stream you want to upload. (required)
+     * @param file
+     *            The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The
+     *            max allowed size is 8 MiB. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call uploadThumbnailAsync(String liveStreamId, File file, final ApiCallback<LiveStream> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = uploadThumbnailValidateBeforeCall(liveStreamId, file, _callback);
+        Type localVarReturnType = new TypeToken<LiveStream>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for deleteThumbnail
      * 
      * @param liveStreamId
@@ -1327,6 +1580,47 @@ public class LiveStreamsApi {
         Type localVarReturnType = new TypeToken<LiveStream>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Delete a thumbnail (asynchronously) Send the unique identifier for a live stream to delete its thumbnail.
+     * 
+     * @param liveStreamId
+     *            The unique identifier of the live stream whose thumbnail you want to delete. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteThumbnailAsync(String liveStreamId, final ApiCallback<LiveStream> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = deleteThumbnailValidateBeforeCall(liveStreamId, _callback);
+        Type localVarReturnType = new TypeToken<LiveStream>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
 }

@@ -265,6 +265,57 @@ public class CaptionsApi {
     }
 
     /**
+     * Upload a caption (asynchronously) Upload a VTT file to add captions to your video. Read our [captioning
+     * tutorial](https://api.video/blog/tutorials/adding-captions) for more details.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to add a caption to. (required)
+     * @param language
+     *            A valid BCP 47 language representation. (required)
+     * @param file
+     *            The video text track (VTT) you want to upload. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call uploadAsync(String videoId, String language, File file, final ApiCallback<Caption> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = uploadValidateBeforeCall(videoId, language, file, _callback);
+        Type localVarReturnType = new TypeToken<Caption>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for get
      * 
      * @param videoId
@@ -433,6 +484,53 @@ public class CaptionsApi {
         Type localVarReturnType = new TypeToken<Caption>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve a caption (asynchronously) Retrieve a caption for a video in a specific language. If the language is
+     * available, the caption is returned. Otherwise, you will get a error indicating the caption was not found.
+     * 
+     * Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/captions).
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want captions for. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getAsync(String videoId, String language, final ApiCallback<Caption> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = getValidateBeforeCall(videoId, language, _callback);
+        Type localVarReturnType = new TypeToken<Caption>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     /**
@@ -628,6 +726,57 @@ public class CaptionsApi {
     }
 
     /**
+     * Update a caption (asynchronously) To have the captions on automatically, use this method to set default: true.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to have automatic captions for. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * @param captionsUpdatePayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call updateAsync(String videoId, String language, CaptionsUpdatePayload captionsUpdatePayload,
+            final ApiCallback<Caption> _callback) throws ApiException {
+        okhttp3.Call localVarCall = updateValidateBeforeCall(videoId, language, captionsUpdatePayload, _callback);
+        Type localVarReturnType = new TypeToken<Caption>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for delete
      * 
      * @param videoId
@@ -789,6 +938,49 @@ public class CaptionsApi {
         return localVarApiClient.execute(localVarCall);
     }
 
+    /**
+     * Delete a caption (asynchronously) Delete a caption in a specific language by providing the video ID for the video
+     * you want to delete the caption from and the language the caption is in.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want to delete a caption from. (required)
+     * @param language
+     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
+     *            representation. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>204</td>
+     *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call deleteAsync(String videoId, String language, final ApiCallback<Void> _callback)
+            throws ApiException {
+        okhttp3.Call localVarCall = deleteValidateBeforeCall(videoId, language, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
     private okhttp3.Call listCall(String videoId, Integer currentPage, Integer pageSize, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = null;
@@ -846,6 +1038,15 @@ public class CaptionsApi {
         Type localVarReturnType = new TypeToken<CaptionsListResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listAsync(String videoId, Integer currentPage, Integer pageSize,
+            final ApiCallback<CaptionsListResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = listValidateBeforeCall(videoId, currentPage, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<CaptionsListResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
     }
 
     public class APIlistRequest {
@@ -1022,10 +1223,39 @@ public class CaptionsApi {
          *                        <td>-</td>
          *                        </tr>
          *                        </table>
-         * 
-         *                        public okhttp3.Call executeAsync(final ApiCallback<CaptionsListResponse> _callback)
-         *                        throws ApiException { return listAsync(videoId, currentPage, pageSize, _callback); }
          */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<Caption>> _callback) throws ApiException {
+            ApiCallback<CaptionsListResponse> apiCallback = new ApiCallback<CaptionsListResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(CaptionsListResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listAsync(videoId, currentPage, pageSize, apiCallback);
+        }
     }
 
     /**
