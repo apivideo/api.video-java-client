@@ -122,6 +122,11 @@ public class RawStatisticsApi {
             throw new ApiException("Missing the required parameter 'liveStreamId' when calling listLiveStreamSessions");
         }
 
+        // verify the required parameter 'period' is set
+        if (period == null) {
+            throw new ApiException("Missing the required parameter 'period' when calling listLiveStreamSessions");
+        }
+
         okhttp3.Call localVarCall = listLiveStreamSessionsCall(liveStreamId, period, currentPage, pageSize, _callback);
         return localVarCall;
     }
@@ -148,28 +153,13 @@ public class RawStatisticsApi {
 
     public class APIlistLiveStreamSessionsRequest {
         private final String liveStreamId;
-        private String period;
+        private final String period;
         private Integer currentPage;
         private Integer pageSize;
 
-        private APIlistLiveStreamSessionsRequest(String liveStreamId) {
+        private APIlistLiveStreamSessionsRequest(String liveStreamId, String period) {
             this.liveStreamId = liveStreamId;
-        }
-
-        /**
-         * Set period
-         * 
-         * @param period
-         *            Period must have one of the following formats: - For a day : \&quot;2018-01-01\&quot;, - For a
-         *            week: \&quot;2018-W01\&quot;, - For a month: \&quot;2018-01\&quot; - For a year:
-         *            \&quot;2018\&quot; For a range period: - Date range: \&quot;2018-01-01/2018-01-15\&quot;
-         *            (optional)
-         * 
-         * @return APIlistLiveStreamSessionsRequest
-         */
-        public APIlistLiveStreamSessionsRequest period(String period) {
             this.period = period;
-            return this;
         }
 
         /**
@@ -272,8 +262,7 @@ public class RawStatisticsApi {
         }
 
         private APIlistLiveStreamSessionsRequest copy() {
-            APIlistLiveStreamSessionsRequest copy = new APIlistLiveStreamSessionsRequest(liveStreamId);
-            copy.period(period);
+            APIlistLiveStreamSessionsRequest copy = new APIlistLiveStreamSessionsRequest(liveStreamId, period);
             copy.currentPage(currentPage);
             copy.pageSize(pageSize);
             return copy;
@@ -380,6 +369,10 @@ public class RawStatisticsApi {
      * 
      * @param liveStreamId
      *            The unique identifier for the live stream you want to retrieve analytics for. (required)
+     * @param period
+     *            Period must have one of the following formats: - For a day : \&quot;2018-01-01\&quot;, - For a week:
+     *            \&quot;2018-W01\&quot;, - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a
+     *            range period: - Date range: \&quot;2018-01-01/2018-01-15\&quot; (required)
      * 
      * @return APIlistLiveStreamSessionsRequest
      * 
@@ -402,8 +395,8 @@ public class RawStatisticsApi {
      *                        </tr>
      *                        </table>
      */
-    public APIlistLiveStreamSessionsRequest listLiveStreamSessions(String liveStreamId) {
-        return new APIlistLiveStreamSessionsRequest(liveStreamId);
+    public APIlistLiveStreamSessionsRequest listLiveStreamSessions(String liveStreamId, String period) {
+        return new APIlistLiveStreamSessionsRequest(liveStreamId, period);
     }
 
     private okhttp3.Call listSessionEventsCall(String sessionId, Integer currentPage, Integer pageSize,
@@ -773,6 +766,11 @@ public class RawStatisticsApi {
             throw new ApiException("Missing the required parameter 'videoId' when calling listVideoSessions");
         }
 
+        // verify the required parameter 'period' is set
+        if (period == null) {
+            throw new ApiException("Missing the required parameter 'period' when calling listVideoSessions");
+        }
+
         okhttp3.Call localVarCall = listVideoSessionsCall(videoId, period, metadata, currentPage, pageSize, _callback);
         return localVarCall;
     }
@@ -799,28 +797,14 @@ public class RawStatisticsApi {
 
     public class APIlistVideoSessionsRequest {
         private final String videoId;
-        private String period;
+        private final String period;
         private Map<String, String> metadata;
         private Integer currentPage;
         private Integer pageSize;
 
-        private APIlistVideoSessionsRequest(String videoId) {
+        private APIlistVideoSessionsRequest(String videoId, String period) {
             this.videoId = videoId;
-        }
-
-        /**
-         * Set period
-         * 
-         * @param period
-         *            Period must have one of the following formats: - For a day : 2018-01-01, - For a week: 2018-W01, -
-         *            For a month: 2018-01 - For a year: 2018 For a range period: - Date range: 2018-01-01/2018-01-15
-         *            (optional)
-         * 
-         * @return APIlistVideoSessionsRequest
-         */
-        public APIlistVideoSessionsRequest period(String period) {
             this.period = period;
-            return this;
         }
 
         /**
@@ -937,8 +921,7 @@ public class RawStatisticsApi {
         }
 
         private APIlistVideoSessionsRequest copy() {
-            APIlistVideoSessionsRequest copy = new APIlistVideoSessionsRequest(videoId);
-            copy.period(period);
+            APIlistVideoSessionsRequest copy = new APIlistVideoSessionsRequest(videoId, period);
             copy.metadata(metadata);
             copy.currentPage(currentPage);
             copy.pageSize(pageSize);
@@ -1048,6 +1031,9 @@ public class RawStatisticsApi {
      * 
      * @param videoId
      *            The unique identifier for the video you want to retrieve session information for. (required)
+     * @param period
+     *            Period must have one of the following formats: - For a day : 2018-01-01, - For a week: 2018-W01, - For
+     *            a month: 2018-01 - For a year: 2018 For a range period: - Date range: 2018-01-01/2018-01-15 (required)
      * 
      * @return APIlistVideoSessionsRequest
      * 
@@ -1070,7 +1056,7 @@ public class RawStatisticsApi {
      *                        </tr>
      *                        </table>
      */
-    public APIlistVideoSessionsRequest listVideoSessions(String videoId) {
-        return new APIlistVideoSessionsRequest(videoId);
+    public APIlistVideoSessionsRequest listVideoSessions(String videoId, String period) {
+        return new APIlistVideoSessionsRequest(videoId, period);
     }
 }
