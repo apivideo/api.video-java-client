@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="listLiveStreamSessions"></a>
 # **listLiveStreamSessions**
-> RawStatisticsListLiveStreamAnalyticsResponse listLiveStreamSessions(liveStreamId).period(period).currentPage(currentPage).pageSize(pageSize).execute();
+> RawStatisticsListLiveStreamAnalyticsResponse listLiveStreamSessions(liveStreamId, period).currentPage(currentPage).pageSize(pageSize).execute();
 
 List live stream player sessions
 
@@ -59,7 +59,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **liveStreamId** | **String**| The unique identifier for the live stream you want to retrieve analytics for. |
- **period** | **String**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  | [optional]
+ **period** | **String**| Period must have one of the following formats:  - For a day : \&quot;2018-01-01\&quot;, - For a week: \&quot;2018-W01\&quot;,  - For a month: \&quot;2018-01\&quot; - For a year: \&quot;2018\&quot; For a range period:  -  Date range: \&quot;2018-01-01/2018-01-15\&quot;  |
  **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
  **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 <a name="listVideoSessions"></a>
 # **listVideoSessions**
-> RawStatisticsListSessionsResponse listVideoSessions(videoId).period(period).metadata(metadata).currentPage(currentPage).pageSize(pageSize).execute();
+> RawStatisticsListSessionsResponse listVideoSessions(videoId, period).metadata(metadata).currentPage(currentPage).pageSize(pageSize).execute();
 
 List video player sessions
 
@@ -210,7 +210,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **videoId** | **String**| The unique identifier for the video you want to retrieve session information for. |
- **period** | **String**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  | [optional]
+ **period** | **String**| Period must have one of the following formats:  - For a day : 2018-01-01, - For a week: 2018-W01,  - For a month: 2018-01 - For a year: 2018 For a range period:  -  Date range: 2018-01-01/2018-01-15  |
  **metadata** | [**Map&lt;String, String&gt;**](String.md)| Metadata and [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) filter. Send an array of key value pairs you want to filter sessios with. | [optional]
  **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
  **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
