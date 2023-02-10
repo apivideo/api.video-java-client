@@ -788,7 +788,6 @@ public class VideosApi {
      */
     public ApiResponse<Video> uploadWithHttpInfo(String videoId, File file,
             UploadProgressListener uploadProgressListener) throws ApiException {
-
         if (file == null) {
             throw new ApiException("Missing the required parameter 'file' when calling upload");
         }
@@ -1076,9 +1075,54 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
+    public Video uploadWithUploadToken(String token, File file, String videoId,
+            UploadProgressListener uploadProgressListener) throws ApiException {
+        ApiResponse<Video> localVarResp = uploadWithUploadTokenWithHttpInfo(token, file, videoId,
+                uploadProgressListener);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Upload with an upload token
+     *
+     * This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload
+     * is done from the client side. If you want to upload a video from your server-side application, you&#39;d better
+     * use the [standard upload method](#upload).
+     * 
+     * @param token
+     *            The unique identifier for the token you want to use to upload a video. (required)
+     * @param file
+     *            The path to the video you want to upload. (required)
+     * @param uploadProgressListener
+     *            An upload progress listener
+     * 
+     * @return Video
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>201</td>
+     *                        <td>Created</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        </table>
+     */
     public Video uploadWithUploadToken(String token, File file, UploadProgressListener uploadProgressListener)
             throws ApiException {
-        ApiResponse<Video> localVarResp = uploadWithUploadTokenWithHttpInfo(token, file, uploadProgressListener);
+        ApiResponse<Video> localVarResp = uploadWithUploadTokenWithHttpInfo(token, file, null, uploadProgressListener);
         return localVarResp.getData();
     }
 
@@ -1119,7 +1163,7 @@ public class VideosApi {
      *                        </table>
      */
     public ApiResponse<Video> uploadWithUploadTokenWithHttpInfo(String token, File file) throws ApiException {
-        return uploadWithUploadTokenWithHttpInfo(token, file, null);
+        return uploadWithUploadTokenWithHttpInfo(token, file, null, null);
     }
 
     public ApiResponse<Video> uploadWithUploadTokenPartWithHttpInfo(String token, File file, String videoId,
@@ -1140,6 +1184,11 @@ public class VideosApi {
 
         public UploadWithUploadTokenProgressiveSession(String token) {
             this.token = token;
+        }
+
+        public UploadWithUploadTokenProgressiveSession(String token, String videoId) {
+            this.token = token;
+            this.videoId = videoId;
         }
 
         @Override
@@ -1196,6 +1245,11 @@ public class VideosApi {
         return new UploadWithUploadTokenProgressiveSession(token);
     }
 
+    public UploadWithUploadTokenProgressiveSession createUploadWithUploadTokenProgressiveSession(String token,
+            String videoId) {
+        return new UploadWithUploadTokenProgressiveSession(token, videoId);
+    }
+
     /**
      * Upload with an upload token
      *
@@ -1234,10 +1288,8 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
-    public ApiResponse<Video> uploadWithUploadTokenWithHttpInfo(String token, File file,
+    public ApiResponse<Video> uploadWithUploadTokenWithHttpInfo(String token, File file, String videoId,
             UploadProgressListener uploadProgressListener) throws ApiException {
-        String videoId = null;
-
         if (file == null) {
             throw new ApiException("Missing the required parameter 'file' when calling upload");
         }
