@@ -52,6 +52,16 @@ public class RawStatisticsApi {
     }
 
     /**
+     * Constructor for RawStatisticsApi with custom API base path where API key is not required.
+     * 
+     * @param environment
+     *            the target environment. Expected Environment.PRODUCTION (default) or Environment.SANDBOX.
+     */
+    public RawStatisticsApi(Environment environment) {
+        this.localVarApiClient = new ApiClient(environment.basePath);
+    }
+
+    /**
      * Constructor for RawStatisticsApi with custom API base path
      * 
      * @param apiKey
@@ -61,6 +71,18 @@ public class RawStatisticsApi {
      */
     public RawStatisticsApi(String apiKey, String basePath) {
         this.localVarApiClient = new ApiClient(apiKey, basePath);
+    }
+
+    /**
+     * Constructor for RawStatisticsApi with custom API base path
+     * 
+     * @param apiKey
+     *            the api key to use to authenticate to the API
+     * @param environment
+     *            the target environment. Expected Environment.PRODUCTION (default) or Environment.SANDBOX.
+     */
+    public RawStatisticsApi(String apiKey, Environment environment) {
+        this.localVarApiClient = new ApiClient(apiKey, environment.basePath);
     }
 
     public ApiClient getApiClient() {

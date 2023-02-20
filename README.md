@@ -400,7 +400,7 @@ Method | HTTP request | Description
 ### API key
 
 Most endpoints required to be authenticated using the API key mechanism described in our [documentation](https://docs.api.video/reference#authentication).
-The access token generation mechanism is automatically handled by the client. All you have to do is provide an API key when instantiating the ApiVideoClient:
+The access token generation mechanism is automatically handled by the client. All you have to do is provide an API key when instantiating the `ApiVideoClient`:
 ```java
 ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
 ```
