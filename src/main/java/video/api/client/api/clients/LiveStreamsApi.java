@@ -52,6 +52,16 @@ public class LiveStreamsApi {
     }
 
     /**
+     * Constructor for LiveStreamsApi with custom API base path where API key is not required.
+     * 
+     * @param environment
+     *            the target environment. Expected Environment.PRODUCTION (default) or Environment.SANDBOX.
+     */
+    public LiveStreamsApi(Environment environment) {
+        this.localVarApiClient = new ApiClient(environment.basePath);
+    }
+
+    /**
      * Constructor for LiveStreamsApi with custom API base path
      * 
      * @param apiKey
@@ -61,6 +71,18 @@ public class LiveStreamsApi {
      */
     public LiveStreamsApi(String apiKey, String basePath) {
         this.localVarApiClient = new ApiClient(apiKey, basePath);
+    }
+
+    /**
+     * Constructor for LiveStreamsApi with custom API base path
+     * 
+     * @param apiKey
+     *            the api key to use to authenticate to the API
+     * @param environment
+     *            the target environment. Expected Environment.PRODUCTION (default) or Environment.SANDBOX.
+     */
+    public LiveStreamsApi(String apiKey, Environment environment) {
+        this.localVarApiClient = new ApiClient(apiKey, environment.basePath);
     }
 
     public ApiClient getApiClient() {

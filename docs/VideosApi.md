@@ -228,7 +228,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient();
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient(ApiVideoClient.BasePaths.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient(Environment.SANDBOX);
 
     VideosApi apiInstance = client.videos();
     
