@@ -6,6 +6,10 @@ import video.api.client.api.models.Video;
 import java.io.File;
 
 public interface IProgressiveUploadSession {
+    public String getVideoId();
+
+    public String getToken();
+
     public Video uploadPart(File part) throws ApiException;
 
     public Video uploadLastPart(File part) throws ApiException;
