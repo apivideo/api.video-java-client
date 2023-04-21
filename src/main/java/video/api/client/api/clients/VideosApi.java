@@ -694,6 +694,16 @@ public class VideosApi {
         }
 
         @Override
+        public String getVideoId() {
+            return videoId;
+        }
+
+        @Override
+        public String getToken() {
+            return null;
+        }
+
+        @Override
         public Video uploadPart(File part) throws ApiException {
             return uploadPart(part, false, null);
         }
@@ -1211,6 +1221,16 @@ public class VideosApi {
         public UploadWithUploadTokenProgressiveSession(String token, String videoId) {
             this.token = token;
             this.videoId = videoId;
+        }
+
+        @Override
+        public String getVideoId() {
+            return videoId;
+        }
+
+        @Override
+        public String getToken() {
+            return token;
         }
 
         @Override
