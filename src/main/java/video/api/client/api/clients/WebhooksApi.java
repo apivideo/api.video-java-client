@@ -187,10 +187,9 @@ public class WebhooksApi {
      * request says that the 720p HLS encoding was completed. *
      * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60; When a live stream begins broadcasting, the
      * broadcasting parameter changes from false to true, and this webhook fires. *
-     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when the live stream has
-     * finished broadcasting, and the broadcasting parameter flips from false to true. *
-     * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is recorded and
-     * submitted for encoding.
+     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when a live stream has finished
+     * broadcasting. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is
+     * recorded and submitted for encoding.
      * 
      * @param webhooksCreationPayload
      *            (required)
@@ -237,10 +236,9 @@ public class WebhooksApi {
      * request says that the 720p HLS encoding was completed. *
      * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60; When a live stream begins broadcasting, the
      * broadcasting parameter changes from false to true, and this webhook fires. *
-     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when the live stream has
-     * finished broadcasting, and the broadcasting parameter flips from false to true. *
-     * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is recorded and
-     * submitted for encoding.
+     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when a live stream has finished
+     * broadcasting. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is
+     * recorded and submitted for encoding.
      * 
      * @param webhooksCreationPayload
      *            (required)
@@ -288,10 +286,9 @@ public class WebhooksApi {
      * request says that the 720p HLS encoding was completed. *
      * &#x60;&#x60;&#x60;live-stream.broadcast.started&#x60;&#x60;&#x60; When a live stream begins broadcasting, the
      * broadcasting parameter changes from false to true, and this webhook fires. *
-     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when the live stream has
-     * finished broadcasting, and the broadcasting parameter flips from false to true. *
-     * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is recorded and
-     * submitted for encoding.
+     * &#x60;&#x60;&#x60;live-stream.broadcast.ended&#x60;&#x60;&#x60; This event fires when a live stream has finished
+     * broadcasting. * &#x60;&#x60;&#x60;video.source.recorded&#x60;&#x60;&#x60; This event occurs when a live stream is
+     * recorded and submitted for encoding.
      * 
      * @param webhooksCreationPayload
      *            (required)
@@ -402,7 +399,7 @@ public class WebhooksApi {
     /**
      * Retrieve Webhook details
      *
-     * This call provides the same JSON information provided on Webhook creation.
+     * Retrieve webhook details by id.
      * 
      * @param webhookId
      *            The unique webhook you wish to retreive details on. (required)
@@ -434,7 +431,7 @@ public class WebhooksApi {
     /**
      * Retrieve Webhook details
      *
-     * This call provides the same JSON information provided on Webhook creation.
+     * Retrieve webhook details by id.
      * 
      * @param webhookId
      *            The unique webhook you wish to retreive details on. (required)
@@ -466,8 +463,7 @@ public class WebhooksApi {
     }
 
     /**
-     * Retrieve Webhook details (asynchronously) This call provides the same JSON information provided on Webhook
-     * creation.
+     * Retrieve Webhook details (asynchronously) Retrieve webhook details by id.
      * 
      * @param webhookId
      *            The unique webhook you wish to retreive details on. (required)

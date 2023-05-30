@@ -1,6 +1,6 @@
 package video.api.client.api.auth;
 
-import video.api.client.api.clients.AuthenticationApi;
+import video.api.client.api.clients.AdvancedAuthenticationApi;
 import video.api.client.api.ApiClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.AccessToken;
@@ -14,13 +14,13 @@ import java.io.IOException;
 public class ApiVideoAuthInterceptor implements Interceptor {
 
     private final String apiKey;
-    private final AuthenticationApi authenticationApi;
+    private final AdvancedAuthenticationApi authenticationApi;
     private String cachedAccessToken;
     private Long tokenExpirationMs;
 
     public ApiVideoAuthInterceptor(ApiClient client, String apiKey) {
         this.apiKey = apiKey;
-        this.authenticationApi = new AuthenticationApi(client);
+        this.authenticationApi = new AdvancedAuthenticationApi(client);
     }
 
     @Override

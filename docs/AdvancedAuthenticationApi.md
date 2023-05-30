@@ -1,20 +1,20 @@
-# AuthenticationApi
+# AdvancedAuthenticationApi
 
 All URIs are relative to *https://ws.api.video*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**authenticate**](AuthenticationApi.md#authenticate) | **POST** /auth/api-key | Advanced - Authenticate (1/2)
-[**refresh**](AuthenticationApi.md#refresh) | **POST** /auth/refresh | Advanced - Refresh token (2/2)
+[**authenticate**](AdvancedAuthenticationApi.md#authenticate) | **POST** /auth/api-key | Get Bearer Token
+[**refresh**](AdvancedAuthenticationApi.md#refresh) | **POST** /auth/refresh | Refresh Bearer Token
 
 
 <a name="authenticate"></a>
 # **authenticate**
 > AccessToken authenticate(authenticatePayload)
 
-Advanced - Authenticate (1/2)
+Get Bearer Token
 
-To get started, submit your API key in the body of your request. api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned. View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the [authentication endpoint](https://api.video/blog/endpoints/authenticate)
+Returns a bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
 
 ### Example
 ```java
@@ -22,7 +22,7 @@ To get started, submit your API key in the body of your request. api.video retur
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
-import video.api.client.api.clients.AuthenticationApi;
+import video.api.client.api.clients.AdvancedAuthenticationApi;
 import java.util.*;
 
 public class Example {
@@ -31,7 +31,7 @@ public class Example {
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient(Environment.SANDBOX);
 
-    AuthenticationApi apiInstance = client.authentication();
+    AdvancedAuthenticationApi apiInstance = client.advancedAuthentication();
     
     AuthenticatePayload authenticatePayload = new AuthenticatePayload(); // 
     authenticatePayload.setApiKey("null"); // Your account API key. You can use your sandbox API key, or you can use your production API key.
@@ -41,7 +41,7 @@ public class Example {
       AccessToken result = apiInstance.authenticate(authenticatePayload);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AuthenticationApi#authenticate");
+      System.err.println("Exception when calling AdvancedAuthenticationApi#authenticate");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -81,9 +81,9 @@ No authorization required
 # **refresh**
 > AccessToken refresh(refreshTokenPayload)
 
-Advanced - Refresh token (2/2)
+Refresh Bearer Token
 
-Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.  
+Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint.  You can find the tutorial on using the disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
 
 ### Example
 ```java
@@ -91,7 +91,7 @@ Use the refresh endpoint with the refresh token you received when you first auth
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
-import video.api.client.api.clients.AuthenticationApi;
+import video.api.client.api.clients.AdvancedAuthenticationApi;
 import java.util.*;
 
 public class Example {
@@ -100,7 +100,7 @@ public class Example {
     // if you rather like to use the sandbox environment:
     // ApiVideoClient client = new ApiVideoClient(Environment.SANDBOX);
 
-    AuthenticationApi apiInstance = client.authentication();
+    AdvancedAuthenticationApi apiInstance = client.advancedAuthentication();
     
     RefreshTokenPayload refreshTokenPayload = new RefreshTokenPayload(); // 
     refreshTokenPayload.setRefreshToken("null"); // The refresh token is either the first refresh token you received when you authenticated with the auth/api-key endpoint, or it&#39;s the refresh token from the last time you used the auth/refresh endpoint. Place this in the body of your request to obtain a new access token (which is valid for an hour) and a new refresh token.
@@ -111,7 +111,7 @@ public class Example {
       AccessToken result = apiInstance.refresh(refreshTokenPayload);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling AuthenticationApi#refresh");
+      System.err.println("Exception when calling AdvancedAuthenticationApi#refresh");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());

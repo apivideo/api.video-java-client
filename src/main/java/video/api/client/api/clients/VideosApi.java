@@ -175,14 +175,10 @@ public class VideosApi {
     }
 
     /**
-     * Create a video
+     * Create a video object
      *
-     * We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) *
-     * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with
-     * videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private
-     * videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic
-     * Metadata](https://api.video/blog/tutorials/dynamic-metadata) * Full list of
-     * [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint.
+     * Creates a video object. More information on video objects can be found
+     * [here](https://docs.api.video/reference/videos-1).
      * 
      * @param videoCreationPayload
      *            video to create (required)
@@ -222,14 +218,10 @@ public class VideosApi {
     }
 
     /**
-     * Create a video
+     * Create a video object
      *
-     * We have tutorials on: * [Creating and uploading videos](https://api.video/blog/tutorials/video-upload-tutorial) *
-     * [Uploading large videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with
-     * videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private
-     * videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic
-     * Metadata](https://api.video/blog/tutorials/dynamic-metadata) * Full list of
-     * [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint.
+     * Creates a video object. More information on video objects can be found
+     * [here](https://docs.api.video/reference/videos-1).
      * 
      * @param videoCreationPayload
      *            video to create (required)
@@ -271,13 +263,8 @@ public class VideosApi {
     }
 
     /**
-     * Create a video (asynchronously) We have tutorials on: * [Creating and uploading
-     * videos](https://api.video/blog/tutorials/video-upload-tutorial) * [Uploading large
-     * videos](https://api.video/blog/tutorials/video-upload-tutorial-large-videos) * [Using tags with
-     * videos](https://api.video/blog/tutorials/video-tagging-best-practices) * [Private
-     * videos](https://api.video/blog/tutorials/tutorial-private-videos) * [Using Dynamic
-     * Metadata](https://api.video/blog/tutorials/dynamic-metadata) * Full list of
-     * [tutorials](https://api.video/blog/endpoints/video-create) that demonstrate this endpoint.
+     * Create a video object (asynchronously) Creates a video object. More information on video objects can be found
+     * [here](https://docs.api.video/reference/videos-1).
      * 
      * @param videoCreationPayload
      *            video to create (required)
@@ -1029,7 +1016,7 @@ public class VideosApi {
     }
 
     /**
-     * Upload with an upload token
+     * Upload with an delegated upload token
      *
      * This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload
      * is done from the client side. If you want to upload a video from your server-side application, you&#39;d better
@@ -1070,7 +1057,7 @@ public class VideosApi {
     }
 
     /**
-     * Upload with an upload token
+     * Upload with an delegated upload token
      *
      * This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload
      * is done from the client side. If you want to upload a video from your server-side application, you&#39;d better
@@ -1115,7 +1102,7 @@ public class VideosApi {
     }
 
     /**
-     * Upload with an upload token
+     * Upload with an delegated upload token
      *
      * This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload
      * is done from the client side. If you want to upload a video from your server-side application, you&#39;d better
@@ -1159,7 +1146,7 @@ public class VideosApi {
     }
 
     /**
-     * Upload with an upload token
+     * Upload with an delegated upload token
      *
      * This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload
      * is done from the client side. If you want to upload a video from your server-side application, you&#39;d better
@@ -1293,7 +1280,7 @@ public class VideosApi {
     }
 
     /**
-     * Upload with an upload token
+     * Upload with an delegated upload token
      *
      * This method allows you to send a video using an upload token. Upload tokens are especially useful when the upload
      * is done from the client side. If you want to upload a video from your server-side application, you&#39;d better
@@ -1459,7 +1446,7 @@ public class VideosApi {
     }
 
     /**
-     * Retrieve a video
+     * Retrieve a video object
      *
      * This call provides the same information provided on video creation. For private videos, it will generate a unique
      * token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
@@ -1497,7 +1484,7 @@ public class VideosApi {
     }
 
     /**
-     * Retrieve a video
+     * Retrieve a video object
      *
      * This call provides the same information provided on video creation. For private videos, it will generate a unique
      * token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
@@ -1537,9 +1524,9 @@ public class VideosApi {
     }
 
     /**
-     * Retrieve a video (asynchronously) This call provides the same information provided on video creation. For private
-     * videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a
-     * private viewing URL.
+     * Retrieve a video object (asynchronously) This call provides the same information provided on video creation. For
+     * private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or
+     * set up a private viewing URL.
      * 
      * @param videoId
      *            The unique identifier for the video you want details about. (required)
@@ -1582,7 +1569,7 @@ public class VideosApi {
      * Build call for update
      * 
      * @param videoId
-     *            The video ID for the video you want to delete. (required)
+     *            The video ID for the video you want to update. (required)
      * @param videoUpdatePayload
      *            (required)
      * @param _callback
@@ -1664,10 +1651,10 @@ public class VideosApi {
     }
 
     /**
-     * Update a video
+     * Update a video object
      *
-     * Updates the parameters associated with your video. The video you are updating is determined by the video ID you
-     * provide.
+     * Updates the parameters associated with a video ID. The video object you are updating is determined by the video
+     * ID you provide.
      * 
      * 
      * 
@@ -1676,7 +1663,7 @@ public class VideosApi {
      * 
      * 
      * @param videoId
-     *            The video ID for the video you want to delete. (required)
+     *            The video ID for the video you want to update. (required)
      * @param videoUpdatePayload
      *            (required)
      * 
@@ -1715,10 +1702,10 @@ public class VideosApi {
     }
 
     /**
-     * Update a video
+     * Update a video object
      *
-     * Updates the parameters associated with your video. The video you are updating is determined by the video ID you
-     * provide.
+     * Updates the parameters associated with a video ID. The video object you are updating is determined by the video
+     * ID you provide.
      * 
      * 
      * 
@@ -1727,7 +1714,7 @@ public class VideosApi {
      * 
      * 
      * @param videoId
-     *            The video ID for the video you want to delete. (required)
+     *            The video ID for the video you want to update. (required)
      * @param videoUpdatePayload
      *            (required)
      * 
@@ -1769,8 +1756,8 @@ public class VideosApi {
     }
 
     /**
-     * Update a video (asynchronously) Updates the parameters associated with your video. The video you are updating is
-     * determined by the video ID you provide.
+     * Update a video object (asynchronously) Updates the parameters associated with a video ID. The video object you
+     * are updating is determined by the video ID you provide.
      * 
      * 
      * 
@@ -1779,7 +1766,7 @@ public class VideosApi {
      * 
      * 
      * @param videoId
-     *            The video ID for the video you want to delete. (required)
+     *            The video ID for the video you want to update. (required)
      * @param videoUpdatePayload
      *            (required)
      * @param _callback
@@ -1897,7 +1884,7 @@ public class VideosApi {
     }
 
     /**
-     * Delete a video
+     * Delete a video object
      *
      * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
      * 
@@ -1931,7 +1918,7 @@ public class VideosApi {
     }
 
     /**
-     * Delete a video
+     * Delete a video object
      *
      * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
      * 
@@ -1968,8 +1955,8 @@ public class VideosApi {
     }
 
     /**
-     * Delete a video (asynchronously) If you do not need a video any longer, you can send a request to delete it. All
-     * you need is the videoId.
+     * Delete a video object (asynchronously) If you do not need a video any longer, you can send a request to delete
+     * it. All you need is the videoId.
      * 
      * @param videoId
      *            The video ID for the video you want to delete. (required)
@@ -2430,7 +2417,7 @@ public class VideosApi {
     }
 
     /**
-     * List all videos
+     * List all video objects
      *
      * This method returns a list of your videos (with all their details). With no parameters added, the API returns the
      * first page of all videos. You can filter videos using the parameters described below.
@@ -2824,7 +2811,7 @@ public class VideosApi {
     }
 
     /**
-     * Pick a thumbnail
+     * Set a thumbnail
      *
      * Pick a thumbnail from the given time code.
      * 
@@ -2874,7 +2861,7 @@ public class VideosApi {
     }
 
     /**
-     * Pick a thumbnail
+     * Set a thumbnail
      *
      * Pick a thumbnail from the given time code.
      * 
@@ -2926,7 +2913,7 @@ public class VideosApi {
     }
 
     /**
-     * Pick a thumbnail (asynchronously) Pick a thumbnail from the given time code.
+     * Set a thumbnail (asynchronously) Pick a thumbnail from the given time code.
      * 
      * 
      * 
@@ -3052,7 +3039,7 @@ public class VideosApi {
     }
 
     /**
-     * Retrieve video status
+     * Retrieve video status and details
      *
      * This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to
      * playback. Once encoding is completed, the response also lists the available stream qualities.
@@ -3090,7 +3077,7 @@ public class VideosApi {
     }
 
     /**
-     * Retrieve video status
+     * Retrieve video status and details
      *
      * This method provides upload status &amp; encoding status to determine when the video is uploaded or ready to
      * playback. Once encoding is completed, the response also lists the available stream qualities.
@@ -3130,9 +3117,9 @@ public class VideosApi {
     }
 
     /**
-     * Retrieve video status (asynchronously) This method provides upload status &amp; encoding status to determine when
-     * the video is uploaded or ready to playback. Once encoding is completed, the response also lists the available
-     * stream qualities.
+     * Retrieve video status and details (asynchronously) This method provides upload status &amp; encoding status to
+     * determine when the video is uploaded or ready to playback. Once encoding is completed, the response also lists
+     * the available stream qualities.
      * 
      * @param videoId
      *            The unique identifier for the video you want the status for. (required)

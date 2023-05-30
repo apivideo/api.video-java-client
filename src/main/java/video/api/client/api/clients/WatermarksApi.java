@@ -170,9 +170,7 @@ public class WatermarksApi {
     /**
      * Upload a watermark
      *
-     * Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image,
-     * directly burnt into a video. After you have created your watermark, you can define its placement and aspect when
-     * you [create a video](https://docs.api.video/reference/post-video).
+     * Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image.
      * 
      * @param file
      *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
@@ -209,9 +207,7 @@ public class WatermarksApi {
     /**
      * Upload a watermark
      *
-     * Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image. A watermark is a static image,
-     * directly burnt into a video. After you have created your watermark, you can define its placement and aspect when
-     * you [create a video](https://docs.api.video/reference/post-video).
+     * Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60; image.
      * 
      * @param file
      *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
@@ -249,8 +245,7 @@ public class WatermarksApi {
 
     /**
      * Upload a watermark (asynchronously) Create a new watermark by uploading a &#x60;JPG&#x60; or a &#x60;PNG&#x60;
-     * image. A watermark is a static image, directly burnt into a video. After you have created your watermark, you can
-     * define its placement and aspect when you [create a video](https://docs.api.video/reference/post-video).
+     * image.
      * 
      * @param file
      *            The &#x60;.jpg&#x60; or &#x60;.png&#x60; image to be added as a watermark. (required)
@@ -365,7 +360,7 @@ public class WatermarksApi {
     /**
      * Delete a watermark
      *
-     * Delete a watermark. A watermark is a static image, directly burnt-into a video.
+     * Delete a watermark.
      * 
      * @param watermarkId
      *            The watermark ID for the watermark you want to delete. (required)
@@ -399,7 +394,7 @@ public class WatermarksApi {
     /**
      * Delete a watermark
      *
-     * Delete a watermark. A watermark is a static image, directly burnt-into a video.
+     * Delete a watermark.
      * 
      * @param watermarkId
      *            The watermark ID for the watermark you want to delete. (required)
@@ -434,8 +429,7 @@ public class WatermarksApi {
     }
 
     /**
-     * Delete a watermark (asynchronously) Delete a watermark. A watermark is a static image, directly burnt-into a
-     * video.
+     * Delete a watermark (asynchronously) Delete a watermark.
      * 
      * @param watermarkId
      *            The watermark ID for the watermark you want to delete. (required)
@@ -784,9 +778,7 @@ public class WatermarksApi {
     /**
      * List all watermarks
      *
-     * List all watermarks. A watermark is a static image, directly burnt into a video. After you have created your
-     * watermark, you can define its placement and aspect when you [create a
-     * video](https://docs.api.video/reference/post-video).
+     * List all watermarks associated with your workspace.
      * 
      * @return APIlistRequest
      * 
