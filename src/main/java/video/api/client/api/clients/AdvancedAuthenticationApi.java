@@ -27,61 +27,61 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AuthenticationApi {
+public class AdvancedAuthenticationApi {
     private ApiClient localVarApiClient;
 
-    public AuthenticationApi(ApiClient apiClient) {
+    public AdvancedAuthenticationApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
     /**
-     * Constructor for AuthenticationApi production environment where API key is not required.
+     * Constructor for AdvancedAuthenticationApi production environment where API key is not required.
      */
-    public AuthenticationApi() {
+    public AdvancedAuthenticationApi() {
         this.localVarApiClient = new ApiClient(Environment.PRODUCTION.basePath);
     }
 
     /**
-     * Constructor for AuthenticationApi with custom API base path where API key is not required.
+     * Constructor for AdvancedAuthenticationApi with custom API base path where API key is not required.
      * 
      * @param basePath
      *            the api base path. Expected Environment.PRODUCTION.basePath (default) or Environment.SANDBOX.basePath.
      */
-    public AuthenticationApi(String basePath) {
+    public AdvancedAuthenticationApi(String basePath) {
         this.localVarApiClient = new ApiClient(basePath);
     }
 
     /**
-     * Constructor for AuthenticationApi with custom API base path where API key is not required.
+     * Constructor for AdvancedAuthenticationApi with custom API base path where API key is not required.
      * 
      * @param environment
      *            the target environment. Expected Environment.PRODUCTION (default) or Environment.SANDBOX.
      */
-    public AuthenticationApi(Environment environment) {
+    public AdvancedAuthenticationApi(Environment environment) {
         this.localVarApiClient = new ApiClient(environment.basePath);
     }
 
     /**
-     * Constructor for AuthenticationApi with custom API base path
+     * Constructor for AdvancedAuthenticationApi with custom API base path
      * 
      * @param apiKey
      *            the api key to use to authenticate to the API
      * @param basePath
      *            the api base path. Expected Environment.PRODUCTION.basePath (default) or Environment.SANDBOX.basePath.
      */
-    public AuthenticationApi(String apiKey, String basePath) {
+    public AdvancedAuthenticationApi(String apiKey, String basePath) {
         this.localVarApiClient = new ApiClient(apiKey, basePath);
     }
 
     /**
-     * Constructor for AuthenticationApi with custom API base path
+     * Constructor for AdvancedAuthenticationApi with custom API base path
      * 
      * @param apiKey
      *            the api key to use to authenticate to the API
      * @param environment
      *            the target environment. Expected Environment.PRODUCTION (default) or Environment.SANDBOX.
      */
-    public AuthenticationApi(String apiKey, Environment environment) {
+    public AdvancedAuthenticationApi(String apiKey, Environment environment) {
         this.localVarApiClient = new ApiClient(apiKey, environment.basePath);
     }
 
@@ -171,12 +171,10 @@ public class AuthenticationApi {
     }
 
     /**
-     * Advanced - Authenticate (1/2)
+     * Get Bearer Token
      *
-     * To get started, submit your API key in the body of your request. api.video returns an access token that is valid
-     * for one hour (3600 seconds). A refresh token is also returned. View a
-     * [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the
-     * [authentication endpoint](https://api.video/blog/endpoints/authenticate)
+     * Returns a bearer token that can be used to authenticate other endpoint. You can find the tutorial on using the
+     * disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
      * 
      * @param authenticatePayload
      *            (required)
@@ -211,12 +209,10 @@ public class AuthenticationApi {
     }
 
     /**
-     * Advanced - Authenticate (1/2)
+     * Get Bearer Token
      *
-     * To get started, submit your API key in the body of your request. api.video returns an access token that is valid
-     * for one hour (3600 seconds). A refresh token is also returned. View a
-     * [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials using the
-     * [authentication endpoint](https://api.video/blog/endpoints/authenticate)
+     * Returns a bearer token that can be used to authenticate other endpoint. You can find the tutorial on using the
+     * disposable bearer token [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
      * 
      * @param authenticatePayload
      *            (required)
@@ -254,10 +250,9 @@ public class AuthenticationApi {
     }
 
     /**
-     * Advanced - Authenticate (1/2) (asynchronously) To get started, submit your API key in the body of your request.
-     * api.video returns an access token that is valid for one hour (3600 seconds). A refresh token is also returned.
-     * View a [tutorial](https://api.video/blog/tutorials/authentication-tutorial) on authentication. All tutorials
-     * using the [authentication endpoint](https://api.video/blog/endpoints/authenticate)
+     * Get Bearer Token (asynchronously) Returns a bearer token that can be used to authenticate other endpoint. You can
+     * find the tutorial on using the disposable bearer token
+     * [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
      * 
      * @param authenticatePayload
      *            (required)
@@ -375,11 +370,11 @@ public class AuthenticationApi {
     }
 
     /**
-     * Advanced - Refresh token (2/2)
+     * Refresh Bearer Token
      *
-     * Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key
-     * endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that
-     * is valid for one hour (3600 seconds) and a new refresh token.
+     * Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint. You
+     * can find the tutorial on using the disposable bearer token
+     * [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
      * 
      * @param refreshTokenPayload
      *            (required)
@@ -414,11 +409,11 @@ public class AuthenticationApi {
     }
 
     /**
-     * Advanced - Refresh token (2/2)
+     * Refresh Bearer Token
      *
-     * Use the refresh endpoint with the refresh token you received when you first authenticated using the api-key
-     * endpoint. Send the refresh token in the body of your request. The api.video API returns a new access token that
-     * is valid for one hour (3600 seconds) and a new refresh token.
+     * Accepts the old bearer token and returns a new bearer token that can be used to authenticate other endpoint. You
+     * can find the tutorial on using the disposable bearer token
+     * [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
      * 
      * @param refreshTokenPayload
      *            (required)
@@ -455,9 +450,9 @@ public class AuthenticationApi {
     }
 
     /**
-     * Advanced - Refresh token (2/2) (asynchronously) Use the refresh endpoint with the refresh token you received when
-     * you first authenticated using the api-key endpoint. Send the refresh token in the body of your request. The
-     * api.video API returns a new access token that is valid for one hour (3600 seconds) and a new refresh token.
+     * Refresh Bearer Token (asynchronously) Accepts the old bearer token and returns a new bearer token that can be
+     * used to authenticate other endpoint. You can find the tutorial on using the disposable bearer token
+     * [here](https://docs.api.video/reference/disposable-bearer-token-authentication).
      * 
      * @param refreshTokenPayload
      *            (required)

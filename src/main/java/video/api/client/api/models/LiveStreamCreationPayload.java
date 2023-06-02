@@ -93,14 +93,14 @@ public class LiveStreamCreationPayload implements Serializable {
     }
 
     /**
-     * BETA FEATURE Please limit all public &#x3D; false (\&quot;private\&quot;) livestreams to 3,000 users. Whether
-     * your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a
-     * unique token for each view.
+     * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will
+     * require a unique token for each view. Learn more about the Private Video feature
+     * [here](https://docs.api.video/docs/private-videos).
      * 
      * @return _public
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "BETA FEATURE Please limit all public = false (\"private\") livestreams to 3,000 users. Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.")
+    @ApiModelProperty(value = "Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).")
 
     public Boolean getPublic() {
         return _public;

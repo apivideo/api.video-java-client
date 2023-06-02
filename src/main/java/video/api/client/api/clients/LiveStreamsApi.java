@@ -173,12 +173,7 @@ public class LiveStreamsApi {
     /**
      * Create live stream
      *
-     * A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video. It will also
-     * give you the details for viewers to watch the same livestream. The public&#x3D;false &#39;private livestream&#39;
-     * is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. See our [Live
-     * Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.
-     * Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live
-     * streams](https://api.video/blog/endpoints/live-create).
+     * Creates a livestream object.
      * 
      * @param liveStreamCreationPayload
      *            (required)
@@ -215,12 +210,7 @@ public class LiveStreamsApi {
     /**
      * Create live stream
      *
-     * A live stream will give you the &#39;connection point&#39; to RTMP your video stream to api.video. It will also
-     * give you the details for viewers to watch the same livestream. The public&#x3D;false &#39;private livestream&#39;
-     * is available as a BETA feature, and should be limited to livestreams of 3,000 viewers or fewer. See our [Live
-     * Stream Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS.
-     * Your RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live
-     * streams](https://api.video/blog/endpoints/live-create).
+     * Creates a livestream object.
      * 
      * @param liveStreamCreationPayload
      *            (required)
@@ -258,13 +248,7 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Create live stream (asynchronously) A live stream will give you the &#39;connection point&#39; to RTMP your video
-     * stream to api.video. It will also give you the details for viewers to watch the same livestream. The
-     * public&#x3D;false &#39;private livestream&#39; is available as a BETA feature, and should be limited to
-     * livestreams of 3,000 viewers or fewer. See our [Live Stream
-     * Tutorial](https://api.video/blog/tutorials/live-stream-tutorial) for a walkthrough of this API with OBS. Your
-     * RTMP endpoint for the livestream is rtmp://broadcast.api.video/s/{streamKey} Tutorials that [create live
-     * streams](https://api.video/blog/endpoints/live-create).
+     * Create live stream (asynchronously) Creates a livestream object.
      * 
      * @param liveStreamCreationPayload
      *            (required)
@@ -375,8 +359,7 @@ public class LiveStreamsApi {
     /**
      * Retrieve live stream
      *
-     * Supply a liveStreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
-     * Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
+     * Get a livestream by id.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream you want to watch. (required)
@@ -408,8 +391,7 @@ public class LiveStreamsApi {
     /**
      * Retrieve live stream
      *
-     * Supply a liveStreamId, and you&#39;ll get all the details for streaming into, and watching the livestream.
-     * Tutorials that use the [show livestream endpoint](https://api.video/blog/endpoints/live-stream-status).
+     * Get a livestream by id.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream you want to watch. (required)
@@ -441,9 +423,7 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Retrieve live stream (asynchronously) Supply a liveStreamId, and you&#39;ll get all the details for streaming
-     * into, and watching the livestream. Tutorials that use the [show livestream
-     * endpoint](https://api.video/blog/endpoints/live-stream-status).
+     * Retrieve live stream (asynchronously) Get a livestream by id.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream you want to watch. (required)
@@ -561,10 +541,7 @@ public class LiveStreamsApi {
     /**
      * Update a live stream
      *
-     * Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If
-     * the livestream is actively streaming, changing the recording status will only affect the NEXT stream. The
-     * public&#x3D;false \&quot;private livestream\&quot; is available as a BETA feature, and should be limited to
-     * livestreams of 3,000 viewers or fewer.
+     * Updates the livestream object.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream that you want to update information for such as player details, or
@@ -604,10 +581,7 @@ public class LiveStreamsApi {
     /**
      * Update a live stream
      *
-     * Use this endpoint to update the player, or to turn recording on/off (saving a copy of the livestream). NOTE: If
-     * the livestream is actively streaming, changing the recording status will only affect the NEXT stream. The
-     * public&#x3D;false \&quot;private livestream\&quot; is available as a BETA feature, and should be limited to
-     * livestreams of 3,000 viewers or fewer.
+     * Updates the livestream object.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream that you want to update information for such as player details, or
@@ -648,10 +622,7 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Update a live stream (asynchronously) Use this endpoint to update the player, or to turn recording on/off (saving
-     * a copy of the livestream). NOTE: If the livestream is actively streaming, changing the recording status will only
-     * affect the NEXT stream. The public&#x3D;false \&quot;private livestream\&quot; is available as a BETA feature,
-     * and should be limited to livestreams of 3,000 viewers or fewer.
+     * Update a live stream (asynchronously) Updates the livestream object.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream that you want to update information for such as player details, or
@@ -1198,7 +1169,7 @@ public class LiveStreamsApi {
     /**
      * List all live streams
      *
-     * With no parameters added to the url, this will return all livestreams. Query by name or key to limit the list.
+     * Get the list of livestreams on the workspace.
      * 
      * @return APIlistRequest
      * 
@@ -1313,8 +1284,7 @@ public class LiveStreamsApi {
     /**
      * Upload a thumbnail
      *
-     * Upload an image to use as a backdrop for your livestream. Tutorials that [update live stream
-     * thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
+     * Upload the thumbnail for the livestream.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)
@@ -1359,8 +1329,7 @@ public class LiveStreamsApi {
     /**
      * Upload a thumbnail
      *
-     * Upload an image to use as a backdrop for your livestream. Tutorials that [update live stream
-     * thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
+     * Upload the thumbnail for the livestream.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)
@@ -1405,8 +1374,7 @@ public class LiveStreamsApi {
     }
 
     /**
-     * Upload a thumbnail (asynchronously) Upload an image to use as a backdrop for your livestream. Tutorials that
-     * [update live stream thumbnails](https://api.video/blog/endpoints/live-upload-a-thumbnail).
+     * Upload a thumbnail (asynchronously) Upload the thumbnail for the livestream.
      * 
      * @param liveStreamId
      *            The unique ID for the live stream you want to upload. (required)

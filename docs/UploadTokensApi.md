@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**createToken**](UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
 [**getToken**](UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
 [**deleteToken**](UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
-[**list**](UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens.
+[**list**](UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens
 
 
 <a name="createToken"></a>
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Generate an upload token
 
-Use this endpoint to generate an upload token. You can use this token to authenticate video uploads while keeping your API key safe. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+Generates an upload token that can be used to replace the API Key. More information can be found [here](https://docs.api.video/reference/upload-tokens)
 
 ### Example
 ```java
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 Retrieve upload token
 
-You can retrieve details about a specific upload token if you have the unique identifier for the upload token. Add it in the path of the endpoint. Details include time-to-live (ttl), when the token was created, and when it will expire.
+Retrieve details about a specific upload token by id.
 
 ### Example
 ```java
@@ -213,9 +213,9 @@ null (empty response body)
 # **list**
 > TokenListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
 
-List all active upload tokens.
+List all active upload tokens
 
-A delegated token is used to allow secure uploads without exposing your API key. Use this endpoint to retrieve a list of all currently active delegated tokens. Tutorials using [delegated upload](https://api.video/blog/endpoints/delegated-upload).
+Retrieve a list of all currently active delegated tokens.
 
 ### Example
 ```java
