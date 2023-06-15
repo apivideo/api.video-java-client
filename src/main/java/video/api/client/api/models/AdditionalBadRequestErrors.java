@@ -21,17 +21,13 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import video.api.client.api.models.AdditionalBadRequestErrors;
 import java.io.Serializable;
 
 /**
- * BadRequest
+ * AdditionalBadRequestErrors
  */
 
-public class BadRequest implements Serializable {
+public class AdditionalBadRequestErrors implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TYPE = "type";
@@ -50,11 +46,7 @@ public class BadRequest implements Serializable {
     @SerializedName(SERIALIZED_NAME_STATUS)
     private Integer status;
 
-    public static final String SERIALIZED_NAME_PROBLEMS = "problems";
-    @SerializedName(SERIALIZED_NAME_PROBLEMS)
-    private Set<AdditionalBadRequestErrors> problems = null;
-
-    public BadRequest type(String type) {
+    public AdditionalBadRequestErrors type(String type) {
         this.type = type;
         return this;
     }
@@ -75,7 +67,7 @@ public class BadRequest implements Serializable {
         this.type = type;
     }
 
-    public BadRequest title(String title) {
+    public AdditionalBadRequestErrors title(String title) {
         this.title = title;
         return this;
     }
@@ -96,7 +88,7 @@ public class BadRequest implements Serializable {
         this.title = title;
     }
 
-    public BadRequest name(String name) {
+    public AdditionalBadRequestErrors name(String name) {
         this.name = name;
         return this;
     }
@@ -117,7 +109,7 @@ public class BadRequest implements Serializable {
         this.name = name;
     }
 
-    public BadRequest status(Integer status) {
+    public AdditionalBadRequestErrors status(Integer status) {
         this.status = status;
         return this;
     }
@@ -138,35 +130,6 @@ public class BadRequest implements Serializable {
         this.status = status;
     }
 
-    public BadRequest problems(Set<AdditionalBadRequestErrors> problems) {
-        this.problems = problems;
-        return this;
-    }
-
-    public BadRequest addProblemsItem(AdditionalBadRequestErrors problemsItem) {
-        if (this.problems == null) {
-            this.problems = new LinkedHashSet<>();
-        }
-        this.problems.add(problemsItem);
-        return this;
-    }
-
-    /**
-     * Returns any additional problems in the request in an array of objects.
-     * 
-     * @return problems
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(value = "Returns any additional problems in the request in an array of objects.")
-
-    public Set<AdditionalBadRequestErrors> getProblems() {
-        return problems;
-    }
-
-    public void setProblems(Set<AdditionalBadRequestErrors> problems) {
-        this.problems = problems;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -175,26 +138,26 @@ public class BadRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        BadRequest badRequest = (BadRequest) o;
-        return Objects.equals(this.type, badRequest.type) && Objects.equals(this.title, badRequest.title)
-                && Objects.equals(this.name, badRequest.name) && Objects.equals(this.status, badRequest.status)
-                && Objects.equals(this.problems, badRequest.problems);
+        AdditionalBadRequestErrors additionalBadRequestErrors = (AdditionalBadRequestErrors) o;
+        return Objects.equals(this.type, additionalBadRequestErrors.type)
+                && Objects.equals(this.title, additionalBadRequestErrors.title)
+                && Objects.equals(this.name, additionalBadRequestErrors.name)
+                && Objects.equals(this.status, additionalBadRequestErrors.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, title, name, status, problems);
+        return Objects.hash(type, title, name, status);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class BadRequest {\n");
+        sb.append("class AdditionalBadRequestErrors {\n");
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    title: ").append(toIndentedString(title)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
-        sb.append("    problems: ").append(toIndentedString(problems)).append("\n");
         sb.append("}");
         return sb.toString();
     }
