@@ -1,6 +1,6 @@
 
 
-# BadRequest
+# AdditionalBadRequestErrors
 
 ## Properties
 
@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **title** | **String** | A description of the error that occurred. |  [optional]
 **name** | **String** | The name of the parameter that caused the error. |  [optional]
 **status** | **Integer** | The HTTP status code. |  [optional]
-**problems** | [**Set&lt;AdditionalBadRequestErrors&gt;**](AdditionalBadRequestErrors.md) | Returns any additional problems in the request in an array of objects. |  [optional]
 
 
 ## Implemented Interfaces
