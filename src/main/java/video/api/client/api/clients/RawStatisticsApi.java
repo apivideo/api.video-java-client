@@ -13,19 +13,22 @@ package video.api.client.api.clients;
 
 import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
 import java.io.IOException;
 
-import video.api.client.api.models.*;
-import video.api.client.api.upload.*;
-import video.api.client.api.*;
+import video.api.client.api.models.NotFound;
+import video.api.client.api.models.RawStatisticsListLiveStreamAnalyticsResponse;
+import video.api.client.api.models.RawStatisticsListPlayerSessionEventsResponse;
+import video.api.client.api.models.RawStatisticsListSessionsResponse;
 
 import java.lang.reflect.Type;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import video.api.client.api.models.*;
+import video.api.client.api.upload.*;
+import video.api.client.api.*;
 
 public class RawStatisticsApi {
     private ApiClient localVarApiClient;
