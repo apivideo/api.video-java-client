@@ -1,0 +1,20 @@
+
+
+# AnalyticsPlays400Error
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**type** | **String** | A link to the error documentation. |  [optional]
+**title** | **String** | A description of the error that occurred. |  [optional]
+**status** | **Integer** | The HTTP status code. |  [optional]
+**detail** | **String** | A solution for the error. |  [optional]
+**name** | **String** | The name of the parameter that caused the error. |  [optional]
+
+
+## Implemented Interfaces
+
+* Serializable
+
+
