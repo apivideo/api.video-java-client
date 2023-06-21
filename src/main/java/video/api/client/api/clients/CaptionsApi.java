@@ -13,19 +13,24 @@ package video.api.client.api.clients;
 
 import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
 import java.io.IOException;
 
-import video.api.client.api.models.*;
-import video.api.client.api.upload.*;
-import video.api.client.api.*;
+import video.api.client.api.models.BadRequest;
+import video.api.client.api.models.Caption;
+import video.api.client.api.models.CaptionsListResponse;
+import video.api.client.api.models.CaptionsUpdatePayload;
+import java.io.File;
+import video.api.client.api.models.NotFound;
 
 import java.lang.reflect.Type;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import video.api.client.api.models.*;
+import video.api.client.api.upload.*;
+import video.api.client.api.*;
 
 public class CaptionsApi {
     private ApiClient localVarApiClient;
