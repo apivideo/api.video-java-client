@@ -8,6 +8,7 @@ import okhttp3.OkHttpClient;
 public class ApiVideoClient {
     private final ApiClient apiClient;
 
+    private final AnalyticsApi analytics;
     private final CaptionsApi captions;
     private final ChaptersApi chapters;
     private final LiveStreamsApi liveStreams;
@@ -82,6 +83,7 @@ public class ApiVideoClient {
     public ApiVideoClient(ApiClient apiClient) {
         this.apiClient = apiClient;
 
+        this.analytics = new AnalyticsApi(this.apiClient);
         this.captions = new CaptionsApi(this.apiClient);
         this.chapters = new ChaptersApi(this.apiClient);
         this.liveStreams = new LiveStreamsApi(this.apiClient);
@@ -91,6 +93,15 @@ public class ApiVideoClient {
         this.videos = new VideosApi(this.apiClient);
         this.watermarks = new WatermarksApi(this.apiClient);
         this.webhooks = new WebhooksApi(this.apiClient);
+    }
+
+    /**
+     * Get an AnalyticsApi instance
+     * 
+     * @return AnalyticsApi
+     */
+    public AnalyticsApi analytics() {
+        return this.analytics;
     }
 
     /**
