@@ -56,7 +56,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>video.api</groupId>
   <artifactId>java-api-client</artifactId>
-  <version>1.3.0</version>
+  <version>1.4.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -66,7 +66,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-implementation "video.api:java-api-client:1.3.0"
+implementation "video.api:java-api-client:1.4.0"
 ```
 
 ### Others
@@ -79,7 +79,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/java-api-client-1.3.0.jar`
+* `target/java-api-client-1.4.0.jar`
 * `target/lib/*.jar`
 
 ## Code sample
@@ -386,6 +386,8 @@ Method | HTTP request | Description
  - [RawStatisticsListPlayerSessionEventsResponse](docs/RawStatisticsListPlayerSessionEventsResponse.md)
  - [RawStatisticsListSessionsResponse](docs/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](docs/RefreshTokenPayload.md)
+ - [RestreamsRequestObject](docs/RestreamsRequestObject.md)
+ - [RestreamsResponseObject](docs/RestreamsResponseObject.md)
  - [TokenCreationPayload](docs/TokenCreationPayload.md)
  - [TokenListResponse](docs/TokenListResponse.md)
  - [UploadToken](docs/UploadToken.md)
