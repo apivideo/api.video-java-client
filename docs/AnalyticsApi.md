@@ -89,6 +89,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Success |  -  |
 **400** | Bad request error |  -  |
+**403** | Forbidden - Disabled Analytics |  -  |
 **404** | Not Found |  -  |
 
 <a name="getVideosPlays"></a>
@@ -172,5 +173,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Success |  -  |
 **400** | Bad request error |  -  |
+**403** | Forbidden - Disabled Analytics |  -  |
 **404** | Not Found |  -  |
 

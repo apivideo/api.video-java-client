@@ -18,6 +18,7 @@ import java.io.IOException;
 import video.api.client.api.models.AnalyticsPlays400Error;
 import video.api.client.api.models.AnalyticsPlaysResponse;
 import java.time.LocalDate;
+import video.api.client.api.models.Model403ErrorSchema;
 import video.api.client.api.models.NotFound;
 
 import java.lang.reflect.Type;
@@ -288,6 +289,11 @@ public class AnalyticsApi {
          *                        <td>-</td>
          *                        </tr>
          *                        <tr>
+         *                        <td>403</td>
+         *                        <td>Forbidden - Disabled Analytics</td>
+         *                        <td>-</td>
+         *                        </tr>
+         *                        <tr>
          *                        <td>404</td>
          *                        <td>Not Found</td>
          *                        <td>-</td>
@@ -321,6 +327,11 @@ public class AnalyticsApi {
          *                        <tr>
          *                        <td>400</td>
          *                        <td>Bad request error</td>
+         *                        <td>-</td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>403</td>
+         *                        <td>Forbidden - Disabled Analytics</td>
          *                        <td>-</td>
          *                        </tr>
          *                        <tr>
@@ -377,6 +388,11 @@ public class AnalyticsApi {
          *                        <td>-</td>
          *                        </tr>
          *                        <tr>
+         *                        <td>403</td>
+         *                        <td>Forbidden - Disabled Analytics</td>
+         *                        <td>-</td>
+         *                        </tr>
+         *                        <tr>
          *                        <td>404</td>
          *                        <td>Not Found</td>
          *                        <td>-</td>
@@ -413,6 +429,11 @@ public class AnalyticsApi {
          *                        <tr>
          *                        <td>400</td>
          *                        <td>Bad request error</td>
+         *                        <td>-</td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>403</td>
+         *                        <td>Forbidden - Disabled Analytics</td>
          *                        <td>-</td>
          *                        </tr>
          *                        <tr>
@@ -497,6 +518,11 @@ public class AnalyticsApi {
      *                        <tr>
      *                        <td>400</td>
      *                        <td>Bad request error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td>Forbidden - Disabled Analytics</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -700,6 +726,11 @@ public class AnalyticsApi {
          *                        <td>-</td>
          *                        </tr>
          *                        <tr>
+         *                        <td>403</td>
+         *                        <td>Forbidden - Disabled Analytics</td>
+         *                        <td>-</td>
+         *                        </tr>
+         *                        <tr>
          *                        <td>404</td>
          *                        <td>Not Found</td>
          *                        <td>-</td>
@@ -733,6 +764,11 @@ public class AnalyticsApi {
          *                        <tr>
          *                        <td>400</td>
          *                        <td>Bad request error</td>
+         *                        <td>-</td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>403</td>
+         *                        <td>Forbidden - Disabled Analytics</td>
          *                        <td>-</td>
          *                        </tr>
          *                        <tr>
@@ -789,6 +825,11 @@ public class AnalyticsApi {
          *                        <td>-</td>
          *                        </tr>
          *                        <tr>
+         *                        <td>403</td>
+         *                        <td>Forbidden - Disabled Analytics</td>
+         *                        <td>-</td>
+         *                        </tr>
+         *                        <tr>
          *                        <td>404</td>
          *                        <td>Not Found</td>
          *                        <td>-</td>
@@ -825,6 +866,11 @@ public class AnalyticsApi {
          *                        <tr>
          *                        <td>400</td>
          *                        <td>Bad request error</td>
+         *                        <td>-</td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>403</td>
+         *                        <td>Forbidden - Disabled Analytics</td>
          *                        <td>-</td>
          *                        </tr>
          *                        <tr>
@@ -908,6 +954,11 @@ public class AnalyticsApi {
      *                        <tr>
      *                        <td>400</td>
      *                        <td>Bad request error</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>403</td>
+     *                        <td>Forbidden - Disabled Analytics</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
