@@ -21,6 +21,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import video.api.client.api.models.RestreamsRequestObject;
 import java.io.Serializable;
 
 /**
@@ -45,6 +48,10 @@ public class LiveStreamCreationPayload implements Serializable {
     public static final String SERIALIZED_NAME_PLAYER_ID = "playerId";
     @SerializedName(SERIALIZED_NAME_PLAYER_ID)
     private String playerId;
+
+    public static final String SERIALIZED_NAME_RESTREAMS = "restreams";
+    @SerializedName(SERIALIZED_NAME_RESTREAMS)
+    private List<RestreamsRequestObject> restreams = null;
 
     public LiveStreamCreationPayload name(String name) {
         this.name = name;
@@ -131,6 +138,36 @@ public class LiveStreamCreationPayload implements Serializable {
         this.playerId = playerId;
     }
 
+    public LiveStreamCreationPayload restreams(List<RestreamsRequestObject> restreams) {
+        this.restreams = restreams;
+        return this;
+    }
+
+    public LiveStreamCreationPayload addRestreamsItem(RestreamsRequestObject restreamsItem) {
+        if (this.restreams == null) {
+            this.restreams = new ArrayList<>();
+        }
+        this.restreams.add(restreamsItem);
+        return this;
+    }
+
+    /**
+     * Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can
+     * only contain up to 5 destinations.
+     * 
+     * @return restreams
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.")
+
+    public List<RestreamsRequestObject> getRestreams() {
+        return restreams;
+    }
+
+    public void setRestreams(List<RestreamsRequestObject> restreams) {
+        this.restreams = restreams;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -143,12 +180,13 @@ public class LiveStreamCreationPayload implements Serializable {
         return Objects.equals(this.name, liveStreamCreationPayload.name)
                 && Objects.equals(this.record, liveStreamCreationPayload.record)
                 && Objects.equals(this._public, liveStreamCreationPayload._public)
-                && Objects.equals(this.playerId, liveStreamCreationPayload.playerId);
+                && Objects.equals(this.playerId, liveStreamCreationPayload.playerId)
+                && Objects.equals(this.restreams, liveStreamCreationPayload.restreams);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, record, _public, playerId);
+        return Objects.hash(name, record, _public, playerId, restreams);
     }
 
     @Override
@@ -159,6 +197,7 @@ public class LiveStreamCreationPayload implements Serializable {
         sb.append("    record: ").append(toIndentedString(record)).append("\n");
         sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
         sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
+        sb.append("    restreams: ").append(toIndentedString(restreams)).append("\n");
         sb.append("}");
         return sb.toString();
     }
