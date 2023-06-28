@@ -22,7 +22,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import video.api.client.api.models.LiveStreamAssets;
+import video.api.client.api.models.RestreamsResponseObject;
 import java.io.Serializable;
 
 /**
@@ -63,6 +66,10 @@ public class LiveStream implements Serializable {
     public static final String SERIALIZED_NAME_BROADCASTING = "broadcasting";
     @SerializedName(SERIALIZED_NAME_BROADCASTING)
     private Boolean broadcasting;
+
+    public static final String SERIALIZED_NAME_RESTREAMS = "restreams";
+    @SerializedName(SERIALIZED_NAME_RESTREAMS)
+    private List<RestreamsResponseObject> restreams = new ArrayList<>();
 
     public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
     @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -124,7 +131,7 @@ public class LiveStream implements Serializable {
      * @return streamKey
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "cc1b4df0-d1c5-4064-a8f9-9f0368385135", value = "The unique, private stream key that you use to begin streaming.")
+    @ApiModelProperty(example = "dw-dew8-q6w9-k67w-1ws8", value = "The unique, private stream key that you use to begin streaming.")
 
     public String getStreamKey() {
         return streamKey;
@@ -242,6 +249,31 @@ public class LiveStream implements Serializable {
         this.broadcasting = broadcasting;
     }
 
+    public LiveStream restreams(List<RestreamsResponseObject> restreams) {
+        this.restreams = restreams;
+        return this;
+    }
+
+    public LiveStream addRestreamsItem(RestreamsResponseObject restreamsItem) {
+        this.restreams.add(restreamsItem);
+        return this;
+    }
+
+    /**
+     * Returns the list of RTMP restream destinations.
+     * 
+     * @return restreams
+     **/
+    @ApiModelProperty(required = true, value = "Returns the list of RTMP restream destinations.")
+
+    public List<RestreamsResponseObject> getRestreams() {
+        return restreams;
+    }
+
+    public void setRestreams(List<RestreamsResponseObject> restreams) {
+        this.restreams = restreams;
+    }
+
     public LiveStream createdAt(OffsetDateTime createdAt) {
         this.createdAt = createdAt;
         return this;
@@ -298,14 +330,15 @@ public class LiveStream implements Serializable {
                 && Objects.equals(this.record, liveStream.record) && Objects.equals(this._public, liveStream._public)
                 && Objects.equals(this.assets, liveStream.assets) && Objects.equals(this.playerId, liveStream.playerId)
                 && Objects.equals(this.broadcasting, liveStream.broadcasting)
+                && Objects.equals(this.restreams, liveStream.restreams)
                 && Objects.equals(this.createdAt, liveStream.createdAt)
                 && Objects.equals(this.updatedAt, liveStream.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(liveStreamId, name, streamKey, record, _public, assets, playerId, broadcasting, createdAt,
-                updatedAt);
+        return Objects.hash(liveStreamId, name, streamKey, record, _public, assets, playerId, broadcasting, restreams,
+                createdAt, updatedAt);
     }
 
     @Override
@@ -320,6 +353,7 @@ public class LiveStream implements Serializable {
         sb.append("    assets: ").append(toIndentedString(assets)).append("\n");
         sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
         sb.append("    broadcasting: ").append(toIndentedString(broadcasting)).append("\n");
+        sb.append("    restreams: ").append(toIndentedString(restreams)).append("\n");
         sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
         sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
         sb.append("}");
