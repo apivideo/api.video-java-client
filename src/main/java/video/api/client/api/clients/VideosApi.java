@@ -2161,8 +2161,7 @@ public class VideosApi {
          * Set description
          * 
          * @param description
-         *            If you described a video with a term or sentence, you can add it here to return videos containing
-         *            this string. (optional)
+         *            Retrieve video objects by &#x60;description&#x60;. (optional)
          * 
          * @return APIlistRequest
          */
@@ -2175,7 +2174,7 @@ public class VideosApi {
          * Set liveStreamId
          * 
          * @param liveStreamId
-         *            If you know the ID for a live stream, you can retrieve the stream by adding the ID for it here.
+         *            Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;.
          *            (optional)
          * 
          * @return APIlistRequest
@@ -2189,8 +2188,8 @@ public class VideosApi {
          * Set sortBy
          * 
          * @param sortBy
-         *            Allowed: publishedAt, title. You can search by the time videos were published at, or by title.
-         *            (optional)
+         *            Use this parameter to sort videos by the their created time, published time, updated time, or by
+         *            title. (optional)
          * 
          * @return APIlistRequest
          */
@@ -2203,8 +2202,8 @@ public class VideosApi {
          * Set sortOrder
          * 
          * @param sortOrder
-         *            Allowed: asc, desc. asc is ascending and sorts from A to Z. desc is descending and sorts from Z to
-         *            A. (optional)
+         *            Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z.
+         *            &#x60;desc&#x60; is descending and sorts from Z to A. (optional)
          * 
          * @return APIlistRequest
          */
