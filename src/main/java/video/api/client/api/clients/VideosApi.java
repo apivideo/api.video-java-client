@@ -899,7 +899,7 @@ public class VideosApi {
      *                        </tr>
      *                        </table>
      */
-    private okhttp3.Call uploadWithUploadTokenCall(String token, File file, final ApiCallback _callback)
+    private okhttp3.Call uploadWithUploadTokenCall(String token, File file, String videoId, final ApiCallback _callback)
             throws ApiException {
         Object localVarPostBody = null;
 
@@ -918,6 +918,10 @@ public class VideosApi {
 
         if (token != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("token", token));
+        }
+
+        if (videoId != null) {
+            localVarFormParams.put("videoId", videoId);
         }
 
         final String[] localVarAccepts = { "application/json" };
@@ -983,8 +987,8 @@ public class VideosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call uploadWithUploadTokenValidateBeforeCall(String token, File file, final ApiCallback _callback)
-            throws ApiException {
+    private okhttp3.Call uploadWithUploadTokenValidateBeforeCall(String token, File file, String videoId,
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'token' is set
         if (token == null) {
@@ -996,7 +1000,7 @@ public class VideosApi {
             throw new ApiException("Missing the required parameter 'file' when calling uploadWithUploadToken");
         }
 
-        okhttp3.Call localVarCall = uploadWithUploadTokenCall(token, file, _callback);
+        okhttp3.Call localVarCall = uploadWithUploadTokenCall(token, file, videoId, _callback);
         return localVarCall;
     }
 
@@ -1372,7 +1376,7 @@ public class VideosApi {
                 }
             };
 
-            okhttp3.Call localVarCall = uploadWithUploadTokenValidateBeforeCall(token, file, apiCallback);
+            okhttp3.Call localVarCall = uploadWithUploadTokenValidateBeforeCall(token, file, videoId, apiCallback);
             Type localVarReturnType = new TypeToken<Video>() {
             }.getType();
             return localVarApiClient.execute(localVarCall, localVarReturnType);
