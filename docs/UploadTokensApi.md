@@ -20,6 +20,7 @@ Generates an upload token that can be used to replace the API Key. More informat
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -30,12 +31,12 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
     TokenCreationPayload tokenCreationPayload = new TokenCreationPayload(); // 
-    tokenCreationPayload.setTtl(); // Time in seconds that the token will be active. A value of 0 means that the token has no expiration date. The default is to have no expiration.
+    tokenCreationPayload.setTtl(); // Time in seconds that the token will be active. A value of 0 means that the token has no exipration date. The default is to have no expiration.
 
 
     try {
@@ -88,6 +89,7 @@ Retrieve details about a specific upload token by id.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -98,7 +100,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
@@ -154,6 +156,7 @@ Delete an existing upload token. This is especially useful for tokens you may ha
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -164,7 +167,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
@@ -219,6 +222,7 @@ Retrieve a list of all currently active delegated tokens.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -229,17 +233,25 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     UploadTokensApi apiInstance = client.uploadTokens();
     
-    String uploadToken = "to1tcmSFHeYY5KzyhOqVKMKb"; // The unique identifier for the token you want information about.
+    String sortBy = "createdAt"; // Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format.
+    String sortOrder = "asc"; // Allowed: asc, desc. Ascending is 0-9 or A-Z. Descending is 9-0 or Z-A.
+    Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
+    Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 
     try {
-      UploadToken result = apiInstance.getToken(uploadToken);
+      Page<UploadToken> result = apiInstance.list()
+            .sortBy(sortBy)
+            .sortOrder(sortOrder)
+            .currentPage(currentPage)
+            .pageSize(pageSize)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling UploadTokensApi#getToken");
+      System.err.println("Exception when calling UploadTokensApi#list");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());

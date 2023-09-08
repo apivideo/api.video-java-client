@@ -21,6 +21,7 @@ Upload a VTT file to add captions to your video. More information can be found [
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -31,18 +32,19 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     CaptionsApi apiInstance = client.captions();
     
-    String videoId = "vi4k0jvEUuaTdRAEjQ4Prklg"; // The unique identifier for the video you want captions for.
-    String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
+    String videoId = "vi4k0jvEUuaTdRAEjQ4Prklg"; // The unique identifier for the video you want to add a caption to.
+    String language = "en"; // A valid BCP 47 language representation.
+    File file = new File("/path/to/file"); // The video text track (VTT) you want to upload.
 
     try {
-      Caption result = apiInstance.get(videoId, language);
+      Caption result = apiInstance.upload(videoId, language, file);
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CaptionsApi#get");
+      System.err.println("Exception when calling CaptionsApi#upload");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -93,6 +95,7 @@ Tutorials that use the [captions endpoint](https://api.video/blog/endpoints/capt
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -103,7 +106,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     CaptionsApi apiInstance = client.captions();
     
@@ -161,6 +164,7 @@ To have the captions on automatically, use this method to set default: true.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -171,7 +175,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     CaptionsApi apiInstance = client.captions();
     
@@ -234,6 +238,7 @@ Delete a caption in a specific language by by video id.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -244,7 +249,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     CaptionsApi apiInstance = client.captions();
     
@@ -301,6 +306,7 @@ Retrieve a list of available captions by video id.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -311,18 +317,22 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     CaptionsApi apiInstance = client.captions();
     
-    String videoId = "vi4k0jvEUuaTdRAEjQ4Prklg"; // The unique identifier for the video you want captions for.
-    String language = "en"; // A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language representation
+    String videoId = "vi4k0jvEUuaTdRAEjQ4Prklg"; // The unique identifier for the video you want to retrieve a list of captions for.
+    Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
+    Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 
     try {
-      Caption result = apiInstance.get(videoId, language);
+      Page<Caption> result = apiInstance.list(videoId)
+            .currentPage(currentPage)
+            .pageSize(pageSize)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling CaptionsApi#get");
+      System.err.println("Exception when calling CaptionsApi#list");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getMessage());
       System.err.println("Response headers: " + e.getResponseHeaders());

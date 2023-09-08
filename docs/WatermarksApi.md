@@ -19,6 +19,7 @@ Create a new watermark by uploading a `JPG` or a `PNG` image.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -26,26 +27,26 @@ import video.api.client.api.clients.WatermarksApi;
 import java.util.*;
 
 public class Example {
- public static void main(String[] args) {
-   ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-   // if you rather like to use the sandbox environment:
-   // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
-   WatermarksApi watermarkApi = apiClient.watermarks();
+    WatermarksApi apiInstance = client.watermarks();
+    
+    File file = new File("/path/to/file"); // The `.jpg` or `.png` image to be added as a watermark.
 
-   File file = new File("/path/to/file"); // The watermark image.
-
-   try {
-     Watermark result = watermarkApi.upload(file);
-     System.out.println(result);
-   } catch (ApiException e) {
-     System.err.println("Exception when calling WatermarksApi#upload");
-     System.err.println("Status code: " + e.getCode());
-     System.err.println("Reason: " + e.getMessage());
-     System.err.println("Response headers: " + e.getResponseHeaders());
-     e.printStackTrace();
-   }
- }
+    try {
+      Watermark result = apiInstance.upload(file);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling WatermarksApi#upload");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
