@@ -23,25 +23,40 @@ Creates a livestream object.
 
 ### Example
 ```java
-// instantiate the client 
-ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+// Import classes:
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.LiveStreamsApi;
+import java.util.*;
 
-LiveStreamCreationPayload liveStreamCreationPayload = new LiveStreamCreationPayload(); 
-liveStreamCreationPayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
-liveStreamCreationPayload.setName("My Live Stream Video"); // Add a name for your live stream here.
-liveStreamCreationPayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it.
-liveStreamCreationPayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
-liveStreamCreationPayload.setRestreams(Collections.singletonList(new RestreamsRequestObject() // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
-      .name("My RTMP server")
-      .serverUrl("rtmp://my.broadcast.example.com/app")
-      .streamKey("dw-dew8-q6w9-k67w-1ws8")));
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
+
+    LiveStreamsApi apiInstance = client.liveStreams();
+    
+    LiveStreamCreationPayload liveStreamCreationPayload = new LiveStreamCreationPayload(); // 
+    liveStreamCreationPayload.setName("My Live Stream Video"); // Add a name for your live stream here.
+    liveStreamCreationPayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
+    liveStreamCreationPayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
+    liveStreamCreationPayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
+    liveStreamCreationPayload.setRestreams(Collections.<RestreamsRequestObject>emptyList()); // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
 
 
-try {
-    LiveStream liveStream = client.liveStreams().create(liveStreamCreationPayload);
-    System.out.println(liveStream);
-} catch (ApiException e) {
-    e.printStackTrace();
+    try {
+      LiveStream result = apiInstance.create(liveStreamCreationPayload);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#create");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -81,6 +96,7 @@ Get a livestream by id.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -91,7 +107,7 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
@@ -146,6 +162,7 @@ Updates the livestream object.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -156,20 +173,17 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
     String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
     LiveStreamUpdatePayload liveStreamUpdatePayload = new LiveStreamUpdatePayload(); // 
     liveStreamUpdatePayload.setName("My Live Stream Video"); // The name you want to use for your live stream.
-    liveStreamUpdatePayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view.
+    liveStreamUpdatePayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
     liveStreamUpdatePayload.setRecord(true); // Use this to indicate whether you want the recording on or off. On is true, off is false.
     liveStreamUpdatePayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique ID for the player associated with a live stream that you want to update.
-    liveStreamUpdatePayload.setRestreams(Collections.singletonList(new RestreamsRequestObject() // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.
-          .name("My RTMP server")
-          .serverUrl("rtmp://my.broadcast.example.com/app")
-          .streamKey("dw-dew8-q6w9-k67w-1ws8")));
+    liveStreamUpdatePayload.setRestreams(Collections.<RestreamsRequestObject>emptyList()); // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.
 
 
     try {
@@ -223,33 +237,34 @@ If you do not need a live stream any longer, you can send a request to delete it
 
 ### Example
 ```java
-  import video.api.client.ApiVideoClient;
-  import video.api.client.api.ApiException;
-  import video.api.client.api.models.*;
-  import video.api.client.api.clients.LiveStreamsApi;
-  import java.util.*;
-  
-  public class Example {
-    public static void main(String[] args) {
-      ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-      // if you rather like to use the sandbox environment:
-      // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
-  
-      LiveStreamsApi apiInstance = client.liveStreams();
-      
-      String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to remove.
-  
-      try {
-        apiInstance.delete(liveStreamId);
-      } catch (ApiException e) {
-        System.err.println("Exception when calling LiveStreamsApi#delete");
-        System.err.println("Status code: " + e.getCode());
-        System.err.println("Reason: " + e.getMessage());
-        System.err.println("Response headers: " + e.getResponseHeaders());
-        e.printStackTrace();
-      }
+// Import classes:
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.LiveStreamsApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
+
+    LiveStreamsApi apiInstance = client.liveStreams();
+    
+    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to remove.
+
+    try {
+      apiInstance.delete(liveStreamId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#delete");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
     }
   }
+}
 ```
 
 ### Parameters
@@ -287,6 +302,7 @@ Get the list of livestreams on the workspace.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -297,14 +313,14 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
-    String streamKey = "30087931-229e-42cf-b5f9-e91bcc1f7332"; // The unique stream key that allows you to stream videos.
+    String streamKey = "dw-dew8-q6w9-k67w-1ws8"; // The unique stream key that allows you to stream videos.
     String name = "My Video"; // You can filter live streams by their name or a part of their name.
     String sortBy = "createdAt"; // Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the specified streamKey. publishedAt - the time a livestream was published using the specified streamKey. name - the name of the livestream. If you choose one of the time based options, the time is presented in ISO-8601 format.
-    String sortOrder = "desc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
+    String sortOrder = "asc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
     Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
 
@@ -369,6 +385,7 @@ Upload the thumbnail for the livestream.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -379,12 +396,12 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
     String liveStreamId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique ID for the live stream you want to upload.
-    File file = new File("/path/to/file"); // The image to be added as a thumbnail.
+    File file = new File("/path/to/file"); // The image to be added as a thumbnail. The mime type should be image/jpeg, image/png or image/webp. The max allowed size is 8 MiB.
 
     try {
       LiveStream result = apiInstance.uploadThumbnail(liveStreamId, file);
@@ -438,6 +455,7 @@ Send the unique identifier for a live stream to delete its thumbnail.
 
 ### Example
 ```java
+// Import classes:
 import video.api.client.ApiVideoClient;
 import video.api.client.api.ApiException;
 import video.api.client.api.models.*;
@@ -448,11 +466,11 @@ public class Example {
   public static void main(String[] args) {
     ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
     // if you rather like to use the sandbox environment:
-    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", ApiVideoClient.Environment.SANDBOX);
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique identifier for the live stream you want to delete. 
+    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique identifier of the live stream whose thumbnail you want to delete.
 
     try {
       LiveStream result = apiInstance.deleteThumbnail(liveStreamId);
