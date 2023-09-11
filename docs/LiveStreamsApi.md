@@ -40,7 +40,6 @@ public class Example {
     
     LiveStreamCreationPayload liveStreamCreationPayload = new LiveStreamCreationPayload(); // 
     liveStreamCreationPayload.setName("My Live Stream Video"); // Add a name for your live stream here.
-    liveStreamCreationPayload.setRecord(true); // Whether you are recording or not. True for record, false for not record.
     liveStreamCreationPayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
     liveStreamCreationPayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
     liveStreamCreationPayload.setRestreams(Collections.<RestreamsRequestObject>emptyList()); // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
@@ -177,11 +176,10 @@ public class Example {
 
     LiveStreamsApi apiInstance = client.liveStreams();
     
-    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off.
+    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to update information for such as player details.
     LiveStreamUpdatePayload liveStreamUpdatePayload = new LiveStreamUpdatePayload(); // 
     liveStreamUpdatePayload.setName("My Live Stream Video"); // The name you want to use for your live stream.
     liveStreamUpdatePayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
-    liveStreamUpdatePayload.setRecord(true); // Use this to indicate whether you want the recording on or off. On is true, off is false.
     liveStreamUpdatePayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique ID for the player associated with a live stream that you want to update.
     liveStreamUpdatePayload.setRestreams(Collections.<RestreamsRequestObject>emptyList()); // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.
 
@@ -204,7 +202,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **liveStreamId** | **String**| The unique ID for the live stream that you want to update information for such as player details, or whether you want the recording on or off. |
+ **liveStreamId** | **String**| The unique ID for the live stream that you want to update information for such as player details. |
  **liveStreamUpdatePayload** | [**LiveStreamUpdatePayload**](LiveStreamUpdatePayload.md)|  |
 
 ### Return type

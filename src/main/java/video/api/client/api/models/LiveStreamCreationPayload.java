@@ -37,10 +37,6 @@ public class LiveStreamCreationPayload implements Serializable {
     @SerializedName(SERIALIZED_NAME_NAME)
     private String name;
 
-    public static final String SERIALIZED_NAME_RECORD = "record";
-    @SerializedName(SERIALIZED_NAME_RECORD)
-    private Boolean record = false;
-
     public static final String SERIALIZED_NAME_PUBLIC = "public";
     @SerializedName(SERIALIZED_NAME_PUBLIC)
     private Boolean _public;
@@ -71,27 +67,6 @@ public class LiveStreamCreationPayload implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public LiveStreamCreationPayload record(Boolean record) {
-        this.record = record;
-        return this;
-    }
-
-    /**
-     * Whether you are recording or not. True for record, false for not record.
-     * 
-     * @return record
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(example = "true", value = "Whether you are recording or not. True for record, false for not record.")
-
-    public Boolean getRecord() {
-        return record;
-    }
-
-    public void setRecord(Boolean record) {
-        this.record = record;
     }
 
     public LiveStreamCreationPayload _public(Boolean _public) {
@@ -178,7 +153,6 @@ public class LiveStreamCreationPayload implements Serializable {
         }
         LiveStreamCreationPayload liveStreamCreationPayload = (LiveStreamCreationPayload) o;
         return Objects.equals(this.name, liveStreamCreationPayload.name)
-                && Objects.equals(this.record, liveStreamCreationPayload.record)
                 && Objects.equals(this._public, liveStreamCreationPayload._public)
                 && Objects.equals(this.playerId, liveStreamCreationPayload.playerId)
                 && Objects.equals(this.restreams, liveStreamCreationPayload.restreams);
@@ -186,7 +160,7 @@ public class LiveStreamCreationPayload implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, record, _public, playerId, restreams);
+        return Objects.hash(name, _public, playerId, restreams);
     }
 
     @Override
@@ -194,7 +168,6 @@ public class LiveStreamCreationPayload implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class LiveStreamCreationPayload {\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    record: ").append(toIndentedString(record)).append("\n");
         sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
         sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
         sb.append("    restreams: ").append(toIndentedString(restreams)).append("\n");
