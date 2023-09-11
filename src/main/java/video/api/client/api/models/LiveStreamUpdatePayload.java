@@ -41,10 +41,6 @@ public class LiveStreamUpdatePayload implements Serializable {
     @SerializedName(SERIALIZED_NAME_PUBLIC)
     private Boolean _public;
 
-    public static final String SERIALIZED_NAME_RECORD = "record";
-    @SerializedName(SERIALIZED_NAME_RECORD)
-    private Boolean record;
-
     public static final String SERIALIZED_NAME_PLAYER_ID = "playerId";
     @SerializedName(SERIALIZED_NAME_PLAYER_ID)
     private String playerId;
@@ -95,27 +91,6 @@ public class LiveStreamUpdatePayload implements Serializable {
 
     public void setPublic(Boolean _public) {
         this._public = _public;
-    }
-
-    public LiveStreamUpdatePayload record(Boolean record) {
-        this.record = record;
-        return this;
-    }
-
-    /**
-     * Use this to indicate whether you want the recording on or off. On is true, off is false.
-     * 
-     * @return record
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(example = "true", value = "Use this to indicate whether you want the recording on or off. On is true, off is false.")
-
-    public Boolean getRecord() {
-        return record;
-    }
-
-    public void setRecord(Boolean record) {
-        this.record = record;
     }
 
     public LiveStreamUpdatePayload playerId(String playerId) {
@@ -182,14 +157,13 @@ public class LiveStreamUpdatePayload implements Serializable {
         LiveStreamUpdatePayload liveStreamUpdatePayload = (LiveStreamUpdatePayload) o;
         return Objects.equals(this.name, liveStreamUpdatePayload.name)
                 && Objects.equals(this._public, liveStreamUpdatePayload._public)
-                && Objects.equals(this.record, liveStreamUpdatePayload.record)
                 && Objects.equals(this.playerId, liveStreamUpdatePayload.playerId)
                 && Objects.equals(this.restreams, liveStreamUpdatePayload.restreams);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, _public, record, playerId, restreams);
+        return Objects.hash(name, _public, playerId, restreams);
     }
 
     @Override
@@ -198,7 +172,6 @@ public class LiveStreamUpdatePayload implements Serializable {
         sb.append("class LiveStreamUpdatePayload {\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
-        sb.append("    record: ").append(toIndentedString(record)).append("\n");
         sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
         sb.append("    restreams: ").append(toIndentedString(restreams)).append("\n");
         sb.append("}");

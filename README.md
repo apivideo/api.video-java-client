@@ -21,7 +21,6 @@
     - [ChaptersApi](#chaptersapi)
     - [LiveStreamsApi](#livestreamsapi)
     - [PlayerThemesApi](#playerthemesapi)
-    - [RawStatisticsApi](#rawstatisticsapi)
     - [UploadTokensApi](#uploadtokensapi)
     - [VideosApi](#videosapi)
     - [WatermarksApi](#watermarksapi)
@@ -234,26 +233,6 @@ Method | HTTP request | Description
 [**deleteLogo**](docs/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
 
 
-### RawStatisticsApi
-
-
-#### Retrieve an instance of RawStatisticsApi:
-```java
-ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
-RawStatisticsApi rawStatistics = client.rawStatistics()
-```
-
-
-
-#### Endpoints
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**listLiveStreamSessions**](docs/RawStatisticsApi.md#listLiveStreamSessions) | **GET** /analytics/live-streams/{liveStreamId} | List live stream player sessions
-[**listSessionEvents**](docs/RawStatisticsApi.md#listSessionEvents) | **GET** /analytics/sessions/{sessionId}/events | List player session events
-[**listVideoSessions**](docs/RawStatisticsApi.md#listVideoSessions) | **GET** /analytics/videos/{videoId} | List video player sessions
-
-
 ### UploadTokensApi
 
 
@@ -383,9 +362,6 @@ Method | HTTP request | Description
  - [PlayerThemeUpdatePayload](docs/PlayerThemeUpdatePayload.md)
  - [PlayerThemesListResponse](docs/PlayerThemesListResponse.md)
  - [Quality](docs/Quality.md)
- - [RawStatisticsListLiveStreamAnalyticsResponse](docs/RawStatisticsListLiveStreamAnalyticsResponse.md)
- - [RawStatisticsListPlayerSessionEventsResponse](docs/RawStatisticsListPlayerSessionEventsResponse.md)
- - [RawStatisticsListSessionsResponse](docs/RawStatisticsListSessionsResponse.md)
  - [RefreshTokenPayload](docs/RefreshTokenPayload.md)
  - [RestreamsRequestObject](docs/RestreamsRequestObject.md)
  - [RestreamsResponseObject](docs/RestreamsResponseObject.md)

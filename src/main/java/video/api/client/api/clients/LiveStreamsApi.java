@@ -467,8 +467,8 @@ public class LiveStreamsApi {
      * Build call for update
      * 
      * @param liveStreamId
-     *            The unique ID for the live stream that you want to update information for such as player details, or
-     *            whether you want the recording on or off. (required)
+     *            The unique ID for the live stream that you want to update information for such as player details.
+     *            (required)
      * @param liveStreamUpdatePayload
      *            (required)
      * @param _callback
@@ -550,8 +550,8 @@ public class LiveStreamsApi {
      * Updates the livestream object.
      * 
      * @param liveStreamId
-     *            The unique ID for the live stream that you want to update information for such as player details, or
-     *            whether you want the recording on or off. (required)
+     *            The unique ID for the live stream that you want to update information for such as player details.
+     *            (required)
      * @param liveStreamUpdatePayload
      *            (required)
      * 
@@ -590,8 +590,8 @@ public class LiveStreamsApi {
      * Updates the livestream object.
      * 
      * @param liveStreamId
-     *            The unique ID for the live stream that you want to update information for such as player details, or
-     *            whether you want the recording on or off. (required)
+     *            The unique ID for the live stream that you want to update information for such as player details.
+     *            (required)
      * @param liveStreamUpdatePayload
      *            (required)
      * 
@@ -631,8 +631,8 @@ public class LiveStreamsApi {
      * Update a live stream (asynchronously) Updates the livestream object.
      * 
      * @param liveStreamId
-     *            The unique ID for the live stream that you want to update information for such as player details, or
-     *            whether you want the recording on or off. (required)
+     *            The unique ID for the live stream that you want to update information for such as player details.
+     *            (required)
      * @param liveStreamUpdatePayload
      *            (required)
      * @param _callback

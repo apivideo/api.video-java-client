@@ -47,10 +47,6 @@ public class LiveStream implements Serializable {
     @SerializedName(SERIALIZED_NAME_STREAM_KEY)
     private String streamKey;
 
-    public static final String SERIALIZED_NAME_RECORD = "record";
-    @SerializedName(SERIALIZED_NAME_RECORD)
-    private Boolean record;
-
     public static final String SERIALIZED_NAME_PUBLIC = "public";
     @SerializedName(SERIALIZED_NAME_PUBLIC)
     private Boolean _public;
@@ -139,27 +135,6 @@ public class LiveStream implements Serializable {
 
     public void setStreamKey(String streamKey) {
         this.streamKey = streamKey;
-    }
-
-    public LiveStream record(Boolean record) {
-        this.record = record;
-        return this;
-    }
-
-    /**
-     * Whether you are recording or not.
-     * 
-     * @return record
-     **/
-    @javax.annotation.Nullable
-    @ApiModelProperty(example = "true", value = "Whether you are recording or not.")
-
-    public Boolean getRecord() {
-        return record;
-    }
-
-    public void setRecord(Boolean record) {
-        this.record = record;
     }
 
     public LiveStream _public(Boolean _public) {
@@ -327,8 +302,8 @@ public class LiveStream implements Serializable {
         LiveStream liveStream = (LiveStream) o;
         return Objects.equals(this.liveStreamId, liveStream.liveStreamId) && Objects.equals(this.name, liveStream.name)
                 && Objects.equals(this.streamKey, liveStream.streamKey)
-                && Objects.equals(this.record, liveStream.record) && Objects.equals(this._public, liveStream._public)
-                && Objects.equals(this.assets, liveStream.assets) && Objects.equals(this.playerId, liveStream.playerId)
+                && Objects.equals(this._public, liveStream._public) && Objects.equals(this.assets, liveStream.assets)
+                && Objects.equals(this.playerId, liveStream.playerId)
                 && Objects.equals(this.broadcasting, liveStream.broadcasting)
                 && Objects.equals(this.restreams, liveStream.restreams)
                 && Objects.equals(this.createdAt, liveStream.createdAt)
@@ -337,7 +312,7 @@ public class LiveStream implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(liveStreamId, name, streamKey, record, _public, assets, playerId, broadcasting, restreams,
+        return Objects.hash(liveStreamId, name, streamKey, _public, assets, playerId, broadcasting, restreams,
                 createdAt, updatedAt);
     }
 
@@ -348,7 +323,6 @@ public class LiveStream implements Serializable {
         sb.append("    liveStreamId: ").append(toIndentedString(liveStreamId)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    streamKey: ").append(toIndentedString(streamKey)).append("\n");
-        sb.append("    record: ").append(toIndentedString(record)).append("\n");
         sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
         sb.append("    assets: ").append(toIndentedString(assets)).append("\n");
         sb.append("    playerId: ").append(toIndentedString(playerId)).append("\n");
