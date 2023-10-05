@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Create a video object
 
-Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1). 
+Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/api/Videos). 
 
 ### Example
 ```java
@@ -45,12 +45,12 @@ public class Example {
     videoCreationPayload.setTitle("Maths video"); // The title of your new video.
     videoCreationPayload.setDescription("A video about string theory."); // A brief description of your video.
     videoCreationPayload.setSource("https://www.myvideo.url.com/video.mp4 OR vi4k0jvEUuaTdRAEjQ4JfOyl"); // You can either add a video already on the web, by entering the URL of the video, or you can also enter the &#x60;videoId&#x60; of one of the videos you already have on your api.video acccount, and this will generate a copy of your video. Creating a copy of a video can be especially useful if you want to keep your original video and trim or apply a watermark onto the copy you would create.
-    videoCreationPayload.setPublic(true); // Default: True. If set to &#x60;false&#x60; the video will become private. More information on private videos can be found [here](https://docs.api.video/docs/private-videos)
+    videoCreationPayload.setPublic(true); // Default: True. If set to &#x60;false&#x60; the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)
     videoCreationPayload.setPanoramic(false); // Indicates if your video is a 360/immersive video.
     videoCreationPayload.setMp4Support(true); // Enables mp4 version in addition to streamed version.
     videoCreationPayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique identification number for your video player.
     videoCreationPayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of tags you want to use to describe your video.
-    videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).
+    videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).
     videoCreationPayload.setClip(); // 
     videoCreationPayload.setWatermark(); // 
 
@@ -410,11 +410,11 @@ public class Example {
     videoUpdatePayload.setPlayerId("pl4k0jvEUuaTdRAEjQ4Jfrgz"); // The unique ID for the player you want to associate with your video.
     videoUpdatePayload.setTitle("null"); // The title you want to use for your video.
     videoUpdatePayload.setDescription("A film about good books."); // A brief description of the video.
-    videoUpdatePayload.setPublic(true); // Whether the video is publicly available or not. False means it is set to private. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
+    videoUpdatePayload.setPublic(true); // Whether the video is publicly available or not. False means it is set to private. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos/).
     videoUpdatePayload.setPanoramic(false); // Whether the video is a 360 degree or immersive video.
     videoUpdatePayload.setMp4Support(true); // Whether the player supports the mp4 format.
     videoUpdatePayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of terms or words you want to tag the video with. Make sure the list includes all the tags you want as whatever you send in this list will overwrite the existing list for the video.
-    videoUpdatePayload.setMetadata(Collections.<Metadata>emptyList()); // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
+    videoUpdatePayload.setMetadata(Collections.<Metadata>emptyList()); // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
 
 
     try {
@@ -552,7 +552,7 @@ public class Example {
     
     String title = "My Video.mp4"; // The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
     List<String> tags = Arrays.asList(); // A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
-    Map<String, String> metadata = new HashMap(); // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
+    Map<String, String> metadata = new HashMap(); // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
     String description = "New Zealand"; // Retrieve video objects by `description`.
     String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // Retrieve video objects that were recorded from a live stream by `liveStreamId`.
     String sortBy = "title"; // Use this parameter to sort videos by the their created time, published time, updated time, or by title.
@@ -590,7 +590,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **String**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional]
  **tags** | [**List&lt;String&gt;**](String.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
- **metadata** | [**Map&lt;String, String&gt;**](String.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. | [optional]
+ **metadata** | [**Map&lt;String, String&gt;**](String.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. | [optional]
  **description** | **String**| Retrieve video objects by &#x60;description&#x60;. | [optional]
  **liveStreamId** | **String**| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. | [optional]
  **sortBy** | **String**| Use this parameter to sort videos by the their created time, published time, updated time, or by title. | [optional] [enum: title, createdAt, publishedAt, updatedAt]

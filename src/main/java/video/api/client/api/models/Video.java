@@ -262,13 +262,13 @@ public class Video implements Serializable {
     /**
      * Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary
      * represents a key value pair for categorising a video. [Dynamic
-     * Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value
+     * Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value
      * pair.
      * 
      * @return metadata
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "[{\"key\":\"Author\", \"value\":\"John Doe\"}, {\"key\":\"Format\", \"value\":\"Tutorial\"}]", value = "Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair. ")
+    @ApiModelProperty(example = "[{\"key\":\"Author\", \"value\":\"John Doe\"}, {\"key\":\"Format\", \"value\":\"Tutorial\"}]", value = "Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. ")
 
     public List<Metadata> getMetadata() {
         return metadata;
@@ -348,12 +348,12 @@ public class Video implements Serializable {
 
     /**
      * Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is
-     * true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
+     * true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos/).
      * 
      * @return _public
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "false", value = "Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos). ")
+    @ApiModelProperty(example = "false", value = "Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos/). ")
 
     public Boolean getPublic() {
         return _public;
