@@ -186,7 +186,7 @@ public class VideosApi {
      * Create a video object
      *
      * Creates a video object. More information on video objects can be found
-     * [here](https://docs.api.video/reference/videos-1).
+     * [here](https://docs.api.video/reference/api/Videos).
      * 
      * @param videoCreationPayload
      *            video to create (required)
@@ -229,7 +229,7 @@ public class VideosApi {
      * Create a video object
      *
      * Creates a video object. More information on video objects can be found
-     * [here](https://docs.api.video/reference/videos-1).
+     * [here](https://docs.api.video/reference/api/Videos).
      * 
      * @param videoCreationPayload
      *            video to create (required)
@@ -272,7 +272,7 @@ public class VideosApi {
 
     /**
      * Create a video object (asynchronously) Creates a video object. More information on video objects can be found
-     * [here](https://docs.api.video/reference/videos-1).
+     * [here](https://docs.api.video/reference/api/Videos).
      * 
      * @param videoCreationPayload
      *            video to create (required)
@@ -2151,7 +2151,7 @@ public class VideosApi {
          * @param metadata
          *            Videos can be tagged with metadata tags in key:value pairs. You can search for videos with
          *            specific key value pairs using this parameter. [Dynamic
-         *            Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that
+         *            Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that
          *            allows any value pair. (optional)
          * 
          * @return APIlistRequest

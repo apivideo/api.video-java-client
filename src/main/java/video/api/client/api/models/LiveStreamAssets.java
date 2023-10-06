@@ -121,7 +121,7 @@ public class LiveStreamAssets implements Serializable {
      * @return thumbnail
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg", value = "A link to the thumbnail for your video.")
+    @ApiModelProperty(example = "https://live.api.video/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg", value = "A link to the thumbnail for your video.")
 
     public URI getThumbnail() {
         return thumbnail;

@@ -199,7 +199,7 @@ public class CaptionsApi {
      * Upload a caption
      *
      * Upload a VTT file to add captions to your video. More information can be found
-     * [here](https://docs.api.video/reference/captions)
+     * [here](https://docs.api.video/vod/add-captions)
      * 
      * @param videoId
      *            The unique identifier for the video you want to add a caption to. (required)
@@ -246,7 +246,7 @@ public class CaptionsApi {
      * Upload a caption
      *
      * Upload a VTT file to add captions to your video. More information can be found
-     * [here](https://docs.api.video/reference/captions)
+     * [here](https://docs.api.video/vod/add-captions)
      * 
      * @param videoId
      *            The unique identifier for the video you want to add a caption to. (required)
@@ -293,7 +293,7 @@ public class CaptionsApi {
 
     /**
      * Upload a caption (asynchronously) Upload a VTT file to add captions to your video. More information can be found
-     * [here](https://docs.api.video/reference/captions)
+     * [here](https://docs.api.video/vod/add-captions)
      * 
      * @param videoId
      *            The unique identifier for the video you want to add a caption to. (required)

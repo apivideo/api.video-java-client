@@ -151,12 +151,12 @@ public class VideoCreationPayload implements Serializable {
 
     /**
      * Default: True. If set to &#x60;false&#x60; the video will become private. More information on private videos can
-     * be found [here](https://docs.api.video/docs/private-videos)
+     * be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)
      * 
      * @return _public
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "true", value = "Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/docs/private-videos)")
+    @ApiModelProperty(example = "true", value = "Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)")
 
     public Boolean getPublic() {
         return _public;
@@ -274,12 +274,12 @@ public class VideoCreationPayload implements Serializable {
     /**
      * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic,
      * allowing you to segment your audience. Read more on [dynamic
-     * metadata](https://api.video/blog/endpoints/dynamic-metadata).
+     * metadata](https://api.video/blog/endpoints/dynamic-metadata/).
      * 
      * @return metadata
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "[{\"key\": \"Author\", \"value\": \"John Doe\"}]", value = "A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).")
+    @ApiModelProperty(example = "[{\"key\": \"Author\", \"value\": \"John Doe\"}]", value = "A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).")
 
     public List<Metadata> getMetadata() {
         return metadata;

@@ -197,7 +197,7 @@ paths:
         style: form
       - description: Videos can be tagged with metadata tags in key:value pairs. You
           can search for videos with specific key value pairs using this parameter.
-          [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows
+          [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows
           you to define a key that allows any value pair.
         example: metadata[Author]=John Doe&metadata[Format]=Tutorial
         explode: true
@@ -515,7 +515,7 @@ paths:
       x-accepts: application/json
     post:
       description: |
-        Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/videos-1).
+        Creates a video object. More information on video objects can be found [here](https://docs.api.video/reference/api/Videos).
       operationId: POST-video
       requestBody:
         content:
@@ -2866,7 +2866,7 @@ paths:
       x-accepts: application/json
     post:
       description: Generates an upload token that can be used to replace the API Key.
-        More information can be found [here](https://docs.api.video/reference/upload-tokens)
+        More information can be found [here](https://docs.api.video/vod/delegated-upload-tokens)
       operationId: POST_upload-tokens
       requestBody:
         content:
@@ -3526,7 +3526,7 @@ paths:
                           allowfullscreen=""></iframe>
                         player: https://embed.api.video/live/li400mYKSgQ6xs7taUeSaEKr
                         hls: https://live.api.video/li400mYKSgQ6xs7taUeSaEKr.m3u8
-                        thumbnail: https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
+                        thumbnail: https://live.api.video/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
                     - liveStreamId: li4pqNqGUkhKfWcBGpZVLRY5
                       createdAt: 2020-07-29T10:45:35.000Z
                       updatedAt: 2020-07-29T10:45:35.000Z
@@ -3547,7 +3547,7 @@ paths:
                           allowfullscreen=""></iframe>
                         player: https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5
                         hls: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8
-                        thumbnail: https://cdn.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5/thumbnail.jpg
+                        thumbnail: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5/thumbnail.jpg
                     pagination:
                       currentPage: 1
                       currentPageItems: 19
@@ -5337,7 +5337,7 @@ paths:
       x-accepts: application/json
     post:
       description: Upload a VTT file to add captions to your video. More information
-        can be found [here](https://docs.api.video/reference/captions)
+        can be found [here](https://docs.api.video/vod/add-captions)
       operationId: POST_videos-videoId-captions-language
       parameters:
       - description: The unique identifier for the video you want to add a caption
@@ -6062,7 +6062,7 @@ paths:
     post:
       description: |-
         Upload a VTT file to add chapters to your video.
-        Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+        Chapters help break the video into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos/) for more details.
       operationId: POST_videos-videoId-chapters-language
       parameters:
       - description: The unique identifier for the video you want to upload a chapter
@@ -9643,7 +9643,7 @@ components:
             width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
           player: https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5
           hls: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8
-          thumbnail: https://cdn.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5/thumbnail.jpg
+          thumbnail: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5/thumbnail.jpg
   parameters:
     current-page:
       description: 'Choose the number of search results to return per page. Minimum
@@ -9880,7 +9880,7 @@ components:
           type: array
         metadata:
           description: |
-            Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata) allows you to define a key that allows any value pair.
+            Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
           example: '[{"key":"Author", "value":"John Doe"}, {"key":"Format", "value":"Tutorial"}]'
           items:
             $ref: '#/components/schemas/metadata'
@@ -9896,7 +9896,7 @@ components:
           type: string
         public:
           description: |
-            Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
+            Defines if the content is publicly reachable or if a unique token is needed for each play session. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos/).
           example: false
           type: boolean
         panoramic:
@@ -10293,7 +10293,7 @@ components:
         streamKey: dw-dew8-q6w9-k67w-1ws8
         createdAt: 2020-01-31T10:17:47Z
         assets:
-          thumbnail: https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
+          thumbnail: https://live.api.video/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
           iframe: <iframe src=\"https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5\"
             width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>
           hls: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8
@@ -10328,7 +10328,7 @@ components:
         public:
           description: Whether your video can be viewed by everyone, or requires authentication
             to see it. A setting of false will require a unique token for each view.
-            Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
+            Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
           example: true
           type: boolean
         assets:
@@ -10723,7 +10723,7 @@ components:
         public:
           default: true
           description: 'Default: True. If set to `false` the video will become private.
-            More information on private videos can be found [here](https://docs.api.video/docs/private-videos)'
+            More information on private videos can be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)'
           example: true
           type: boolean
         panoramic:
@@ -10749,7 +10749,7 @@ components:
         metadata:
           description: A list of key value pairs that you use to provide metadata
             for your video. These pairs can be made dynamic, allowing you to segment
-            your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata).
+            your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).
           example: '[{"key": "Author", "value": "John Doe"}]'
           items:
             $ref: '#/components/schemas/metadata'
@@ -10835,7 +10835,7 @@ components:
           type: string
         public:
           description: Whether the video is publicly available or not. False means
-            it is set to private. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos).
+            it is set to private. Default is true. Tutorials on [private videos](https://api.video/blog/endpoints/private-videos/).
           example: true
           type: boolean
         panoramic:
@@ -10858,7 +10858,7 @@ components:
           description: A list (array) of dictionaries where each dictionary contains
             a key value pair that describes the video. As with tags, you must send
             the complete list of metadata you want as whatever you send here will
-            overwrite the existing metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata)
+            overwrite the existing metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/)
             allows you to define a key that allows any value pair.
           items:
             $ref: '#/components/schemas/metadata'
@@ -10964,7 +10964,7 @@ components:
         - streamKey: dw-dew8-q6w9-k67w-1ws8
           createdAt: 2020-01-31T10:17:47Z
           assets:
-            thumbnail: https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
+            thumbnail: https://live.api.video/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
             iframe: <iframe src=\"https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5\"
               width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>
             hls: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8
@@ -10985,7 +10985,7 @@ components:
         - streamKey: dw-dew8-q6w9-k67w-1ws8
           createdAt: 2020-01-31T10:17:47Z
           assets:
-            thumbnail: https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
+            thumbnail: https://live.api.video/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
             iframe: <iframe src=\"https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5\"
               width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>
             hls: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8
@@ -11034,7 +11034,7 @@ components:
         public:
           description: Whether your video can be viewed by everyone, or requires authentication
             to see it. A setting of false will require a unique token for each view.
-            Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
+            Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
           type: boolean
         playerId:
           description: The unique identifier for the player.
@@ -11061,7 +11061,7 @@ components:
         public:
           description: Whether your video can be viewed by everyone, or requires authentication
             to see it. A setting of false will require a unique token for each view.
-            Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).
+            Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
           type: boolean
         playerId:
           description: The unique ID for the player associated with a live stream
@@ -11731,7 +11731,7 @@ components:
       type: object
     live-stream-assets:
       example:
-        thumbnail: https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
+        thumbnail: https://live.api.video/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
         iframe: <iframe src=\"https://embed.api.video/live/li4pqNqGUkhKfWcBGpZVLRY5\"
           width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" allowfullscreen=\"\"></iframe>
         hls: https://live.api.video/li4pqNqGUkhKfWcBGpZVLRY5.m3u8
@@ -11754,7 +11754,7 @@ components:
           type: string
         thumbnail:
           description: A link to the thumbnail for your video.
-          example: https://cdn.api.video/live/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
+          example: https://live.api.video/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
           format: uri
           type: string
       title: LiveStreamAssets
