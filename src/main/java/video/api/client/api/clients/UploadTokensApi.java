@@ -173,7 +173,7 @@ public class UploadTokensApi {
      * Generate an upload token
      *
      * Generates an upload token that can be used to replace the API Key. More information can be found
-     * [here](https://docs.api.video/reference/upload-tokens)
+     * [here](https://docs.api.video/vod/delegated-upload-tokens)
      * 
      * @param tokenCreationPayload
      *            (required)
@@ -211,7 +211,7 @@ public class UploadTokensApi {
      * Generate an upload token
      *
      * Generates an upload token that can be used to replace the API Key. More information can be found
-     * [here](https://docs.api.video/reference/upload-tokens)
+     * [here](https://docs.api.video/vod/delegated-upload-tokens)
      * 
      * @param tokenCreationPayload
      *            (required)
@@ -250,7 +250,7 @@ public class UploadTokensApi {
 
     /**
      * Generate an upload token (asynchronously) Generates an upload token that can be used to replace the API Key. More
-     * information can be found [here](https://docs.api.video/reference/upload-tokens)
+     * information can be found [here](https://docs.api.video/vod/delegated-upload-tokens)
      * 
      * @param tokenCreationPayload
      *            (required)

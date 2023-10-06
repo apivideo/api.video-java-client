@@ -78,12 +78,12 @@ public class LiveStreamUpdatePayload implements Serializable {
     /**
      * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will
      * require a unique token for each view. Learn more about the Private Video feature
-     * [here](https://docs.api.video/docs/private-videos).
+     * [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
      * 
      * @return _public
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/docs/private-videos).")
+    @ApiModelProperty(value = "Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).")
 
     public Boolean getPublic() {
         return _public;

@@ -199,7 +199,7 @@ public class ChaptersApi {
      * Upload a chapter
      *
      * Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our
-     * [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+     * [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos/) for more details.
      * 
      * @param videoId
      *            The unique identifier for the video you want to upload a chapter for. (required)
@@ -247,7 +247,7 @@ public class ChaptersApi {
      * Upload a chapter
      *
      * Upload a VTT file to add chapters to your video. Chapters help break the video into sections. Read our
-     * [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more details.
+     * [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos/) for more details.
      * 
      * @param videoId
      *            The unique identifier for the video you want to upload a chapter for. (required)
@@ -295,7 +295,7 @@ public class ChaptersApi {
 
     /**
      * Upload a chapter (asynchronously) Upload a VTT file to add chapters to your video. Chapters help break the video
-     * into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos) for more
+     * into sections. Read our [tutorial](https://api.video/blog/tutorials/adding-chapters-to-your-videos/) for more
      * details.
      * 
      * @param videoId
