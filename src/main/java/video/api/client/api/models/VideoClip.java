@@ -24,8 +24,12 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * VideoClip
+ * Use this object to create a smaller clip from a video you upload. - You can only create video clips in the same
+ * request where you create the video container. - You cannot update the starting or ending timestamps of a video clip
+ * after you created the video container. - When you upload a video file into a container where you defined a starting
+ * and ending timestamp, the API trims the video according to those timestamps to create a clip.
  */
+@ApiModel(description = "Use this object to create a smaller clip from a video you upload.  - You can only create video clips in the same request where you create the video container. - You cannot update the starting or ending timestamps of a video clip after you created the video container. - When you upload a video file into a container where you defined a starting and ending timestamp, the API trims the video according to those timestamps to create a clip.")
 
 public class VideoClip implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -44,12 +48,13 @@ public class VideoClip implements Serializable {
     }
 
     /**
-     * Get startTimecode
+     * The timestamp that defines the beginning of the video clip you want to create. The value must follow the
+     * &#x60;HH:MM:SS&#x60; format.
      * 
      * @return startTimecode
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(example = "00:01:15", value = "The timestamp that defines the beginning of the video clip you want to create. The value must follow the `HH:MM:SS` format.")
 
     public String getStartTimecode() {
         return startTimecode;
@@ -65,12 +70,13 @@ public class VideoClip implements Serializable {
     }
 
     /**
-     * Get endTimecode
+     * The timestamp that defines the end of the video clip you want to create. The value must follow the
+     * &#x60;HH:MM:SS&#x60; format.
      * 
      * @return endTimecode
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(example = "00:02:33", value = "The timestamp that defines the end of the video clip you want to create. The value must follow the `HH:MM:SS` format.")
 
     public String getEndTimecode() {
         return endTimecode;
