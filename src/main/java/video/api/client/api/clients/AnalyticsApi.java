@@ -496,9 +496,13 @@ public class AnalyticsApi {
      *            Otherwise, it is grouped in daily intervals. - &#x60;country&#x60;: Returns analytics based on the
      *            viewers&#39; country. The list of supported country names are based on the [GeoNames public
      *            database](https://www.geonames.org/countries/). - &#x60;deviceType&#x60;: Returns analytics based on
-     *            the type of device used by the viewers during the play event. - &#x60;operatingSystem&#x60;: Returns
-     *            analytics based on the operating system used by the viewers during the play event. -
+     *            the type of device used by the viewers during the play event. Possible response values are:
+     *            &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;,
+     *            &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on
+     *            the operating system used by the viewers during the play event. Response values include
+     *            &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. -
      *            &#x60;browser&#x60;: Returns analytics based on the browser used by the viewers during the play event.
+     *            Response values include &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.
      *            (required)
      * 
      * @return APIgetLiveStreamsPlaysRequest
@@ -933,9 +937,13 @@ public class AnalyticsApi {
      *            &#x60;country&#x60;: Returns analytics based on the viewers&#39; country. The list of supported
      *            country names are based on the [GeoNames public database](https://www.geonames.org/countries/). -
      *            &#x60;deviceType&#x60;: Returns analytics based on the type of device used by the viewers during the
-     *            play event. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the
-     *            viewers during the play event. - &#x60;browser&#x60;: Returns analytics based on the browser used by
-     *            the viewers during the play event. (required)
+     *            play event. Possible response values are: &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;,
+     *            &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;, &#x60;unknown&#x60;. -
+     *            &#x60;operatingSystem&#x60;: Returns analytics based on the operating system used by the viewers
+     *            during the play event. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;,
+     *            &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics
+     *            based on the browser used by the viewers during the play event. Response values include
+     *            &#x60;chrome&#x60;, &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. (required)
      * 
      * @return APIgetVideosPlaysRequest
      * 
