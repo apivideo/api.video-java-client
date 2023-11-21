@@ -1,10 +1,11 @@
+<!--<documentation_excluded>-->
 [![badge](https://img.shields.io/twitter/follow/api_video?style=social)](https://twitter.com/intent/follow?screen_name=api_video) &nbsp; [![badge](https://img.shields.io/github/stars/apivideo/api.video-java-client?style=social)](https://github.com/apivideo/api.video-java-client) &nbsp; [![badge](https://img.shields.io/discourse/topics?server=https%3A%2F%2Fcommunity.api.video)](https://community.api.video)
 ![](https://github.com/apivideo/.github/blob/main/assets/apivideo_banner.png)
 <h1 align="center">api.video Java API client</h1>
 
 [api.video](https://api.video) is the video infrastructure for product builders. Lightning fast video APIs for integrating, scaling, and managing on-demand & low latency live streaming features in your app.
 
-# Table of contents
+## Table of contents
 
 - [Project description](#project-description)
 - [Getting started](#getting-started)
@@ -32,22 +33,34 @@
   - [Recommendation](#recommendation)
 - [Have you gotten use from this API client?](#have-you-gotten-use-from-this-api-client-)
 - [Contribution](#contribution)
+<!--</documentation_excluded>-->
+<!--<documentation_only>
+---
+title: Java API client
+meta: 
+  description: The official Java API client for api.video. [api.video](https://api.video/) is the video infrastructure for product builders. Lightning fast video APIs for integrating, scaling, and managing on-demand & low latency live streaming features in your app.
+---
 
-# Project description
+# api.video Java API client
 
-api.video's Java  streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
+[api.video](https://api.video/) is the video infrastructure for product builders. Lightning fast video APIs for integrating, scaling, and managing on-demand & low latency live streaming features in your app.
+</documentation_only>-->
 
-# Getting started
+## Project description
 
-## Requirements
+api.video's Java API client streamlines the coding process. Chunking files is handled for you, as is pagination and refreshing your tokens.
+
+## Getting started
+
+### Requirements
 
 Building the API client library requires:
 1. Java 1.8+
 2. Maven/Gradle
 
-## Installation
+### Installation
 
-### Maven users
+#### Maven users
 
 Add this dependency to your project's POM:
 
@@ -60,7 +73,7 @@ Add this dependency to your project's POM:
 </dependency>
 ```
 
-### Gradle users
+#### Gradle users
 
 Add this dependency to your project's build file:
 
@@ -68,7 +81,7 @@ Add this dependency to your project's build file:
 implementation "video.api:java-api-client:1.3.1"
 ```
 
-### Others
+#### Others
 
 At first generate the JAR by executing:
 
@@ -81,7 +94,7 @@ Then manually install the following JARs:
 * `target/java-api-client-1.3.1.jar`
 * `target/lib/*.jar`
 
-## Code sample
+### Code sample
 
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
@@ -116,9 +129,9 @@ public class Example {
 ```
 
 
-# Documentation
+## Documentation
 
-## API Endpoints
+### API Endpoints
 
 All URIs are relative to *https://ws.api.video*
 
@@ -138,8 +151,8 @@ AnalyticsApi analytics = client.analytics()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLiveStreamsPlays**](docs/AnalyticsApi.md#getLiveStreamsPlays) | **GET** /analytics/live-streams/plays | Get play events for live stream
-[**getVideosPlays**](docs/AnalyticsApi.md#getVideosPlays) | **GET** /analytics/videos/plays | Get play events for video
+[**getLiveStreamsPlays**](https://github.com/apivideo/api.video-java-client/blob/main/docs/AnalyticsApi.md#getLiveStreamsPlays) | **GET** /analytics/live-streams/plays | Get play events for live stream
+[**getVideosPlays**](https://github.com/apivideo/api.video-java-client/blob/main/docs/AnalyticsApi.md#getVideosPlays) | **GET** /analytics/videos/plays | Get play events for video
 
 
 ### CaptionsApi
@@ -157,11 +170,11 @@ CaptionsApi captions = client.captions()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**upload**](docs/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
-[**get**](docs/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
-[**update**](docs/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
-[**delete**](docs/CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
-[**list**](docs/CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
+[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
+[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
 
 
 ### ChaptersApi
@@ -179,10 +192,10 @@ ChaptersApi chapters = client.chapters()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**upload**](docs/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
-[**get**](docs/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
-[**delete**](docs/ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
-[**list**](docs/ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
+[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
 
 
 ### LiveStreamsApi
@@ -200,13 +213,13 @@ LiveStreamsApi liveStreams = client.liveStreams()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](docs/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
-[**get**](docs/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Retrieve live stream
-[**update**](docs/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
-[**delete**](docs/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
-[**list**](docs/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
-[**uploadThumbnail**](docs/LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
-[**deleteThumbnail**](docs/LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
+[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Retrieve live stream
+[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
+[**uploadThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
+[**deleteThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
 
 
 ### PlayerThemesApi
@@ -224,13 +237,13 @@ PlayerThemesApi playerThemes = client.playerThemes()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](docs/PlayerThemesApi.md#create) | **POST** /players | Create a player
-[**get**](docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Retrieve a player
-[**update**](docs/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
-[**delete**](docs/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
-[**list**](docs/PlayerThemesApi.md#list) | **GET** /players | List all player themes
-[**uploadLogo**](docs/PlayerThemesApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
-[**deleteLogo**](docs/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
+[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#create) | **POST** /players | Create a player
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Retrieve a player
+[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#list) | **GET** /players | List all player themes
+[**uploadLogo**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
+[**deleteLogo**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
 
 
 ### UploadTokensApi
@@ -248,10 +261,10 @@ UploadTokensApi uploadTokens = client.uploadTokens()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createToken**](docs/UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
-[**getToken**](docs/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
-[**deleteToken**](docs/UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
-[**list**](docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens
+[**createToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
+[**getToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
+[**deleteToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens
 
 
 ### VideosApi
@@ -269,16 +282,16 @@ VideosApi videos = client.videos()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](docs/VideosApi.md#create) | **POST** /videos | Create a video object
-[**upload**](docs/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
-[**uploadWithUploadToken**](docs/VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an delegated upload token
-[**get**](docs/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video object
-[**update**](docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video object
-[**delete**](docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video object
-[**list**](docs/VideosApi.md#list) | **GET** /videos | List all video objects
-[**uploadThumbnail**](docs/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
-[**pickThumbnail**](docs/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Set a thumbnail
-[**getStatus**](docs/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Retrieve video status and details
+[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#create) | **POST** /videos | Create a video object
+[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
+[**uploadWithUploadToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an delegated upload token
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video object
+[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video object
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video object
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#list) | **GET** /videos | List all video objects
+[**uploadThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
+[**pickThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Set a thumbnail
+[**getStatus**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Retrieve video status and details
 
 
 ### WatermarksApi
@@ -296,9 +309,9 @@ WatermarksApi watermarks = client.watermarks()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**upload**](docs/WatermarksApi.md#upload) | **POST** /watermarks | Upload a watermark
-[**delete**](docs/WatermarksApi.md#delete) | **DELETE** /watermarks/{watermarkId} | Delete a watermark
-[**list**](docs/WatermarksApi.md#list) | **GET** /watermarks | List all watermarks
+[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WatermarksApi.md#upload) | **POST** /watermarks | Upload a watermark
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WatermarksApi.md#delete) | **DELETE** /watermarks/{watermarkId} | Delete a watermark
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WatermarksApi.md#list) | **GET** /watermarks | List all watermarks
 
 
 ### WebhooksApi
@@ -316,91 +329,91 @@ WebhooksApi webhooks = client.webhooks()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](docs/WebhooksApi.md#create) | **POST** /webhooks | Create Webhook
-[**get**](docs/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Retrieve Webhook details
-[**delete**](docs/WebhooksApi.md#delete) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
-[**list**](docs/WebhooksApi.md#list) | **GET** /webhooks | List all webhooks
+[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#create) | **POST** /webhooks | Create Webhook
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Retrieve Webhook details
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#delete) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#list) | **GET** /webhooks | List all webhooks
 
 
 
-## Documentation for Models
+### Documentation for Models
 
- - [AccessToken](docs/AccessToken.md)
- - [AdditionalBadRequestErrors](docs/AdditionalBadRequestErrors.md)
- - [AnalyticsData](docs/AnalyticsData.md)
- - [AnalyticsPlays400Error](docs/AnalyticsPlays400Error.md)
- - [AnalyticsPlaysResponse](docs/AnalyticsPlaysResponse.md)
- - [AuthenticatePayload](docs/AuthenticatePayload.md)
- - [BadRequest](docs/BadRequest.md)
- - [BytesRange](docs/BytesRange.md)
- - [Caption](docs/Caption.md)
- - [CaptionsListResponse](docs/CaptionsListResponse.md)
- - [CaptionsUpdatePayload](docs/CaptionsUpdatePayload.md)
- - [Chapter](docs/Chapter.md)
- - [ChaptersListResponse](docs/ChaptersListResponse.md)
- - [Link](docs/Link.md)
- - [LiveStream](docs/LiveStream.md)
- - [LiveStreamAssets](docs/LiveStreamAssets.md)
- - [LiveStreamCreationPayload](docs/LiveStreamCreationPayload.md)
- - [LiveStreamListResponse](docs/LiveStreamListResponse.md)
- - [LiveStreamSession](docs/LiveStreamSession.md)
- - [LiveStreamSessionClient](docs/LiveStreamSessionClient.md)
- - [LiveStreamSessionDevice](docs/LiveStreamSessionDevice.md)
- - [LiveStreamSessionLocation](docs/LiveStreamSessionLocation.md)
- - [LiveStreamSessionReferrer](docs/LiveStreamSessionReferrer.md)
- - [LiveStreamSessionSession](docs/LiveStreamSessionSession.md)
- - [LiveStreamUpdatePayload](docs/LiveStreamUpdatePayload.md)
- - [Metadata](docs/Metadata.md)
- - [Model403ErrorSchema](docs/Model403ErrorSchema.md)
- - [NotFound](docs/NotFound.md)
- - [Pagination](docs/Pagination.md)
- - [PaginationLink](docs/PaginationLink.md)
- - [PlayerSessionEvent](docs/PlayerSessionEvent.md)
- - [PlayerTheme](docs/PlayerTheme.md)
- - [PlayerThemeAssets](docs/PlayerThemeAssets.md)
- - [PlayerThemeCreationPayload](docs/PlayerThemeCreationPayload.md)
- - [PlayerThemeUpdatePayload](docs/PlayerThemeUpdatePayload.md)
- - [PlayerThemesListResponse](docs/PlayerThemesListResponse.md)
- - [Quality](docs/Quality.md)
- - [RefreshTokenPayload](docs/RefreshTokenPayload.md)
- - [RestreamsRequestObject](docs/RestreamsRequestObject.md)
- - [RestreamsResponseObject](docs/RestreamsResponseObject.md)
- - [TokenCreationPayload](docs/TokenCreationPayload.md)
- - [TokenListResponse](docs/TokenListResponse.md)
- - [UploadToken](docs/UploadToken.md)
- - [Video](docs/Video.md)
- - [VideoAssets](docs/VideoAssets.md)
- - [VideoClip](docs/VideoClip.md)
- - [VideoCreationPayload](docs/VideoCreationPayload.md)
- - [VideoSession](docs/VideoSession.md)
- - [VideoSessionClient](docs/VideoSessionClient.md)
- - [VideoSessionDevice](docs/VideoSessionDevice.md)
- - [VideoSessionLocation](docs/VideoSessionLocation.md)
- - [VideoSessionOs](docs/VideoSessionOs.md)
- - [VideoSessionReferrer](docs/VideoSessionReferrer.md)
- - [VideoSessionSession](docs/VideoSessionSession.md)
- - [VideoSource](docs/VideoSource.md)
- - [VideoSourceLiveStream](docs/VideoSourceLiveStream.md)
- - [VideoSourceLiveStreamLink](docs/VideoSourceLiveStreamLink.md)
- - [VideoStatus](docs/VideoStatus.md)
- - [VideoStatusEncoding](docs/VideoStatusEncoding.md)
- - [VideoStatusEncodingMetadata](docs/VideoStatusEncodingMetadata.md)
- - [VideoStatusIngest](docs/VideoStatusIngest.md)
- - [VideoStatusIngestReceivedParts](docs/VideoStatusIngestReceivedParts.md)
- - [VideoThumbnailPickPayload](docs/VideoThumbnailPickPayload.md)
- - [VideoUpdatePayload](docs/VideoUpdatePayload.md)
- - [VideoWatermark](docs/VideoWatermark.md)
- - [VideosListResponse](docs/VideosListResponse.md)
- - [Watermark](docs/Watermark.md)
- - [WatermarksListResponse](docs/WatermarksListResponse.md)
- - [Webhook](docs/Webhook.md)
- - [WebhooksCreationPayload](docs/WebhooksCreationPayload.md)
- - [WebhooksListResponse](docs/WebhooksListResponse.md)
+ - [AccessToken](https://github.com/apivideo/api.video-java-client/blob/main/docs/AccessToken.md)
+ - [AdditionalBadRequestErrors](https://github.com/apivideo/api.video-java-client/blob/main/docs/AdditionalBadRequestErrors.md)
+ - [AnalyticsData](https://github.com/apivideo/api.video-java-client/blob/main/docs/AnalyticsData.md)
+ - [AnalyticsPlays400Error](https://github.com/apivideo/api.video-java-client/blob/main/docs/AnalyticsPlays400Error.md)
+ - [AnalyticsPlaysResponse](https://github.com/apivideo/api.video-java-client/blob/main/docs/AnalyticsPlaysResponse.md)
+ - [AuthenticatePayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/AuthenticatePayload.md)
+ - [BadRequest](https://github.com/apivideo/api.video-java-client/blob/main/docs/BadRequest.md)
+ - [BytesRange](https://github.com/apivideo/api.video-java-client/blob/main/docs/BytesRange.md)
+ - [Caption](https://github.com/apivideo/api.video-java-client/blob/main/docs/Caption.md)
+ - [CaptionsListResponse](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsListResponse.md)
+ - [CaptionsUpdatePayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsUpdatePayload.md)
+ - [Chapter](https://github.com/apivideo/api.video-java-client/blob/main/docs/Chapter.md)
+ - [ChaptersListResponse](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersListResponse.md)
+ - [Link](https://github.com/apivideo/api.video-java-client/blob/main/docs/Link.md)
+ - [LiveStream](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStream.md)
+ - [LiveStreamAssets](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamAssets.md)
+ - [LiveStreamCreationPayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamCreationPayload.md)
+ - [LiveStreamListResponse](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamListResponse.md)
+ - [LiveStreamSession](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamSession.md)
+ - [LiveStreamSessionClient](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamSessionClient.md)
+ - [LiveStreamSessionDevice](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamSessionDevice.md)
+ - [LiveStreamSessionLocation](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamSessionLocation.md)
+ - [LiveStreamSessionReferrer](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamSessionReferrer.md)
+ - [LiveStreamSessionSession](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamSessionSession.md)
+ - [LiveStreamUpdatePayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamUpdatePayload.md)
+ - [Metadata](https://github.com/apivideo/api.video-java-client/blob/main/docs/Metadata.md)
+ - [Model403ErrorSchema](https://github.com/apivideo/api.video-java-client/blob/main/docs/Model403ErrorSchema.md)
+ - [NotFound](https://github.com/apivideo/api.video-java-client/blob/main/docs/NotFound.md)
+ - [Pagination](https://github.com/apivideo/api.video-java-client/blob/main/docs/Pagination.md)
+ - [PaginationLink](https://github.com/apivideo/api.video-java-client/blob/main/docs/PaginationLink.md)
+ - [PlayerSessionEvent](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerSessionEvent.md)
+ - [PlayerTheme](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerTheme.md)
+ - [PlayerThemeAssets](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemeAssets.md)
+ - [PlayerThemeCreationPayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemeCreationPayload.md)
+ - [PlayerThemeUpdatePayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemeUpdatePayload.md)
+ - [PlayerThemesListResponse](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesListResponse.md)
+ - [Quality](https://github.com/apivideo/api.video-java-client/blob/main/docs/Quality.md)
+ - [RefreshTokenPayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/RefreshTokenPayload.md)
+ - [RestreamsRequestObject](https://github.com/apivideo/api.video-java-client/blob/main/docs/RestreamsRequestObject.md)
+ - [RestreamsResponseObject](https://github.com/apivideo/api.video-java-client/blob/main/docs/RestreamsResponseObject.md)
+ - [TokenCreationPayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/TokenCreationPayload.md)
+ - [TokenListResponse](https://github.com/apivideo/api.video-java-client/blob/main/docs/TokenListResponse.md)
+ - [UploadToken](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadToken.md)
+ - [Video](https://github.com/apivideo/api.video-java-client/blob/main/docs/Video.md)
+ - [VideoAssets](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoAssets.md)
+ - [VideoClip](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoClip.md)
+ - [VideoCreationPayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoCreationPayload.md)
+ - [VideoSession](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoSession.md)
+ - [VideoSessionClient](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoSessionClient.md)
+ - [VideoSessionDevice](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoSessionDevice.md)
+ - [VideoSessionLocation](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoSessionLocation.md)
+ - [VideoSessionOs](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoSessionOs.md)
+ - [VideoSessionReferrer](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoSessionReferrer.md)
+ - [VideoSessionSession](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoSessionSession.md)
+ - [VideoSource](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoSource.md)
+ - [VideoSourceLiveStream](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoSourceLiveStream.md)
+ - [VideoSourceLiveStreamLink](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoSourceLiveStreamLink.md)
+ - [VideoStatus](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoStatus.md)
+ - [VideoStatusEncoding](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoStatusEncoding.md)
+ - [VideoStatusEncodingMetadata](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoStatusEncodingMetadata.md)
+ - [VideoStatusIngest](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoStatusIngest.md)
+ - [VideoStatusIngestReceivedParts](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoStatusIngestReceivedParts.md)
+ - [VideoThumbnailPickPayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoThumbnailPickPayload.md)
+ - [VideoUpdatePayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoUpdatePayload.md)
+ - [VideoWatermark](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideoWatermark.md)
+ - [VideosListResponse](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosListResponse.md)
+ - [Watermark](https://github.com/apivideo/api.video-java-client/blob/main/docs/Watermark.md)
+ - [WatermarksListResponse](https://github.com/apivideo/api.video-java-client/blob/main/docs/WatermarksListResponse.md)
+ - [Webhook](https://github.com/apivideo/api.video-java-client/blob/main/docs/Webhook.md)
+ - [WebhooksCreationPayload](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksCreationPayload.md)
+ - [WebhooksListResponse](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksListResponse.md)
 
 
-## Documentation for Authorization
+### Documentation for Authorization
 
-### API key
+#### API key
 
 Most endpoints required to be authenticated using the API key mechanism described in our [documentation](https://docs.api.video/reference#authentication).
 The access token generation mechanism is automatically handled by the client. All you have to do is provide an API key when instantiating the `ApiVideoClient`:
@@ -410,23 +423,23 @@ ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
 ```
 
 
-### Public endpoints
+#### Public endpoints
 
 Some endpoints don't require authentication. These one can be called with a client instantiated without API key:
 ```java
 ApiVideoClient client = new ApiVideoClient();
 ```
 
-## Recommendation
+### Recommendation
 
 It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
 
-## Have you gotten use from this API client?
+### Have you gotten use from this API client?
 
 Please take a moment to leave a star on the client ⭐
 
 This helps other users to find the clients and also helps us understand which clients are most popular. Thank you!
 
-# Contribution
+## Contribution
 
 Since this API client is generated from an OpenAPI description, we cannot accept pull requests made directly to the repository. If you want to contribute, you can open a pull request on the repository of our [client generator](https://github.com/apivideo/api-client-generator). Otherwise, you can also simply open an issue detailing your need on this repository.
