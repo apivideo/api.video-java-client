@@ -42,6 +42,10 @@ public class Caption implements Serializable {
     @SerializedName(SERIALIZED_NAME_SRCLANG)
     private String srclang;
 
+    public static final String SERIALIZED_NAME_LANGUAGE_NAME = "languageName";
+    @SerializedName(SERIALIZED_NAME_LANGUAGE_NAME)
+    private String languageName;
+
     public static final String SERIALIZED_NAME_DEFAULT = "default";
     @SerializedName(SERIALIZED_NAME_DEFAULT)
     private Boolean _default = false;
@@ -52,12 +56,12 @@ public class Caption implements Serializable {
     }
 
     /**
-     * Get uri
+     * The unique resource identifier of the uploaded caption.
      * 
      * @return uri
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(example = "/videos/vi1111DinStg3oBbN79GklWS/captions/sr-Cyrl", value = "The unique resource identifier of the uploaded caption.")
 
     public String getUri() {
         return uri;
@@ -73,12 +77,12 @@ public class Caption implements Serializable {
     }
 
     /**
-     * Get src
+     * A direct URL to the uploaded caption file.
      * 
      * @return src
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(example = "https://cdn.api.video/vod/vi1111DinStg3oBbN79GklWS/captions/sr-Cyrl.vtt", value = "A direct URL to the uploaded caption file.")
 
     public String getSrc() {
         return src;
@@ -94,12 +98,12 @@ public class Caption implements Serializable {
     }
 
     /**
-     * Get srclang
+     * Indicates the language of the uploaded caption file using IETF language tags.
      * 
      * @return srclang
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(example = "sr-Cyrl", value = "Indicates the language of the uploaded caption file using IETF language tags.")
 
     public String getSrclang() {
         return srclang;
@@ -107,6 +111,27 @@ public class Caption implements Serializable {
 
     public void setSrclang(String srclang) {
         this.srclang = srclang;
+    }
+
+    public Caption languageName(String languageName) {
+        this.languageName = languageName;
+        return this;
+    }
+
+    /**
+     * Returns the native name of the caption language in UTF-8 encoding.
+     * 
+     * @return languageName
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "српски (ћирилица)", value = "Returns the native name of the caption language in UTF-8 encoding.")
+
+    public String getLanguageName() {
+        return languageName;
+    }
+
+    public void setLanguageName(String languageName) {
+        this.languageName = languageName;
     }
 
     public Caption _default(Boolean _default) {
@@ -141,12 +166,14 @@ public class Caption implements Serializable {
         }
         Caption caption = (Caption) o;
         return Objects.equals(this.uri, caption.uri) && Objects.equals(this.src, caption.src)
-                && Objects.equals(this.srclang, caption.srclang) && Objects.equals(this._default, caption._default);
+                && Objects.equals(this.srclang, caption.srclang)
+                && Objects.equals(this.languageName, caption.languageName)
+                && Objects.equals(this._default, caption._default);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uri, src, srclang, _default);
+        return Objects.hash(uri, src, srclang, languageName, _default);
     }
 
     @Override
@@ -156,6 +183,7 @@ public class Caption implements Serializable {
         sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
         sb.append("    src: ").append(toIndentedString(src)).append("\n");
         sb.append("    srclang: ").append(toIndentedString(srclang)).append("\n");
+        sb.append("    languageName: ").append(toIndentedString(languageName)).append("\n");
         sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
         sb.append("}");
         return sb.toString();
