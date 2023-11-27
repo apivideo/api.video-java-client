@@ -104,7 +104,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to add a caption to. (required)
      * @param language
-     *            A valid BCP 47 language representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param file
      *            The video text track (VTT) you want to upload. (required)
      * @param _callback
@@ -129,7 +137,7 @@ public class CaptionsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
-     *                        <td>Bad Request</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -204,7 +212,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to add a caption to. (required)
      * @param language
-     *            A valid BCP 47 language representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param file
      *            The video text track (VTT) you want to upload. (required)
      * 
@@ -227,7 +243,7 @@ public class CaptionsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
-     *                        <td>Bad Request</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -251,7 +267,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to add a caption to. (required)
      * @param language
-     *            A valid BCP 47 language representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param file
      *            The video text track (VTT) you want to upload. (required)
      * 
@@ -274,7 +298,7 @@ public class CaptionsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
-     *                        <td>Bad Request</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -298,7 +322,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to add a caption to. (required)
      * @param language
-     *            A valid BCP 47 language representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param file
      *            The video text track (VTT) you want to upload. (required)
      * @param _callback
@@ -323,7 +355,7 @@ public class CaptionsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
-     *                        <td>Bad Request</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -348,8 +380,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want captions for. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -368,6 +407,11 @@ public class CaptionsApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -436,8 +480,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want captions for. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * 
      * @return Caption
      * 
@@ -454,6 +505,11 @@ public class CaptionsApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -479,8 +535,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want captions for. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * 
      * @return ApiResponse&lt;Caption&gt;
      * 
@@ -497,6 +560,11 @@ public class CaptionsApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -522,8 +590,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want captions for. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * 
@@ -542,6 +617,11 @@ public class CaptionsApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -566,8 +646,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to have automatic captions for. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param captionsUpdatePayload
      *            (required)
      * @param _callback
@@ -592,7 +679,7 @@ public class CaptionsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
-     *                        <td>Bad Request</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -662,8 +749,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to have automatic captions for. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param captionsUpdatePayload
      *            (required)
      * 
@@ -686,7 +780,7 @@ public class CaptionsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
-     *                        <td>Bad Request</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -710,8 +804,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to have automatic captions for. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param captionsUpdatePayload
      *            (required)
      * 
@@ -734,7 +835,7 @@ public class CaptionsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
-     *                        <td>Bad Request</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -758,8 +859,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to have automatic captions for. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param captionsUpdatePayload
      *            (required)
      * @param _callback
@@ -784,7 +892,7 @@ public class CaptionsApi {
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
-     *                        <td>Bad Request</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -809,8 +917,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to delete a caption from. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param _callback
      *            Callback for upload/download progress
      * 
@@ -829,6 +944,11 @@ public class CaptionsApi {
      *                        <tr>
      *                        <td>204</td>
      *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -894,8 +1014,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to delete a caption from. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * 
      * @throws ApiException
      *             If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -910,6 +1037,11 @@ public class CaptionsApi {
      *                        <tr>
      *                        <td>204</td>
      *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -931,8 +1063,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to delete a caption from. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * 
      * @return ApiResponse&lt;Void&gt;
      * 
@@ -949,6 +1088,11 @@ public class CaptionsApi {
      *                        <tr>
      *                        <td>204</td>
      *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
@@ -969,8 +1113,15 @@ public class CaptionsApi {
      * @param videoId
      *            The unique identifier for the video you want to delete a caption from. (required)
      * @param language
-     *            A valid [BCP 47](https://github.com/libyal/libfwnt/wiki/Language-Code-identifiers) language
-     *            representation. (required)
+     *            A valid language identifier using IETF language tags. You can use primary subtags like &#x60;en&#x60;
+     *            (English), extended subtags like &#x60;fr-CA&#x60; (French, Canada), or region subtags like
+     *            &#x60;zh-Hans-CN&#x60; (Simplified Chinese used in the PRC). - This parameter **only accepts dashes
+     *            for separators**, for example &#x60;fr-CA&#x60;. If you use a different separator in your request, the
+     *            API returns an error. - When the value in your request does not match any covered language, the API
+     *            returns an error. - This endpoint uses [Symfony](https://symfony.com) to reference the list of
+     *            supported language tags. You can find the list of supported tags
+     *            [here](https://github.com/symfony/symfony/blob/6.3/src/Symfony/Component/Intl/Resources/data/locales/meta.php).
+     *            (required)
      * @param _callback
      *            The callback to be executed when the API call finishes
      * 
@@ -989,6 +1140,11 @@ public class CaptionsApi {
      *                        <tr>
      *                        <td>204</td>
      *                        <td>No Content</td>
+     *                        <td>-</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad request error</td>
      *                        <td>-</td>
      *                        </tr>
      *                        <tr>
