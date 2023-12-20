@@ -960,10 +960,11 @@ public class LiveStreamsApi {
          * Set sortBy
          * 
          * @param sortBy
-         *            Allowed: createdAt, publishedAt, name. createdAt - the time a livestream was created using the
-         *            specified streamKey. publishedAt - the time a livestream was published using the specified
-         *            streamKey. name - the name of the livestream. If you choose one of the time based options, the
-         *            time is presented in ISO-8601 format. (optional)
+         *            Enables you to sort live stream results. Allowed attributes: &#x60;name&#x60;,
+         *            &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. &#x60;name&#x60; - the name of the live stream.
+         *            &#x60;createdAt&#x60; - the time a live stream was created. &#x60;updatedAt&#x60; - the time a
+         *            live stream was last updated. When using &#x60;createdAt&#x60; or &#x60;updatedAt&#x60;, the API
+         *            sorts the results based on the ISO-8601 time format. (optional)
          * 
          * @return APIlistRequest
          */
