@@ -29,12 +29,15 @@ if(hasProperty('target') && target == 'android') {
     apply from: 'maven-push.gradle'
 
     android {
-        compileSdkVersion 33
-        buildToolsVersion '30.0.3'
+        compileSdk 34
+
         defaultConfig {
-            minSdkVersion 21
-            targetSdkVersion 33
+            minSdk 21
+            targetSdk 34
+
             multiDexEnabled true
+
+            consumerProguardFiles 'consumer-rules.pro'
 
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             testInstrumentationRunnerArgument("runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder")
@@ -45,6 +48,12 @@ if(hasProperty('target') && target == 'android') {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
         }
+
+        kotlinOptions {
+            jvmTarget = '1.8'
+        }
+
+        namespace "video.api.client.api"
     }
 
 } else {
@@ -79,15 +88,15 @@ if(hasProperty('target') && target == 'android') {
 dependencies {
     implementation 'io.swagger:swagger-annotations:1.5.24'
     implementation "com.google.code.findbugs:jsr305:3.0.2"
-    api 'com.squareup.okhttp3:okhttp:4.10.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
-    implementation 'com.google.code.gson:gson:2.8.9'
-    implementation 'io.gsonfire:gson-fire:1.8.4'
-    implementation 'org.openapitools:jackson-databind-nullable:0.2.1'
+    api 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'io.gsonfire:gson-fire:1.9.0'
+    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.mockito:mockito-core:3.12.4'
+    testImplementation 'org.mockito:mockito-core:5.7.0'
     testImplementation 'org.assertj:assertj-core:3.19.0'
 }
 
