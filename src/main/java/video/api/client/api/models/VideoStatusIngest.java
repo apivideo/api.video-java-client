@@ -44,6 +44,8 @@ public class VideoStatusIngest implements Serializable {
         MISSING("missing"),
 
         UPLOADING("uploading"),
+        
+        INGESTED("ingested"),
 
         UPLOADED("uploaded");
 
