@@ -36,16 +36,20 @@ public class VideoStatusIngest implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * There are three possible ingest statuses. missing - you are missing information required to ingest the video.
-     * uploading - the video is in the process of being uploaded. uploaded - the video is ready for use.
+     * There are four possible statuses depending on how you provide a video file: - &#x60;uploading&#x60; - the API is
+     * gathering the video source file from an upload. - &#x60;uploaded&#x60; - the video file is fully uploaded. -
+     * &#x60;ingesting&#x60; - the API is gathering the video source file from either a URL, or from cloning. -
+     * &#x60;ingested&#x60; - the video file is fully stored.
      */
     @JsonAdapter(StatusEnum.Adapter.class)
     public enum StatusEnum {
-        MISSING("missing"),
-
         UPLOADING("uploading"),
 
-        UPLOADED("uploaded");
+        UPLOADED("uploaded"),
+
+        INGESTING("ingesting"),
+
+        INGESTED("ingested");
 
         private String value;
 
@@ -107,13 +111,15 @@ public class VideoStatusIngest implements Serializable {
     }
 
     /**
-     * There are three possible ingest statuses. missing - you are missing information required to ingest the video.
-     * uploading - the video is in the process of being uploaded. uploaded - the video is ready for use.
+     * There are four possible statuses depending on how you provide a video file: - &#x60;uploading&#x60; - the API is
+     * gathering the video source file from an upload. - &#x60;uploaded&#x60; - the video file is fully uploaded. -
+     * &#x60;ingesting&#x60; - the API is gathering the video source file from either a URL, or from cloning. -
+     * &#x60;ingested&#x60; - the video file is fully stored.
      * 
      * @return status
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "uploaded", value = "There are three possible ingest statuses. missing - you are missing information required to ingest the video. uploading - the video is in the process of being uploaded. uploaded - the video is ready for use.")
+    @ApiModelProperty(example = "uploaded", value = "There are four possible statuses depending on how you provide a video file: - `uploading` - the API is gathering the video source file from an upload. - `uploaded` - the video file is fully uploaded. - `ingesting` - the API is gathering the video source file from either a URL, or from cloning. - `ingested` - the video file is fully stored. ")
 
     public StatusEnum getStatus() {
         return status;

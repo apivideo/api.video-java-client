@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [1.3.2] - 2024-02-19
+- Update VideoStatusIngest enum
+
 ## [1.3.1] - 2023-08-10
 - Fix upload with upload token and video id when video is smaller than chunk size
 
