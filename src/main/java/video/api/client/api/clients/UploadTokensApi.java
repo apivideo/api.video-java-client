@@ -19,6 +19,7 @@ import video.api.client.api.models.BadRequest;
 import video.api.client.api.models.NotFound;
 import video.api.client.api.models.TokenCreationPayload;
 import video.api.client.api.models.TokenListResponse;
+import video.api.client.api.models.TooManyRequests;
 import video.api.client.api.models.UploadToken;
 
 import java.lang.reflect.Type;
@@ -120,12 +121,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
      *                        <td>Bad Request</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -193,12 +214,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
      *                        <td>Bad Request</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -231,12 +272,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
      *                        <td>Bad Request</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -272,12 +333,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>400</td>
      *                        <td>Bad Request</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -313,12 +394,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>404</td>
      *                        <td>Not Found</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -387,12 +488,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>404</td>
      *                        <td>Not Found</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -424,12 +545,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>404</td>
      *                        <td>Not Found</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -463,12 +604,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>404</td>
      *                        <td>Not Found</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -505,12 +666,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>204</td>
      *                        <td>No Content</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>404</td>
      *                        <td>Not Found</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -578,12 +759,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>204</td>
      *                        <td>No Content</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>404</td>
      *                        <td>Not Found</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -615,12 +816,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>204</td>
      *                        <td>No Content</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>404</td>
      *                        <td>Not Found</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -654,12 +875,32 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>204</td>
      *                        <td>No Content</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        <tr>
      *                        <td>404</td>
      *                        <td>Not Found</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
@@ -823,7 +1064,22 @@ public class UploadTokensApi {
          *                        <tr>
          *                        <td>200</td>
          *                        <td>Success</td>
-         *                        <td>-</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>429</td>
+         *                        <td>Too Many Requests</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
          *                        </tr>
          *                        </table>
          */
@@ -849,7 +1105,22 @@ public class UploadTokensApi {
          *                        <tr>
          *                        <td>200</td>
          *                        <td>Success</td>
-         *                        <td>-</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>429</td>
+         *                        <td>Too Many Requests</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
          *                        </tr>
          *                        </table>
          */
@@ -891,7 +1162,22 @@ public class UploadTokensApi {
          *                        <tr>
          *                        <td>200</td>
          *                        <td>Success</td>
-         *                        <td>-</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>429</td>
+         *                        <td>Too Many Requests</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
          *                        </tr>
          *                        </table>
          */
@@ -920,7 +1206,22 @@ public class UploadTokensApi {
          *                        <tr>
          *                        <td>200</td>
          *                        <td>Success</td>
-         *                        <td>-</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>429</td>
+         *                        <td>Too Many Requests</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
          *                        </tr>
          *                        </table>
          */
@@ -975,7 +1276,22 @@ public class UploadTokensApi {
      *                        <tr>
      *                        <td>200</td>
      *                        <td>Success</td>
-     *                        <td>-</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
      *                        </tr>
      *                        </table>
      */
