@@ -13,6 +13,8 @@ Method | HTTP request | Description
 <a name="createToken"></a>
 # **createToken**
 > UploadToken createToken(tokenCreationPayload)
+> okhttp3.Call createTokenAsync(tokenCreationPayload, callback)
+> ApiResponse<UploadToken> createTokenWithHttpInfo(tokenCreationPayload)
 
 Generate an upload token
 
@@ -83,6 +85,8 @@ Name | Type | Description  | Notes
 <a name="getToken"></a>
 # **getToken**
 > UploadToken getToken(uploadToken)
+> okhttp3.Call getTokenAsync(uploadToken, callback)
+> ApiResponse<UploadToken> getTokenWithHttpInfo(uploadToken)
 
 Retrieve upload token
 
@@ -151,6 +155,8 @@ Name | Type | Description  | Notes
 <a name="deleteToken"></a>
 # **deleteToken**
 > deleteToken(uploadToken)
+> okhttp3.Call deleteTokenAsync(uploadToken, callback)
+> ApiResponse<Void> deleteTokenWithHttpInfo(uploadToken)
 
 Delete an upload token
 
@@ -217,7 +223,9 @@ null (empty response body)
 
 <a name="list"></a>
 # **list**
-> TokenListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
+> TokenListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<TokenListResponse> executeWithHttpInfo()
 
 List all active upload tokens
 

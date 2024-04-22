@@ -10,7 +10,9 @@ Method | HTTP request | Description
 
 <a name="getLiveStreamsPlays"></a>
 # **getLiveStreamsPlays**
-> AnalyticsPlaysResponse getLiveStreamsPlays(from, dimension).to(to).filter(filter).currentPage(currentPage).pageSize(pageSize).execute();
+> AnalyticsPlaysResponse getLiveStreamsPlays(from, dimension).to(to).filter(filter).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<AnalyticsPlaysResponse> executeWithHttpInfo()
 
 Get play events for live stream
 
@@ -95,7 +97,9 @@ Name | Type | Description  | Notes
 
 <a name="getVideosPlays"></a>
 # **getVideosPlays**
-> AnalyticsPlaysResponse getVideosPlays(from, dimension).to(to).filter(filter).currentPage(currentPage).pageSize(pageSize).execute();
+> AnalyticsPlaysResponse getVideosPlays(from, dimension).to(to).filter(filter).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<AnalyticsPlaysResponse> executeWithHttpInfo()
 
 Get play events for video
 

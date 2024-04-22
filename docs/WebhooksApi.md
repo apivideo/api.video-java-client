@@ -13,6 +13,8 @@ Method | HTTP request | Description
 <a name="create"></a>
 # **create**
 > Webhook create(webhooksCreationPayload)
+> okhttp3.Call createAsync(webhooksCreationPayload, callback)
+> ApiResponse<Webhook> createWithHttpInfo(webhooksCreationPayload)
 
 Create Webhook
 
@@ -88,6 +90,8 @@ Name | Type | Description  | Notes
 <a name="get"></a>
 # **get**
 > Webhook get(webhookId)
+> okhttp3.Call getAsync(webhookId, callback)
+> ApiResponse<Webhook> getWithHttpInfo(webhookId)
 
 Retrieve Webhook details
 
@@ -155,6 +159,8 @@ Name | Type | Description  | Notes
 <a name="delete"></a>
 # **delete**
 > delete(webhookId)
+> okhttp3.Call deleteAsync(webhookId, callback)
+> ApiResponse<Void> deleteWithHttpInfo(webhookId)
 
 Delete a Webhook
 
@@ -221,7 +227,9 @@ null (empty response body)
 
 <a name="list"></a>
 # **list**
-> WebhooksListResponse list().events(events).currentPage(currentPage).pageSize(pageSize).execute();
+> WebhooksListResponse list().events(events).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<WebhooksListResponse> executeWithHttpInfo()
 
 List all webhooks
 

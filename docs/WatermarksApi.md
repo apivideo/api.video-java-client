@@ -12,6 +12,8 @@ Method | HTTP request | Description
 <a name="upload"></a>
 # **upload**
 > Watermark upload(file)
+> okhttp3.Call uploadAsync(file, callback)
+> ApiResponse<Watermark> uploadWithHttpInfo(file)
 
 Upload a watermark
 
@@ -80,6 +82,8 @@ Name | Type | Description  | Notes
 <a name="delete"></a>
 # **delete**
 > delete(watermarkId)
+> okhttp3.Call deleteAsync(watermarkId, callback)
+> ApiResponse<Void> deleteWithHttpInfo(watermarkId)
 
 Delete a watermark
 
@@ -146,7 +150,9 @@ null (empty response body)
 
 <a name="list"></a>
 # **list**
-> WatermarksListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
+> WatermarksListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<WatermarksListResponse> executeWithHttpInfo()
 
 List all watermarks
 

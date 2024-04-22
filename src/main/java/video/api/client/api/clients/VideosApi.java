@@ -870,7 +870,7 @@ public class VideosApi {
         return uploadWithHttpInfo(videoId, file, null);
     }
 
-    public ApiResponse<Video> uploadPartWithHttpInfo(String videoId, File file, Integer part, boolean isLast,
+    private ApiResponse<Video> uploadPartWithHttpInfoInternal(String videoId, File file, Integer part, boolean isLast,
             UploadPartProgressListener uploadProgressListener) throws ApiException {
         long fileSize = file.length();
         okhttp3.Call localVarCall = uploadChunkValidateBeforeCall(videoId, file, 0, fileSize, fileSize,
@@ -940,10 +940,17 @@ public class VideosApi {
         @Override
         public Video uploadPart(File part, Integer partId, boolean isLastPart,
                 UploadPartProgressListener uploadProgressListener) throws ApiException {
-            ApiResponse<Video> localVarResp = uploadPartWithHttpInfo(this.videoId, part, partId, isLastPart,
+            ApiResponse<Video> localVarResp = uploadPartWithHttpInfo(part, partId, isLastPart, uploadProgressListener);
+            return localVarResp.getData();
+        }
+
+        @Override
+        public ApiResponse<Video> uploadPartWithHttpInfo(File part, Integer partId, boolean isLastPart,
+                UploadPartProgressListener uploadProgressListener) throws ApiException {
+            ApiResponse<Video> localVarResp = uploadPartWithHttpInfoInternal(this.videoId, part, partId, isLastPart,
                     uploadProgressListener);
 
-            return localVarResp.getData();
+            return localVarResp;
         }
     }
 
@@ -1523,7 +1530,7 @@ public class VideosApi {
         return uploadWithUploadTokenWithHttpInfo(token, file, null, null);
     }
 
-    public ApiResponse<Video> uploadWithUploadTokenPartWithHttpInfo(String token, File file, String videoId,
+    private ApiResponse<Video> uploadWithUploadTokenPartWithHttpInfoInternal(String token, File file, String videoId,
             Integer part, boolean isLast, UploadPartProgressListener uploadProgressListener) throws ApiException {
         long fileSize = file.length();
         okhttp3.Call localVarCall = uploadWithUploadTokenChunkValidateBeforeCall(token, file, videoId, 0, fileSize,
@@ -1599,12 +1606,19 @@ public class VideosApi {
         @Override
         public Video uploadPart(File part, Integer partId, boolean isLastPart,
                 UploadPartProgressListener uploadProgressListener) throws ApiException {
-            ApiResponse<Video> localVarResp = uploadWithUploadTokenPartWithHttpInfo(this.token, part, this.videoId,
-                    partId, isLastPart, uploadProgressListener);
+            ApiResponse<Video> localVarResp = uploadPartWithHttpInfo(part, partId, isLastPart, uploadProgressListener);
+            return localVarResp.getData();
+        }
+
+        @Override
+        public ApiResponse<Video> uploadPartWithHttpInfo(File part, Integer partId, boolean isLastPart,
+                UploadPartProgressListener uploadProgressListener) throws ApiException {
+            ApiResponse<Video> localVarResp = uploadWithUploadTokenPartWithHttpInfoInternal(this.token, part,
+                    this.videoId, partId, isLastPart, uploadProgressListener);
             if (this.videoId == null) {
                 this.videoId = localVarResp.getData().getVideoId();
             }
-            return localVarResp.getData();
+            return localVarResp;
         }
     }
 
