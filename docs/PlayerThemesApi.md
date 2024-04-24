@@ -16,6 +16,8 @@ Method | HTTP request | Description
 <a name="create"></a>
 # **create**
 > PlayerTheme create(playerThemeCreationPayload)
+> okhttp3.Call createAsync(playerThemeCreationPayload, callback)
+> ApiResponse<PlayerTheme> createWithHttpInfo(playerThemeCreationPayload)
 
 Create a player
 
@@ -100,6 +102,8 @@ Name | Type | Description  | Notes
 <a name="get"></a>
 # **get**
 > PlayerTheme get(playerId)
+> okhttp3.Call getAsync(playerId, callback)
+> ApiResponse<PlayerTheme> getWithHttpInfo(playerId)
 
 Retrieve a player
 
@@ -168,6 +172,8 @@ Name | Type | Description  | Notes
 <a name="update"></a>
 # **update**
 > PlayerTheme update(playerId, playerThemeUpdatePayload)
+> okhttp3.Call updateAsync(playerId, playerThemeUpdatePayload, callback)
+> ApiResponse<PlayerTheme> updateWithHttpInfo(playerId, playerThemeUpdatePayload)
 
 Update a player
 
@@ -255,6 +261,8 @@ Name | Type | Description  | Notes
 <a name="delete"></a>
 # **delete**
 > delete(playerId)
+> okhttp3.Call deleteAsync(playerId, callback)
+> ApiResponse<Void> deleteWithHttpInfo(playerId)
 
 Delete a player
 
@@ -321,7 +329,9 @@ null (empty response body)
 
 <a name="list"></a>
 # **list**
-> PlayerThemesListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
+> PlayerThemesListResponse list().sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<PlayerThemesListResponse> executeWithHttpInfo()
 
 List all player themes
 
@@ -401,6 +411,8 @@ Name | Type | Description  | Notes
 <a name="uploadLogo"></a>
 # **uploadLogo**
 > PlayerTheme uploadLogo(playerId, file, link)
+> okhttp3.Call uploadLogoAsync(playerId, file, link, callback)
+> ApiResponse<PlayerTheme> uploadLogoWithHttpInfo(playerId, file, link)
 
 Upload a logo
 
@@ -474,6 +486,8 @@ Name | Type | Description  | Notes
 <a name="deleteLogo"></a>
 # **deleteLogo**
 > deleteLogo(playerId)
+> okhttp3.Call deleteLogoAsync(playerId, callback)
+> ApiResponse<Void> deleteLogoWithHttpInfo(playerId)
 
 Delete logo
 

@@ -16,6 +16,8 @@ Method | HTTP request | Description
 <a name="create"></a>
 # **create**
 > LiveStream create(liveStreamCreationPayload)
+> okhttp3.Call createAsync(liveStreamCreationPayload, callback)
+> ApiResponse<LiveStream> createWithHttpInfo(liveStreamCreationPayload)
 
 Create live stream
 
@@ -89,6 +91,8 @@ Name | Type | Description  | Notes
 <a name="get"></a>
 # **get**
 > LiveStream get(liveStreamId)
+> okhttp3.Call getAsync(liveStreamId, callback)
+> ApiResponse<LiveStream> getWithHttpInfo(liveStreamId)
 
 Retrieve live stream
 
@@ -156,6 +160,8 @@ Name | Type | Description  | Notes
 <a name="update"></a>
 # **update**
 > LiveStream update(liveStreamId, liveStreamUpdatePayload)
+> okhttp3.Call updateAsync(liveStreamId, liveStreamUpdatePayload, callback)
+> ApiResponse<LiveStream> updateWithHttpInfo(liveStreamId, liveStreamUpdatePayload)
 
 Update a live stream
 
@@ -231,6 +237,8 @@ Name | Type | Description  | Notes
 <a name="delete"></a>
 # **delete**
 > delete(liveStreamId)
+> okhttp3.Call deleteAsync(liveStreamId, callback)
+> ApiResponse<Void> deleteWithHttpInfo(liveStreamId)
 
 Delete a live stream
 
@@ -296,7 +304,9 @@ null (empty response body)
 
 <a name="list"></a>
 # **list**
-> LiveStreamListResponse list().streamKey(streamKey).name(name).sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
+> LiveStreamListResponse list().streamKey(streamKey).name(name).sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<LiveStreamListResponse> executeWithHttpInfo()
 
 List all live streams
 
@@ -381,6 +391,8 @@ Name | Type | Description  | Notes
 <a name="uploadThumbnail"></a>
 # **uploadThumbnail**
 > LiveStream uploadThumbnail(liveStreamId, file)
+> okhttp3.Call uploadThumbnailAsync(liveStreamId, file, callback)
+> ApiResponse<LiveStream> uploadThumbnailWithHttpInfo(liveStreamId, file)
 
 Upload a thumbnail
 
@@ -452,6 +464,8 @@ Name | Type | Description  | Notes
 <a name="deleteThumbnail"></a>
 # **deleteThumbnail**
 > LiveStream deleteThumbnail(liveStreamId)
+> okhttp3.Call deleteThumbnailAsync(liveStreamId, callback)
+> ApiResponse<LiveStream> deleteThumbnailWithHttpInfo(liveStreamId)
 
 Delete a thumbnail
 

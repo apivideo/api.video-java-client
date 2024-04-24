@@ -19,6 +19,8 @@ Method | HTTP request | Description
 <a name="create"></a>
 # **create**
 > Video create(videoCreationPayload)
+> okhttp3.Call createAsync(videoCreationPayload, callback)
+> ApiResponse<Video> createWithHttpInfo(videoCreationPayload)
 
 Create a video object
 
@@ -100,6 +102,7 @@ Name | Type | Description  | Notes
 <a name="upload"></a>
 # **upload**
 > Video upload(videoId, file)
+> ApiResponse<Video> uploadWithHttpInfo(videoId, file)
 
 Upload a video
 
@@ -216,6 +219,7 @@ Video result = session.uploadLastPart(new File("sample.mp4.partn"));
 <a name="uploadWithUploadToken"></a>
 # **uploadWithUploadToken**
 > Video uploadWithUploadToken(token, file)
+> ApiResponse<Video> uploadWithUploadTokenWithHttpInfo(token, file)
 
 Upload with an delegated upload token
 
@@ -313,6 +317,8 @@ No authorization required
 <a name="get"></a>
 # **get**
 > Video get(videoId)
+> okhttp3.Call getAsync(videoId, callback)
+> ApiResponse<Video> getWithHttpInfo(videoId)
 
 Retrieve a video object
 
@@ -381,6 +387,8 @@ Name | Type | Description  | Notes
 <a name="update"></a>
 # **update**
 > Video update(videoId, videoUpdatePayload)
+> okhttp3.Call updateAsync(videoId, videoUpdatePayload, callback)
+> ApiResponse<Video> updateWithHttpInfo(videoId, videoUpdatePayload)
 
 Update a video object
 
@@ -467,6 +475,8 @@ Name | Type | Description  | Notes
 <a name="delete"></a>
 # **delete**
 > delete(videoId)
+> okhttp3.Call deleteAsync(videoId, callback)
+> ApiResponse<Void> deleteWithHttpInfo(videoId)
 
 Delete a video object
 
@@ -533,7 +543,9 @@ null (empty response body)
 
 <a name="list"></a>
 # **list**
-> VideosListResponse list().title(title).tags(tags).metadata(metadata).description(description).liveStreamId(liveStreamId).sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute();
+> VideosListResponse list().title(title).tags(tags).metadata(metadata).description(description).liveStreamId(liveStreamId).sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<VideosListResponse> executeWithHttpInfo()
 
 List all video objects
 
@@ -628,6 +640,8 @@ Name | Type | Description  | Notes
 <a name="uploadThumbnail"></a>
 # **uploadThumbnail**
 > Video uploadThumbnail(videoId, file)
+> okhttp3.Call uploadThumbnailAsync(videoId, file, callback)
+> ApiResponse<Video> uploadThumbnailWithHttpInfo(videoId, file)
 
 Upload a thumbnail
 
@@ -711,6 +725,8 @@ Name | Type | Description  | Notes
 <a name="pickThumbnail"></a>
 # **pickThumbnail**
 > Video pickThumbnail(videoId, videoThumbnailPickPayload)
+> okhttp3.Call pickThumbnailAsync(videoId, videoThumbnailPickPayload, callback)
+> ApiResponse<Video> pickThumbnailWithHttpInfo(videoId, videoThumbnailPickPayload)
 
 Set a thumbnail
 
@@ -799,6 +815,8 @@ Name | Type | Description  | Notes
 <a name="getStatus"></a>
 # **getStatus**
 > VideoStatus getStatus(videoId)
+> okhttp3.Call getStatusAsync(videoId, callback)
+> ApiResponse<VideoStatus> getStatusWithHttpInfo(videoId)
 
 Retrieve video status and details
 
