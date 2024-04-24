@@ -11,6 +11,8 @@ Method | HTTP request | Description
 <a name="authenticate"></a>
 # **authenticate**
 > AccessToken authenticate(authenticatePayload)
+> okhttp3.Call authenticateAsync(authenticatePayload, callback)
+> ApiResponse<AccessToken> authenticateWithHttpInfo(authenticatePayload)
 
 Get Bearer Token
 
@@ -80,6 +82,8 @@ No authorization required
 <a name="refresh"></a>
 # **refresh**
 > AccessToken refresh(refreshTokenPayload)
+> okhttp3.Call refreshAsync(refreshTokenPayload, callback)
+> ApiResponse<AccessToken> refreshWithHttpInfo(refreshTokenPayload)
 
 Refresh Bearer Token
 

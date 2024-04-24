@@ -14,6 +14,8 @@ Method | HTTP request | Description
 <a name="upload"></a>
 # **upload**
 > Caption upload(videoId, language, file)
+> okhttp3.Call uploadAsync(videoId, language, file, callback)
+> ApiResponse<Caption> uploadWithHttpInfo(videoId, language, file)
 
 Upload a caption
 
@@ -87,6 +89,8 @@ Name | Type | Description  | Notes
 <a name="get"></a>
 # **get**
 > Caption get(videoId, language)
+> okhttp3.Call getAsync(videoId, language, callback)
+> ApiResponse<Caption> getWithHttpInfo(videoId, language)
 
 Retrieve a caption
 
@@ -160,6 +164,8 @@ Name | Type | Description  | Notes
 <a name="update"></a>
 # **update**
 > Caption update(videoId, language, captionsUpdatePayload)
+> okhttp3.Call updateAsync(videoId, language, captionsUpdatePayload, callback)
+> ApiResponse<Caption> updateWithHttpInfo(videoId, language, captionsUpdatePayload)
 
 Update a caption
 
@@ -235,6 +241,8 @@ Name | Type | Description  | Notes
 <a name="delete"></a>
 # **delete**
 > delete(videoId, language)
+> okhttp3.Call deleteAsync(videoId, language, callback)
+> ApiResponse<Void> deleteWithHttpInfo(videoId, language)
 
 Delete a caption
 
@@ -304,7 +312,9 @@ null (empty response body)
 
 <a name="list"></a>
 # **list**
-> CaptionsListResponse list(videoId).currentPage(currentPage).pageSize(pageSize).execute();
+> CaptionsListResponse list(videoId).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<CaptionsListResponse> executeWithHttpInfo()
 
 List video captions
 

@@ -412,7 +412,25 @@ Method | HTTP request | Description
  - [WebhooksListResponse](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksListResponse.md)
 
 
-### Documentation for Authorization
+### Rate Limiting
+
+api.video implements rate limiting to ensure fair usage and stability of the service. The API provides the rate limit values in the response headers for any API requests you make. The /auth endpoint is the only route without rate limitation.
+
+In this client, you can access these headers by using the `*WithHttpInfo()` or `*Async` versions of the methods. These methods return the `ApiResponse` that contains the response body and the headers, allowing you to check the `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Retry-After` headers to understand your current rate limit status.
+Read more about these response headers in the [API reference](https://docs.api.video/reference#limitation).
+
+Here is an example of how to use these methods:
+
+```java
+ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+ApiResponse<Video> response = client.videos().uploadWithUploadTokenWithHttpInfo("YOUR_UPLOAD_TOKEN", File("my-video.mp4"));
+Map<String, List<String>> headers = response.getHeaders();
+System.out.println("X-RateLimit-Limit: " + headers.get("X-RateLimit-Limit").get(0));
+System.out.println("X-RateLimit-Remaining: " + headers.get("X-RateLimit-Remaining").get(0));
+System.out.println("X-RateLimit-Retry-After: " + headers.get("X-RateLimit-Retry-After").get(0));
+```
+
+### Authorization
 
 #### API key
 

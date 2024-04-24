@@ -13,6 +13,8 @@ Method | HTTP request | Description
 <a name="upload"></a>
 # **upload**
 > Chapter upload(videoId, language, file)
+> okhttp3.Call uploadAsync(videoId, language, file, callback)
+> ApiResponse<Chapter> uploadWithHttpInfo(videoId, language, file)
 
 Upload a chapter
 
@@ -86,6 +88,8 @@ Name | Type | Description  | Notes
 <a name="get"></a>
 # **get**
 > Chapter get(videoId, language)
+> okhttp3.Call getAsync(videoId, language, callback)
+> ApiResponse<Chapter> getWithHttpInfo(videoId, language)
 
 Retrieve a chapter
 
@@ -156,6 +160,8 @@ Name | Type | Description  | Notes
 <a name="delete"></a>
 # **delete**
 > delete(videoId, language)
+> okhttp3.Call deleteAsync(videoId, language, callback)
+> ApiResponse<Void> deleteWithHttpInfo(videoId, language)
 
 Delete a chapter
 
@@ -224,7 +230,9 @@ null (empty response body)
 
 <a name="list"></a>
 # **list**
-> ChaptersListResponse list(videoId).currentPage(currentPage).pageSize(pageSize).execute();
+> ChaptersListResponse list(videoId).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<ChaptersListResponse> executeWithHttpInfo()
 
 List video chapters
 
