@@ -1,6 +1,9 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [1.3.3] - 2024-04-25
+- Add API to get rate limiting headers
+
 ## [1.3.2] - 2024-02-19
 - Update VideoStatusIngest enum
 
