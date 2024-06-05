@@ -453,7 +453,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -735,7 +735,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -1145,7 +1145,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -1515,7 +1515,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -1673,7 +1673,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -1936,7 +1936,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -2125,7 +2125,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -2425,7 +2425,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -2643,7 +2643,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -2876,7 +2876,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -3171,7 +3171,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -3482,7 +3482,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -3747,7 +3747,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -3993,7 +3993,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -4193,7 +4193,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -4419,7 +4419,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -4692,7 +4692,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -4961,7 +4961,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -5282,7 +5282,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -5480,7 +5480,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -5673,7 +5673,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -5971,7 +5971,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -6257,7 +6257,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -6500,7 +6500,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -6796,7 +6796,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -7096,7 +7096,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -7419,7 +7419,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -7725,7 +7725,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -8021,7 +8021,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -8267,7 +8267,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -8506,7 +8506,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -8786,7 +8786,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -9073,7 +9073,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -9418,7 +9418,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -9654,7 +9654,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -9941,7 +9941,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -10183,7 +10183,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -10411,7 +10411,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -10686,7 +10686,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -10951,7 +10951,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -11121,8 +11121,11 @@ paths:
       x-accepts: application/json
   /analytics/videos/plays:
     get:
-      description: Retrieve filtered analytics about the number of plays for your
-        videos in a project.
+      deprecated: true
+      description: |
+        Retrieve filtered analytics about the number of plays for your videos in a project.
+
+        This endpoint will be deprecated with the release of Analytics v2.0.
       operationId: GET_analytics-videos-plays
       parameters:
       - description: |
@@ -11464,7 +11467,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -11804,8 +11807,11 @@ paths:
       x-accepts: application/json
   /analytics/live-streams/plays:
     get:
-      description: Retrieve filtered analytics about the number of plays for your
-        live streams in a project.
+      deprecated: true
+      description: |
+        Retrieve filtered analytics about the number of plays for your live streams in a project.
+
+        This endpoint will be deprecated with the release of Analytics v2.0.
       operationId: GET_analytics-live-streams-plays
       parameters:
       - description: |
@@ -12145,7 +12151,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -12579,7 +12585,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -12839,7 +12845,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -13072,7 +13078,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -13266,7 +13272,7 @@ paths:
           content:
             application/json:
               examples:
-                response:
+                Too many requests:
                   value:
                     type: https://docs.api.video/reference/too-many-requests
                     title: Too many requests.
@@ -14063,47 +14069,6 @@ components:
           type: boolean
       title: Caption
       type: object
-    video-session:
-      example:
-        session:
-          sessionId: psEmFwGQUAXR2lFHj5nDOpy
-          loadedAt: 2019-06-24T11:45:01.109Z
-          endedAt: 2019-06-24T11:49:19.243Z
-        location:
-          country: France
-          city: Paris
-        referrer:
-          url: https://api.video
-          medium: organic
-          source: https://google.com
-          searchTerm: video encoding hosting and delivery
-        device:
-          type: desktop
-          vendor: Dell
-          model: unknown
-        os:
-          name: Microsoft Windows
-          shortname: W10
-          version: Windows10
-        client:
-          type: browser
-          name: Firefox
-          version: "67.0"
-      properties:
-        session:
-          $ref: '#/components/schemas/video-session-session'
-        location:
-          $ref: '#/components/schemas/video-session-location'
-        referrer:
-          $ref: '#/components/schemas/video-session-referrer'
-        device:
-          $ref: '#/components/schemas/video-session-device'
-        os:
-          $ref: '#/components/schemas/video-session-os'
-        client:
-          $ref: '#/components/schemas/video-session-client'
-      title: VideoSession
-      type: object
     live-stream:
       example:
         streamKey: dw-dew8-q6w9-k67w-1ws8
@@ -14178,22 +14143,6 @@ components:
       - liveStreamId
       - restreams
       title: LiveStream
-      type: object
-    live-stream-session:
-      properties:
-        session:
-          $ref: '#/components/schemas/live-stream-session-session'
-        location:
-          $ref: '#/components/schemas/live-stream-session-location'
-        referrer:
-          $ref: '#/components/schemas/live-stream-session-referrer'
-        device:
-          $ref: '#/components/schemas/live-stream-session-device'
-        os:
-          $ref: '#/components/schemas/video-session-os'
-        client:
-          $ref: '#/components/schemas/live-stream-session-client'
-      title: LiveStreamSession
       type: object
     player-session-event:
       properties:
@@ -15232,6 +15181,19 @@ components:
           description: The name of the parameter that caused the error.
           type: string
       type: object
+    unrecognized-request-url:
+      properties:
+        type:
+          description: A link to the error documentation.
+          type: string
+        title:
+          description: A description of the error that occurred.
+          type: string
+        status:
+          description: The HTTP status code.
+          type: integer
+      title: Unrecognized request URL
+      type: object
     webhooks-list-response:
       example:
         pagination:
@@ -15441,124 +15403,6 @@ components:
           type: string
       title: VideoAssets
       type: object
-    video-session-session:
-      properties:
-        sessionId:
-          description: The unique identifier for the session that you can use to track
-            what happens during it.
-          example: psEmFwGQUAXR2lFHj5nDOpy
-          type: string
-        loadedAt:
-          description: When the video session started, presented in ISO-8601 format.
-          example: 2019-06-24T11:45:01.109Z
-          format: date-time
-          type: string
-        endedAt:
-          description: When the video session ended, presented in ISO-8601 format.
-          example: 2019-06-24T12:45:01.109Z
-          format: date-time
-          type: string
-        metadata:
-          description: A list of key value pairs that you use to provide metadata
-            for your video. These pairs can be made dynamic, allowing you to segment
-            your audience. You can also just use the pairs as another way to tag and
-            categorize your videos.
-          example: '[{"key": "Author", "value": "John Doe"}]'
-          items:
-            $ref: '#/components/schemas/metadata'
-          type: array
-      title: VideoSessionSession
-      type: object
-    video-session-location:
-      description: The location of the viewer.
-      properties:
-        country:
-          description: The country of the viewer.
-          example: France
-          type: string
-        city:
-          description: The city of the viewer.
-          example: Paris
-          nullable: true
-          type: string
-      title: VideoSessionLocation
-      type: object
-    video-session-referrer:
-      properties:
-        url:
-          description: The link the viewer used to reach the video session.
-          example: https://api.video
-          nullable: true
-          type: string
-        medium:
-          description: How they arrived at the site, for example organic or paid.
-            Organic meaning they found it themselves and paid meaning they followed
-            a link from an advertisement.
-          example: organic
-          type: string
-        source:
-          description: The source the referrer came from to the video session. For
-            example if they searched through google to find the stream.
-          example: https://google.com
-          type: string
-        searchTerm:
-          description: The search term they typed to arrive at the video session.
-          type: string
-      title: VideoSessionReferrer
-      type: object
-    video-session-device:
-      description: What type of device the user is on when in the video session.
-      properties:
-        type:
-          description: What the type is like desktop, laptop, mobile.
-          example: desktop
-          type: string
-        vendor:
-          description: If known, what the brand of the device is, like Apple, Dell,
-            etc.
-          example: Dell
-          type: string
-        model:
-          description: The specific model of the device, if known.
-          example: unknown
-          type: string
-      title: VideoSessionDevice
-      type: object
-    video-session-os:
-      description: The operating system the viewer is on.
-      properties:
-        name:
-          description: The name of the operating system.
-          example: Microsoft Windows
-          type: string
-        shortname:
-          description: The nickname for the operating system, often representing the
-            version.
-          example: W10
-          type: string
-        version:
-          description: The version of the operating system.
-          example: Windows 10
-          type: string
-      title: VideoSessionOs
-      type: object
-    video-session-client:
-      description: What kind of browser the viewer is using for the video session.
-      properties:
-        name:
-          description: The name of the browser used to view the video session.
-          example: Firefox
-          type: string
-        version:
-          description: The version of the browser used to view the video session.
-          example: "67.0"
-          type: string
-        type:
-          description: The type of client used to view the video session.
-          example: browser
-          type: string
-      title: VideoSessionClient
-      type: object
     live-stream-assets:
       example:
         thumbnail: https://live.api.video/li400mYKSgQ6xs7taUeSaEKr/thumbnail.jpg
@@ -15588,98 +15432,6 @@ components:
           format: uri
           type: string
       title: LiveStreamAssets
-      type: object
-    live-stream-session-session:
-      properties:
-        sessionId:
-          description: A unique identifier for your session. You can use this to track
-            what happens during a specific session.
-          type: string
-        loadedAt:
-          description: When the session started, with the date and time presented
-            in ISO-8601 format.
-          example: 2019-06-24T11:45:01.109Z
-          format: date-time
-          type: string
-        endedAt:
-          description: When the session ended, with the date and time presented in
-            ISO-8601 format.
-          example: 2019-06-24T12:45:01.109Z
-          format: date-time
-          type: string
-      title: LiveStreamSessionSession
-      type: object
-    live-stream-session-location:
-      description: The location of the viewer of the live stream.
-      properties:
-        country:
-          description: The country of the viewer of the live stream.
-          example: France
-          type: string
-        city:
-          description: The city of the viewer of the live stream.
-          example: Paris
-          type: string
-      title: LiveStreamSessionLocation
-      type: object
-    live-stream-session-referrer:
-      properties:
-        url:
-          description: The website the viewer of the live stream was referred to in
-            order to view the live stream.
-          example: https://api.video
-          type: string
-        medium:
-          description: The type of search that brought the viewer to the live stream.
-            Organic would be they found it on their own, paid would be they found
-            it via an advertisement.
-          example: organic
-          type: string
-        source:
-          description: Where the viewer came from to see the live stream (usually
-            where they searched from).
-          example: https://google.com
-          type: string
-        searchTerm:
-          description: What term they searched for that led them to the live stream.
-          example: video stream
-          type: string
-      title: LiveStreamSessionReferrer
-      type: object
-    live-stream-session-device:
-      description: What type of device the user is on when in the live stream session.
-      properties:
-        type:
-          description: What the type is like desktop, laptop, mobile.
-          example: desktop
-          type: string
-        vendor:
-          description: If known, what the brand of the device is, like Apple, Dell,
-            etc.
-          example: Dell
-          type: string
-        model:
-          description: The specific model of the device, if known.
-          example: unknown
-          type: string
-      title: LiveStreamSessionDevice
-      type: object
-    live-stream-session-client:
-      description: What kind of browser the viewer is using for the live stream session.
-      properties:
-        name:
-          description: The name of the browser used to view the live stream session.
-          example: Firefox
-          type: string
-        version:
-          description: The version of the browser used to view the live stream session.
-          example: "67.0"
-          type: string
-        type:
-          description: The type of client used to view the live stream session.
-          example: browser
-          type: string
-      title: LiveStreamSessionClient
       type: object
     video-status-ingest:
       description: Details about the capturing, transferring, and storing of your

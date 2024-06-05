@@ -151,6 +151,7 @@ public class AnalyticsApi {
                 localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getLiveStreamsPlaysValidateBeforeCall(LocalDate from, String dimension, LocalDate to,
             String filter, Integer currentPage, Integer pageSize, final ApiCallback _callback) throws ApiException {
@@ -330,7 +331,10 @@ public class AnalyticsApi {
          *                        </td>
          *                        </tr>
          *                        </table>
+         * 
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return getLiveStreamsPlaysCall(from, dimension, to, filter, currentPage, pageSize, _callback);
         }
@@ -401,7 +405,10 @@ public class AnalyticsApi {
          *                        </td>
          *                        </tr>
          *                        </table>
+         * 
+         * @deprecated
          */
+        @Deprecated
         public Page<AnalyticsData> execute() throws ApiException {
             ApiResponse<AnalyticsPlaysResponse> localVarResp = getLiveStreamsPlaysWithHttpInfo(from, dimension, to,
                     filter, currentPage, pageSize);
@@ -489,7 +496,10 @@ public class AnalyticsApi {
          *                        </td>
          *                        </tr>
          *                        </table>
+         * 
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<AnalyticsPlaysResponse> executeWithHttpInfo() throws ApiException {
             return getLiveStreamsPlaysWithHttpInfo(from, dimension, to, filter, currentPage, pageSize);
         }
@@ -563,7 +573,10 @@ public class AnalyticsApi {
          *                        </td>
          *                        </tr>
          *                        </table>
+         * 
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<Page<AnalyticsData>> _callback) throws ApiException {
             ApiCallback<AnalyticsPlaysResponse> apiCallback = new ApiCallback<AnalyticsPlaysResponse>() {
 
@@ -601,7 +614,8 @@ public class AnalyticsApi {
     /**
      * Get play events for live stream
      *
-     * Retrieve filtered analytics about the number of plays for your live streams in a project.
+     * Retrieve filtered analytics about the number of plays for your live streams in a project. This endpoint will be
+     * deprecated with the release of Analytics v2.0.
      * 
      * @param from
      *            Use this query parameter to set the start date for the time period that you want analytics for. - The
@@ -686,7 +700,10 @@ public class AnalyticsApi {
      *                        </td>
      *                        </tr>
      *                        </table>
+     * 
+     * @deprecated
      */
+    @Deprecated
     public APIgetLiveStreamsPlaysRequest getLiveStreamsPlays(LocalDate from, String dimension) {
         return new APIgetLiveStreamsPlaysRequest(from, dimension);
     }
@@ -744,6 +761,7 @@ public class AnalyticsApi {
                 localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, _callback);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getVideosPlaysValidateBeforeCall(LocalDate from, String dimension, LocalDate to, String filter,
             Integer currentPage, Integer pageSize, final ApiCallback _callback) throws ApiException {
@@ -921,7 +939,10 @@ public class AnalyticsApi {
          *                        </td>
          *                        </tr>
          *                        </table>
+         * 
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return getVideosPlaysCall(from, dimension, to, filter, currentPage, pageSize, _callback);
         }
@@ -992,7 +1013,10 @@ public class AnalyticsApi {
          *                        </td>
          *                        </tr>
          *                        </table>
+         * 
+         * @deprecated
          */
+        @Deprecated
         public Page<AnalyticsData> execute() throws ApiException {
             ApiResponse<AnalyticsPlaysResponse> localVarResp = getVideosPlaysWithHttpInfo(from, dimension, to, filter,
                     currentPage, pageSize);
@@ -1080,7 +1104,10 @@ public class AnalyticsApi {
          *                        </td>
          *                        </tr>
          *                        </table>
+         * 
+         * @deprecated
          */
+        @Deprecated
         public ApiResponse<AnalyticsPlaysResponse> executeWithHttpInfo() throws ApiException {
             return getVideosPlaysWithHttpInfo(from, dimension, to, filter, currentPage, pageSize);
         }
@@ -1154,7 +1181,10 @@ public class AnalyticsApi {
          *                        </td>
          *                        </tr>
          *                        </table>
+         * 
+         * @deprecated
          */
+        @Deprecated
         public okhttp3.Call executeAsync(final ApiCallback<Page<AnalyticsData>> _callback) throws ApiException {
             ApiCallback<AnalyticsPlaysResponse> apiCallback = new ApiCallback<AnalyticsPlaysResponse>() {
 
@@ -1192,7 +1222,8 @@ public class AnalyticsApi {
     /**
      * Get play events for video
      *
-     * Retrieve filtered analytics about the number of plays for your videos in a project.
+     * Retrieve filtered analytics about the number of plays for your videos in a project. This endpoint will be
+     * deprecated with the release of Analytics v2.0.
      * 
      * @param from
      *            Use this query parameter to set the start date for the time period that you want analytics for. - The
@@ -1276,7 +1307,10 @@ public class AnalyticsApi {
      *                        </td>
      *                        </tr>
      *                        </table>
+     * 
+     * @deprecated
      */
+    @Deprecated
     public APIgetVideosPlaysRequest getVideosPlays(LocalDate from, String dimension) {
         return new APIgetVideosPlaysRequest(from, dimension);
     }

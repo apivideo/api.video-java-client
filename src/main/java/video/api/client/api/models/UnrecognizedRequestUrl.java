@@ -24,37 +24,36 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * What type of device the user is on when in the video session.
+ * UnrecognizedRequestUrl
  */
-@ApiModel(description = "What type of device the user is on when in the video session.")
 
-public class VideoSessionDevice implements Serializable {
+public class UnrecognizedRequestUrl implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TYPE = "type";
     @SerializedName(SERIALIZED_NAME_TYPE)
     private String type;
 
-    public static final String SERIALIZED_NAME_VENDOR = "vendor";
-    @SerializedName(SERIALIZED_NAME_VENDOR)
-    private String vendor;
+    public static final String SERIALIZED_NAME_TITLE = "title";
+    @SerializedName(SERIALIZED_NAME_TITLE)
+    private String title;
 
-    public static final String SERIALIZED_NAME_MODEL = "model";
-    @SerializedName(SERIALIZED_NAME_MODEL)
-    private String model;
+    public static final String SERIALIZED_NAME_STATUS = "status";
+    @SerializedName(SERIALIZED_NAME_STATUS)
+    private Integer status;
 
-    public VideoSessionDevice type(String type) {
+    public UnrecognizedRequestUrl type(String type) {
         this.type = type;
         return this;
     }
 
     /**
-     * What the type is like desktop, laptop, mobile.
+     * A link to the error documentation.
      * 
      * @return type
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "desktop", value = "What the type is like desktop, laptop, mobile.")
+    @ApiModelProperty(value = "A link to the error documentation.")
 
     public String getType() {
         return type;
@@ -64,46 +63,46 @@ public class VideoSessionDevice implements Serializable {
         this.type = type;
     }
 
-    public VideoSessionDevice vendor(String vendor) {
-        this.vendor = vendor;
+    public UnrecognizedRequestUrl title(String title) {
+        this.title = title;
         return this;
     }
 
     /**
-     * If known, what the brand of the device is, like Apple, Dell, etc.
+     * A description of the error that occurred.
      * 
-     * @return vendor
+     * @return title
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "Dell", value = "If known, what the brand of the device is, like Apple, Dell, etc.")
+    @ApiModelProperty(value = "A description of the error that occurred.")
 
-    public String getVendor() {
-        return vendor;
+    public String getTitle() {
+        return title;
     }
 
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public VideoSessionDevice model(String model) {
-        this.model = model;
+    public UnrecognizedRequestUrl status(Integer status) {
+        this.status = status;
         return this;
     }
 
     /**
-     * The specific model of the device, if known.
+     * The HTTP status code.
      * 
-     * @return model
+     * @return status
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "unknown", value = "The specific model of the device, if known.")
+    @ApiModelProperty(value = "The HTTP status code.")
 
-    public String getModel() {
-        return model;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override
@@ -114,24 +113,24 @@ public class VideoSessionDevice implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        VideoSessionDevice videoSessionDevice = (VideoSessionDevice) o;
-        return Objects.equals(this.type, videoSessionDevice.type)
-                && Objects.equals(this.vendor, videoSessionDevice.vendor)
-                && Objects.equals(this.model, videoSessionDevice.model);
+        UnrecognizedRequestUrl unrecognizedRequestUrl = (UnrecognizedRequestUrl) o;
+        return Objects.equals(this.type, unrecognizedRequestUrl.type)
+                && Objects.equals(this.title, unrecognizedRequestUrl.title)
+                && Objects.equals(this.status, unrecognizedRequestUrl.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, vendor, model);
+        return Objects.hash(type, title, status);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class VideoSessionDevice {\n");
+        sb.append("class UnrecognizedRequestUrl {\n");
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
-        sb.append("    vendor: ").append(toIndentedString(vendor)).append("\n");
-        sb.append("    model: ").append(toIndentedString(model)).append("\n");
+        sb.append("    title: ").append(toIndentedString(title)).append("\n");
+        sb.append("    status: ").append(toIndentedString(status)).append("\n");
         sb.append("}");
         return sb.toString();
     }
