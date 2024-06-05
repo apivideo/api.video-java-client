@@ -151,8 +151,8 @@ AnalyticsApi analytics = client.analytics()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getLiveStreamsPlays**](https://github.com/apivideo/api.video-java-client/blob/main/docs/AnalyticsApi.md#getLiveStreamsPlays) | **GET** /analytics/live-streams/plays | Get play events for live stream
-[**getVideosPlays**](https://github.com/apivideo/api.video-java-client/blob/main/docs/AnalyticsApi.md#getVideosPlays) | **GET** /analytics/videos/plays | Get play events for video
+[**getLiveStreamsPlays**](https://github.com/apivideo/api.video-java-client/blob/main/docs/AnalyticsApi.md#getLiveStreamsPlays) | **GET** `/analytics/live-streams/plays` | Get play events for live stream
+[**getVideosPlays**](https://github.com/apivideo/api.video-java-client/blob/main/docs/AnalyticsApi.md#getVideosPlays) | **GET** `/analytics/videos/plays` | Get play events for video
 
 
 ### CaptionsApi
@@ -170,11 +170,11 @@ CaptionsApi captions = client.captions()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#upload) | **POST** /videos/{videoId}/captions/{language} | Upload a caption
-[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#get) | **GET** /videos/{videoId}/captions/{language} | Retrieve a caption
-[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#update) | **PATCH** /videos/{videoId}/captions/{language} | Update a caption
-[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#delete) | **DELETE** /videos/{videoId}/captions/{language} | Delete a caption
-[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#list) | **GET** /videos/{videoId}/captions | List video captions
+[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#upload) | **POST** `/videos/{videoId}/captions/{language}` | Upload a caption
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#get) | **GET** `/videos/{videoId}/captions/{language}` | Retrieve a caption
+[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#update) | **PATCH** `/videos/{videoId}/captions/{language}` | Update a caption
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#delete) | **DELETE** `/videos/{videoId}/captions/{language}` | Delete a caption
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/CaptionsApi.md#list) | **GET** `/videos/{videoId}/captions` | List video captions
 
 
 ### ChaptersApi
@@ -192,10 +192,10 @@ ChaptersApi chapters = client.chapters()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#upload) | **POST** /videos/{videoId}/chapters/{language} | Upload a chapter
-[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#get) | **GET** /videos/{videoId}/chapters/{language} | Retrieve a chapter
-[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#delete) | **DELETE** /videos/{videoId}/chapters/{language} | Delete a chapter
-[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#list) | **GET** /videos/{videoId}/chapters | List video chapters
+[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#upload) | **POST** `/videos/{videoId}/chapters/{language}` | Upload a chapter
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#get) | **GET** `/videos/{videoId}/chapters/{language}` | Retrieve a chapter
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#delete) | **DELETE** `/videos/{videoId}/chapters/{language}` | Delete a chapter
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/ChaptersApi.md#list) | **GET** `/videos/{videoId}/chapters` | List video chapters
 
 
 ### LiveStreamsApi
@@ -213,13 +213,13 @@ LiveStreamsApi liveStreams = client.liveStreams()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#create) | **POST** /live-streams | Create live stream
-[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#get) | **GET** /live-streams/{liveStreamId} | Retrieve live stream
-[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#update) | **PATCH** /live-streams/{liveStreamId} | Update a live stream
-[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#delete) | **DELETE** /live-streams/{liveStreamId} | Delete a live stream
-[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
-[**uploadThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
-[**deleteThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
+[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#create) | **POST** `/live-streams` | Create live stream
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#get) | **GET** `/live-streams/{liveStreamId}` | Retrieve live stream
+[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#update) | **PATCH** `/live-streams/{liveStreamId}` | Update a live stream
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#delete) | **DELETE** `/live-streams/{liveStreamId}` | Delete a live stream
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#list) | **GET** `/live-streams` | List all live streams
+[**uploadThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#uploadThumbnail) | **POST** `/live-streams/{liveStreamId}/thumbnail` | Upload a thumbnail
+[**deleteThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/LiveStreamsApi.md#deleteThumbnail) | **DELETE** `/live-streams/{liveStreamId}/thumbnail` | Delete a thumbnail
 
 
 ### PlayerThemesApi
@@ -237,13 +237,13 @@ PlayerThemesApi playerThemes = client.playerThemes()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#create) | **POST** /players | Create a player
-[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#get) | **GET** /players/{playerId} | Retrieve a player
-[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#update) | **PATCH** /players/{playerId} | Update a player
-[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#delete) | **DELETE** /players/{playerId} | Delete a player
-[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#list) | **GET** /players | List all player themes
-[**uploadLogo**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#uploadLogo) | **POST** /players/{playerId}/logo | Upload a logo
-[**deleteLogo**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#deleteLogo) | **DELETE** /players/{playerId}/logo | Delete logo
+[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#create) | **POST** `/players` | Create a player
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#get) | **GET** `/players/{playerId}` | Retrieve a player
+[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#update) | **PATCH** `/players/{playerId}` | Update a player
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#delete) | **DELETE** `/players/{playerId}` | Delete a player
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#list) | **GET** `/players` | List all player themes
+[**uploadLogo**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#uploadLogo) | **POST** `/players/{playerId}/logo` | Upload a logo
+[**deleteLogo**](https://github.com/apivideo/api.video-java-client/blob/main/docs/PlayerThemesApi.md#deleteLogo) | **DELETE** `/players/{playerId}/logo` | Delete logo
 
 
 ### UploadTokensApi
@@ -261,10 +261,10 @@ UploadTokensApi uploadTokens = client.uploadTokens()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#createToken) | **POST** /upload-tokens | Generate an upload token
-[**getToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#getToken) | **GET** /upload-tokens/{uploadToken} | Retrieve upload token
-[**deleteToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#deleteToken) | **DELETE** /upload-tokens/{uploadToken} | Delete an upload token
-[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#list) | **GET** /upload-tokens | List all active upload tokens
+[**createToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#createToken) | **POST** `/upload-tokens` | Generate an upload token
+[**getToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#getToken) | **GET** `/upload-tokens/{uploadToken}` | Retrieve upload token
+[**deleteToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#deleteToken) | **DELETE** `/upload-tokens/{uploadToken}` | Delete an upload token
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/UploadTokensApi.md#list) | **GET** `/upload-tokens` | List all active upload tokens
 
 
 ### VideosApi
@@ -282,16 +282,16 @@ VideosApi videos = client.videos()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#create) | **POST** /videos | Create a video object
-[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#upload) | **POST** /videos/{videoId}/source | Upload a video
-[**uploadWithUploadToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#uploadWithUploadToken) | **POST** /upload | Upload with an delegated upload token
-[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#get) | **GET** /videos/{videoId} | Retrieve a video object
-[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#update) | **PATCH** /videos/{videoId} | Update a video object
-[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#delete) | **DELETE** /videos/{videoId} | Delete a video object
-[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#list) | **GET** /videos | List all video objects
-[**uploadThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
-[**pickThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Set a thumbnail
-[**getStatus**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Retrieve video status and details
+[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#create) | **POST** `/videos` | Create a video object
+[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#upload) | **POST** `/videos/{videoId}/source` | Upload a video
+[**uploadWithUploadToken**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#uploadWithUploadToken) | **POST** `/upload` | Upload with an delegated upload token
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#get) | **GET** `/videos/{videoId}` | Retrieve a video object
+[**update**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#update) | **PATCH** `/videos/{videoId}` | Update a video object
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#delete) | **DELETE** `/videos/{videoId}` | Delete a video object
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#list) | **GET** `/videos` | List all video objects
+[**uploadThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#uploadThumbnail) | **POST** `/videos/{videoId}/thumbnail` | Upload a thumbnail
+[**pickThumbnail**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#pickThumbnail) | **PATCH** `/videos/{videoId}/thumbnail` | Set a thumbnail
+[**getStatus**](https://github.com/apivideo/api.video-java-client/blob/main/docs/VideosApi.md#getStatus) | **GET** `/videos/{videoId}/status` | Retrieve video status and details
 
 
 ### WatermarksApi
@@ -309,9 +309,9 @@ WatermarksApi watermarks = client.watermarks()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WatermarksApi.md#upload) | **POST** /watermarks | Upload a watermark
-[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WatermarksApi.md#delete) | **DELETE** /watermarks/{watermarkId} | Delete a watermark
-[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WatermarksApi.md#list) | **GET** /watermarks | List all watermarks
+[**upload**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WatermarksApi.md#upload) | **POST** `/watermarks` | Upload a watermark
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WatermarksApi.md#delete) | **DELETE** `/watermarks/{watermarkId}` | Delete a watermark
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WatermarksApi.md#list) | **GET** `/watermarks` | List all watermarks
 
 
 ### WebhooksApi
@@ -329,10 +329,10 @@ WebhooksApi webhooks = client.webhooks()
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#create) | **POST** /webhooks | Create Webhook
-[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#get) | **GET** /webhooks/{webhookId} | Retrieve Webhook details
-[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#delete) | **DELETE** /webhooks/{webhookId} | Delete a Webhook
-[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#list) | **GET** /webhooks | List all webhooks
+[**create**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#create) | **POST** `/webhooks` | Create Webhook
+[**get**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#get) | **GET** `/webhooks/{webhookId}` | Retrieve Webhook details
+[**delete**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#delete) | **DELETE** `/webhooks/{webhookId}` | Delete a Webhook
+[**list**](https://github.com/apivideo/api.video-java-client/blob/main/docs/WebhooksApi.md#list) | **GET** `/webhooks` | List all webhooks
 
 
 
