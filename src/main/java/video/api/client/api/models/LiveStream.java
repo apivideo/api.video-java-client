@@ -145,12 +145,12 @@ public class LiveStream implements Serializable {
     /**
      * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will
      * require a unique token for each view. Learn more about the Private Video feature
-     * [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
+     * [here](https://docs.api.video/delivery/video-privacy-access-management).
      * 
      * @return _public
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "true", value = "Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).")
+    @ApiModelProperty(example = "true", value = "Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).")
 
     public Boolean getPublic() {
         return _public;
@@ -235,11 +235,11 @@ public class LiveStream implements Serializable {
     }
 
     /**
-     * Returns the list of RTMP restream destinations.
+     * Returns the list of restream destinations.
      * 
      * @return restreams
      **/
-    @ApiModelProperty(required = true, value = "Returns the list of RTMP restream destinations.")
+    @ApiModelProperty(required = true, value = "Returns the list of restream destinations.")
 
     public List<RestreamsResponseObject> getRestreams() {
         return restreams;

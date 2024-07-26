@@ -1,6 +1,10 @@
 # Changelog
 All changes to this project will be documented in this file.
 
+## [1.4.0] - 2024-07-29
+- Add new analytics methods
+- Add livestream complete() method
+
 ## [1.3.3] - 2024-04-25
 - Add API to get rate limiting headers
 

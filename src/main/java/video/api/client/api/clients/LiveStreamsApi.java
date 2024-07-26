@@ -2154,4 +2154,277 @@ public class LiveStreamsApi {
         return localVarCall;
     }
 
+    /**
+     * Build call for complete
+     * 
+     * @param liveStreamId
+     *            The unique ID for the live stream you want to complete. (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>202</td>
+     *                        <td>Accepted</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call completeCall(String liveStreamId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/live-streams/{liveStreamId}/complete".replaceAll("\\{" + "liveStreamId" + "\\}",
+                localVarApiClient.escapeString(liveStreamId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call completeValidateBeforeCall(String liveStreamId, final ApiCallback _callback)
+            throws ApiException {
+
+        // verify the required parameter 'liveStreamId' is set
+        if (liveStreamId == null) {
+            throw new ApiException("Missing the required parameter 'liveStreamId' when calling complete");
+        }
+
+        okhttp3.Call localVarCall = completeCall(liveStreamId, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Complete a live stream
+     *
+     * Request the completion of a live stream that is currently running. This operation is asynchronous and the live
+     * stream will stop after a few seconds. The API adds the &#x60;EXT-X-ENDLIST&#x60; tag to the live stream&#39;s HLS
+     * manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps
+     * the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream.
+     * 
+     * @param liveStreamId
+     *            The unique ID for the live stream you want to complete. (required)
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>202</td>
+     *                        <td>Accepted</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    public void complete(String liveStreamId) throws ApiException {
+        completeWithHttpInfo(liveStreamId);
+    }
+
+    /**
+     * Complete a live stream
+     *
+     * Request the completion of a live stream that is currently running. This operation is asynchronous and the live
+     * stream will stop after a few seconds. The API adds the &#x60;EXT-X-ENDLIST&#x60; tag to the live stream&#39;s HLS
+     * manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps
+     * the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream.
+     * 
+     * @param liveStreamId
+     *            The unique ID for the live stream you want to complete. (required)
+     * 
+     * @return ApiResponse&lt;Void&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>202</td>
+     *                        <td>Accepted</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Void> completeWithHttpInfo(String liveStreamId) throws ApiException {
+        okhttp3.Call localVarCall = completeValidateBeforeCall(liveStreamId, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Complete a live stream (asynchronously) Request the completion of a live stream that is currently running. This
+     * operation is asynchronous and the live stream will stop after a few seconds. The API adds the
+     * &#x60;EXT-X-ENDLIST&#x60; tag to the live stream&#39;s HLS manifest. This stops the live stream on the player and
+     * also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at
+     * most 1 minute, which can be used to terminate the stream.
+     * 
+     * @param liveStreamId
+     *            The unique ID for the live stream you want to complete. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>202</td>
+     *                        <td>Accepted</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call completeAsync(String liveStreamId, final ApiCallback<Void> _callback) throws ApiException {
+        okhttp3.Call localVarCall = completeValidateBeforeCall(liveStreamId, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+
 }

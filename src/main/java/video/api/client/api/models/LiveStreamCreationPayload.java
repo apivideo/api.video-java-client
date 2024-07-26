@@ -77,12 +77,12 @@ public class LiveStreamCreationPayload implements Serializable {
     /**
      * Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will
      * require a unique token for each view. Learn more about the Private Video feature
-     * [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
+     * [here](https://docs.api.video/delivery/video-privacy-access-management).
      * 
      * @return _public
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).")
+    @ApiModelProperty(value = "Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).")
 
     public Boolean getPublic() {
         return _public;
@@ -127,13 +127,13 @@ public class LiveStreamCreationPayload implements Serializable {
     }
 
     /**
-     * Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can
-     * only contain up to 5 destinations.
+     * Use this parameter to add, edit, or remove &#x60;RTMPS&#x60; or &#x60;RTMP&#x60; services where you want to
+     * restream a live stream. The list can only contain up to 5 destinations.
      * 
      * @return restreams
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.")
+    @ApiModelProperty(value = "Use this parameter to add, edit, or remove `RTMPS` or `RTMP` services where you want to restream a live stream. The list can only contain up to 5 destinations.")
 
     public List<RestreamsRequestObject> getRestreams() {
         return restreams;

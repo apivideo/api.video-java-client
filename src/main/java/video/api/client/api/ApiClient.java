@@ -39,6 +39,7 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
@@ -118,7 +119,7 @@ public class ApiClient {
     private void init() {
         verifyingSsl = true;
         json = new JSON();
-        addDefaultHeader("AV-Origin-Client", "java:1.3.3");
+        addDefaultHeader("AV-Origin-Client", "java:1.4.0");
     }
 
     private boolean isValid(String regex, String field) {
@@ -452,9 +453,20 @@ public class ApiClient {
         if (param == null) {
             return "";
         } else if (param instanceof Date || param instanceof OffsetDateTime || param instanceof LocalDate) {
-            // Serialize to json string and remove the " enclosing characters
-            String jsonStr = json.serialize(param);
-            return jsonStr.substring(1, jsonStr.length() - 1);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX");
+
+            String formattedDate;
+            if (param instanceof Date) {
+                OffsetDateTime odt = ((Date) param).toInstant().atZone(ZoneId.systemDefault()).toOffsetDateTime();
+                formattedDate = odt.format(formatter);
+            } else if (param instanceof OffsetDateTime) {
+                formattedDate = ((OffsetDateTime) param).format(formatter);
+            } else {
+                OffsetDateTime odt = ((LocalDate) param).atStartOfDay(ZoneId.systemDefault()).toOffsetDateTime();
+                formattedDate = odt.format(formatter);
+            }
+
+            return formattedDate;
         } else if (param instanceof Collection) {
             StringBuilder b = new StringBuilder();
             for (Object o : (Collection) param) {
