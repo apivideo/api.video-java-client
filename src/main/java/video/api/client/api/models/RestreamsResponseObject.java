@@ -53,7 +53,7 @@ public class RestreamsResponseObject implements Serializable {
      * @return name
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "My RTMP server", value = "Returns the name of a restream destination.")
+    @ApiModelProperty(example = "My restream server", value = "Returns the name of a restream destination.")
 
     public String getName() {
         return name;
@@ -69,12 +69,12 @@ public class RestreamsResponseObject implements Serializable {
     }
 
     /**
-     * Returns the RTMP URL of a restream destination.
+     * Returns the server URL of a restream destination.
      * 
      * @return serverUrl
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "rtmp://my.broadcast.example.com/app", value = "Returns the RTMP URL of a restream destination.")
+    @ApiModelProperty(example = "rtmp://my.broadcast.example.com/app", value = "Returns the server URL of a restream destination.")
 
     public String getServerUrl() {
         return serverUrl;

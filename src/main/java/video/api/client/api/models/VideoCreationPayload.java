@@ -151,12 +151,12 @@ public class VideoCreationPayload implements Serializable {
 
     /**
      * Default: True. If set to &#x60;false&#x60; the video will become private. More information on private videos can
-     * be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)
+     * be found [here](https://docs.api.video/delivery/video-privacy-access-management)
      * 
      * @return _public
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "true", value = "Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery-analytics/video-privacy-access-management)")
+    @ApiModelProperty(example = "true", value = "Default: True. If set to `false` the video will become private. More information on private videos can be found [here](https://docs.api.video/delivery/video-privacy-access-management)")
 
     public Boolean getPublic() {
         return _public;

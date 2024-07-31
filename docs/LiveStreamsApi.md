@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**list**](LiveStreamsApi.md#list) | **GET** /live-streams | List all live streams
 [**uploadThumbnail**](LiveStreamsApi.md#uploadThumbnail) | **POST** /live-streams/{liveStreamId}/thumbnail | Upload a thumbnail
 [**deleteThumbnail**](LiveStreamsApi.md#deleteThumbnail) | **DELETE** /live-streams/{liveStreamId}/thumbnail | Delete a thumbnail
+[**complete**](LiveStreamsApi.md#complete) | **PUT** /live-streams/{liveStreamId}/complete | Complete a live stream
 
 
 <a name="create"></a>
@@ -42,9 +43,9 @@ public class Example {
     
     LiveStreamCreationPayload liveStreamCreationPayload = new LiveStreamCreationPayload(); // 
     liveStreamCreationPayload.setName("My Live Stream Video"); // Add a name for your live stream here.
-    liveStreamCreationPayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
+    liveStreamCreationPayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).
     liveStreamCreationPayload.setPlayerId("pl4f4ferf5erfr5zed4fsdd"); // The unique identifier for the player.
-    liveStreamCreationPayload.setRestreams(Collections.<RestreamsRequestObject>emptyList()); // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations.
+    liveStreamCreationPayload.setRestreams(Collections.<RestreamsRequestObject>emptyList()); // Use this parameter to add, edit, or remove &#x60;RTMPS&#x60; or &#x60;RTMP&#x60; services where you want to restream a live stream. The list can only contain up to 5 destinations.
 
 
     try {
@@ -187,9 +188,9 @@ public class Example {
     String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // The unique ID for the live stream that you want to update information for such as player details.
     LiveStreamUpdatePayload liveStreamUpdatePayload = new LiveStreamUpdatePayload(); // 
     liveStreamUpdatePayload.setName("My Live Stream Video"); // The name you want to use for your live stream.
-    liveStreamUpdatePayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery-analytics/video-privacy-access-management).
+    liveStreamUpdatePayload.setPublic(); // Whether your video can be viewed by everyone, or requires authentication to see it. A setting of false will require a unique token for each view. Learn more about the Private Video feature [here](https://docs.api.video/delivery/video-privacy-access-management).
     liveStreamUpdatePayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique ID for the player associated with a live stream that you want to update.
-    liveStreamUpdatePayload.setRestreams(Collections.<RestreamsRequestObject>emptyList()); // Use this parameter to add, edit, or remove RTMP services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.
+    liveStreamUpdatePayload.setRestreams(Collections.<RestreamsRequestObject>emptyList()); // Use this parameter to add, edit, or remove &#x60;RTMPS&#x60; or &#x60;RTMP&#x60; services where you want to restream a live stream. The list can only contain up to 5 destinations. This operation updates all restream destinations in the same request. If you do not want to modify an existing restream destination, you need to include it in your request, otherwise it is removed.
 
 
     try {
@@ -528,6 +529,75 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+<a name="complete"></a>
+# **complete**
+> complete(liveStreamId)
+> okhttp3.Call completeAsync(liveStreamId, callback)
+> ApiResponse<Void> completeWithHttpInfo(liveStreamId)
+
+Complete a live stream
+
+Request the completion of a live stream that is currently running. This operation is asynchronous and the live stream will stop after a few seconds.   The API adds the `EXT-X-ENDLIST` tag to the live stream's HLS manifest. This stops the live stream on the player and also stops the recording of the live stream. The API keeps the incoming connection from the streamer open for at most 1 minute, which can be used to terminate the stream. 
+
+### Example
+```java
+// Import classes:
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.LiveStreamsApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
+
+    LiveStreamsApi apiInstance = client.liveStreams();
+    
+    String liveStreamId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The unique ID for the live stream you want to complete.
+
+    try {
+      apiInstance.complete(liveStreamId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LiveStreamsApi#complete");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **liveStreamId** | **String**| The unique ID for the live stream you want to complete. |
+
+### Return type
+
+
+null (empty response body)
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 
