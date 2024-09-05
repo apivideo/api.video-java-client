@@ -28,7 +28,7 @@ import java.io.Serializable;
  * AnalyticsMetricsOverTimeResponseContext
  */
 
-public class AnalyticsMetricsOverTimeResponseContext implements Serializable {
+public class AnalyticsMetricsOverTimeResponseContext implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     /**

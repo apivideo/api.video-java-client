@@ -29,7 +29,7 @@ import java.io.Serializable;
  */
 @ApiModel(description = "Collection of details about the video object that you can use to work with the video object.")
 
-public class VideoAssets implements Serializable {
+public class VideoAssets implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_HLS = "hls";

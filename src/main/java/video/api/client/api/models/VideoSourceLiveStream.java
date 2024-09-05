@@ -31,7 +31,7 @@ import java.io.Serializable;
  */
 @ApiModel(description = "This appears if the video is from a Live Record.")
 
-public class VideoSourceLiveStream implements Serializable {
+public class VideoSourceLiveStream implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_LIVE_STREAM_ID = "liveStreamId";

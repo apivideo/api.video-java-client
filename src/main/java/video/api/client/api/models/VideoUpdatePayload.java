@@ -30,7 +30,7 @@ import java.io.Serializable;
  * VideoUpdatePayload
  */
 
-public class VideoUpdatePayload implements Serializable {
+public class VideoUpdatePayload implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_PLAYER_ID = "playerId";

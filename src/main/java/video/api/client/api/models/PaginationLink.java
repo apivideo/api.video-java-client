@@ -28,7 +28,7 @@ import java.io.Serializable;
  * PaginationLink
  */
 
-public class PaginationLink implements Serializable {
+public class PaginationLink implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_REL = "rel";

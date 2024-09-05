@@ -29,7 +29,7 @@ import java.io.Serializable;
  */
 @ApiModel(description = "Source information about the video.")
 
-public class VideoSource implements Serializable {
+public class VideoSource implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_URI = "uri";

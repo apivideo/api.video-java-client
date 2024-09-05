@@ -30,7 +30,7 @@ import java.io.Serializable;
  * LiveStreamUpdatePayload
  */
 
-public class LiveStreamUpdatePayload implements Serializable {
+public class LiveStreamUpdatePayload implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_NAME = "name";

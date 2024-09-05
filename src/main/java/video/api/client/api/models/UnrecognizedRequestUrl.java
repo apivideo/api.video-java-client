@@ -27,7 +27,7 @@ import java.io.Serializable;
  * UnrecognizedRequestUrl
  */
 
-public class UnrecognizedRequestUrl implements Serializable {
+public class UnrecognizedRequestUrl implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TYPE = "type";

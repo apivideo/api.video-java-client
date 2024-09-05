@@ -31,7 +31,7 @@ import java.io.Serializable;
  * LiveStreamListResponse
  */
 
-public class LiveStreamListResponse implements Serializable {
+public class LiveStreamListResponse implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_DATA = "data";

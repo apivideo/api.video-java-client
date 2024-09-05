@@ -27,7 +27,7 @@ import java.io.Serializable;
  * AnalyticsMetricsBreakdownResponseData
  */
 
-public class AnalyticsMetricsBreakdownResponseData implements Serializable {
+public class AnalyticsMetricsBreakdownResponseData implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_DIMENSION_VALUE = "dimensionValue";

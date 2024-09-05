@@ -28,7 +28,7 @@ import java.io.Serializable;
  * AnalyticsMetricsBreakdownResponseContext
  */
 
-public class AnalyticsMetricsBreakdownResponseContext implements Serializable {
+public class AnalyticsMetricsBreakdownResponseContext implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     /**

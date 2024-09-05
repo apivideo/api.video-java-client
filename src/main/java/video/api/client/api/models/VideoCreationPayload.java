@@ -32,7 +32,7 @@ import java.io.Serializable;
  * VideoCreationPayload
  */
 
-public class VideoCreationPayload implements Serializable {
+public class VideoCreationPayload implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TITLE = "title";

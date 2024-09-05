@@ -29,7 +29,7 @@ import java.io.Serializable;
  */
 @ApiModel(description = "Adding restream destinations is optional. However, if you set a restream destination, you must provide all attributes for each destination.")
 
-public class RestreamsRequestObject implements Serializable {
+public class RestreamsRequestObject implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_NAME = "name";

@@ -31,7 +31,7 @@ import java.io.Serializable;
  * VideosListResponse
  */
 
-public class VideosListResponse implements Serializable {
+public class VideosListResponse implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_DATA = "data";

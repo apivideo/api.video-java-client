@@ -27,7 +27,7 @@ import java.io.Serializable;
  * AnalyticsPlays400Error
  */
 
-public class AnalyticsPlays400Error implements Serializable {
+public class AnalyticsPlays400Error implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TYPE = "type";

@@ -32,7 +32,7 @@ import java.io.Serializable;
  */
 @ApiModel(description = "Details about the capturing, transferring, and storing of your video for use immediately or in the future.")
 
-public class VideoStatusIngest implements Serializable {
+public class VideoStatusIngest implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     /**

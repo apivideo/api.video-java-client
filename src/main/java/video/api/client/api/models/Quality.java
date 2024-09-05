@@ -27,7 +27,7 @@ import java.io.Serializable;
  * Quality
  */
 
-public class Quality implements Serializable {
+public class Quality implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     /**

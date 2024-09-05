@@ -35,5 +35,6 @@ DAY | &quot;day&quot;
 ## Implemented Interfaces
 
 * Serializable
+* DeepObject
 
 

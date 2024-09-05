@@ -27,5 +27,6 @@ INGESTED | &quot;ingested&quot;
 ## Implemented Interfaces
 
 * Serializable
+* DeepObject
 
 

@@ -27,7 +27,7 @@ import java.io.Serializable;
  * AccessToken
  */
 
-public class AccessToken implements Serializable {
+public class AccessToken implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_ACCESS_TOKEN = "access_token";

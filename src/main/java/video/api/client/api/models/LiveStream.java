@@ -32,7 +32,7 @@ import java.io.Serializable;
  * LiveStream
  */
 
-public class LiveStream implements Serializable {
+public class LiveStream implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_LIVE_STREAM_ID = "liveStreamId";

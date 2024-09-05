@@ -31,7 +31,7 @@ import java.io.Serializable;
  * VideoStatusEncoding
  */
 
-public class VideoStatusEncoding implements Serializable {
+public class VideoStatusEncoding implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_PLAYABLE = "playable";

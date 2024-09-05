@@ -21,18 +21,20 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.Serializable;
 
 /**
  * FilterBy
  */
 
-public class FilterBy implements Serializable {
+public class FilterBy implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_MEDIA_ID = "mediaId";
     @SerializedName(SERIALIZED_NAME_MEDIA_ID)
-    private String mediaId;
+    private List<String> mediaId = null;
 
     /**
      * Gets or Sets mediaType
@@ -86,9 +88,7 @@ public class FilterBy implements Serializable {
     private MediaTypeEnum mediaType;
 
     /**
-     * Returns analytics based on the viewers&#39; continent. The list of supported continents names are based on the
-     * [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for
-     * example &#x60;EU&#x60;.
+     * Gets or Sets continent
      */
     @JsonAdapter(ContinentEnum.Adapter.class)
     public enum ContinentEnum {
@@ -146,30 +146,38 @@ public class FilterBy implements Serializable {
 
     public static final String SERIALIZED_NAME_CONTINENT = "continent";
     @SerializedName(SERIALIZED_NAME_CONTINENT)
-    private ContinentEnum continent;
+    private List<ContinentEnum> continent = null;
 
     public static final String SERIALIZED_NAME_COUNTRY = "country";
     @SerializedName(SERIALIZED_NAME_COUNTRY)
-    private String country;
+    private List<String> country = null;
 
     public static final String SERIALIZED_NAME_DEVICE_TYPE = "deviceType";
     @SerializedName(SERIALIZED_NAME_DEVICE_TYPE)
-    private String deviceType;
+    private List<String> deviceType = null;
 
     public static final String SERIALIZED_NAME_OPERATING_SYSTEM = "operatingSystem";
     @SerializedName(SERIALIZED_NAME_OPERATING_SYSTEM)
-    private String operatingSystem;
+    private List<String> operatingSystem = null;
 
     public static final String SERIALIZED_NAME_BROWSER = "browser";
     @SerializedName(SERIALIZED_NAME_BROWSER)
-    private String browser;
+    private List<String> browser = null;
 
     public static final String SERIALIZED_NAME_TAG = "tag";
     @SerializedName(SERIALIZED_NAME_TAG)
     private String tag;
 
-    public FilterBy mediaId(String mediaId) {
+    public FilterBy mediaId(List<String> mediaId) {
         this.mediaId = mediaId;
+        return this;
+    }
+
+    public FilterBy addMediaIdItem(String mediaIdItem) {
+        if (this.mediaId == null) {
+            this.mediaId = new ArrayList<>();
+        }
+        this.mediaId.add(mediaIdItem);
         return this;
     }
 
@@ -179,13 +187,13 @@ public class FilterBy implements Serializable {
      * @return mediaId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "vi4blUQJFrYWbaG44NChkH27", value = "Returns analytics based on the unique identifiers of a video or a live stream.")
+    @ApiModelProperty(example = "[\"vi4blUQJFrYWbaG44NChkH27\"]", value = "Returns analytics based on the unique identifiers of a video or a live stream.")
 
-    public String getMediaId() {
+    public List<String> getMediaId() {
         return mediaId;
     }
 
-    public void setMediaId(String mediaId) {
+    public void setMediaId(List<String> mediaId) {
         this.mediaId = mediaId;
     }
 
@@ -210,8 +218,16 @@ public class FilterBy implements Serializable {
         this.mediaType = mediaType;
     }
 
-    public FilterBy continent(ContinentEnum continent) {
+    public FilterBy continent(List<ContinentEnum> continent) {
         this.continent = continent;
+        return this;
+    }
+
+    public FilterBy addContinentItem(ContinentEnum continentItem) {
+        if (this.continent == null) {
+            this.continent = new ArrayList<>();
+        }
+        this.continent.add(continentItem);
         return this;
     }
 
@@ -223,18 +239,26 @@ public class FilterBy implements Serializable {
      * @return continent
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "EU", value = "Returns analytics based on the viewers' continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `EU`.")
+    @ApiModelProperty(example = "[\"EU\"]", value = "Returns analytics based on the viewers' continent. The list of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `EU`.")
 
-    public ContinentEnum getContinent() {
+    public List<ContinentEnum> getContinent() {
         return continent;
     }
 
-    public void setContinent(ContinentEnum continent) {
+    public void setContinent(List<ContinentEnum> continent) {
         this.continent = continent;
     }
 
-    public FilterBy country(String country) {
+    public FilterBy country(List<String> country) {
         this.country = country;
+        return this;
+    }
+
+    public FilterBy addCountryItem(String countryItem) {
+        if (this.country == null) {
+            this.country = new ArrayList<>();
+        }
+        this.country.add(countryItem);
         return this;
     }
 
@@ -246,80 +270,104 @@ public class FilterBy implements Serializable {
      * @return country
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "FR", value = "Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `FR`.")
+    @ApiModelProperty(example = "[\"FR\"]", value = "Returns analytics based on the viewers' country. The list of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for example `FR`.")
 
-    public String getCountry() {
+    public List<String> getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(List<String> country) {
         this.country = country;
     }
 
-    public FilterBy deviceType(String deviceType) {
+    public FilterBy deviceType(List<String> deviceType) {
         this.deviceType = deviceType;
         return this;
     }
 
+    public FilterBy addDeviceTypeItem(String deviceTypeItem) {
+        if (this.deviceType == null) {
+            this.deviceType = new ArrayList<>();
+        }
+        this.deviceType.add(deviceTypeItem);
+        return this;
+    }
+
     /**
-     * Returns analytics based on the type of device used by the viewers. Possible response values are:
+     * Returns analytics based on the type of device used by the viewers. Response values can include:
      * &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;,
      * &#x60;wearable&#x60;, &#x60;unknown&#x60;.
      * 
      * @return deviceType
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "computer", value = "Returns analytics based on the type of device used by the viewers. Possible response values are: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`, `unknown`.")
+    @ApiModelProperty(example = "[\"computer\"]", value = "Returns analytics based on the type of device used by the viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`, `unknown`.")
 
-    public String getDeviceType() {
+    public List<String> getDeviceType() {
         return deviceType;
     }
 
-    public void setDeviceType(String deviceType) {
+    public void setDeviceType(List<String> deviceType) {
         this.deviceType = deviceType;
     }
 
-    public FilterBy operatingSystem(String operatingSystem) {
+    public FilterBy operatingSystem(List<String> operatingSystem) {
         this.operatingSystem = operatingSystem;
         return this;
     }
 
+    public FilterBy addOperatingSystemItem(String operatingSystemItem) {
+        if (this.operatingSystem == null) {
+            this.operatingSystem = new ArrayList<>();
+        }
+        this.operatingSystem.add(operatingSystemItem);
+        return this;
+    }
+
     /**
-     * Returns analytics based on the operating system used by the viewers. Response values include &#x60;windows&#x60;,
-     * &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;.
+     * Returns analytics based on the operating system used by the viewers. Response values can include
+     * &#x60;windows&#x60;, &#x60;mac osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;.
      * 
      * @return operatingSystem
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "windows", value = "Returns analytics based on the operating system used by the viewers. Response values include `windows`, `mac osx`, `android`, `ios`, `linux`.")
+    @ApiModelProperty(example = "[\"windows\"]", value = "Returns analytics based on the operating system used by the viewers. Response values can include `windows`, `mac osx`, `android`, `ios`, `linux`.")
 
-    public String getOperatingSystem() {
+    public List<String> getOperatingSystem() {
         return operatingSystem;
     }
 
-    public void setOperatingSystem(String operatingSystem) {
+    public void setOperatingSystem(List<String> operatingSystem) {
         this.operatingSystem = operatingSystem;
     }
 
-    public FilterBy browser(String browser) {
+    public FilterBy browser(List<String> browser) {
         this.browser = browser;
         return this;
     }
 
+    public FilterBy addBrowserItem(String browserItem) {
+        if (this.browser == null) {
+            this.browser = new ArrayList<>();
+        }
+        this.browser.add(browserItem);
+        return this;
+    }
+
     /**
-     * Returns analytics based on the browser used by the viewers. Response values include &#x60;chrome&#x60;,
+     * Returns analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;,
      * &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;.
      * 
      * @return browser
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "firefox", value = "Returns analytics based on the browser used by the viewers. Response values include `chrome`, `firefox`, `edge`, `opera`.")
+    @ApiModelProperty(example = "[\"firefox\"]", value = "Returns analytics based on the browser used by the viewers. Response values can include `chrome`, `firefox`, `edge`, `opera`.")
 
-    public String getBrowser() {
+    public List<String> getBrowser() {
         return browser;
     }
 
-    public void setBrowser(String browser) {
+    public void setBrowser(List<String> browser) {
         this.browser = browser;
     }
 

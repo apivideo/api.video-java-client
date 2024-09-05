@@ -31,7 +31,7 @@ import java.io.Serializable;
  * WebhooksListResponse
  */
 
-public class WebhooksListResponse implements Serializable {
+public class WebhooksListResponse implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_DATA = "data";
