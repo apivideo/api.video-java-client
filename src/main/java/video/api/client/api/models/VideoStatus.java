@@ -29,7 +29,7 @@ import java.io.Serializable;
  * VideoStatus
  */
 
-public class VideoStatus implements Serializable {
+public class VideoStatus implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_INGEST = "ingest";

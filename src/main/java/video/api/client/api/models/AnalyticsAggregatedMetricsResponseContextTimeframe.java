@@ -29,7 +29,7 @@ import java.io.Serializable;
  */
 @ApiModel(description = "Returns the starting and ending date-times of the period you want analytics for.")
 
-public class AnalyticsAggregatedMetricsResponseContextTimeframe implements Serializable {
+public class AnalyticsAggregatedMetricsResponseContextTimeframe implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_FROM = "from";

@@ -28,7 +28,7 @@ import java.io.Serializable;
  * LiveStreamAssets
  */
 
-public class LiveStreamAssets implements Serializable {
+public class LiveStreamAssets implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_HLS = "hls";

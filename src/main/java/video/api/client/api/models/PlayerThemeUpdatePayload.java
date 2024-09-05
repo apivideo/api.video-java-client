@@ -27,7 +27,7 @@ import java.io.Serializable;
  * PlayerThemeUpdatePayload
  */
 
-public class PlayerThemeUpdatePayload implements Serializable {
+public class PlayerThemeUpdatePayload implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_NAME = "name";

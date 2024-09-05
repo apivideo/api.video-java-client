@@ -40,5 +40,6 @@ BROWSER | &quot;browser&quot;
 ## Implemented Interfaces
 
 * Serializable
+* DeepObject
 
 

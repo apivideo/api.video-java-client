@@ -27,7 +27,7 @@ import java.io.Serializable;
  * NotFound
  */
 
-public class NotFound implements Serializable {
+public class NotFound implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TYPE = "type";

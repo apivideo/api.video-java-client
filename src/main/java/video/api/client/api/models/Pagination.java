@@ -30,7 +30,7 @@ import java.io.Serializable;
  * Pagination
  */
 
-public class Pagination implements Serializable {
+public class Pagination implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_ITEMS_TOTAL = "itemsTotal";

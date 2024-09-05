@@ -27,7 +27,7 @@ import java.io.Serializable;
  * Model403ErrorSchema
  */
 
-public class Model403ErrorSchema implements Serializable {
+public class Model403ErrorSchema implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TYPE = "type";

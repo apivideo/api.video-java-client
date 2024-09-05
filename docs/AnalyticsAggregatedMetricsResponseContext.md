@@ -39,5 +39,6 @@ SUM | &quot;sum&quot;
 ## Implemented Interfaces
 
 * Serializable
+* DeepObject
 
 

@@ -28,7 +28,7 @@ import java.io.Serializable;
  * Watermark
  */
 
-public class Watermark implements Serializable {
+public class Watermark implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_WATERMARK_ID = "watermarkId";

@@ -235,23 +235,24 @@ public class AnalyticsApi {
          *            serialize filters in your query to receive more detailed breakdowns of your analytics. - If you do
          *            not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The
          *            API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call
-         *            &#x60;/data/metrics/play/total&#x60;. These are the available breakdown dimensions: -
-         *            &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live
-         *            stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values:
-         *            &#x60;video&#x60; and &#x60;live-stream&#x60;. - &#x60;continent&#x60;: Returns analytics based on
-         *            the viewers&#39; continent. The list of supported continents names are based on the [GeoNames
-         *            public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format,
-         *            for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;,
+         *            &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;. These are
+         *            the available breakdown dimensions: - &#x60;mediaId&#x60;: Returns analytics based on the unique
+         *            identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the
+         *            type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;. -
+         *            &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of
+         *            supported continents names are based on the [GeoNames public
+         *            database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for
+         *            example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;,
          *            &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;. - &#x60;country&#x60;: Returns
          *            analytics based on the viewers&#39; country. The list of supported country names are based on the
          *            [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2
          *            format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type
-         *            of device used by the viewers. Possible response values are: &#x60;computer&#x60;,
+         *            of device used by the viewers. Response values can include: &#x60;computer&#x60;,
          *            &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;,
          *            &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating
-         *            system used by the viewers. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;,
+         *            system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;,
          *            &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics
-         *            based on the browser used by the viewers. Response values include &#x60;chrome&#x60;,
+         *            based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;,
          *            &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for
          *            videos using this tag. This filter only accepts a single value and is case sensitive. Read more
          *            about tagging your videos [here](https://docs.api.video/vod/tags-metadata). (optional)
@@ -610,8 +611,8 @@ public class AnalyticsApi {
     }
 
     private okhttp3.Call getMetricsBreakdownCall(String metric, String breakdown, OffsetDateTime from,
-            OffsetDateTime to, FilterBy2 filterBy, Integer currentPage, Integer pageSize, final ApiCallback _callback)
-            throws ApiException {
+            OffsetDateTime to, String sortBy, String sortOrder, FilterBy2 filterBy, Integer currentPage,
+            Integer pageSize, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -631,6 +632,14 @@ public class AnalyticsApi {
 
         if (to != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("to", to));
+        }
+
+        if (sortBy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sortBy", sortBy));
+        }
+
+        if (sortOrder != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sortOrder", sortOrder));
         }
 
         if (filterBy != null) {
@@ -663,8 +672,8 @@ public class AnalyticsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMetricsBreakdownValidateBeforeCall(String metric, String breakdown, OffsetDateTime from,
-            OffsetDateTime to, FilterBy2 filterBy, Integer currentPage, Integer pageSize, final ApiCallback _callback)
-            throws ApiException {
+            OffsetDateTime to, String sortBy, String sortOrder, FilterBy2 filterBy, Integer currentPage,
+            Integer pageSize, final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'metric' is set
         if (metric == null) {
@@ -676,26 +685,26 @@ public class AnalyticsApi {
             throw new ApiException("Missing the required parameter 'breakdown' when calling getMetricsBreakdown");
         }
 
-        okhttp3.Call localVarCall = getMetricsBreakdownCall(metric, breakdown, from, to, filterBy, currentPage,
-                pageSize, _callback);
+        okhttp3.Call localVarCall = getMetricsBreakdownCall(metric, breakdown, from, to, sortBy, sortOrder, filterBy,
+                currentPage, pageSize, _callback);
         return localVarCall;
     }
 
     private ApiResponse<AnalyticsMetricsBreakdownResponse> getMetricsBreakdownWithHttpInfo(String metric,
-            String breakdown, OffsetDateTime from, OffsetDateTime to, FilterBy2 filterBy, Integer currentPage,
-            Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getMetricsBreakdownValidateBeforeCall(metric, breakdown, from, to, filterBy,
-                currentPage, pageSize, null);
+            String breakdown, OffsetDateTime from, OffsetDateTime to, String sortBy, String sortOrder,
+            FilterBy2 filterBy, Integer currentPage, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = getMetricsBreakdownValidateBeforeCall(metric, breakdown, from, to, sortBy,
+                sortOrder, filterBy, currentPage, pageSize, null);
         Type localVarReturnType = new TypeToken<AnalyticsMetricsBreakdownResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getMetricsBreakdownAsync(String metric, String breakdown, OffsetDateTime from,
-            OffsetDateTime to, FilterBy2 filterBy, Integer currentPage, Integer pageSize,
-            final ApiCallback<AnalyticsMetricsBreakdownResponse> _callback) throws ApiException {
-        okhttp3.Call localVarCall = getMetricsBreakdownValidateBeforeCall(metric, breakdown, from, to, filterBy,
-                currentPage, pageSize, _callback);
+            OffsetDateTime to, String sortBy, String sortOrder, FilterBy2 filterBy, Integer currentPage,
+            Integer pageSize, final ApiCallback<AnalyticsMetricsBreakdownResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = getMetricsBreakdownValidateBeforeCall(metric, breakdown, from, to, sortBy,
+                sortOrder, filterBy, currentPage, pageSize, _callback);
         Type localVarReturnType = new TypeToken<AnalyticsMetricsBreakdownResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -707,6 +716,8 @@ public class AnalyticsApi {
         private final String breakdown;
         private OffsetDateTime from;
         private OffsetDateTime to;
+        private String sortBy;
+        private String sortOrder;
         private FilterBy2 filterBy;
         private Integer currentPage;
         private Integer pageSize;
@@ -749,6 +760,38 @@ public class AnalyticsApi {
         }
 
         /**
+         * Set sortBy
+         * 
+         * @param sortBy
+         *            Use this parameter to choose which field the API will use to sort the analytics data. These are
+         *            the available fields to sort by: - &#x60;metricValue&#x60;: Sorts the results based on the
+         *            **metric** you selected in your request. - &#x60;dimensionValue&#x60;: Sorts the results based on
+         *            the **dimension** you selected in your request. (optional)
+         * 
+         * @return APIgetMetricsBreakdownRequest
+         */
+        public APIgetMetricsBreakdownRequest sortBy(String sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set sortOrder
+         * 
+         * @param sortOrder
+         *            Use this parameter to define the sort order of results. These are the available sort orders: -
+         *            &#x60;asc&#x60;: Sorts the results in ascending order: &#x60;A to Z&#x60; and &#x60;0 to 9&#x60;.
+         *            - &#x60;desc&#x60;: Sorts the results in descending order: &#x60;Z to A&#x60; and &#x60;9 to
+         *            0&#x60;. (optional)
+         * 
+         * @return APIgetMetricsBreakdownRequest
+         */
+        public APIgetMetricsBreakdownRequest sortOrder(String sortOrder) {
+            this.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
          * Set filterBy
          * 
          * @param filterBy
@@ -756,23 +799,24 @@ public class AnalyticsApi {
          *            serialize filters in your query to receive more detailed breakdowns of your analytics. - If you do
          *            not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The
          *            API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call
-         *            &#x60;/data/metrics/play/total&#x60;. These are the available breakdown dimensions: -
-         *            &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live
-         *            stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values:
-         *            &#x60;video&#x60; and &#x60;live-stream&#x60;. - &#x60;continent&#x60;: Returns analytics based on
-         *            the viewers&#39; continent. The list of supported continents names are based on the [GeoNames
-         *            public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format,
-         *            for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;,
+         *            &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;. These are
+         *            the available breakdown dimensions: - &#x60;mediaId&#x60;: Returns analytics based on the unique
+         *            identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the
+         *            type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;. -
+         *            &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of
+         *            supported continents names are based on the [GeoNames public
+         *            database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for
+         *            example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;,
          *            &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;. - &#x60;country&#x60;: Returns
          *            analytics based on the viewers&#39; country. The list of supported country names are based on the
          *            [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2
          *            format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type
-         *            of device used by the viewers. Possible response values are: &#x60;computer&#x60;,
+         *            of device used by the viewers. Response values can include: &#x60;computer&#x60;,
          *            &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;,
          *            &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating
-         *            system used by the viewers. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;,
+         *            system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;,
          *            &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics
-         *            based on the browser used by the viewers. Response values include &#x60;chrome&#x60;,
+         *            based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;,
          *            &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for
          *            videos using this tag. This filter only accepts a single value and is case sensitive. Read more
          *            about tagging your videos [here](https://docs.api.video/vod/tags-metadata). (optional)
@@ -871,7 +915,8 @@ public class AnalyticsApi {
          *                        </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getMetricsBreakdownCall(metric, breakdown, from, to, filterBy, currentPage, pageSize, _callback);
+            return getMetricsBreakdownCall(metric, breakdown, from, to, sortBy, sortOrder, filterBy, currentPage,
+                    pageSize, _callback);
         }
 
         /**
@@ -933,7 +978,7 @@ public class AnalyticsApi {
          */
         public Page<AnalyticsMetricsBreakdownResponseData> execute() throws ApiException {
             ApiResponse<AnalyticsMetricsBreakdownResponse> localVarResp = getMetricsBreakdownWithHttpInfo(metric,
-                    breakdown, from, to, filterBy, currentPage, pageSize);
+                    breakdown, from, to, sortBy, sortOrder, filterBy, currentPage, pageSize);
             return new Page<>(localVarResp.getData().getData(), localVarResp.getData().getPagination(), () -> {
                 try {
                     return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
@@ -947,6 +992,8 @@ public class AnalyticsApi {
             APIgetMetricsBreakdownRequest copy = new APIgetMetricsBreakdownRequest(metric, breakdown);
             copy.from(from);
             copy.to(to);
+            copy.sortBy(sortBy);
+            copy.sortOrder(sortOrder);
             copy.filterBy(filterBy);
             copy.currentPage(currentPage);
             copy.pageSize(pageSize);
@@ -1011,7 +1058,8 @@ public class AnalyticsApi {
          *                        </table>
          */
         public ApiResponse<AnalyticsMetricsBreakdownResponse> executeWithHttpInfo() throws ApiException {
-            return getMetricsBreakdownWithHttpInfo(metric, breakdown, from, to, filterBy, currentPage, pageSize);
+            return getMetricsBreakdownWithHttpInfo(metric, breakdown, from, to, sortBy, sortOrder, filterBy,
+                    currentPage, pageSize);
         }
 
         /**
@@ -1105,7 +1153,8 @@ public class AnalyticsApi {
                     _callback.onDownloadProgress(bytesRead, contentLength, done);
                 }
             };
-            return getMetricsBreakdownAsync(metric, breakdown, from, to, filterBy, currentPage, pageSize, apiCallback);
+            return getMetricsBreakdownAsync(metric, breakdown, from, to, sortBy, sortOrder, filterBy, currentPage,
+                    pageSize, apiCallback);
         }
     }
 
@@ -1135,12 +1184,12 @@ public class AnalyticsApi {
      *            &#x60;NA&#x60;, &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;. - &#x60;country&#x60;:
      *            Returns analytics based on the viewers&#39; country. The list of supported country names are based on
      *            the [GeoNames public database](https://www.geonames.org/countries/). - &#x60;device-type&#x60;:
-     *            Returns analytics based on the type of device used by the viewers. Possible response values are:
+     *            Returns analytics based on the type of device used by the viewers. Response values can include:
      *            &#x60;computer&#x60;, &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;,
      *            &#x60;wearable&#x60;, &#x60;unknown&#x60;. - &#x60;operating-system&#x60;: Returns analytics based on
-     *            the operating system used by the viewers. Response values include &#x60;windows&#x60;, &#x60;mac
+     *            the operating system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac
      *            osx&#x60;, &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns
-     *            analytics based on the browser used by the viewers. Response values include &#x60;chrome&#x60;,
+     *            analytics based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;,
      *            &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. (required)
      * 
      * @return APIgetMetricsBreakdownRequest
@@ -1199,8 +1248,8 @@ public class AnalyticsApi {
     }
 
     private okhttp3.Call getMetricsOverTimeCall(String metric, OffsetDateTime from, OffsetDateTime to, String interval,
-            FilterBy2 filterBy, Integer currentPage, Integer pageSize, final ApiCallback _callback)
-            throws ApiException {
+            String sortBy, String sortOrder, FilterBy2 filterBy, Integer currentPage, Integer pageSize,
+            final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1223,6 +1272,14 @@ public class AnalyticsApi {
 
         if (interval != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("interval", interval));
+        }
+
+        if (sortBy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sortBy", sortBy));
+        }
+
+        if (sortOrder != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sortOrder", sortOrder));
         }
 
         if (filterBy != null) {
@@ -1255,34 +1312,34 @@ public class AnalyticsApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call getMetricsOverTimeValidateBeforeCall(String metric, OffsetDateTime from, OffsetDateTime to,
-            String interval, FilterBy2 filterBy, Integer currentPage, Integer pageSize, final ApiCallback _callback)
-            throws ApiException {
+            String interval, String sortBy, String sortOrder, FilterBy2 filterBy, Integer currentPage, Integer pageSize,
+            final ApiCallback _callback) throws ApiException {
 
         // verify the required parameter 'metric' is set
         if (metric == null) {
             throw new ApiException("Missing the required parameter 'metric' when calling getMetricsOverTime");
         }
 
-        okhttp3.Call localVarCall = getMetricsOverTimeCall(metric, from, to, interval, filterBy, currentPage, pageSize,
-                _callback);
+        okhttp3.Call localVarCall = getMetricsOverTimeCall(metric, from, to, interval, sortBy, sortOrder, filterBy,
+                currentPage, pageSize, _callback);
         return localVarCall;
     }
 
     private ApiResponse<AnalyticsMetricsOverTimeResponse> getMetricsOverTimeWithHttpInfo(String metric,
-            OffsetDateTime from, OffsetDateTime to, String interval, FilterBy2 filterBy, Integer currentPage,
-            Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = getMetricsOverTimeValidateBeforeCall(metric, from, to, interval, filterBy,
-                currentPage, pageSize, null);
+            OffsetDateTime from, OffsetDateTime to, String interval, String sortBy, String sortOrder,
+            FilterBy2 filterBy, Integer currentPage, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = getMetricsOverTimeValidateBeforeCall(metric, from, to, interval, sortBy, sortOrder,
+                filterBy, currentPage, pageSize, null);
         Type localVarReturnType = new TypeToken<AnalyticsMetricsOverTimeResponse>() {
         }.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     private okhttp3.Call getMetricsOverTimeAsync(String metric, OffsetDateTime from, OffsetDateTime to, String interval,
-            FilterBy2 filterBy, Integer currentPage, Integer pageSize,
+            String sortBy, String sortOrder, FilterBy2 filterBy, Integer currentPage, Integer pageSize,
             final ApiCallback<AnalyticsMetricsOverTimeResponse> _callback) throws ApiException {
-        okhttp3.Call localVarCall = getMetricsOverTimeValidateBeforeCall(metric, from, to, interval, filterBy,
-                currentPage, pageSize, _callback);
+        okhttp3.Call localVarCall = getMetricsOverTimeValidateBeforeCall(metric, from, to, interval, sortBy, sortOrder,
+                filterBy, currentPage, pageSize, _callback);
         Type localVarReturnType = new TypeToken<AnalyticsMetricsOverTimeResponse>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -1294,6 +1351,8 @@ public class AnalyticsApi {
         private OffsetDateTime from;
         private OffsetDateTime to;
         private String interval;
+        private String sortBy;
+        private String sortOrder;
         private FilterBy2 filterBy;
         private Integer currentPage;
         private Integer pageSize;
@@ -1353,6 +1412,38 @@ public class AnalyticsApi {
         }
 
         /**
+         * Set sortBy
+         * 
+         * @param sortBy
+         *            Use this parameter to choose which field the API will use to sort the analytics data. These are
+         *            the available fields to sort by: - &#x60;metricValue&#x60;: Sorts the results based on the
+         *            **metric** you selected in your request. - &#x60;emittedAt&#x60;: Sorts the results based on the
+         *            **timestamp** of the event in ATOM date-time format. (optional)
+         * 
+         * @return APIgetMetricsOverTimeRequest
+         */
+        public APIgetMetricsOverTimeRequest sortBy(String sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set sortOrder
+         * 
+         * @param sortOrder
+         *            Use this parameter to define the sort order of results. These are the available sort orders: -
+         *            &#x60;asc&#x60;: Sorts the results in ascending order: &#x60;A to Z&#x60; and &#x60;0 to 9&#x60;.
+         *            - &#x60;desc&#x60;: Sorts the results in descending order: &#x60;Z to A&#x60; and &#x60;9 to
+         *            0&#x60;. (optional)
+         * 
+         * @return APIgetMetricsOverTimeRequest
+         */
+        public APIgetMetricsOverTimeRequest sortOrder(String sortOrder) {
+            this.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
          * Set filterBy
          * 
          * @param filterBy
@@ -1360,23 +1451,24 @@ public class AnalyticsApi {
          *            serialize filters in your query to receive more detailed breakdowns of your analytics. - If you do
          *            not set a value for &#x60;filterBy&#x60;, the API returns the full dataset for your project. - The
          *            API only accepts the &#x60;mediaId&#x60; and &#x60;mediaType&#x60; filters when you call
-         *            &#x60;/data/metrics/play/total&#x60;. These are the available breakdown dimensions: -
-         *            &#x60;mediaId&#x60;: Returns analytics based on the unique identifiers of a video or a live
-         *            stream. - &#x60;mediaType&#x60;: Returns analytics based on the type of content. Possible values:
-         *            &#x60;video&#x60; and &#x60;live-stream&#x60;. - &#x60;continent&#x60;: Returns analytics based on
-         *            the viewers&#39; continent. The list of supported continents names are based on the [GeoNames
-         *            public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format,
-         *            for example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;,
+         *            &#x60;/data/metrics/play/total&#x60; or &#x60;/data/buckets/play-total/media-id&#x60;. These are
+         *            the available breakdown dimensions: - &#x60;mediaId&#x60;: Returns analytics based on the unique
+         *            identifiers of a video or a live stream. - &#x60;mediaType&#x60;: Returns analytics based on the
+         *            type of content. Possible values: &#x60;video&#x60; and &#x60;live-stream&#x60;. -
+         *            &#x60;continent&#x60;: Returns analytics based on the viewers&#39; continent. The list of
+         *            supported continents names are based on the [GeoNames public
+         *            database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2 format, for
+         *            example &#x60;EU&#x60;. Possible values are: &#x60;AS&#x60;, &#x60;AF&#x60;, &#x60;NA&#x60;,
          *            &#x60;SA&#x60;, &#x60;AN&#x60;, &#x60;EU&#x60;, &#x60;AZ&#x60;. - &#x60;country&#x60;: Returns
          *            analytics based on the viewers&#39; country. The list of supported country names are based on the
          *            [GeoNames public database](https://www.geonames.org/countries/). You must use the ISO-3166 alpha2
          *            format, for example &#x60;FR&#x60;. - &#x60;deviceType&#x60;: Returns analytics based on the type
-         *            of device used by the viewers. Possible response values are: &#x60;computer&#x60;,
+         *            of device used by the viewers. Response values can include: &#x60;computer&#x60;,
          *            &#x60;phone&#x60;, &#x60;tablet&#x60;, &#x60;tv&#x60;, &#x60;console&#x60;, &#x60;wearable&#x60;,
          *            &#x60;unknown&#x60;. - &#x60;operatingSystem&#x60;: Returns analytics based on the operating
-         *            system used by the viewers. Response values include &#x60;windows&#x60;, &#x60;mac osx&#x60;,
+         *            system used by the viewers. Response values can include &#x60;windows&#x60;, &#x60;mac osx&#x60;,
          *            &#x60;android&#x60;, &#x60;ios&#x60;, &#x60;linux&#x60;. - &#x60;browser&#x60;: Returns analytics
-         *            based on the browser used by the viewers. Response values include &#x60;chrome&#x60;,
+         *            based on the browser used by the viewers. Response values can include &#x60;chrome&#x60;,
          *            &#x60;firefox&#x60;, &#x60;edge&#x60;, &#x60;opera&#x60;. - &#x60;tag&#x60;: Returns analytics for
          *            videos using this tag. This filter only accepts a single value and is case sensitive. Read more
          *            about tagging your videos [here](https://docs.api.video/vod/tags-metadata). (optional)
@@ -1475,7 +1567,8 @@ public class AnalyticsApi {
          *                        </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getMetricsOverTimeCall(metric, from, to, interval, filterBy, currentPage, pageSize, _callback);
+            return getMetricsOverTimeCall(metric, from, to, interval, sortBy, sortOrder, filterBy, currentPage,
+                    pageSize, _callback);
         }
 
         /**
@@ -1537,7 +1630,7 @@ public class AnalyticsApi {
          */
         public Page<AnalyticsMetricsOverTimeResponseData> execute() throws ApiException {
             ApiResponse<AnalyticsMetricsOverTimeResponse> localVarResp = getMetricsOverTimeWithHttpInfo(metric, from,
-                    to, interval, filterBy, currentPage, pageSize);
+                    to, interval, sortBy, sortOrder, filterBy, currentPage, pageSize);
             return new Page<>(localVarResp.getData().getData(), localVarResp.getData().getPagination(), () -> {
                 try {
                     return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
@@ -1552,6 +1645,8 @@ public class AnalyticsApi {
             copy.from(from);
             copy.to(to);
             copy.interval(interval);
+            copy.sortBy(sortBy);
+            copy.sortOrder(sortOrder);
             copy.filterBy(filterBy);
             copy.currentPage(currentPage);
             copy.pageSize(pageSize);
@@ -1616,7 +1711,8 @@ public class AnalyticsApi {
          *                        </table>
          */
         public ApiResponse<AnalyticsMetricsOverTimeResponse> executeWithHttpInfo() throws ApiException {
-            return getMetricsOverTimeWithHttpInfo(metric, from, to, interval, filterBy, currentPage, pageSize);
+            return getMetricsOverTimeWithHttpInfo(metric, from, to, interval, sortBy, sortOrder, filterBy, currentPage,
+                    pageSize);
         }
 
         /**
@@ -1710,7 +1806,8 @@ public class AnalyticsApi {
                     _callback.onDownloadProgress(bytesRead, contentLength, done);
                 }
             };
-            return getMetricsOverTimeAsync(metric, from, to, interval, filterBy, currentPage, pageSize, apiCallback);
+            return getMetricsOverTimeAsync(metric, from, to, interval, sortBy, sortOrder, filterBy, currentPage,
+                    pageSize, apiCallback);
         }
     }
 

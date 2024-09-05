@@ -27,7 +27,7 @@ import java.io.Serializable;
  * VideoSourceLiveStreamLink
  */
 
-public class VideoSourceLiveStreamLink implements Serializable {
+public class VideoSourceLiveStreamLink implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_REL = "rel";

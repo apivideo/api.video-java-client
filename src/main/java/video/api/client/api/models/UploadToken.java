@@ -28,7 +28,7 @@ import java.io.Serializable;
  * UploadToken
  */
 
-public class UploadToken implements Serializable {
+public class UploadToken implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TOKEN = "token";

@@ -47,5 +47,6 @@ FAILED | &quot;failed&quot;
 ## Implemented Interfaces
 
 * Serializable
+* DeepObject
 
 

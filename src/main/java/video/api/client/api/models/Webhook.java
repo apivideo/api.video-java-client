@@ -30,7 +30,7 @@ import java.io.Serializable;
  * Webhook
  */
 
-public class Webhook implements Serializable {
+public class Webhook implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_WEBHOOK_ID = "webhookId";

@@ -27,7 +27,7 @@ import java.io.Serializable;
  * Caption
  */
 
-public class Caption implements Serializable {
+public class Caption implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_URI = "uri";

@@ -31,7 +31,7 @@ import java.io.Serializable;
  * BadRequest
  */
 
-public class BadRequest implements Serializable {
+public class BadRequest implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TYPE = "type";

@@ -27,7 +27,7 @@ import java.io.Serializable;
  * AuthenticatePayload
  */
 
-public class AuthenticatePayload implements Serializable {
+public class AuthenticatePayload implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_API_KEY = "apiKey";

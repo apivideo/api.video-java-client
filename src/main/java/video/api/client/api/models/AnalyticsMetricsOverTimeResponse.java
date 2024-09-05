@@ -32,7 +32,7 @@ import java.io.Serializable;
  * AnalyticsMetricsOverTimeResponse
  */
 
-public class AnalyticsMetricsOverTimeResponse implements Serializable {
+public class AnalyticsMetricsOverTimeResponse implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_CONTEXT = "context";

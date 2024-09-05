@@ -29,7 +29,7 @@ import java.io.Serializable;
  * WebhooksCreationPayload
  */
 
-public class WebhooksCreationPayload implements Serializable {
+public class WebhooksCreationPayload implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_EVENTS = "events";

@@ -11324,30 +11324,29 @@ paths:
           \ detailed breakdowns of your analytics.\n\n- If you do not set a value\
           \ for `filterBy`, the API returns the full dataset for your project.\n-\
           \ The API only accepts the `mediaId` and `mediaType` filters when you call\
-          \ `/data/metrics/play/total`.\n\nThese are the available breakdown dimensions:\n\
-          \n- `mediaId`: Returns analytics based on the unique identifiers of a video\
-          \ or a live stream.\n- `mediaType`: Returns analytics based on the type\
-          \ of content. Possible values: `video` and `live-stream`. \n- `continent`:\
-          \ Returns analytics based on the viewers' continent. The list of supported\
-          \ continents names are based on the [GeoNames public database](https://www.geonames.org/countries/).\
-          \ You must use the ISO-3166 alpha2 format, for example `EU`. Possible values\
-          \ are: `AS`, `AF`, `NA`, `SA`, `AN`, `EU`, `AZ`. \n- `country`: Returns\
-          \ analytics based on the viewers' country. The list of supported country\
-          \ names are based on the [GeoNames public database](https://www.geonames.org/countries/).\
-          \ You must use the ISO-3166 alpha2 format, for example `FR`.\n- `deviceType`:\
-          \ Returns analytics based on the type of device used by the viewers. Possible\
-          \ response values are: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`,\
+          \ `/data/metrics/play/total` or `/data/buckets/play-total/media-id`.\n\n\
+          These are the available breakdown dimensions:\n\n- `mediaId`: Returns analytics\
+          \ based on the unique identifiers of a video or a live stream.\n- `mediaType`:\
+          \ Returns analytics based on the type of content. Possible values: `video`\
+          \ and `live-stream`. \n- `continent`: Returns analytics based on the viewers'\
+          \ continent. The list of supported continents names are based on the [GeoNames\
+          \ public database](https://www.geonames.org/countries/). You must use the\
+          \ ISO-3166 alpha2 format, for example `EU`. Possible values are: `AS`, `AF`,\
+          \ `NA`, `SA`, `AN`, `EU`, `AZ`. \n- `country`: Returns analytics based on\
+          \ the viewers' country. The list of supported country names are based on\
+          \ the [GeoNames public database](https://www.geonames.org/countries/). You\
+          \ must use the ISO-3166 alpha2 format, for example `FR`.\n- `deviceType`:\
+          \ Returns analytics based on the type of device used by the viewers. Response\
+          \ values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`,\
           \ `unknown`.\n- `operatingSystem`: Returns analytics based on the operating\
-          \ system used by the viewers. Response values include `windows`, `mac osx`,\
-          \ `android`, `ios`, `linux`.\n- `browser`: Returns analytics based on the\
-          \ browser used by the viewers. Response values include `chrome`, `firefox`,\
-          \ `edge`, `opera`.\n- `tag`: Returns analytics for videos using this tag.\
-          \ This filter only accepts a single value and is case sensitive. Read more\
-          \ about tagging your videos [here](https://docs.api.video/vod/tags-metadata).\n"
-        example:
-          mediaType: video
-          continent: EU
-          country: FR
+          \ system used by the viewers. Response values can include `windows`, `mac\
+          \ osx`, `android`, `ios`, `linux`.\n- `browser`: Returns analytics based\
+          \ on the browser used by the viewers. Response values can include `chrome`,\
+          \ `firefox`, `edge`, `opera`.\n- `tag`: Returns analytics for videos using\
+          \ this tag. This filter only accepts a single value and is case sensitive.\
+          \ Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).\n"
+        example: filterBy[country]=FR&filterBy[operatingSystem]=windows&filterBy[browser][]=firefox&filterBy[browser][]=chrome&filterBy[tag]=Cool
+          videos
         explode: true
         in: query
         name: filterBy
@@ -11357,8 +11356,11 @@ paths:
             mediaId:
               description: Returns analytics based on the unique identifiers of a
                 video or a live stream.
-              example: vi4blUQJFrYWbaG44NChkH27
-              type: string
+              example:
+              - vi4blUQJFrYWbaG44NChkH27
+              items:
+                type: string
+              type: array
             mediaType:
               enum:
               - video
@@ -11370,39 +11372,54 @@ paths:
                 list of supported continents names are based on the [GeoNames public
                 database](https://www.geonames.org/countries/). You must use the ISO-3166
                 alpha2 format, for example `EU`.
-              enum:
-              - AS
-              - AF
-              - NA
-              - SA
-              - AN
+              example:
               - EU
-              - AZ
-              example: EU
-              type: string
+              items:
+                enum:
+                - AS
+                - AF
+                - NA
+                - SA
+                - AN
+                - EU
+                - AZ
+                type: string
+              type: array
             country:
               description: Returns analytics based on the viewers' country. The list
                 of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/).
                 You must use the ISO-3166 alpha2 format, for example `FR`.
-              example: FR
-              type: string
+              example:
+              - FR
+              items:
+                type: string
+              type: array
             deviceType:
               description: 'Returns analytics based on the type of device used by
-                the viewers. Possible response values are: `computer`, `phone`, `tablet`,
+                the viewers. Response values can include: `computer`, `phone`, `tablet`,
                 `tv`, `console`, `wearable`, `unknown`.'
-              example: computer
-              type: string
+              example:
+              - computer
+              items:
+                type: string
+              type: array
             operatingSystem:
               description: Returns analytics based on the operating system used by
-                the viewers. Response values include `windows`, `mac osx`, `android`,
+                the viewers. Response values can include `windows`, `mac osx`, `android`,
                 `ios`, `linux`.
-              example: windows
-              type: string
+              example:
+              - windows
+              items:
+                type: string
+              type: array
             browser:
               description: Returns analytics based on the browser used by the viewers.
-                Response values include `chrome`, `firefox`, `edge`, `opera`.
-              example: firefox
-              type: string
+                Response values can include `chrome`, `firefox`, `edge`, `opera`.
+              example:
+              - firefox
+              items:
+                type: string
+              type: array
             tag:
               description: Returns analytics for videos using this tag. This filter
                 only accepts a single value and is case sensitive. Read more about
@@ -11410,7 +11427,9 @@ paths:
               example: Cool videos
               type: string
           type: object
+          x-is-deep-object: true
         style: deepObject
+        x-is-deep-object: true
       responses:
         "200":
           content:
@@ -11570,7 +11589,70 @@ paths:
       - Analytics
       x-client-action: getAggregatedMetrics
       x-group-parameters: true
-      x-doctave: {}
+      x-doctave:
+        code-samples:
+        - language: java
+          code: |
+            FilterBy2 filterBy = new FilterBy2();
+
+            filterBy.setBrowser(Collections.singletonList("Chrome"));
+            filterBy.setContinent(Arrays.asList(FilterBy2.ContinentEnum.NA, FilterBy2.ContinentEnum.EU));
+            filterBy.setMediaType(FilterBy2.MediaTypeEnum.VIDEO);
+            filterBy.setTag("test");
+
+
+            AnalyticsAggregatedMetricsResponse res = apiClient.analytics().getAggregatedMetrics("play", "total").filterBy(filterBy).execute();
+            System.out.println(res.getData());
+        - language: node
+          code: |
+            const res = await client.analytics.getAggregatedMetrics({
+              aggregation: 'total',
+              metric: 'play',
+              filterBy: {
+                browser: ['chrome', 'firefox'],
+                continent: ['EU', 'AF'],
+                tag: 'test',
+              },
+            });
+            console.log(res.data);
+        - language: csharp
+          code: |
+            FilterBy2 filterBy = new FilterBy2
+            {
+                continent = new List<string> { "EU", "US" },
+                devicetype = new List<string> { "phone" },
+                tag = "test"
+            };
+            AnalyticsAggregatedMetricsResponse res = apiClient.Analytics()
+                .getAggregatedMetrics("play", "total").From(new DateTime(2024, 7, 1)).FilterBy(filterBy).execute();
+        - language: go
+          code: |
+            res, err := cl.Analytics.GetAggregatedMetrics("play", "day", AnalyticsApiGetAggregatedMetricsRequest{
+              filterBy: &FilterBy2{
+                Continent: &[]string{"EU", "AA"},
+                DeviceType: &[]string{"computer", "phone"},
+                Tag: PtrString("tag"),
+              },
+            })
+        - language: python
+          code: |
+            res = self.api.get_aggregated_metrics(metric='play', aggregation='count', filter_by=FilterBy2(
+                    device_type=["computer", "phone"],
+                    tag="test",
+                ),
+            )
+        - language: swift
+          code: |
+            AnalyticsAPI.getAggregatedMetrics(
+                    metric: .play,
+                    aggregation: .total,
+                    filterBy: FilterBy2(
+                        continent: [.an, .eu],
+                        tag: "test"
+                    )
+                ) { analytics, error in
+                    // ...
+                }
       x-accepts: application/json
   /data/buckets/{metric}/{breakdown}:
     get:
@@ -11613,12 +11695,12 @@ paths:
           \ analytics based on the viewers' country. The list of supported country\
           \ names are based on the [GeoNames public database](https://www.geonames.org/countries/).\n\
           - `device-type`: Returns analytics based on the type of device used by the\
-          \ viewers. Possible response values are: `computer`, `phone`, `tablet`,\
-          \ `tv`, `console`, `wearable`, `unknown`.\n- `operating-system`: Returns\
-          \ analytics based on the operating system used by the viewers. Response\
-          \ values include `windows`, `mac osx`, `android`, `ios`, `linux`.\n- `browser`:\
+          \ viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`,\
+          \ `console`, `wearable`, `unknown`.\n- `operating-system`: Returns analytics\
+          \ based on the operating system used by the viewers. Response values can\
+          \ include `windows`, `mac osx`, `android`, `ios`, `linux`.\n- `browser`:\
           \ Returns analytics based on the browser used by the viewers. Response values\
-          \ include `chrome`, `firefox`, `edge`, `opera`.\n"
+          \ can include `chrome`, `firefox`, `edge`, `opera`.\n"
         explode: false
         in: path
         name: breakdown
@@ -11663,36 +11745,71 @@ paths:
           format: date-time
           type: string
         style: form
+      - description: |
+          Use this parameter to choose which field the API will use to sort the analytics data.
+
+          These are the available fields to sort by:
+
+          - `metricValue`: Sorts the results based on the **metric** you selected in your request.
+          - `dimensionValue`: Sorts the results based on the **dimension** you selected in your request.
+        example: metricValue
+        explode: false
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          enum:
+          - metricValue
+          - dimensionValue
+          type: string
+        style: form
+      - description: |
+          Use this parameter to define the sort order of results.
+
+          These are the available sort orders:
+
+          - `asc`: Sorts the results in ascending order: `A to Z` and `0 to 9`.
+          - `desc`: Sorts the results in descending order: `Z to A` and `9 to 0`.
+        example: asc
+        explode: false
+        in: query
+        name: sortOrder
+        required: false
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+        style: form
       - $ref: '#/components/parameters/filterBy_2'
         description: "Use this parameter to filter the API's response based on different\
           \ data dimensions. You can serialize filters in your query to receive more\
           \ detailed breakdowns of your analytics.\n\n- If you do not set a value\
           \ for `filterBy`, the API returns the full dataset for your project.\n-\
           \ The API only accepts the `mediaId` and `mediaType` filters when you call\
-          \ `/data/metrics/play/total`.\n\nThese are the available breakdown dimensions:\n\
-          \n- `mediaId`: Returns analytics based on the unique identifiers of a video\
-          \ or a live stream.\n- `mediaType`: Returns analytics based on the type\
-          \ of content. Possible values: `video` and `live-stream`. \n- `continent`:\
-          \ Returns analytics based on the viewers' continent. The list of supported\
-          \ continents names are based on the [GeoNames public database](https://www.geonames.org/countries/).\
-          \ You must use the ISO-3166 alpha2 format, for example `EU`. Possible values\
-          \ are: `AS`, `AF`, `NA`, `SA`, `AN`, `EU`, `AZ`. \n- `country`: Returns\
-          \ analytics based on the viewers' country. The list of supported country\
-          \ names are based on the [GeoNames public database](https://www.geonames.org/countries/).\
-          \ You must use the ISO-3166 alpha2 format, for example `FR`.\n- `deviceType`:\
-          \ Returns analytics based on the type of device used by the viewers. Possible\
-          \ response values are: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`,\
+          \ `/data/metrics/play/total` or `/data/buckets/play-total/media-id`.\n\n\
+          These are the available breakdown dimensions:\n\n- `mediaId`: Returns analytics\
+          \ based on the unique identifiers of a video or a live stream.\n- `mediaType`:\
+          \ Returns analytics based on the type of content. Possible values: `video`\
+          \ and `live-stream`. \n- `continent`: Returns analytics based on the viewers'\
+          \ continent. The list of supported continents names are based on the [GeoNames\
+          \ public database](https://www.geonames.org/countries/). You must use the\
+          \ ISO-3166 alpha2 format, for example `EU`. Possible values are: `AS`, `AF`,\
+          \ `NA`, `SA`, `AN`, `EU`, `AZ`. \n- `country`: Returns analytics based on\
+          \ the viewers' country. The list of supported country names are based on\
+          \ the [GeoNames public database](https://www.geonames.org/countries/). You\
+          \ must use the ISO-3166 alpha2 format, for example `FR`.\n- `deviceType`:\
+          \ Returns analytics based on the type of device used by the viewers. Response\
+          \ values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`,\
           \ `unknown`.\n- `operatingSystem`: Returns analytics based on the operating\
-          \ system used by the viewers. Response values include `windows`, `mac osx`,\
-          \ `android`, `ios`, `linux`.\n- `browser`: Returns analytics based on the\
-          \ browser used by the viewers. Response values include `chrome`, `firefox`,\
-          \ `edge`, `opera`.\n- `tag`: Returns analytics for videos using this tag.\
-          \ This filter only accepts a single value and is case sensitive. Read more\
-          \ about tagging your videos [here](https://docs.api.video/vod/tags-metadata).\n"
-        example:
-          mediaType: video
-          continent: EU
-          country: FR
+          \ system used by the viewers. Response values can include `windows`, `mac\
+          \ osx`, `android`, `ios`, `linux`.\n- `browser`: Returns analytics based\
+          \ on the browser used by the viewers. Response values can include `chrome`,\
+          \ `firefox`, `edge`, `opera`.\n- `tag`: Returns analytics for videos using\
+          \ this tag. This filter only accepts a single value and is case sensitive.\
+          \ Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).\n"
+        example: filterBy[country]=FR&filterBy[operatingSystem]=windows&filterBy[browser][]=firefox&filterBy[browser][]=chrome&filterBy[tag]=Cool
+          videos
         explode: true
         in: query
         name: filterBy
@@ -11702,8 +11819,11 @@ paths:
             mediaId:
               description: Returns analytics based on the unique identifiers of a
                 video or a live stream.
-              example: vi4blUQJFrYWbaG44NChkH27
-              type: string
+              example:
+              - vi4blUQJFrYWbaG44NChkH27
+              items:
+                type: string
+              type: array
             mediaType:
               enum:
               - video
@@ -11715,39 +11835,54 @@ paths:
                 list of supported continents names are based on the [GeoNames public
                 database](https://www.geonames.org/countries/). You must use the ISO-3166
                 alpha2 format, for example `EU`.
-              enum:
-              - AS
-              - AF
-              - NA
-              - SA
-              - AN
+              example:
               - EU
-              - AZ
-              example: EU
-              type: string
+              items:
+                enum:
+                - AS
+                - AF
+                - NA
+                - SA
+                - AN
+                - EU
+                - AZ
+                type: string
+              type: array
             country:
               description: Returns analytics based on the viewers' country. The list
                 of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/).
                 You must use the ISO-3166 alpha2 format, for example `FR`.
-              example: FR
-              type: string
+              example:
+              - FR
+              items:
+                type: string
+              type: array
             deviceType:
               description: 'Returns analytics based on the type of device used by
-                the viewers. Possible response values are: `computer`, `phone`, `tablet`,
+                the viewers. Response values can include: `computer`, `phone`, `tablet`,
                 `tv`, `console`, `wearable`, `unknown`.'
-              example: computer
-              type: string
+              example:
+              - computer
+              items:
+                type: string
+              type: array
             operatingSystem:
               description: Returns analytics based on the operating system used by
-                the viewers. Response values include `windows`, `mac osx`, `android`,
+                the viewers. Response values can include `windows`, `mac osx`, `android`,
                 `ios`, `linux`.
-              example: windows
-              type: string
+              example:
+              - windows
+              items:
+                type: string
+              type: array
             browser:
               description: Returns analytics based on the browser used by the viewers.
-                Response values include `chrome`, `firefox`, `edge`, `opera`.
-              example: firefox
-              type: string
+                Response values can include `chrome`, `firefox`, `edge`, `opera`.
+              example:
+              - firefox
+              items:
+                type: string
+              type: array
             tag:
               description: Returns analytics for videos using this tag. This filter
                 only accepts a single value and is case sensitive. Read more about
@@ -11755,7 +11890,9 @@ paths:
               example: Cool videos
               type: string
           type: object
+          x-is-deep-object: true
         style: deepObject
+        x-is-deep-object: true
       - description: 'Choose the number of search results to return per page. Minimum
           value: 1'
         example: 2
@@ -11952,7 +12089,67 @@ paths:
       x-client-action: getMetricsBreakdown
       x-group-parameters: true
       x-client-paginated: true
-      x-doctave: {}
+      x-doctave:
+        code-samples:
+        - language: java
+          code: |
+            FilterBy2 filterBy = new FilterBy2();
+
+            filterBy.setBrowser(Collections.singletonList("Chrome"));
+            filterBy.setContinent(Arrays.asList(FilterBy2.ContinentEnum.NA, FilterBy2.ContinentEnum.EU));
+            filterBy.setMediaType(FilterBy2.MediaTypeEnum.VIDEO);
+            filterBy.setTag("test");
+
+            Page<AnalyticsMetricsBreakdownResponseData> res = apiClient.analytics().getMetricsBreakdown("play", "media-id").filterBy(filterBy).pageSize(30).execute();
+            for (AnalyticsMetricsBreakdownResponseData item : res.getItems()) {
+                System.out.println(item.getDimensionValue() + ": " + item.getMetricValue());
+            }
+        - language: node
+          code: |
+            const res = await client.analytics.getMetricsBreakdown({
+              breakdown: 'continent',
+              metric: 'play',
+              filterBy: {
+                browser: ['chrome', 'firefox'],
+                continent: ['EU', 'AF'],
+                tag: 'test',
+              },
+            });
+            console.log(res.data);
+        - language: csharp
+          code: |
+            FilterBy2 filterBy = new FilterBy2
+            {
+                continent = new List<string> { "EU", "US" },
+                devicetype = new List<string> { "phone" },
+                tag = "test"
+            };
+            Page<AnalyticsMetricsBreakdownResponseData> page = apiClient.Analytics()
+                .getMetricsBreakdown("play", "continent").From(new DateTime(2024, 7, 1)).FilterBy(filterBy).execute();
+        - language: go
+          code: "res, err := cl.Analytics.GetMetricsBreakdown(\"play\", \"continent\"\
+            , AnalyticsApiGetMetricsBreakdownRequest{\n  filterBy: &FilterBy2{\n \
+            \   Continent: &[]string{\"EU\", \"AA\"},\n    DeviceType: &[]string{\"\
+            computer\", \"phone\"},\n    Tag: \tPtrString(\"tag\"),\n  },\n})\n"
+        - language: python
+          code: |
+            res = self.api.get_metrics_breakdown(metric='play', breakdown='continent', filter_by=FilterBy2(
+                    device_type=["computer", "phone"],
+                    tag="test",
+                ),
+            )
+        - language: swift
+          code: |
+            AnalyticsAPI.getMetricsBreakdown(
+                metric: .play,
+                breakdown: .browser,
+                filterBy: FilterBy2(
+                    continent: [.an, .eu],
+                    tag: "test"
+                )
+            ) { analytics, error in
+                // ...
+            }
       x-accepts: application/json
   /data/timeseries/{metric}:
     get:
@@ -12027,36 +12224,71 @@ paths:
           - day
           type: string
         style: form
+      - description: |
+          Use this parameter to choose which field the API will use to sort the analytics data.
+
+          These are the available fields to sort by:
+
+          - `metricValue`: Sorts the results based on the **metric** you selected in your request.
+          - `emittedAt`: Sorts the results based on the **timestamp** of the event in ATOM date-time format.
+        example: metricValue
+        explode: false
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          enum:
+          - metricValue
+          - emittedAt
+          type: string
+        style: form
+      - description: |
+          Use this parameter to define the sort order of results.
+
+          These are the available sort orders:
+
+          - `asc`: Sorts the results in ascending order: `A to Z` and `0 to 9`.
+          - `desc`: Sorts the results in descending order: `Z to A` and `9 to 0`.
+        example: asc
+        explode: false
+        in: query
+        name: sortOrder
+        required: false
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+        style: form
       - $ref: '#/components/parameters/filterBy_2'
         description: "Use this parameter to filter the API's response based on different\
           \ data dimensions. You can serialize filters in your query to receive more\
           \ detailed breakdowns of your analytics.\n\n- If you do not set a value\
           \ for `filterBy`, the API returns the full dataset for your project.\n-\
           \ The API only accepts the `mediaId` and `mediaType` filters when you call\
-          \ `/data/metrics/play/total`.\n\nThese are the available breakdown dimensions:\n\
-          \n- `mediaId`: Returns analytics based on the unique identifiers of a video\
-          \ or a live stream.\n- `mediaType`: Returns analytics based on the type\
-          \ of content. Possible values: `video` and `live-stream`. \n- `continent`:\
-          \ Returns analytics based on the viewers' continent. The list of supported\
-          \ continents names are based on the [GeoNames public database](https://www.geonames.org/countries/).\
-          \ You must use the ISO-3166 alpha2 format, for example `EU`. Possible values\
-          \ are: `AS`, `AF`, `NA`, `SA`, `AN`, `EU`, `AZ`. \n- `country`: Returns\
-          \ analytics based on the viewers' country. The list of supported country\
-          \ names are based on the [GeoNames public database](https://www.geonames.org/countries/).\
-          \ You must use the ISO-3166 alpha2 format, for example `FR`.\n- `deviceType`:\
-          \ Returns analytics based on the type of device used by the viewers. Possible\
-          \ response values are: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`,\
+          \ `/data/metrics/play/total` or `/data/buckets/play-total/media-id`.\n\n\
+          These are the available breakdown dimensions:\n\n- `mediaId`: Returns analytics\
+          \ based on the unique identifiers of a video or a live stream.\n- `mediaType`:\
+          \ Returns analytics based on the type of content. Possible values: `video`\
+          \ and `live-stream`. \n- `continent`: Returns analytics based on the viewers'\
+          \ continent. The list of supported continents names are based on the [GeoNames\
+          \ public database](https://www.geonames.org/countries/). You must use the\
+          \ ISO-3166 alpha2 format, for example `EU`. Possible values are: `AS`, `AF`,\
+          \ `NA`, `SA`, `AN`, `EU`, `AZ`. \n- `country`: Returns analytics based on\
+          \ the viewers' country. The list of supported country names are based on\
+          \ the [GeoNames public database](https://www.geonames.org/countries/). You\
+          \ must use the ISO-3166 alpha2 format, for example `FR`.\n- `deviceType`:\
+          \ Returns analytics based on the type of device used by the viewers. Response\
+          \ values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`,\
           \ `unknown`.\n- `operatingSystem`: Returns analytics based on the operating\
-          \ system used by the viewers. Response values include `windows`, `mac osx`,\
-          \ `android`, `ios`, `linux`.\n- `browser`: Returns analytics based on the\
-          \ browser used by the viewers. Response values include `chrome`, `firefox`,\
-          \ `edge`, `opera`.\n- `tag`: Returns analytics for videos using this tag.\
-          \ This filter only accepts a single value and is case sensitive. Read more\
-          \ about tagging your videos [here](https://docs.api.video/vod/tags-metadata).\n"
-        example:
-          mediaType: video
-          continent: EU
-          country: FR
+          \ system used by the viewers. Response values can include `windows`, `mac\
+          \ osx`, `android`, `ios`, `linux`.\n- `browser`: Returns analytics based\
+          \ on the browser used by the viewers. Response values can include `chrome`,\
+          \ `firefox`, `edge`, `opera`.\n- `tag`: Returns analytics for videos using\
+          \ this tag. This filter only accepts a single value and is case sensitive.\
+          \ Read more about tagging your videos [here](https://docs.api.video/vod/tags-metadata).\n"
+        example: filterBy[country]=FR&filterBy[operatingSystem]=windows&filterBy[browser][]=firefox&filterBy[browser][]=chrome&filterBy[tag]=Cool
+          videos
         explode: true
         in: query
         name: filterBy
@@ -12066,8 +12298,11 @@ paths:
             mediaId:
               description: Returns analytics based on the unique identifiers of a
                 video or a live stream.
-              example: vi4blUQJFrYWbaG44NChkH27
-              type: string
+              example:
+              - vi4blUQJFrYWbaG44NChkH27
+              items:
+                type: string
+              type: array
             mediaType:
               enum:
               - video
@@ -12079,39 +12314,54 @@ paths:
                 list of supported continents names are based on the [GeoNames public
                 database](https://www.geonames.org/countries/). You must use the ISO-3166
                 alpha2 format, for example `EU`.
-              enum:
-              - AS
-              - AF
-              - NA
-              - SA
-              - AN
+              example:
               - EU
-              - AZ
-              example: EU
-              type: string
+              items:
+                enum:
+                - AS
+                - AF
+                - NA
+                - SA
+                - AN
+                - EU
+                - AZ
+                type: string
+              type: array
             country:
               description: Returns analytics based on the viewers' country. The list
                 of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/).
                 You must use the ISO-3166 alpha2 format, for example `FR`.
-              example: FR
-              type: string
+              example:
+              - FR
+              items:
+                type: string
+              type: array
             deviceType:
               description: 'Returns analytics based on the type of device used by
-                the viewers. Possible response values are: `computer`, `phone`, `tablet`,
+                the viewers. Response values can include: `computer`, `phone`, `tablet`,
                 `tv`, `console`, `wearable`, `unknown`.'
-              example: computer
-              type: string
+              example:
+              - computer
+              items:
+                type: string
+              type: array
             operatingSystem:
               description: Returns analytics based on the operating system used by
-                the viewers. Response values include `windows`, `mac osx`, `android`,
+                the viewers. Response values can include `windows`, `mac osx`, `android`,
                 `ios`, `linux`.
-              example: windows
-              type: string
+              example:
+              - windows
+              items:
+                type: string
+              type: array
             browser:
               description: Returns analytics based on the browser used by the viewers.
-                Response values include `chrome`, `firefox`, `edge`, `opera`.
-              example: firefox
-              type: string
+                Response values can include `chrome`, `firefox`, `edge`, `opera`.
+              example:
+              - firefox
+              items:
+                type: string
+              type: array
             tag:
               description: Returns analytics for videos using this tag. This filter
                 only accepts a single value and is case sensitive. Read more about
@@ -12119,7 +12369,9 @@ paths:
               example: Cool videos
               type: string
           type: object
+          x-is-deep-object: true
         style: deepObject
+        x-is-deep-object: true
       - description: 'Choose the number of search results to return per page. Minimum
           value: 1'
         example: 2
@@ -12320,7 +12572,67 @@ paths:
       x-client-action: getMetricsOverTime
       x-group-parameters: true
       x-client-paginated: true
-      x-doctave: {}
+      x-doctave:
+        code-samples:
+        - language: java
+          code: |
+            FilterBy2 filterBy = new FilterBy2();
+
+            filterBy.setBrowser(Collections.singletonList("Chrome"));
+            filterBy.setContinent(Arrays.asList(FilterBy2.ContinentEnum.NA, FilterBy2.ContinentEnum.EU));
+            filterBy.setMediaType(FilterBy2.MediaTypeEnum.VIDEO);
+            filterBy.setTag("test");
+
+            Page<AnalyticsMetricsOverTimeResponseData> res = apiClient.analytics().getMetricsOverTime("play").filterBy(filterBy).pageSize(30).execute();
+            for (AnalyticsMetricsOverTimeResponseData item : res.getItems()) {
+                System.out.println(item.getEmittedAt() + ": " + item.getMetricValue());
+            }
+        - language: node
+          code: |
+            const res = await client.analytics.getMetricsOverTime({
+              metric: 'play',
+              filterBy: {
+                mediaType: 'video',
+                browser: ['chrome', 'firefox'],
+                continent: ['EU', 'AF'],
+                tag: "test",
+              },
+            });
+
+            console.log(res);
+        - language: csharp
+          code: |
+            FilterBy2 filterBy = new FilterBy2
+            {
+                continent = new List<string> { "EU", "US" },
+                devicetype = new List<string> { "phone" },
+                tag = "test"
+            };
+            Page<AnalyticsMetricsOverTimeResponseData> res = apiClient.Analytics()
+                .getMetricsOverTime("play").From(new DateTime(2024, 7, 1)).FilterBy(filterBy).execute();
+        - language: go
+          code: "res, err := cl.Analytics.GetMetricsOverTime(\"play\", AnalyticsApiGetMetricsOverTimeRequest{\n\
+            \  filterBy: &FilterBy2{\n    Continent: &[]string{\"EU\", \"AA\"},\n\
+            \    DeviceType: &[]string{\"computer\", \"phone\"},\n    Tag: \tPtrString(\"\
+            tag\"),\n  },\n})\n"
+        - language: python
+          code: |
+            res = self.api.get_metrics_over_time(metric='play', filter_by=FilterBy2(
+                    device_type=["computer", "phone"],
+                    tag="test",
+                ),
+            )
+        - language: swift
+          code: |
+            AnalyticsAPI.getMetricsOverTime(
+                    metric: .play,
+                    filterBy: FilterBy2(
+                        continent: [.an, .eu],
+                        tag: "test"
+                    )
+                ) { analytics, error in
+                    // ...
+                }
       x-accepts: application/json
   /webhooks:
     get:
@@ -13279,31 +13591,29 @@ components:
         \ data dimensions. You can serialize filters in your query to receive more\
         \ detailed breakdowns of your analytics.\n\n- If you do not set a value for\
         \ `filterBy`, the API returns the full dataset for your project.\n- The API\
-        \ only accepts the `mediaId` and `mediaType` filters when you call `/data/metrics/play/total`.\n\
-        \nThese are the available breakdown dimensions:\n\n- `mediaId`: Returns analytics\
-        \ based on the unique identifiers of a video or a live stream.\n- `mediaType`:\
-        \ Returns analytics based on the type of content. Possible values: `video`\
-        \ and `live-stream`. \n- `continent`: Returns analytics based on the viewers'\
-        \ continent. The list of supported continents names are based on the [GeoNames\
-        \ public database](https://www.geonames.org/countries/). You must use the\
-        \ ISO-3166 alpha2 format, for example `EU`. Possible values are: `AS`, `AF`,\
-        \ `NA`, `SA`, `AN`, `EU`, `AZ`. \n- `country`: Returns analytics based on\
-        \ the viewers' country. The list of supported country names are based on the\
-        \ [GeoNames public database](https://www.geonames.org/countries/). You must\
-        \ use the ISO-3166 alpha2 format, for example `FR`.\n- `deviceType`: Returns\
-        \ analytics based on the type of device used by the viewers. Possible response\
-        \ values are: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`,\
+        \ only accepts the `mediaId` and `mediaType` filters when you call `/data/metrics/play/total`\
+        \ or `/data/buckets/play-total/media-id`.\n\nThese are the available breakdown\
+        \ dimensions:\n\n- `mediaId`: Returns analytics based on the unique identifiers\
+        \ of a video or a live stream.\n- `mediaType`: Returns analytics based on\
+        \ the type of content. Possible values: `video` and `live-stream`. \n- `continent`:\
+        \ Returns analytics based on the viewers' continent. The list of supported\
+        \ continents names are based on the [GeoNames public database](https://www.geonames.org/countries/).\
+        \ You must use the ISO-3166 alpha2 format, for example `EU`. Possible values\
+        \ are: `AS`, `AF`, `NA`, `SA`, `AN`, `EU`, `AZ`. \n- `country`: Returns analytics\
+        \ based on the viewers' country. The list of supported country names are based\
+        \ on the [GeoNames public database](https://www.geonames.org/countries/).\
+        \ You must use the ISO-3166 alpha2 format, for example `FR`.\n- `deviceType`:\
+        \ Returns analytics based on the type of device used by the viewers. Response\
+        \ values can include: `computer`, `phone`, `tablet`, `tv`, `console`, `wearable`,\
         \ `unknown`.\n- `operatingSystem`: Returns analytics based on the operating\
-        \ system used by the viewers. Response values include `windows`, `mac osx`,\
-        \ `android`, `ios`, `linux`.\n- `browser`: Returns analytics based on the\
-        \ browser used by the viewers. Response values include `chrome`, `firefox`,\
+        \ system used by the viewers. Response values can include `windows`, `mac\
+        \ osx`, `android`, `ios`, `linux`.\n- `browser`: Returns analytics based on\
+        \ the browser used by the viewers. Response values can include `chrome`, `firefox`,\
         \ `edge`, `opera`.\n- `tag`: Returns analytics for videos using this tag.\
         \ This filter only accepts a single value and is case sensitive. Read more\
         \ about tagging your videos [here](https://docs.api.video/vod/tags-metadata).\n"
-      example:
-        mediaType: video
-        continent: EU
-        country: FR
+      example: filterBy[country]=FR&filterBy[operatingSystem]=windows&filterBy[browser][]=firefox&filterBy[browser][]=chrome&filterBy[tag]=Cool
+        videos
       explode: true
       in: query
       name: filterBy
@@ -13313,8 +13623,11 @@ components:
           mediaId:
             description: Returns analytics based on the unique identifiers of a video
               or a live stream.
-            example: vi4blUQJFrYWbaG44NChkH27
-            type: string
+            example:
+            - vi4blUQJFrYWbaG44NChkH27
+            items:
+              type: string
+            type: array
           mediaType:
             enum:
             - video
@@ -13325,39 +13638,54 @@ components:
             description: Returns analytics based on the viewers' continent. The list
               of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/).
               You must use the ISO-3166 alpha2 format, for example `EU`.
-            enum:
-            - AS
-            - AF
-            - NA
-            - SA
-            - AN
+            example:
             - EU
-            - AZ
-            example: EU
-            type: string
+            items:
+              enum:
+              - AS
+              - AF
+              - NA
+              - SA
+              - AN
+              - EU
+              - AZ
+              type: string
+            type: array
           country:
             description: Returns analytics based on the viewers' country. The list
               of supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/).
               You must use the ISO-3166 alpha2 format, for example `FR`.
-            example: FR
-            type: string
+            example:
+            - FR
+            items:
+              type: string
+            type: array
           deviceType:
             description: 'Returns analytics based on the type of device used by the
-              viewers. Possible response values are: `computer`, `phone`, `tablet`,
+              viewers. Response values can include: `computer`, `phone`, `tablet`,
               `tv`, `console`, `wearable`, `unknown`.'
-            example: computer
-            type: string
+            example:
+            - computer
+            items:
+              type: string
+            type: array
           operatingSystem:
             description: Returns analytics based on the operating system used by the
-              viewers. Response values include `windows`, `mac osx`, `android`, `ios`,
-              `linux`.
-            example: windows
-            type: string
+              viewers. Response values can include `windows`, `mac osx`, `android`,
+              `ios`, `linux`.
+            example:
+            - windows
+            items:
+              type: string
+            type: array
           browser:
             description: Returns analytics based on the browser used by the viewers.
-              Response values include `chrome`, `firefox`, `edge`, `opera`.
-            example: firefox
-            type: string
+              Response values can include `chrome`, `firefox`, `edge`, `opera`.
+            example:
+            - firefox
+            items:
+              type: string
+            type: array
           tag:
             description: Returns analytics for videos using this tag. This filter
               only accepts a single value and is case sensitive. Read more about tagging
@@ -13365,7 +13693,9 @@ components:
             example: Cool videos
             type: string
         type: object
+        x-is-deep-object: true
       style: deepObject
+      x-is-deep-object: true
     current-page:
       description: 'Choose the number of search results to return per page. Minimum
         value: 1'
@@ -15097,7 +15427,6 @@ components:
       required:
       - context
       - data
-      - pagination
       title: Analytics response for aggregated metrics
       type: object
     analytics-metrics-breakdown-response:
@@ -15547,8 +15876,11 @@ components:
         mediaId:
           description: Returns analytics based on the unique identifiers of a video
             or a live stream.
-          example: vi4blUQJFrYWbaG44NChkH27
-          type: string
+          example:
+          - vi4blUQJFrYWbaG44NChkH27
+          items:
+            type: string
+          type: array
         mediaType:
           enum:
           - video
@@ -15559,39 +15891,54 @@ components:
           description: Returns analytics based on the viewers' continent. The list
             of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/).
             You must use the ISO-3166 alpha2 format, for example `EU`.
-          enum:
-          - AS
-          - AF
-          - NA
-          - SA
-          - AN
+          example:
           - EU
-          - AZ
-          example: EU
-          type: string
+          items:
+            enum:
+            - AS
+            - AF
+            - NA
+            - SA
+            - AN
+            - EU
+            - AZ
+            type: string
+          type: array
         country:
           description: Returns analytics based on the viewers' country. The list of
             supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/).
             You must use the ISO-3166 alpha2 format, for example `FR`.
-          example: FR
-          type: string
+          example:
+          - FR
+          items:
+            type: string
+          type: array
         deviceType:
           description: 'Returns analytics based on the type of device used by the
-            viewers. Possible response values are: `computer`, `phone`, `tablet`,
-            `tv`, `console`, `wearable`, `unknown`.'
-          example: computer
-          type: string
+            viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`,
+            `console`, `wearable`, `unknown`.'
+          example:
+          - computer
+          items:
+            type: string
+          type: array
         operatingSystem:
           description: Returns analytics based on the operating system used by the
-            viewers. Response values include `windows`, `mac osx`, `android`, `ios`,
-            `linux`.
-          example: windows
-          type: string
+            viewers. Response values can include `windows`, `mac osx`, `android`,
+            `ios`, `linux`.
+          example:
+          - windows
+          items:
+            type: string
+          type: array
         browser:
           description: Returns analytics based on the browser used by the viewers.
-            Response values include `chrome`, `firefox`, `edge`, `opera`.
-          example: firefox
-          type: string
+            Response values can include `chrome`, `firefox`, `edge`, `opera`.
+          example:
+          - firefox
+          items:
+            type: string
+          type: array
         tag:
           description: Returns analytics for videos using this tag. This filter only
             accepts a single value and is case sensitive. Read more about tagging
@@ -15599,13 +15946,17 @@ components:
           example: Cool videos
           type: string
       type: object
+      x-is-deep-object: true
     filterBy_1:
       properties:
         mediaId:
           description: Returns analytics based on the unique identifiers of a video
             or a live stream.
-          example: vi4blUQJFrYWbaG44NChkH27
-          type: string
+          example:
+          - vi4blUQJFrYWbaG44NChkH27
+          items:
+            type: string
+          type: array
         mediaType:
           enum:
           - video
@@ -15616,39 +15967,54 @@ components:
           description: Returns analytics based on the viewers' continent. The list
             of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/).
             You must use the ISO-3166 alpha2 format, for example `EU`.
-          enum:
-          - AS
-          - AF
-          - NA
-          - SA
-          - AN
+          example:
           - EU
-          - AZ
-          example: EU
-          type: string
+          items:
+            enum:
+            - AS
+            - AF
+            - NA
+            - SA
+            - AN
+            - EU
+            - AZ
+            type: string
+          type: array
         country:
           description: Returns analytics based on the viewers' country. The list of
             supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/).
             You must use the ISO-3166 alpha2 format, for example `FR`.
-          example: FR
-          type: string
+          example:
+          - FR
+          items:
+            type: string
+          type: array
         deviceType:
           description: 'Returns analytics based on the type of device used by the
-            viewers. Possible response values are: `computer`, `phone`, `tablet`,
-            `tv`, `console`, `wearable`, `unknown`.'
-          example: computer
-          type: string
+            viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`,
+            `console`, `wearable`, `unknown`.'
+          example:
+          - computer
+          items:
+            type: string
+          type: array
         operatingSystem:
           description: Returns analytics based on the operating system used by the
-            viewers. Response values include `windows`, `mac osx`, `android`, `ios`,
-            `linux`.
-          example: windows
-          type: string
+            viewers. Response values can include `windows`, `mac osx`, `android`,
+            `ios`, `linux`.
+          example:
+          - windows
+          items:
+            type: string
+          type: array
         browser:
           description: Returns analytics based on the browser used by the viewers.
-            Response values include `chrome`, `firefox`, `edge`, `opera`.
-          example: firefox
-          type: string
+            Response values can include `chrome`, `firefox`, `edge`, `opera`.
+          example:
+          - firefox
+          items:
+            type: string
+          type: array
         tag:
           description: Returns analytics for videos using this tag. This filter only
             accepts a single value and is case sensitive. Read more about tagging
@@ -15656,13 +16022,17 @@ components:
           example: Cool videos
           type: string
       type: object
+      x-is-deep-object: true
     filterBy_2:
       properties:
         mediaId:
           description: Returns analytics based on the unique identifiers of a video
             or a live stream.
-          example: vi4blUQJFrYWbaG44NChkH27
-          type: string
+          example:
+          - vi4blUQJFrYWbaG44NChkH27
+          items:
+            type: string
+          type: array
         mediaType:
           enum:
           - video
@@ -15673,39 +16043,54 @@ components:
           description: Returns analytics based on the viewers' continent. The list
             of supported continents names are based on the [GeoNames public database](https://www.geonames.org/countries/).
             You must use the ISO-3166 alpha2 format, for example `EU`.
-          enum:
-          - AS
-          - AF
-          - NA
-          - SA
-          - AN
+          example:
           - EU
-          - AZ
-          example: EU
-          type: string
+          items:
+            enum:
+            - AS
+            - AF
+            - NA
+            - SA
+            - AN
+            - EU
+            - AZ
+            type: string
+          type: array
         country:
           description: Returns analytics based on the viewers' country. The list of
             supported country names are based on the [GeoNames public database](https://www.geonames.org/countries/).
             You must use the ISO-3166 alpha2 format, for example `FR`.
-          example: FR
-          type: string
+          example:
+          - FR
+          items:
+            type: string
+          type: array
         deviceType:
           description: 'Returns analytics based on the type of device used by the
-            viewers. Possible response values are: `computer`, `phone`, `tablet`,
-            `tv`, `console`, `wearable`, `unknown`.'
-          example: computer
-          type: string
+            viewers. Response values can include: `computer`, `phone`, `tablet`, `tv`,
+            `console`, `wearable`, `unknown`.'
+          example:
+          - computer
+          items:
+            type: string
+          type: array
         operatingSystem:
           description: Returns analytics based on the operating system used by the
-            viewers. Response values include `windows`, `mac osx`, `android`, `ios`,
-            `linux`.
-          example: windows
-          type: string
+            viewers. Response values can include `windows`, `mac osx`, `android`,
+            `ios`, `linux`.
+          example:
+          - windows
+          items:
+            type: string
+          type: array
         browser:
           description: Returns analytics based on the browser used by the viewers.
-            Response values include `chrome`, `firefox`, `edge`, `opera`.
-          example: firefox
-          type: string
+            Response values can include `chrome`, `firefox`, `edge`, `opera`.
+          example:
+          - firefox
+          items:
+            type: string
+          type: array
         tag:
           description: Returns analytics for videos using this tag. This filter only
             accepts a single value and is case sensitive. Read more about tagging
@@ -15713,6 +16098,7 @@ components:
           example: Cool videos
           type: string
       type: object
+      x-is-deep-object: true
     player_theme_assets:
       example:
         link: path/to/my/logo/mylogo.jpg

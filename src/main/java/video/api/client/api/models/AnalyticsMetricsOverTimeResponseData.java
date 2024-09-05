@@ -27,7 +27,7 @@ import java.io.Serializable;
  * AnalyticsMetricsOverTimeResponseData
  */
 
-public class AnalyticsMetricsOverTimeResponseData implements Serializable {
+public class AnalyticsMetricsOverTimeResponseData implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_EMITTED_AT = "emittedAt";

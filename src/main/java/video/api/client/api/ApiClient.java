@@ -12,6 +12,7 @@
 package video.api.client.api;
 
 import video.api.client.api.auth.ApiVideoAuthInterceptor;
+import video.api.client.api.models.DeepObject;
 import video.api.client.api.upload.UploadChunkRequestBody;
 import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
@@ -38,8 +39,8 @@ import java.security.cert.CertificateFactory;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
@@ -119,7 +120,7 @@ public class ApiClient {
     private void init() {
         verifyingSsl = true;
         json = new JSON();
-        addDefaultHeader("AV-Origin-Client", "java:1.4.0");
+        addDefaultHeader("AV-Origin-Client", "java:1.4.1");
     }
 
     private boolean isValid(String regex, String field) {
@@ -506,6 +507,25 @@ public class ApiClient {
             map.forEach((k, v) -> {
                 if (k != null)
                     params.add(new Pair(name + "[" + k + "]", v == null ? null : v.toString()));
+            });
+            return params;
+        }
+
+        if (value instanceof DeepObject) {
+            Map<String, Object> map = json.deserialize(json.serialize(value), Map.class);
+            map.forEach((k, v) -> {
+                if (k != null) {
+                    if (v instanceof List) {
+                        List list = (List) v;
+                        for (int i = 0; i < list.size(); i++) {
+                            Object item = list.get(i);
+                            params.add(
+                                    new Pair(name + "[" + k + "][" + i + "]", item == null ? null : item.toString()));
+                        }
+                    } else {
+                        params.add(new Pair(name + "[" + k + "]", v == null ? null : v.toString()));
+                    }
+                }
             });
             return params;
         }

@@ -27,7 +27,7 @@ import java.io.Serializable;
  * Metadata
  */
 
-public class Metadata implements Serializable {
+public class Metadata implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_KEY = "key";

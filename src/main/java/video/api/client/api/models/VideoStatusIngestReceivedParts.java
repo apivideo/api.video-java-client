@@ -29,7 +29,7 @@ import java.io.Serializable;
  * VideoStatusIngestReceivedParts
  */
 
-public class VideoStatusIngestReceivedParts implements Serializable {
+public class VideoStatusIngestReceivedParts implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_PARTS = "parts";
