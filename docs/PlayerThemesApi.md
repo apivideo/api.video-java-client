@@ -354,7 +354,7 @@ public class Example {
 
     PlayerThemesApi apiInstance = client.playerThemes();
     
-    String sortBy = "name"; // createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format.
+    String sortBy = "name"; // createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ATOM UTC format.
     String sortOrder = "asc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones.
     Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
@@ -382,7 +382,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sortBy** | **String**| createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ISO-8601 format. | [optional] [enum: name, createdAt, updatedAt]
+ **sortBy** | **String**| createdAt is the time the player was created. updatedAt is the time the player was last updated. The time is presented in ATOM UTC format. | [optional] [enum: name, createdAt, updatedAt]
  **sortOrder** | **String**| Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. | [optional] [enum: asc, desc]
  **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
  **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]

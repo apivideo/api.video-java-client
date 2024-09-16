@@ -332,7 +332,7 @@ public class Example {
     
     String streamKey = "dw-dew8-q6w9-k67w-1ws8"; // The unique stream key that allows you to stream videos.
     String name = "My Video"; // You can filter live streams by their name or a part of their name.
-    String sortBy = "name"; // Enables you to sort live stream results. Allowed attributes: `name`, `createdAt`, `updatedAt`. `name` - the name of the live stream. `createdAt` - the time a live stream was created. `updatedAt` - the time a live stream was last updated.  When using `createdAt` or `updatedAt`, the API sorts the results based on the ISO-8601 time format. 
+    String sortBy = "name"; // Enables you to sort live stream results. Allowed attributes: `name`, `createdAt`, `updatedAt`. `name` - the name of the live stream. `createdAt` - the time a live stream was created. `updatedAt` - the time a live stream was last updated.  When using `createdAt` or `updatedAt`, the API sorts the results based on the ATOM UTC time format. 
     String sortOrder = "asc"; // Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending.
     Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
     Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **streamKey** | **String**| The unique stream key that allows you to stream videos. | [optional]
  **name** | **String**| You can filter live streams by their name or a part of their name. | [optional]
- **sortBy** | **String**| Enables you to sort live stream results. Allowed attributes: &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. &#x60;name&#x60; - the name of the live stream. &#x60;createdAt&#x60; - the time a live stream was created. &#x60;updatedAt&#x60; - the time a live stream was last updated.  When using &#x60;createdAt&#x60; or &#x60;updatedAt&#x60;, the API sorts the results based on the ISO-8601 time format.  | [optional] [enum: name, createdAt, updatedAt]
+ **sortBy** | **String**| Enables you to sort live stream results. Allowed attributes: &#x60;name&#x60;, &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. &#x60;name&#x60; - the name of the live stream. &#x60;createdAt&#x60; - the time a live stream was created. &#x60;updatedAt&#x60; - the time a live stream was last updated.  When using &#x60;createdAt&#x60; or &#x60;updatedAt&#x60;, the API sorts the results based on the ATOM UTC time format.  | [optional] [enum: name, createdAt, updatedAt]
  **sortOrder** | **String**| Allowed: asc, desc. Ascending for date and time means that earlier values precede later ones. Descending means that later values preced earlier ones. For title, it is 0-9 and A-Z ascending and Z-A, 9-0 descending. | [optional] [enum: asc, desc]
  **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
  **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]

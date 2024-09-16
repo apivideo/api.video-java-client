@@ -60,6 +60,18 @@ public class Video implements Serializable, DeepObject {
     @SerializedName(SERIALIZED_NAME_UPDATED_AT)
     private OffsetDateTime updatedAt;
 
+    public static final String SERIALIZED_NAME_DISCARDED_AT = "discardedAt";
+    @SerializedName(SERIALIZED_NAME_DISCARDED_AT)
+    private OffsetDateTime discardedAt;
+
+    public static final String SERIALIZED_NAME_DELETES_AT = "deletesAt";
+    @SerializedName(SERIALIZED_NAME_DELETES_AT)
+    private OffsetDateTime deletesAt;
+
+    public static final String SERIALIZED_NAME_DISCARDED = "discarded";
+    @SerializedName(SERIALIZED_NAME_DISCARDED)
+    private Boolean discarded;
+
     public static final String SERIALIZED_NAME_TAGS = "tags";
     @SerializedName(SERIALIZED_NAME_TAGS)
     private List<String> tags = null;
@@ -118,12 +130,12 @@ public class Video implements Serializable, DeepObject {
     }
 
     /**
-     * When a video was created, presented in ISO-8601 format.
+     * When a video was created, presented in ATOM UTC format.
      * 
      * @return createdAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "When a video was created, presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2024-05-28T11:15:07Z", value = "When a video was created, presented in ATOM UTC format.")
 
     public OffsetDateTime getCreatedAt() {
         return createdAt;
@@ -181,12 +193,12 @@ public class Video implements Serializable, DeepObject {
     }
 
     /**
-     * The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.
+     * The date and time the API created the video. Date and time are provided using ATOM UTC format.
      * 
      * @return publishedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-12-16T08:25:51Z", value = "The date and time the API created the video. Date and time are provided using ISO-8601 UTC format.")
+    @ApiModelProperty(example = "2024-05-28T11:15:07Z", value = "The date and time the API created the video. Date and time are provided using ATOM UTC format.")
 
     public OffsetDateTime getPublishedAt() {
         return publishedAt;
@@ -202,12 +214,12 @@ public class Video implements Serializable, DeepObject {
     }
 
     /**
-     * The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.
+     * The date and time the video was updated. Date and time are provided using ATOM UTC format.
      * 
      * @return updatedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-12-16T08:15:51Z", value = "The date and time the video was updated. Date and time are provided using ISO-8601 UTC format.")
+    @ApiModelProperty(example = "2024-05-28T11:15:07Z", value = "The date and time the video was updated. Date and time are provided using ATOM UTC format.")
 
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
@@ -215,6 +227,73 @@ public class Video implements Serializable, DeepObject {
 
     public void setUpdatedAt(OffsetDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Video discardedAt(OffsetDateTime discardedAt) {
+        this.discardedAt = discardedAt;
+        return this;
+    }
+
+    /**
+     * The date and time the video was discarded. The API populates this field only if you have the Video Restore
+     * feature enabled and discard a video. Date and time are provided using ATOM UTC format.
+     * 
+     * @return discardedAt
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "2024-05-28T11:15:07Z", value = "The date and time the video was discarded. The API populates this field only if you have the Video Restore feature enabled and discard a video. Date and time are provided using ATOM UTC format.")
+
+    public OffsetDateTime getDiscardedAt() {
+        return discardedAt;
+    }
+
+    public void setDiscardedAt(OffsetDateTime discardedAt) {
+        this.discardedAt = discardedAt;
+    }
+
+    public Video deletesAt(OffsetDateTime deletesAt) {
+        this.deletesAt = deletesAt;
+        return this;
+    }
+
+    /**
+     * The date and time the video will be permanently deleted. The API populates this field only if you have the Video
+     * Restore feature enabled and discard a video. Discarded videos are pemanently deleted after 90 days. Date and time
+     * are provided using ATOM UTC format.
+     * 
+     * @return deletesAt
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "2024-05-28T11:15:07Z", value = "The date and time the video will be permanently deleted. The API populates this field only if you have the Video Restore feature enabled and discard a video. Discarded videos are pemanently deleted after 90 days. Date and time are provided using ATOM UTC format.")
+
+    public OffsetDateTime getDeletesAt() {
+        return deletesAt;
+    }
+
+    public void setDeletesAt(OffsetDateTime deletesAt) {
+        this.deletesAt = deletesAt;
+    }
+
+    public Video discarded(Boolean discarded) {
+        this.discarded = discarded;
+        return this;
+    }
+
+    /**
+     * Returns &#x60;true&#x60; for videos you discarded when you have the Video Restore feature enabled. Returns
+     * &#x60;false&#x60; for every other video.
+     * 
+     * @return discarded
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Returns `true` for videos you discarded when you have the Video Restore feature enabled. Returns `false` for every other video.")
+
+    public Boolean getDiscarded() {
+        return discarded;
+    }
+
+    public void setDiscarded(Boolean discarded) {
+        this.discarded = discarded;
     }
 
     public Video tags(List<String> tags) {
@@ -261,14 +340,12 @@ public class Video implements Serializable, DeepObject {
 
     /**
      * Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary
-     * represents a key value pair for categorising a video. [Dynamic
-     * Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value
-     * pair.
+     * represents a key value pair for categorising a video.
      * 
      * @return metadata
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "[{\"key\":\"Author\", \"value\":\"John Doe\"}, {\"key\":\"Format\", \"value\":\"Tutorial\"}]", value = "Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. ")
+    @ApiModelProperty(example = "[{\"key\":\"Author\", \"value\":\"John Doe\"}, {\"key\":\"Format\", \"value\":\"Tutorial\"}]", value = "Metadata you can use to categorise and filter videos. Metadata is a list of dictionaries, where each dictionary represents a key value pair for categorising a video. ")
 
     public List<Metadata> getMetadata() {
         return metadata;
@@ -418,17 +495,19 @@ public class Video implements Serializable, DeepObject {
         return Objects.equals(this.videoId, video.videoId) && Objects.equals(this.createdAt, video.createdAt)
                 && Objects.equals(this.title, video.title) && Objects.equals(this.description, video.description)
                 && Objects.equals(this.publishedAt, video.publishedAt)
-                && Objects.equals(this.updatedAt, video.updatedAt) && Objects.equals(this.tags, video.tags)
-                && Objects.equals(this.metadata, video.metadata) && Objects.equals(this.source, video.source)
-                && Objects.equals(this.assets, video.assets) && Objects.equals(this.playerId, video.playerId)
-                && Objects.equals(this._public, video._public) && Objects.equals(this.panoramic, video.panoramic)
-                && Objects.equals(this.mp4Support, video.mp4Support);
+                && Objects.equals(this.updatedAt, video.updatedAt)
+                && Objects.equals(this.discardedAt, video.discardedAt)
+                && Objects.equals(this.deletesAt, video.deletesAt) && Objects.equals(this.discarded, video.discarded)
+                && Objects.equals(this.tags, video.tags) && Objects.equals(this.metadata, video.metadata)
+                && Objects.equals(this.source, video.source) && Objects.equals(this.assets, video.assets)
+                && Objects.equals(this.playerId, video.playerId) && Objects.equals(this._public, video._public)
+                && Objects.equals(this.panoramic, video.panoramic) && Objects.equals(this.mp4Support, video.mp4Support);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(videoId, createdAt, title, description, publishedAt, updatedAt, tags, metadata, source,
-                assets, playerId, _public, panoramic, mp4Support);
+        return Objects.hash(videoId, createdAt, title, description, publishedAt, updatedAt, discardedAt, deletesAt,
+                discarded, tags, metadata, source, assets, playerId, _public, panoramic, mp4Support);
     }
 
     @Override
@@ -441,6 +520,9 @@ public class Video implements Serializable, DeepObject {
         sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    publishedAt: ").append(toIndentedString(publishedAt)).append("\n");
         sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+        sb.append("    discardedAt: ").append(toIndentedString(discardedAt)).append("\n");
+        sb.append("    deletesAt: ").append(toIndentedString(deletesAt)).append("\n");
+        sb.append("    discarded: ").append(toIndentedString(discarded)).append("\n");
         sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
         sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
         sb.append("    source: ").append(toIndentedString(source)).append("\n");

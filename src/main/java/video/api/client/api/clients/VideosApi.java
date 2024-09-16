@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 import video.api.client.api.models.BadRequest;
+import video.api.client.api.models.DiscardedVideoUpdatePayload;
 import java.io.File;
 import video.api.client.api.models.NotFound;
 import video.api.client.api.models.TooManyRequests;
@@ -2470,7 +2471,11 @@ public class VideosApi {
     /**
      * Delete a video object
      *
-     * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+     * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By
+     * default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will
+     * discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you
+     * want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the
+     * videos are permanently deleted
      * 
      * @param videoId
      *            The video ID for the video you want to delete. (required)
@@ -2524,7 +2529,11 @@ public class VideosApi {
     /**
      * Delete a video object
      *
-     * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+     * If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By
+     * default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will
+     * discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you
+     * want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the
+     * videos are permanently deleted
      * 
      * @param videoId
      *            The video ID for the video you want to delete. (required)
@@ -2580,7 +2589,10 @@ public class VideosApi {
 
     /**
      * Delete a video object (asynchronously) If you do not need a video any longer, you can send a request to delete
-     * it. All you need is the videoId.
+     * it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore
+     * feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you
+     * subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore
+     * feature retains videos for 90 days, after which the videos are permanently deleted
      * 
      * @param videoId
      *            The video ID for the video you want to delete. (required)
@@ -2782,9 +2794,7 @@ public class VideosApi {
          * 
          * @param metadata
          *            Videos can be tagged with metadata tags in key:value pairs. You can search for videos with
-         *            specific key value pairs using this parameter. [Dynamic
-         *            Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that
-         *            allows any value pair. (optional)
+         *            specific key value pairs using this parameter. (optional)
          * 
          * @return APIlistRequest
          */
@@ -3889,6 +3899,280 @@ public class VideosApi {
     }
 
     /**
+     * Build call for getDiscarded
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want details about. (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call getDiscardedCall(String videoId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/discarded/videos/{videoId}".replaceAll("\\{" + "videoId" + "\\}",
+                localVarApiClient.escapeString(videoId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDiscardedValidateBeforeCall(String videoId, final ApiCallback _callback)
+            throws ApiException {
+
+        // verify the required parameter 'videoId' is set
+        if (videoId == null) {
+            throw new ApiException("Missing the required parameter 'videoId' when calling getDiscarded");
+        }
+
+        okhttp3.Call localVarCall = getDiscardedCall(videoId, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Retrieve a discarded video object
+     *
+     * This call provides the same information provided on video creation. For private videos, it will generate a unique
+     * token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want details about. (required)
+     * 
+     * @return Video
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    public Video getDiscarded(String videoId) throws ApiException {
+        ApiResponse<Video> localVarResp = getDiscardedWithHttpInfo(videoId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Retrieve a discarded video object
+     *
+     * This call provides the same information provided on video creation. For private videos, it will generate a unique
+     * token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want details about. (required)
+     * 
+     * @return ApiResponse&lt;Video&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Video> getDiscardedWithHttpInfo(String videoId) throws ApiException {
+        okhttp3.Call localVarCall = getDiscardedValidateBeforeCall(videoId, null);
+        Type localVarReturnType = new TypeToken<Video>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Retrieve a discarded video object (asynchronously) This call provides the same information provided on video
+     * creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need
+     * about a video, or set up a private viewing URL.
+     * 
+     * @param videoId
+     *            The unique identifier for the video you want details about. (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call getDiscardedAsync(String videoId, final ApiCallback<Video> _callback) throws ApiException {
+        okhttp3.Call localVarCall = getDiscardedValidateBeforeCall(videoId, _callback);
+        Type localVarReturnType = new TypeToken<Video>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    /**
      * Build call for getStatus
      * 
      * @param videoId
@@ -4156,6 +4440,888 @@ public class VideosApi {
     public okhttp3.Call getStatusAsync(String videoId, final ApiCallback<VideoStatus> _callback) throws ApiException {
         okhttp3.Call localVarCall = getStatusValidateBeforeCall(videoId, _callback);
         Type localVarReturnType = new TypeToken<VideoStatus>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listDiscardedCall(String title, List<String> tags, Map<String, String> metadata,
+            String description, String liveStreamId, String sortBy, String sortOrder, Integer currentPage,
+            Integer pageSize, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/discarded/videos";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (title != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("title", title));
+        }
+
+        if (tags != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "tags[]", tags));
+        }
+
+        if (metadata != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("metadata", metadata));
+        }
+
+        if (description != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("description", description));
+        }
+
+        if (liveStreamId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("liveStreamId", liveStreamId));
+        }
+
+        if (sortBy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sortBy", sortBy));
+        }
+
+        if (sortOrder != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sortOrder", sortOrder));
+        }
+
+        if (currentPage != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("currentPage", currentPage));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listDiscardedValidateBeforeCall(String title, List<String> tags, Map<String, String> metadata,
+            String description, String liveStreamId, String sortBy, String sortOrder, Integer currentPage,
+            Integer pageSize, final ApiCallback _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listDiscardedCall(title, tags, metadata, description, liveStreamId, sortBy,
+                sortOrder, currentPage, pageSize, _callback);
+        return localVarCall;
+    }
+
+    private ApiResponse<VideosListResponse> listDiscardedWithHttpInfo(String title, List<String> tags,
+            Map<String, String> metadata, String description, String liveStreamId, String sortBy, String sortOrder,
+            Integer currentPage, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = listDiscardedValidateBeforeCall(title, tags, metadata, description, liveStreamId,
+                sortBy, sortOrder, currentPage, pageSize, null);
+        Type localVarReturnType = new TypeToken<VideosListResponse>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listDiscardedAsync(String title, List<String> tags, Map<String, String> metadata,
+            String description, String liveStreamId, String sortBy, String sortOrder, Integer currentPage,
+            Integer pageSize, final ApiCallback<VideosListResponse> _callback) throws ApiException {
+        okhttp3.Call localVarCall = listDiscardedValidateBeforeCall(title, tags, metadata, description, liveStreamId,
+                sortBy, sortOrder, currentPage, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<VideosListResponse>() {
+        }.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistDiscardedRequest {
+        private String title;
+        private List<String> tags;
+        private Map<String, String> metadata;
+        private String description;
+        private String liveStreamId;
+        private String sortBy;
+        private String sortOrder;
+        private Integer currentPage;
+        private Integer pageSize;
+
+        private APIlistDiscardedRequest() {
+        }
+
+        /**
+         * Set title
+         * 
+         * @param title
+         *            The title of a specific video you want to find. The search will match exactly to what term you
+         *            provide and return any videos that contain the same term as part of their titles. (optional)
+         * 
+         * @return APIlistDiscardedRequest
+         */
+        public APIlistDiscardedRequest title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        /**
+         * Set tags
+         * 
+         * @param tags
+         *            A tag is a category you create and apply to videos. You can search for videos with particular tags
+         *            by listing one or more here. Only videos that have all the tags you list will be returned.
+         *            (optional)
+         * 
+         * @return APIlistDiscardedRequest
+         */
+        public APIlistDiscardedRequest tags(List<String> tags) {
+            this.tags = tags;
+            return this;
+        }
+
+        /**
+         * Set metadata
+         * 
+         * @param metadata
+         *            Videos can be tagged with metadata tags in key:value pairs. You can search for videos with
+         *            specific key value pairs using this parameter. (optional)
+         * 
+         * @return APIlistDiscardedRequest
+         */
+        public APIlistDiscardedRequest metadata(Map<String, String> metadata) {
+            this.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * Set description
+         * 
+         * @param description
+         *            Retrieve video objects by &#x60;description&#x60;. (optional)
+         * 
+         * @return APIlistDiscardedRequest
+         */
+        public APIlistDiscardedRequest description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        /**
+         * Set liveStreamId
+         * 
+         * @param liveStreamId
+         *            Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;.
+         *            (optional)
+         * 
+         * @return APIlistDiscardedRequest
+         */
+        public APIlistDiscardedRequest liveStreamId(String liveStreamId) {
+            this.liveStreamId = liveStreamId;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * 
+         * @param sortBy
+         *            Use this parameter to sort videos by the their created time, published time, updated time, or by
+         *            title. (optional)
+         * 
+         * @return APIlistDiscardedRequest
+         */
+        public APIlistDiscardedRequest sortBy(String sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set sortOrder
+         * 
+         * @param sortOrder
+         *            Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z.
+         *            &#x60;desc&#x60; is descending and sorts from Z to A. (optional)
+         * 
+         * @return APIlistDiscardedRequest
+         */
+        public APIlistDiscardedRequest sortOrder(String sortOrder) {
+            this.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
+         * Set currentPage
+         * 
+         * @param currentPage
+         *            Choose the number of search results to return per page. Minimum value: 1 (optional, default to 1)
+         * 
+         * @return APIlistDiscardedRequest
+         */
+        public APIlistDiscardedRequest currentPage(Integer currentPage) {
+            this.currentPage = currentPage;
+            return this;
+        }
+
+        /**
+         * Set pageSize
+         * 
+         * @param pageSize
+         *            Results per page. Allowed values 1-100, default is 25. (optional, default to 25)
+         * 
+         * @return APIlistDiscardedRequest
+         */
+        public APIlistDiscardedRequest pageSize(Integer pageSize) {
+            this.pageSize = pageSize;
+            return this;
+        }
+
+        /**
+         * Build call for listDiscarded
+         * 
+         * @param _callback
+         *            ApiCallback API callback
+         * 
+         * @return Call to execute
+         * 
+         * @throws ApiException
+         *             If fail to serialize the request body object
+         * 
+         * @http.response.details
+         *                        <table summary="Response Details" border="1">
+         *                        <tr>
+         *                        <td>Status Code</td>
+         *                        <td>Description</td>
+         *                        <td>Response Headers</td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>200</td>
+         *                        <td>Success</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>400</td>
+         *                        <td>Bad Request</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>429</td>
+         *                        <td>Too Many Requests</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listDiscardedCall(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage,
+                    pageSize, _callback);
+        }
+
+        /**
+         * Execute listDiscarded request
+         * 
+         * @return VideosListResponse
+         * 
+         * @throws ApiException
+         *             If fail to call the API, e.g. server error or cannot deserialize the response body
+         * 
+         * @http.response.details
+         *                        <table summary="Response Details" border="1">
+         *                        <tr>
+         *                        <td>Status Code</td>
+         *                        <td>Description</td>
+         *                        <td>Response Headers</td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>200</td>
+         *                        <td>Success</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>400</td>
+         *                        <td>Bad Request</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>429</td>
+         *                        <td>Too Many Requests</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        </table>
+         */
+        public Page<Video> execute() throws ApiException {
+            ApiResponse<VideosListResponse> localVarResp = listDiscardedWithHttpInfo(title, tags, metadata, description,
+                    liveStreamId, sortBy, sortOrder, currentPage, pageSize);
+            return new Page<>(localVarResp.getData().getData(), localVarResp.getData().getPagination(), () -> {
+                try {
+                    return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                } catch (ApiException e) {
+                    throw new RuntimeException(e);
+                }
+            }); //
+        }
+
+        private APIlistDiscardedRequest copy() {
+            APIlistDiscardedRequest copy = new APIlistDiscardedRequest();
+            copy.title(title);
+            copy.tags(tags);
+            copy.metadata(metadata);
+            copy.description(description);
+            copy.liveStreamId(liveStreamId);
+            copy.sortBy(sortBy);
+            copy.sortOrder(sortOrder);
+            copy.currentPage(currentPage);
+            copy.pageSize(pageSize);
+            return copy;
+        }
+
+        /**
+         * Execute listDiscarded request with HTTP info returned
+         * 
+         * @return ApiResponse&lt;VideosListResponse&gt;
+         * 
+         * @throws ApiException
+         *             If fail to call the API, e.g. server error or cannot deserialize the response body
+         * 
+         * @http.response.details
+         *                        <table summary="Response Details" border="1">
+         *                        <tr>
+         *                        <td>Status Code</td>
+         *                        <td>Description</td>
+         *                        <td>Response Headers</td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>200</td>
+         *                        <td>Success</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>400</td>
+         *                        <td>Bad Request</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>429</td>
+         *                        <td>Too Many Requests</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        </table>
+         */
+        public ApiResponse<VideosListResponse> executeWithHttpInfo() throws ApiException {
+            return listDiscardedWithHttpInfo(title, tags, metadata, description, liveStreamId, sortBy, sortOrder,
+                    currentPage, pageSize);
+        }
+
+        /**
+         * Execute listDiscarded request (asynchronously)
+         * 
+         * @param _callback
+         *            The callback to be executed when the API call finishes
+         * 
+         * @return The request call
+         * 
+         * @throws ApiException
+         *             If fail to process the API call, e.g. serializing the request body object
+         * 
+         * @http.response.details
+         *                        <table summary="Response Details" border="1">
+         *                        <tr>
+         *                        <td>Status Code</td>
+         *                        <td>Description</td>
+         *                        <td>Response Headers</td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>200</td>
+         *                        <td>Success</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>400</td>
+         *                        <td>Bad Request</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        <tr>
+         *                        <td>429</td>
+         *                        <td>Too Many Requests</td>
+         *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+         *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+         *                        window. <br>
+         *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit
+         *                        window resets. <br>
+         *                        </td>
+         *                        </tr>
+         *                        </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Page<Video>> _callback) throws ApiException {
+            ApiCallback<VideosListResponse> apiCallback = new ApiCallback<VideosListResponse>() {
+
+                @Override
+                public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
+                    _callback.onFailure(e, statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onSuccess(VideosListResponse result, int statusCode,
+                        Map<String, List<String>> responseHeaders) {
+                    _callback.onSuccess(new Page<>(result.getData(), result.getPagination(), () -> {
+                        try {
+                            return copy().currentPage((currentPage == null ? 1 : currentPage) + 1).execute();
+                        } catch (ApiException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }), statusCode, responseHeaders);
+                }
+
+                @Override
+                public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
+                    _callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+
+                @Override
+                public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
+                    _callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+            return listDiscardedAsync(title, tags, metadata, description, liveStreamId, sortBy, sortOrder, currentPage,
+                    pageSize, apiCallback);
+        }
+    }
+
+    /**
+     * List all discarded video objects
+     *
+     * This method returns a list of your discarded videos (with all their details). With no parameters added, the API
+     * returns the first page of all discarded videos. You can filter discarded videos using the parameters described
+     * below.
+     * 
+     * @return APIlistDiscardedRequest
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    public APIlistDiscardedRequest listDiscarded() {
+        return new APIlistDiscardedRequest();
+    }
+
+    /**
+     * Build call for updateDiscarded
+     * 
+     * @param videoId
+     *            The video ID for the video you want to restore. (required)
+     * @param discardedVideoUpdatePayload
+     *            (required)
+     * @param _callback
+     *            Callback for upload/download progress
+     * 
+     * @return Call to execute
+     * 
+     * @throws ApiException
+     *             If fail to serialize the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    private okhttp3.Call updateDiscardedCall(String videoId, DiscardedVideoUpdatePayload discardedVideoUpdatePayload,
+            final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = discardedVideoUpdatePayload;
+
+        // create path and map variables
+        String localVarPath = "/discarded/videos/{videoId}".replaceAll("\\{" + "videoId" + "\\}",
+                localVarApiClient.escapeString(videoId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = { "application/json" };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = { "application/json" };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateDiscardedValidateBeforeCall(String videoId,
+            DiscardedVideoUpdatePayload discardedVideoUpdatePayload, final ApiCallback _callback) throws ApiException {
+
+        // verify the required parameter 'videoId' is set
+        if (videoId == null) {
+            throw new ApiException("Missing the required parameter 'videoId' when calling updateDiscarded");
+        }
+
+        // verify the required parameter 'discardedVideoUpdatePayload' is set
+        if (discardedVideoUpdatePayload == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'discardedVideoUpdatePayload' when calling updateDiscarded");
+        }
+
+        okhttp3.Call localVarCall = updateDiscardedCall(videoId, discardedVideoUpdatePayload, _callback);
+        return localVarCall;
+    }
+
+    /**
+     * Update a discarded video object
+     *
+     * Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+     * 
+     * 
+     * @param videoId
+     *            The video ID for the video you want to restore. (required)
+     * @param discardedVideoUpdatePayload
+     *            (required)
+     * 
+     * @return Video
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    public Video updateDiscarded(String videoId, DiscardedVideoUpdatePayload discardedVideoUpdatePayload)
+            throws ApiException {
+        ApiResponse<Video> localVarResp = updateDiscardedWithHttpInfo(videoId, discardedVideoUpdatePayload);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Update a discarded video object
+     *
+     * Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+     * 
+     * 
+     * @param videoId
+     *            The video ID for the video you want to restore. (required)
+     * @param discardedVideoUpdatePayload
+     *            (required)
+     * 
+     * @return ApiResponse&lt;Video&gt;
+     * 
+     * @throws ApiException
+     *             If fail to call the API, e.g. server error or cannot deserialize the response body
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    public ApiResponse<Video> updateDiscardedWithHttpInfo(String videoId,
+            DiscardedVideoUpdatePayload discardedVideoUpdatePayload) throws ApiException {
+        okhttp3.Call localVarCall = updateDiscardedValidateBeforeCall(videoId, discardedVideoUpdatePayload, null);
+        Type localVarReturnType = new TypeToken<Video>() {
+        }.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Update a discarded video object (asynchronously) Use this endpoint to restore a discarded video when you have the
+     * Video Restore feature enabled.
+     * 
+     * 
+     * @param videoId
+     *            The video ID for the video you want to restore. (required)
+     * @param discardedVideoUpdatePayload
+     *            (required)
+     * @param _callback
+     *            The callback to be executed when the API call finishes
+     * 
+     * @return The request call
+     * 
+     * @throws ApiException
+     *             If fail to process the API call, e.g. serializing the request body object
+     * 
+     * @http.response.details
+     *                        <table summary="Response Details" border="1">
+     *                        <tr>
+     *                        <td>Status Code</td>
+     *                        <td>Description</td>
+     *                        <td>Response Headers</td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>200</td>
+     *                        <td>Success</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>400</td>
+     *                        <td>Bad Request</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>404</td>
+     *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>429</td>
+     *                        <td>Too Many Requests</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        </table>
+     */
+    public okhttp3.Call updateDiscardedAsync(String videoId, DiscardedVideoUpdatePayload discardedVideoUpdatePayload,
+            final ApiCallback<Video> _callback) throws ApiException {
+        okhttp3.Call localVarCall = updateDiscardedValidateBeforeCall(videoId, discardedVideoUpdatePayload, _callback);
+        Type localVarReturnType = new TypeToken<Video>() {
         }.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

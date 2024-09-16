@@ -272,14 +272,12 @@ public class VideoCreationPayload implements Serializable, DeepObject {
     }
 
     /**
-     * A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic,
-     * allowing you to segment your audience. Read more on [dynamic
-     * metadata](https://api.video/blog/endpoints/dynamic-metadata/).
+     * A list of key value pairs that you use to provide metadata for your video.
      * 
      * @return metadata
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "[{\"key\": \"Author\", \"value\": \"John Doe\"}]", value = "A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).")
+    @ApiModelProperty(example = "[{\"key\": \"Author\", \"value\": \"John Doe\"}]", value = "A list of key value pairs that you use to provide metadata for your video.")
 
     public List<Metadata> getMetadata() {
         return metadata;

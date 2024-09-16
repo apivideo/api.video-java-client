@@ -244,13 +244,12 @@ public class VideoUpdatePayload implements Serializable, DeepObject {
     /**
      * A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with
      * tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing
-     * metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to
-     * define a key that allows any value pair.
+     * metadata for the video.
      * 
      * @return metadata
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.")
+    @ApiModelProperty(value = "A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video.")
 
     public List<Metadata> getMetadata() {
         return metadata;

@@ -95,12 +95,12 @@ public class UploadToken implements Serializable, DeepObject {
     }
 
     /**
-     * When the token was created, displayed in ISO-8601 format.
+     * When the token was created, displayed in ATOM UTC format.
      * 
      * @return createdAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-12-16T08:25:51Z", value = "When the token was created, displayed in ISO-8601 format.")
+    @ApiModelProperty(example = "2019-12-16T08:25:51Z", value = "When the token was created, displayed in ATOM UTC format.")
 
     public OffsetDateTime getCreatedAt() {
         return createdAt;
@@ -116,12 +116,12 @@ public class UploadToken implements Serializable, DeepObject {
     }
 
     /**
-     * When the token expires, displayed in ISO-8601 format.
+     * When the token expires, displayed in ATOM UTC format.
      * 
      * @return expiresAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-12-16T09:25:51Z", value = "When the token expires, displayed in ISO-8601 format.")
+    @ApiModelProperty(example = "2019-12-16T09:25:51Z", value = "When the token expires, displayed in ATOM UTC format.")
 
     public OffsetDateTime getExpiresAt() {
         return expiresAt;
