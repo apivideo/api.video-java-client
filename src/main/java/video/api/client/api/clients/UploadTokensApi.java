@@ -994,7 +994,7 @@ public class UploadTokensApi {
          * 
          * @param sortBy
          *            Allowed: createdAt, ttl. You can use these to sort by when a token was created, or how much longer
-         *            the token will be active (ttl - time to live). Date and time is presented in ISO-8601 format.
+         *            the token will be active (ttl - time to live). Date and time is presented in ATOM UTC format.
          *            (optional)
          * 
          * @return APIlistRequest

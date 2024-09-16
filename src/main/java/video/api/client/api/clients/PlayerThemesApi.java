@@ -1233,7 +1233,7 @@ public class PlayerThemesApi {
          * 
          * @param sortBy
          *            createdAt is the time the player was created. updatedAt is the time the player was last updated.
-         *            The time is presented in ISO-8601 format. (optional)
+         *            The time is presented in ATOM UTC format. (optional)
          * 
          * @return APIlistRequest
          */

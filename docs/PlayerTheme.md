@@ -23,8 +23,8 @@ Name | Type | Description | Notes
 **hideTitle** | **Boolean** | enable/disable title. Default: false |  [optional]
 **forceLoop** | **Boolean** | enable/disable looping. Default: false |  [optional]
 **playerId** | **String** |  | 
-**createdAt** | **OffsetDateTime** | When the player was created, presented in ISO-8601 format. |  [optional]
-**updatedAt** | **OffsetDateTime** | When the player was last updated, presented in ISO-8601 format. |  [optional]
+**createdAt** | **OffsetDateTime** | When the player was created, presented in ATOM UTC format. |  [optional]
+**updatedAt** | **OffsetDateTime** | When the player was last updated, presented in ATOM UTC format. |  [optional]
 **assets** | [**PlayerThemeAssets**](PlayerThemeAssets.md) |  |  [optional]
 
 

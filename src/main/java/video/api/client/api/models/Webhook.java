@@ -76,12 +76,12 @@ public class Webhook implements Serializable, DeepObject {
     }
 
     /**
-     * When an webhook was created, presented in ISO-8601 format.
+     * When an webhook was created, presented in ATOM UTC format.
      * 
      * @return createdAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-06-24T11:45:01.109Z", value = "When an webhook was created, presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2019-06-24T11:45:01Z", value = "When an webhook was created, presented in ATOM UTC format.")
 
     public OffsetDateTime getCreatedAt() {
         return createdAt;

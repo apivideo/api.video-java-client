@@ -13,7 +13,10 @@ Method | HTTP request | Description
 [**list**](VideosApi.md#list) | **GET** /videos | List all video objects
 [**uploadThumbnail**](VideosApi.md#uploadThumbnail) | **POST** /videos/{videoId}/thumbnail | Upload a thumbnail
 [**pickThumbnail**](VideosApi.md#pickThumbnail) | **PATCH** /videos/{videoId}/thumbnail | Set a thumbnail
+[**getDiscarded**](VideosApi.md#getDiscarded) | **GET** /discarded/videos/{videoId} | Retrieve a discarded video object
 [**getStatus**](VideosApi.md#getStatus) | **GET** /videos/{videoId}/status | Retrieve video status and details
+[**listDiscarded**](VideosApi.md#listDiscarded) | **GET** /discarded/videos | List all discarded video objects
+[**updateDiscarded**](VideosApi.md#updateDiscarded) | **PATCH** /discarded/videos/{videoId} | Update a discarded video object
 
 
 <a name="create"></a>
@@ -52,7 +55,7 @@ public class Example {
     videoCreationPayload.setMp4Support(true); // Enables mp4 version in addition to streamed version.
     videoCreationPayload.setPlayerId("pl45KFKdlddgk654dspkze"); // The unique identification number for your video player.
     videoCreationPayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of tags you want to use to describe your video.
-    videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video. These pairs can be made dynamic, allowing you to segment your audience. Read more on [dynamic metadata](https://api.video/blog/endpoints/dynamic-metadata/).
+    videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video.
     videoCreationPayload.setClip(); // 
     videoCreationPayload.setWatermark(); // 
 
@@ -426,7 +429,7 @@ public class Example {
     videoUpdatePayload.setPanoramic(false); // Whether the video is a 360 degree or immersive video.
     videoUpdatePayload.setMp4Support(true); // Whether the player supports the mp4 format.
     videoUpdatePayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of terms or words you want to tag the video with. Make sure the list includes all the tags you want as whatever you send in this list will overwrite the existing list for the video.
-    videoUpdatePayload.setMetadata(Collections.<Metadata>emptyList()); // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
+    videoUpdatePayload.setMetadata(Collections.<Metadata>emptyList()); // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video.
 
 
     try {
@@ -480,7 +483,7 @@ Name | Type | Description  | Notes
 
 Delete a video object
 
-If you do not need a video any longer, you can send a request to delete it. All you need is the videoId.
+If you do not need a video any longer, you can send a request to delete it. All you need is the videoId. By default, deleted videos cannot be recovered. If you have the Video Restore feature enabled, this operation will discard the video instead of permanently deleting it. Make sure you subscribe to the Video Restore feature if you want to be able to restore deleted videos! The Video Restore feature retains videos for 90 days, after which the videos are permanently deleted
 
 ### Example
 ```java
@@ -570,7 +573,7 @@ public class Example {
     
     String title = "My Video.mp4"; // The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
     List<String> tags = Arrays.asList(); // A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
-    Map<String, String> metadata = new HashMap(); // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair.
+    Map<String, String> metadata = new HashMap(); // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
     String description = "New Zealand"; // Retrieve video objects by `description`.
     String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // Retrieve video objects that were recorded from a live stream by `liveStreamId`.
     String sortBy = "title"; // Use this parameter to sort videos by the their created time, published time, updated time, or by title.
@@ -608,7 +611,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **title** | **String**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional]
  **tags** | [**List&lt;String&gt;**](String.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
- **metadata** | [**Map&lt;String, String&gt;**](String.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. [Dynamic Metadata](https://api.video/blog/endpoints/dynamic-metadata/) allows you to define a key that allows any value pair. | [optional]
+ **metadata** | [**Map&lt;String, String&gt;**](String.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
  **description** | **String**| Retrieve video objects by &#x60;description&#x60;. | [optional]
  **liveStreamId** | **String**| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. | [optional]
  **sortBy** | **String**| Use this parameter to sort videos by the their created time, published time, updated time, or by title. | [optional] [enum: title, createdAt, publishedAt, updatedAt]
@@ -812,6 +815,76 @@ Name | Type | Description  | Notes
 **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 
+<a name="getDiscarded"></a>
+# **getDiscarded**
+> Video getDiscarded(videoId)
+> okhttp3.Call getDiscardedAsync(videoId, callback)
+> ApiResponse<Video> getDiscardedWithHttpInfo(videoId)
+
+Retrieve a discarded video object
+
+This call provides the same information provided on video creation. For private videos, it will generate a unique token url. Use this to retrieve any details you need about a video, or set up a private viewing URL.
+
+### Example
+```java
+// Import classes:
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
+
+    VideosApi apiInstance = client.videos();
+    
+    String videoId = "videoId_example"; // The unique identifier for the video you want details about.
+
+    try {
+      Video result = apiInstance.getDiscarded(videoId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VideosApi#getDiscarded");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **String**| The unique identifier for the video you want details about. |
+
+### Return type
+
+
+[**Video**](Video.md)
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
 <a name="getStatus"></a>
 # **getStatus**
 > VideoStatus getStatus(videoId)
@@ -879,6 +952,179 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+<a name="listDiscarded"></a>
+# **listDiscarded**
+> VideosListResponse listDiscarded().title(title).tags(tags).metadata(metadata).description(description).liveStreamId(liveStreamId).sortBy(sortBy).sortOrder(sortOrder).currentPage(currentPage).pageSize(pageSize).execute()
+> okhttp3.Call executeAsync(callback) 
+> ApiResponse<VideosListResponse> executeWithHttpInfo()
+
+List all discarded video objects
+
+This method returns a list of your discarded videos (with all their details). With no parameters added, the API returns the first page of all discarded videos. You can filter discarded videos using the parameters described below.
+
+### Example
+```java
+// Import classes:
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
+
+    VideosApi apiInstance = client.videos();
+    
+    String title = "My Video.mp4"; // The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles.
+    List<String> tags = Arrays.asList(); // A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned.
+    Map<String, String> metadata = new HashMap(); // Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter.
+    String description = "New Zealand"; // Retrieve video objects by `description`.
+    String liveStreamId = "li400mYKSgQ6xs7taUeSaEKr"; // Retrieve video objects that were recorded from a live stream by `liveStreamId`.
+    String sortBy = "title"; // Use this parameter to sort videos by the their created time, published time, updated time, or by title.
+    String sortOrder = "asc"; // Use this parameter to sort results. `asc` is ascending and sorts from A to Z. `desc` is descending and sorts from Z to A.
+    Integer currentPage = 1; // Choose the number of search results to return per page. Minimum value: 1
+    Integer pageSize = 25; // Results per page. Allowed values 1-100, default is 25.
+
+    try {
+      Page<Video> result = apiInstance.listDiscarded()
+            .title(title)
+            .tags(tags)
+            .metadata(metadata)
+            .description(description)
+            .liveStreamId(liveStreamId)
+            .sortBy(sortBy)
+            .sortOrder(sortOrder)
+            .currentPage(currentPage)
+            .pageSize(pageSize)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VideosApi#listDiscarded");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **title** | **String**| The title of a specific video you want to find. The search will match exactly to what term you provide and return any videos that contain the same term as part of their titles. | [optional]
+ **tags** | [**List&lt;String&gt;**](String.md)| A tag is a category you create and apply to videos. You can search for videos with particular tags by listing one or more here. Only videos that have all the tags you list will be returned. | [optional]
+ **metadata** | [**Map&lt;String, String&gt;**](String.md)| Videos can be tagged with metadata tags in key:value pairs. You can search for videos with specific key value pairs using this parameter. | [optional]
+ **description** | **String**| Retrieve video objects by &#x60;description&#x60;. | [optional]
+ **liveStreamId** | **String**| Retrieve video objects that were recorded from a live stream by &#x60;liveStreamId&#x60;. | [optional]
+ **sortBy** | **String**| Use this parameter to sort videos by the their created time, published time, updated time, or by title. | [optional] [enum: title, createdAt, publishedAt, updatedAt]
+ **sortOrder** | **String**| Use this parameter to sort results. &#x60;asc&#x60; is ascending and sorts from A to Z. &#x60;desc&#x60; is descending and sorts from Z to A. | [optional] [enum: asc, desc]
+ **currentPage** | **Integer**| Choose the number of search results to return per page. Minimum value: 1 | [optional] [default to 1]
+ **pageSize** | **Integer**| Results per page. Allowed values 1-100, default is 25. | [optional] [default to 25]
+
+### Return type
+
+[**Page**](pagination.md)<[**Video**](Video.md)>
+
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**400** | Bad Request |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+
+<a name="updateDiscarded"></a>
+# **updateDiscarded**
+> Video updateDiscarded(videoId, discardedVideoUpdatePayload)
+> okhttp3.Call updateDiscardedAsync(videoId, discardedVideoUpdatePayload, callback)
+> ApiResponse<Video> updateDiscardedWithHttpInfo(videoId, discardedVideoUpdatePayload)
+
+Update a discarded video object
+
+Use this endpoint to restore a discarded video when you have the Video Restore feature enabled.
+
+
+
+### Example
+```java
+// Import classes:
+import video.api.client.ApiVideoClient;
+import video.api.client.api.ApiException;
+import video.api.client.api.models.*;
+import video.api.client.api.clients.VideosApi;
+import java.util.*;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiVideoClient client = new ApiVideoClient("YOUR_API_KEY");
+    // if you rather like to use the sandbox environment:
+    // ApiVideoClient client = new ApiVideoClient("YOUR_SANDBOX_API_KEY", Environment.SANDBOX);
+
+    VideosApi apiInstance = client.videos();
+    
+    String videoId = "vi4k0jvEUuaTdRAEjQ4Jfrgz"; // The video ID for the video you want to restore.
+    DiscardedVideoUpdatePayload discardedVideoUpdatePayload = new DiscardedVideoUpdatePayload(); // 
+    discardedVideoUpdatePayload.setDiscarded(); // Use this parameter to restore a discarded video when you have the Video Restore feature enabled. This parameter only accepts &#x60;false&#x60; as a value!
+
+
+    try {
+      Video result = apiInstance.updateDiscarded(videoId, discardedVideoUpdatePayload);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling VideosApi#updateDiscarded");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getMessage());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **String**| The video ID for the video you want to restore. |
+ **discardedVideoUpdatePayload** | [**DiscardedVideoUpdatePayload**](DiscardedVideoUpdatePayload.md)|  |
+
+### Return type
+
+
+[**Video**](Video.md)
+
+### Authorization
+
+[API key](../README.md#api-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**400** | Bad Request |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 

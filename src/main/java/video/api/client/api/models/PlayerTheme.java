@@ -474,12 +474,12 @@ public class PlayerTheme implements Serializable, DeepObject {
     }
 
     /**
-     * When the player was created, presented in ISO-8601 format.
+     * When the player was created, presented in ATOM UTC format.
      * 
      * @return createdAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2020-01-31T10:17:47Z", value = "When the player was created, presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2020-01-31T10:17:47Z", value = "When the player was created, presented in ATOM UTC format.")
 
     public OffsetDateTime getCreatedAt() {
         return createdAt;
@@ -495,12 +495,12 @@ public class PlayerTheme implements Serializable, DeepObject {
     }
 
     /**
-     * When the player was last updated, presented in ISO-8601 format.
+     * When the player was last updated, presented in ATOM UTC format.
      * 
      * @return updatedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2020-01-31T10:18:47Z", value = "When the player was last updated, presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2020-01-31T10:18:47Z", value = "When the player was last updated, presented in ATOM UTC format.")
 
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;

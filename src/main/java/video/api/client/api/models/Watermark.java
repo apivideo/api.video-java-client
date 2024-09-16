@@ -66,12 +66,12 @@ public class Watermark implements Serializable, DeepObject {
     }
 
     /**
-     * When the watermark was created, presented in ISO-8601 format.
+     * When the watermark was created, presented in ATOM UTC format.
      * 
      * @return createdAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "When the watermark was created, presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2019-06-24T11:45:01Z", value = "When the watermark was created, presented in ATOM UTC format.")
 
     public OffsetDateTime getCreatedAt() {
         return createdAt;

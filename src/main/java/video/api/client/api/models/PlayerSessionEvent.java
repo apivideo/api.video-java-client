@@ -78,12 +78,12 @@ public class PlayerSessionEvent implements Serializable, DeepObject {
     }
 
     /**
-     * When an event occurred, presented in ISO-8601 format.
+     * When an event occurred, presented in ATOM UTC format.
      * 
      * @return emittedAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-06-24T11:45:01.109Z", value = "When an event occurred, presented in ISO-8601 format.")
+    @ApiModelProperty(example = "2019-06-24T11:45:01Z", value = "When an event occurred, presented in ATOM UTC format.")
 
     public OffsetDateTime getEmittedAt() {
         return emittedAt;

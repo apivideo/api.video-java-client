@@ -1243,7 +1243,7 @@ public class LiveStreamsApi {
          *            &#x60;createdAt&#x60;, &#x60;updatedAt&#x60;. &#x60;name&#x60; - the name of the live stream.
          *            &#x60;createdAt&#x60; - the time a live stream was created. &#x60;updatedAt&#x60; - the time a
          *            live stream was last updated. When using &#x60;createdAt&#x60; or &#x60;updatedAt&#x60;, the API
-         *            sorts the results based on the ISO-8601 time format. (optional)
+         *            sorts the results based on the ATOM UTC time format. (optional)
          * 
          * @return APIlistRequest
          */
