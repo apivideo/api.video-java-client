@@ -49,18 +49,22 @@ public class Webhook implements Serializable, DeepObject {
     @SerializedName(SERIALIZED_NAME_URL)
     private String url;
 
+    public static final String SERIALIZED_NAME_SIGNATURE_SECRET = "signatureSecret";
+    @SerializedName(SERIALIZED_NAME_SIGNATURE_SECRET)
+    private String signatureSecret;
+
     public Webhook webhookId(String webhookId) {
         this.webhookId = webhookId;
         return this;
     }
 
     /**
-     * Unique identifier of the webhook
+     * A unique identifier of the webhook you subscribed to.
      * 
      * @return webhookId
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "webhook_XXXXXXXXXXXXXXX", value = "Unique identifier of the webhook")
+    @ApiModelProperty(example = "webhook_XXXXXXXXXXXXXXX", value = "A unique identifier of the webhook you subscribed to.")
 
     public String getWebhookId() {
         return webhookId;
@@ -76,12 +80,12 @@ public class Webhook implements Serializable, DeepObject {
     }
 
     /**
-     * When an webhook was created, presented in ATOM UTC format.
+     * The time and date when you created this webhook subscription, in ATOM UTC format.
      * 
      * @return createdAt
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "2019-06-24T11:45:01Z", value = "When an webhook was created, presented in ATOM UTC format.")
+    @ApiModelProperty(example = "2019-06-24T11:45:01Z", value = "The time and date when you created this webhook subscription, in ATOM UTC format.")
 
     public OffsetDateTime getCreatedAt() {
         return createdAt;
@@ -105,12 +109,13 @@ public class Webhook implements Serializable, DeepObject {
     }
 
     /**
-     * A list of events that will trigger the webhook.
+     * A list of events that you subscribed to. When these events occur, the API triggers a webhook call to the URL you
+     * provided.
      * 
      * @return events
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "[\"video.encoding.quality.completed\"]", value = "A list of events that will trigger the webhook.")
+    @ApiModelProperty(example = "[\"video.encoding.quality.completed\"]", value = "A list of events that you subscribed to. When these events occur, the API triggers a webhook call to the URL you provided.")
 
     public List<String> getEvents() {
         return events;
@@ -126,12 +131,12 @@ public class Webhook implements Serializable, DeepObject {
     }
 
     /**
-     * URL of the webhook
+     * The URL where the API sends the webhook.
      * 
      * @return url
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(example = "http://clientnotificationserver.com/notif?myquery=query", value = "URL of the webhook")
+    @ApiModelProperty(example = "http://clientnotificationserver.com/notif?myquery=query", value = "The URL where the API sends the webhook.")
 
     public String getUrl() {
         return url;
@@ -139,6 +144,28 @@ public class Webhook implements Serializable, DeepObject {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Webhook signatureSecret(String signatureSecret) {
+        this.signatureSecret = signatureSecret;
+        return this;
+    }
+
+    /**
+     * A secret key for the webhook you subscribed to. You can use it to verify the origin of the webhook call that you
+     * receive.
+     * 
+     * @return signatureSecret
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "A secret key for the webhook you subscribed to. You can use it to verify the origin of the webhook call that you receive.")
+
+    public String getSignatureSecret() {
+        return signatureSecret;
+    }
+
+    public void setSignatureSecret(String signatureSecret) {
+        this.signatureSecret = signatureSecret;
     }
 
     @Override
@@ -151,12 +178,13 @@ public class Webhook implements Serializable, DeepObject {
         }
         Webhook webhook = (Webhook) o;
         return Objects.equals(this.webhookId, webhook.webhookId) && Objects.equals(this.createdAt, webhook.createdAt)
-                && Objects.equals(this.events, webhook.events) && Objects.equals(this.url, webhook.url);
+                && Objects.equals(this.events, webhook.events) && Objects.equals(this.url, webhook.url)
+                && Objects.equals(this.signatureSecret, webhook.signatureSecret);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(webhookId, createdAt, events, url);
+        return Objects.hash(webhookId, createdAt, events, url, signatureSecret);
     }
 
     @Override
@@ -167,6 +195,7 @@ public class Webhook implements Serializable, DeepObject {
         sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
         sb.append("    events: ").append(toIndentedString(events)).append("\n");
         sb.append("    url: ").append(toIndentedString(url)).append("\n");
+        sb.append("    signatureSecret: ").append(toIndentedString(signatureSecret)).append("\n");
         sb.append("}");
         return sb.toString();
     }
