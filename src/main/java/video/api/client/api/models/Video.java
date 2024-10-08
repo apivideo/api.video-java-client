@@ -72,6 +72,63 @@ public class Video implements Serializable, DeepObject {
     @SerializedName(SERIALIZED_NAME_DISCARDED)
     private Boolean discarded;
 
+    public static final String SERIALIZED_NAME_LANGUAGE = "language";
+    @SerializedName(SERIALIZED_NAME_LANGUAGE)
+    private String language;
+
+    /**
+     * Returns the origin of the last update on the video&#39;s &#x60;language&#x60; attribute. - &#x60;api&#x60; means
+     * that the last update was requested from the API. - &#x60;auto&#x60; means that the last update was done
+     * automatically by the API.
+     */
+    @JsonAdapter(LanguageOriginEnum.Adapter.class)
+    public enum LanguageOriginEnum {
+        API("api"),
+
+        AUTO("auto");
+
+        private String value;
+
+        LanguageOriginEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static LanguageOriginEnum fromValue(String value) {
+            for (LanguageOriginEnum b : LanguageOriginEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+
+        public static class Adapter extends TypeAdapter<LanguageOriginEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final LanguageOriginEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public LanguageOriginEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return LanguageOriginEnum.fromValue(value);
+            }
+        }
+    }
+
+    public static final String SERIALIZED_NAME_LANGUAGE_ORIGIN = "languageOrigin";
+    @SerializedName(SERIALIZED_NAME_LANGUAGE_ORIGIN)
+    private LanguageOriginEnum languageOrigin;
+
     public static final String SERIALIZED_NAME_TAGS = "tags";
     @SerializedName(SERIALIZED_NAME_TAGS)
     private List<String> tags = null;
@@ -296,6 +353,51 @@ public class Video implements Serializable, DeepObject {
         this.discarded = discarded;
     }
 
+    public Video language(String language) {
+        this.language = language;
+        return this;
+    }
+
+    /**
+     * Returns the language of a video in [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.
+     * You can set the language during video creation via the API, otherwise it is detected automatically.
+     * 
+     * @return language
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Returns the language of a video in [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format. You can set the language during video creation via the API, otherwise it is detected automatically.")
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public Video languageOrigin(LanguageOriginEnum languageOrigin) {
+        this.languageOrigin = languageOrigin;
+        return this;
+    }
+
+    /**
+     * Returns the origin of the last update on the video&#39;s &#x60;language&#x60; attribute. - &#x60;api&#x60; means
+     * that the last update was requested from the API. - &#x60;auto&#x60; means that the last update was done
+     * automatically by the API.
+     * 
+     * @return languageOrigin
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Returns the origin of the last update on the video's `language` attribute.  - `api` means that the last update was requested from the API. - `auto` means that the last update was done automatically by the API.")
+
+    public LanguageOriginEnum getLanguageOrigin() {
+        return languageOrigin;
+    }
+
+    public void setLanguageOrigin(LanguageOriginEnum languageOrigin) {
+        this.languageOrigin = languageOrigin;
+    }
+
     public Video tags(List<String> tags) {
         this.tags = tags;
         return this;
@@ -498,16 +600,19 @@ public class Video implements Serializable, DeepObject {
                 && Objects.equals(this.updatedAt, video.updatedAt)
                 && Objects.equals(this.discardedAt, video.discardedAt)
                 && Objects.equals(this.deletesAt, video.deletesAt) && Objects.equals(this.discarded, video.discarded)
-                && Objects.equals(this.tags, video.tags) && Objects.equals(this.metadata, video.metadata)
-                && Objects.equals(this.source, video.source) && Objects.equals(this.assets, video.assets)
-                && Objects.equals(this.playerId, video.playerId) && Objects.equals(this._public, video._public)
-                && Objects.equals(this.panoramic, video.panoramic) && Objects.equals(this.mp4Support, video.mp4Support);
+                && Objects.equals(this.language, video.language)
+                && Objects.equals(this.languageOrigin, video.languageOrigin) && Objects.equals(this.tags, video.tags)
+                && Objects.equals(this.metadata, video.metadata) && Objects.equals(this.source, video.source)
+                && Objects.equals(this.assets, video.assets) && Objects.equals(this.playerId, video.playerId)
+                && Objects.equals(this._public, video._public) && Objects.equals(this.panoramic, video.panoramic)
+                && Objects.equals(this.mp4Support, video.mp4Support);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(videoId, createdAt, title, description, publishedAt, updatedAt, discardedAt, deletesAt,
-                discarded, tags, metadata, source, assets, playerId, _public, panoramic, mp4Support);
+                discarded, language, languageOrigin, tags, metadata, source, assets, playerId, _public, panoramic,
+                mp4Support);
     }
 
     @Override
@@ -523,6 +628,8 @@ public class Video implements Serializable, DeepObject {
         sb.append("    discardedAt: ").append(toIndentedString(discardedAt)).append("\n");
         sb.append("    deletesAt: ").append(toIndentedString(deletesAt)).append("\n");
         sb.append("    discarded: ").append(toIndentedString(discarded)).append("\n");
+        sb.append("    language: ").append(toIndentedString(language)).append("\n");
+        sb.append("    languageOrigin: ").append(toIndentedString(languageOrigin)).append("\n");
         sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
         sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
         sb.append("    source: ").append(toIndentedString(source)).append("\n");

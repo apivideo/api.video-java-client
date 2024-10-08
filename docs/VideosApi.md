@@ -58,6 +58,15 @@ public class Example {
     videoCreationPayload.setMetadata(Collections.<Metadata>emptyList()); // A list of key value pairs that you use to provide metadata for your video.
     videoCreationPayload.setClip(); // 
     videoCreationPayload.setWatermark(); // 
+    videoCreationPayload.setLanguage(""fr""); // Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of the video using the language you specify. You must use the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.
+
+&#x60;language&#x60; is a permanent attribute of the video. You can update it to another language using the [&#x60;PATCH /videos/{videoId}&#x60;](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This triggers the API to generate a new transcript using a different language.
+    videoCreationPayload.setTranscript(); // Use this parameter to enable transcription. 
+
+- When &#x60;true&#x60;, the API generates a transcript for the video.
+- The default value is &#x60;false&#x60;.
+- If you define a video language using the &#x60;language&#x60; parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video. 
+- When the API generates a transcript, it will be available as a caption for the video.
 
 
     try {
@@ -430,6 +439,15 @@ public class Example {
     videoUpdatePayload.setMp4Support(true); // Whether the player supports the mp4 format.
     videoUpdatePayload.setTags(Arrays.asList("maths", "string theory", "video")); // A list of terms or words you want to tag the video with. Make sure the list includes all the tags you want as whatever you send in this list will overwrite the existing list for the video.
     videoUpdatePayload.setMetadata(Collections.<Metadata>emptyList()); // A list (array) of dictionaries where each dictionary contains a key value pair that describes the video. As with tags, you must send the complete list of metadata you want as whatever you send here will overwrite the existing metadata for the video.
+    videoUpdatePayload.setLanguage(""fr""); // Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of the video using the language you specify. You must use the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.
+
+&#x60;language&#x60; is a permanent attribute of the video. You can update it to another language using the [&#x60;PATCH /videos/{videoId}&#x60;](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This triggers the API to generate a new transcript using a different language.
+    videoUpdatePayload.setTranscript(); // Use this parameter to enable transcription. 
+
+- When &#x60;true&#x60;, the API generates a transcript for the video.
+- The default value is &#x60;false&#x60;.
+- If you define a video language using the &#x60;language&#x60; parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video. 
+- When the API generates a transcript, it will be available as a caption for the video.
 
 
     try {

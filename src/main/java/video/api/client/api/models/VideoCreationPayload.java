@@ -79,6 +79,128 @@ public class VideoCreationPayload implements Serializable, DeepObject {
     @SerializedName(SERIALIZED_NAME_WATERMARK)
     private VideoWatermark watermark;
 
+    /**
+     * Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of
+     * the video using the language you specify. You must use the [IETF language
+     * tag](https://en.wikipedia.org/wiki/IETF_language_tag) format. &#x60;language&#x60; is a permanent attribute of
+     * the video. You can update it to another language using the [&#x60;PATCH
+     * /videos/{videoId}&#x60;](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This
+     * triggers the API to generate a new transcript using a different language.
+     */
+    @JsonAdapter(LanguageEnum.Adapter.class)
+    public enum LanguageEnum {
+        AR("ar"),
+
+        CA("ca"),
+
+        CS("cs"),
+
+        DA("da"),
+
+        DE("de"),
+
+        EL("el"),
+
+        EN("en"),
+
+        ES("es"),
+
+        FA("fa"),
+
+        FI("fi"),
+
+        FR("fr"),
+
+        HE("he"),
+
+        HI("hi"),
+
+        HR("hr"),
+
+        HU("hu"),
+
+        IT("it"),
+
+        JA("ja"),
+
+        KO("ko"),
+
+        ML("ml"),
+
+        NL("nl"),
+
+        NN("nn"),
+
+        FALSE("false"),
+
+        PL("pl"),
+
+        PT("pt"),
+
+        RU("ru"),
+
+        SK("sk"),
+
+        SL("sl"),
+
+        TE("te"),
+
+        TR("tr"),
+
+        UK("uk"),
+
+        UR("ur"),
+
+        VI("vi"),
+
+        ZH("zh");
+
+        private String value;
+
+        LanguageEnum(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static LanguageEnum fromValue(String value) {
+            for (LanguageEnum b : LanguageEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        public static class Adapter extends TypeAdapter<LanguageEnum> {
+            @Override
+            public void write(final JsonWriter jsonWriter, final LanguageEnum enumeration) throws IOException {
+                jsonWriter.value(enumeration.getValue());
+            }
+
+            @Override
+            public LanguageEnum read(final JsonReader jsonReader) throws IOException {
+                String value = jsonReader.nextString();
+                return LanguageEnum.fromValue(value);
+            }
+        }
+    }
+
+    public static final String SERIALIZED_NAME_LANGUAGE = "language";
+    @SerializedName(SERIALIZED_NAME_LANGUAGE)
+    private LanguageEnum language;
+
+    public static final String SERIALIZED_NAME_TRANSCRIPT = "transcript";
+    @SerializedName(SERIALIZED_NAME_TRANSCRIPT)
+    private Boolean transcript;
+
     public VideoCreationPayload title(String title) {
         this.title = title;
         return this;
@@ -329,6 +451,56 @@ public class VideoCreationPayload implements Serializable, DeepObject {
         this.watermark = watermark;
     }
 
+    public VideoCreationPayload language(LanguageEnum language) {
+        this.language = language;
+        return this;
+    }
+
+    /**
+     * Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of
+     * the video using the language you specify. You must use the [IETF language
+     * tag](https://en.wikipedia.org/wiki/IETF_language_tag) format. &#x60;language&#x60; is a permanent attribute of
+     * the video. You can update it to another language using the [&#x60;PATCH
+     * /videos/{videoId}&#x60;](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This
+     * triggers the API to generate a new transcript using a different language.
+     * 
+     * @return language
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(example = "fr", value = "Use this parameter to set the language of the video. When this parameter is set, the API creates a transcript of the video using the language you specify. You must use the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) format.  `language` is a permanent attribute of the video. You can update it to another language using the [`PATCH /videos/{videoId}`](https://docs.api.video/reference/api/Videos#update-a-video-object) operation. This triggers the API to generate a new transcript using a different language.")
+
+    public LanguageEnum getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(LanguageEnum language) {
+        this.language = language;
+    }
+
+    public VideoCreationPayload transcript(Boolean transcript) {
+        this.transcript = transcript;
+        return this;
+    }
+
+    /**
+     * Use this parameter to enable transcription. - When &#x60;true&#x60;, the API generates a transcript for the
+     * video. - The default value is &#x60;false&#x60;. - If you define a video language using the &#x60;language&#x60;
+     * parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects
+     * it based on the video. - When the API generates a transcript, it will be available as a caption for the video.
+     * 
+     * @return transcript
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Use this parameter to enable transcription.   - When `true`, the API generates a transcript for the video. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video.  - When the API generates a transcript, it will be available as a caption for the video.")
+
+    public Boolean getTranscript() {
+        return transcript;
+    }
+
+    public void setTranscript(Boolean transcript) {
+        this.transcript = transcript;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -348,13 +520,15 @@ public class VideoCreationPayload implements Serializable, DeepObject {
                 && Objects.equals(this.tags, videoCreationPayload.tags)
                 && Objects.equals(this.metadata, videoCreationPayload.metadata)
                 && Objects.equals(this.clip, videoCreationPayload.clip)
-                && Objects.equals(this.watermark, videoCreationPayload.watermark);
+                && Objects.equals(this.watermark, videoCreationPayload.watermark)
+                && Objects.equals(this.language, videoCreationPayload.language)
+                && Objects.equals(this.transcript, videoCreationPayload.transcript);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(title, description, source, _public, panoramic, mp4Support, playerId, tags, metadata, clip,
-                watermark);
+                watermark, language, transcript);
     }
 
     @Override
@@ -372,6 +546,8 @@ public class VideoCreationPayload implements Serializable, DeepObject {
         sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
         sb.append("    clip: ").append(toIndentedString(clip)).append("\n");
         sb.append("    watermark: ").append(toIndentedString(watermark)).append("\n");
+        sb.append("    language: ").append(toIndentedString(language)).append("\n");
+        sb.append("    transcript: ").append(toIndentedString(transcript)).append("\n");
         sb.append("}");
         return sb.toString();
     }
