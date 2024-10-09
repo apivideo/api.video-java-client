@@ -40,12 +40,12 @@ public class CaptionsUpdatePayload implements Serializable, DeepObject {
     }
 
     /**
-     * Get _default
+     * Set this parameter to &#x60;true&#x60; to define a caption as the default for a video.
      * 
      * @return _default
      **/
     @javax.annotation.Nullable
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value = "Set this parameter to `true` to define a caption as the default for a video.")
 
     public Boolean getDefault() {
         return _default;

@@ -191,7 +191,7 @@ public class Example {
     String videoId = "vi4k0jvEUuaTdRAEjQ4Prklg"; // The unique identifier for the video you want to have automatic captions for.
     String language = "en"; // A valid language identifier using IETF language tags. You can use primary subtags like `en` (English), extended subtags like `fr-CA` (French, Canada), or region subtags like `zh-Hans-CN` (Simplified Chinese used in the PRC).  - This parameter **only accepts dashes for separators**, for example `fr-CA`. If you use a different separator in your request, the API returns an error. - When the value in your request does not match any covered language, the API returns an error. - You can find the list of supported tags [here](https://docs.api.video/vod/add-captions#supported-caption-language-tags).
     CaptionsUpdatePayload captionsUpdatePayload = new CaptionsUpdatePayload(); // 
-    captionsUpdatePayload.setDefault(); // 
+    captionsUpdatePayload.setDefault(); // Set this parameter to &#x60;true&#x60; to define a caption as the default for a video.
 
 
     try {
