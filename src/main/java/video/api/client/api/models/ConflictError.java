@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * NotFound
+ * ConflictError
  */
 
-public class NotFound implements Serializable, DeepObject {
+public class ConflictError implements Serializable, DeepObject {
     private static final long serialVersionUID = 1L;
 
     public static final String SERIALIZED_NAME_TYPE = "type";
@@ -46,7 +46,11 @@ public class NotFound implements Serializable, DeepObject {
     @SerializedName(SERIALIZED_NAME_STATUS)
     private Integer status;
 
-    public NotFound type(String type) {
+    public static final String SERIALIZED_NAME_DETAIL = "detail";
+    @SerializedName(SERIALIZED_NAME_DETAIL)
+    private String detail;
+
+    public ConflictError type(String type) {
         this.type = type;
         return this;
     }
@@ -67,7 +71,7 @@ public class NotFound implements Serializable, DeepObject {
         this.type = type;
     }
 
-    public NotFound title(String title) {
+    public ConflictError title(String title) {
         this.title = title;
         return this;
     }
@@ -88,7 +92,7 @@ public class NotFound implements Serializable, DeepObject {
         this.title = title;
     }
 
-    public NotFound name(String name) {
+    public ConflictError name(String name) {
         this.name = name;
         return this;
     }
@@ -109,7 +113,7 @@ public class NotFound implements Serializable, DeepObject {
         this.name = name;
     }
 
-    public NotFound status(Integer status) {
+    public ConflictError status(Integer status) {
         this.status = status;
         return this;
     }
@@ -130,6 +134,27 @@ public class NotFound implements Serializable, DeepObject {
         this.status = status;
     }
 
+    public ConflictError detail(String detail) {
+        this.detail = detail;
+        return this;
+    }
+
+    /**
+     * A solution for the error.
+     * 
+     * @return detail
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "A solution for the error.")
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -138,24 +163,26 @@ public class NotFound implements Serializable, DeepObject {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        NotFound notFound = (NotFound) o;
-        return Objects.equals(this.type, notFound.type) && Objects.equals(this.title, notFound.title)
-                && Objects.equals(this.name, notFound.name) && Objects.equals(this.status, notFound.status);
+        ConflictError conflictError = (ConflictError) o;
+        return Objects.equals(this.type, conflictError.type) && Objects.equals(this.title, conflictError.title)
+                && Objects.equals(this.name, conflictError.name) && Objects.equals(this.status, conflictError.status)
+                && Objects.equals(this.detail, conflictError.detail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, title, name, status);
+        return Objects.hash(type, title, name, status, detail);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class NotFound {\n");
+        sb.append("class ConflictError {\n");
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    title: ").append(toIndentedString(title)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
         sb.append("}");
         return sb.toString();
     }

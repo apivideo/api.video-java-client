@@ -201,6 +201,10 @@ public class VideoCreationPayload implements Serializable, DeepObject {
     @SerializedName(SERIALIZED_NAME_TRANSCRIPT)
     private Boolean transcript;
 
+    public static final String SERIALIZED_NAME_TRANSCRIPT_SUMMARY = "transcriptSummary";
+    @SerializedName(SERIALIZED_NAME_TRANSCRIPT_SUMMARY)
+    private Boolean transcriptSummary;
+
     public VideoCreationPayload title(String title) {
         this.title = title;
         return this;
@@ -501,6 +505,31 @@ public class VideoCreationPayload implements Serializable, DeepObject {
         this.transcript = transcript;
     }
 
+    public VideoCreationPayload transcriptSummary(Boolean transcriptSummary) {
+        this.transcriptSummary = transcriptSummary;
+        return this;
+    }
+
+    /**
+     * Use this parameter to enable summarization. We recommend using this parameter together with &#x60;transcript:
+     * true&#x60;. - When &#x60;true&#x60;, the API generates a summary for the video, based on the transcription. - The
+     * default value is &#x60;false&#x60;. - If you define a video language using the &#x60;language&#x60; parameter,
+     * the API uses that language to summarize the video. If you do not define a language, the API detects it based on
+     * the video.
+     * 
+     * @return transcriptSummary
+     **/
+    @javax.annotation.Nullable
+    @ApiModelProperty(value = "Use this parameter to enable summarization. We recommend using this parameter together with `transcript: true`.  - When `true`, the API generates a summary for the video, based on the transcription. - The default value is `false`. - If you define a video language using the `language` parameter, the API uses that language to summarize the video. If you do not define a language, the API detects it based on the video.")
+
+    public Boolean getTranscriptSummary() {
+        return transcriptSummary;
+    }
+
+    public void setTranscriptSummary(Boolean transcriptSummary) {
+        this.transcriptSummary = transcriptSummary;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -522,13 +551,14 @@ public class VideoCreationPayload implements Serializable, DeepObject {
                 && Objects.equals(this.clip, videoCreationPayload.clip)
                 && Objects.equals(this.watermark, videoCreationPayload.watermark)
                 && Objects.equals(this.language, videoCreationPayload.language)
-                && Objects.equals(this.transcript, videoCreationPayload.transcript);
+                && Objects.equals(this.transcript, videoCreationPayload.transcript)
+                && Objects.equals(this.transcriptSummary, videoCreationPayload.transcriptSummary);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(title, description, source, _public, panoramic, mp4Support, playerId, tags, metadata, clip,
-                watermark, language, transcript);
+                watermark, language, transcript, transcriptSummary);
     }
 
     @Override
@@ -548,6 +578,7 @@ public class VideoCreationPayload implements Serializable, DeepObject {
         sb.append("    watermark: ").append(toIndentedString(watermark)).append("\n");
         sb.append("    language: ").append(toIndentedString(language)).append("\n");
         sb.append("    transcript: ").append(toIndentedString(transcript)).append("\n");
+        sb.append("    transcriptSummary: ").append(toIndentedString(transcriptSummary)).append("\n");
         sb.append("}");
         return sb.toString();
     }
