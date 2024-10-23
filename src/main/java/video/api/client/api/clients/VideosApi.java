@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 import video.api.client.api.models.BadRequest;
+import video.api.client.api.models.ConflictError;
 import video.api.client.api.models.DiscardedVideoUpdatePayload;
 import java.io.File;
 import video.api.client.api.models.NotFound;
@@ -2083,6 +2084,16 @@ public class VideosApi {
      *                        </td>
      *                        </tr>
      *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Conflict</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>429</td>
      *                        <td>Too Many Requests</td>
      *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
@@ -2200,6 +2211,16 @@ public class VideosApi {
      *                        </td>
      *                        </tr>
      *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Conflict</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
      *                        <td>429</td>
      *                        <td>Too Many Requests</td>
      *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
@@ -2268,6 +2289,16 @@ public class VideosApi {
      *                        <tr>
      *                        <td>404</td>
      *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Conflict</td>
      *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
      *                        * X-RateLimit-Remaining - The number of available requests left for the current time
      *                        window. <br>
@@ -2347,6 +2378,16 @@ public class VideosApi {
      *                        <tr>
      *                        <td>404</td>
      *                        <td>Not Found</td>
+     *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
+     *                        * X-RateLimit-Remaining - The number of available requests left for the current time
+     *                        window. <br>
+     *                        * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window
+     *                        resets. <br>
+     *                        </td>
+     *                        </tr>
+     *                        <tr>
+     *                        <td>409</td>
+     *                        <td>Conflict</td>
      *                        <td>* X-RateLimit-Limit - The request limit per minute. <br>
      *                        * X-RateLimit-Remaining - The number of available requests left for the current time
      *                        window. <br>

@@ -13,6 +13,7 @@ public class ApiVideoClient {
     private final ChaptersApi chapters;
     private final LiveStreamsApi liveStreams;
     private final PlayerThemesApi playerThemes;
+    private final SummariesApi summaries;
     private final TagsApi tags;
     private final UploadTokensApi uploadTokens;
     private final VideosApi videos;
@@ -88,6 +89,7 @@ public class ApiVideoClient {
         this.chapters = new ChaptersApi(this.apiClient);
         this.liveStreams = new LiveStreamsApi(this.apiClient);
         this.playerThemes = new PlayerThemesApi(this.apiClient);
+        this.summaries = new SummariesApi(this.apiClient);
         this.tags = new TagsApi(this.apiClient);
         this.uploadTokens = new UploadTokensApi(this.apiClient);
         this.videos = new VideosApi(this.apiClient);
@@ -138,6 +140,15 @@ public class ApiVideoClient {
      */
     public PlayerThemesApi playerThemes() {
         return this.playerThemes;
+    }
+
+    /**
+     * Get an SummariesApi instance
+     * 
+     * @return SummariesApi
+     */
+    public SummariesApi summaries() {
+        return this.summaries;
     }
 
     /**

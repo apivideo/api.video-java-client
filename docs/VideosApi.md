@@ -67,6 +67,11 @@ public class Example {
 - The default value is &#x60;false&#x60;.
 - If you define a video language using the &#x60;language&#x60; parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video. 
 - When the API generates a transcript, it will be available as a caption for the video.
+    videoCreationPayload.setTranscriptSummary(); // Use this parameter to enable summarization. We recommend using this parameter together with &#x60;transcript: true&#x60;.
+
+- When &#x60;true&#x60;, the API generates a summary for the video, based on the transcription.
+- The default value is &#x60;false&#x60;.
+- If you define a video language using the &#x60;language&#x60; parameter, the API uses that language to summarize the video. If you do not define a language, the API detects it based on the video.
 
 
     try {
@@ -448,6 +453,11 @@ public class Example {
 - The default value is &#x60;false&#x60;.
 - If you define a video language using the &#x60;language&#x60; parameter, the API uses that language to transcribe the video. If you do not define a language, the API detects it based on the video. 
 - When the API generates a transcript, it will be available as a caption for the video.
+    videoUpdatePayload.setTranscriptSummary(); // Use this parameter to enable summarization. 
+
+- When &#x60;true&#x60;, the API generates a summary for the video, based on the transcription.
+- The default value is &#x60;false&#x60;.
+- If you define a video language using the &#x60;language&#x60; parameter, the API uses that language to summarize the video. If you do not define a language, the API detects it based on the video.
 
 
     try {
@@ -491,6 +501,7 @@ Name | Type | Description  | Notes
 **200** | Success |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **400** | Bad Request |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **404** | Not Found |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
+**409** | Conflict |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 **429** | Too Many Requests |  * X-RateLimit-Limit - The request limit per minute. <br>  * X-RateLimit-Remaining - The number of available requests left for the current time window. <br>  * X-RateLimit-Retry-After - The number of seconds left until the current rate limit window resets. <br>  |
 
 <a name="delete"></a>
